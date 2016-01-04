@@ -8,7 +8,7 @@ public class Constant {
 	public static final String IP = "192.168.1.100";
 	//public static final String IP = "192.168.1.101";
 	public static final String PORT = "8080";
-	
+
 	public static final String SERVER = "http://" + IP + ":" + PORT + "/food_server"; 
 	public static final String WEB_APP_URL = SERVER + "/" ;
 	public static final String SERVER_LOGIN = "/Login?method=login";
@@ -36,7 +36,7 @@ public class Constant {
 	public static class URL {
 		public static final String LOGIN = CTX_PATH + "person/doLogin";
 		public static final String GET_NEWS_LIST = CTX_PATH + "news/getNewsList";
-
+		public static final String INDEXINFO = CTX_PATH + "indexPage/getIndexInfo";
 	}
 
 }
