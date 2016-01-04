@@ -30,6 +30,9 @@
             android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name">
         </activity>
+        <activity android:name=".activity.NewsInfoActivity" />
+
+
     </application>
 
 </manifest>

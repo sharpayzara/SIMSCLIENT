@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/find_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.mxst.car.simsclient.layout.QuickindexBar
+        android:id="@+id/find_slideBar"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/find_zimu"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="A"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:visibility="gone" />
+</RelativeLayout>
