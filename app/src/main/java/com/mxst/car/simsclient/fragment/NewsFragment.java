@@ -25,6 +25,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private RecyclerView newsRecl;
     private ImageView rightIcon;
     private View view;
+    private String val;
+    // private List<IndexList> bean;
+    //private NewsCentreAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +35,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         //adcolumnLayout = (LinearLayout) root.findViewById(R.id.ad_column);
         mContext = getActivity();
         this.inflater = inflater;
-        //	initUI();
+        initUI();
+        //getNewsType();
         return view;
     }
 
