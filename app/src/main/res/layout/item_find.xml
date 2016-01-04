@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="80dp"
     android:orientation="vertical"
-    android:padding="5dp">
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:gravity="center">
+        android:background="#E7ECEF"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/item_find_pingyin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="123"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -21,19 +23,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/item_find_img"
-            android:layout_width="45dp"
-            android:layout_height="match_parent" />
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/item_find_brand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
             android:text="12312312"
             android:textSize="18sp"
             android:textStyle="bold" />
