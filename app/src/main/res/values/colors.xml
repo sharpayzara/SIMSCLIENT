@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="resource_bg">#EFEFF4</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="confirm_check_bg">#979797</color>
+    <color name="move_check_bg">#DBDBDB</color>
+    <color name="tab_1">#747474</color>
+    <color name="bg_line">#E5E5E5</color>
+    <color name="bg_imageview">#F5F5F5</color>
+    <color name="bg_color_home">#EAEAEA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="hs">#9C9C9C</color>
+    <color name="tab_check_bg">#FFA129</color>
+    <color name="tab_un_check_bg">#E6E6E7</color>
+    <color name="login_line">#FF6900</color>
+    <color name="top_line">#DDDDDD</color>
+    <color name="maishi_bg">#B7C300</color>
+    <color name="waimai_bg">#FF9900</color>
+    <color name="dmf_bg">#00CCFF</color>
+    <color name="pay_btn_bg">#0193FD</color>
+    <color name="pay_btn_on_bg">#1A48FF</color>
+    <color name="red">#F20F0B</color>
 </resources>
