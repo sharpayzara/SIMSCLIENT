@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/item_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="sadasd" />
+
+        <TextView
+            android:id="@+id/item_news_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_news_title"
+            android:maxLines="2"
+            android:text="16sp"
+            android:textColor="@color/news_info"
+            tools:text="sadasd" />
+
+        <TextView
+            android:id="@+id/item_news_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/news_time"
+            android:textSize="14sp"
+            tools:text="sadasd" />
+
+        <TextView
+            android:id="@+id/item_news_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/item_news_sort"
+            android:textColor="@color/news_time"
+            android:textSize="14sp"
+            tools:text="sadasd" />
+
+        <TextView
+            android:id="@+id/item_news_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/btn_click"
+            android:textColor="@color/news_time"
+            android:textSize="14sp"
+            tools:text="sadasd" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="100dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:background="@mipmap/ic_launcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</LinearLayout>

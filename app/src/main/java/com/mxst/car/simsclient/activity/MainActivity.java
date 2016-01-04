@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.fragment.HomeFragment;
+import com.mxst.car.simsclient.fragment.NewsFragment;
 import com.mxst.car.simsclient.layout.BottomControlPanel;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
 import com.mxst.car.simsclient.utils.Constant;
@@ -28,6 +29,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
     private FragmentTransaction fragmentTransaction = null;
 
     public static String currFragTag = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +43,15 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
-    private void initUI(){
-        bottomPanel = (BottomControlPanel)findViewById(R.id.bottom_layout);
-        if(bottomPanel != null){
+
+    private void initUI() {
+        bottomPanel = (BottomControlPanel) findViewById(R.id.bottom_layout);
+        if (bottomPanel != null) {
             bottomPanel.initBottomPanel();
             bottomPanel.setBottomCallback(this);
         }
-        headPanel = (HeadControlPanel)findViewById(R.id.head_layout);
-        if(headPanel != null){
+        headPanel = (HeadControlPanel) findViewById(R.id.head_layout);
+        if (headPanel != null) {
             headPanel.initHeadPanel();
         }
     }
@@ -60,15 +63,15 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
     public void onBottomPanelClick(int itemId) {
         // TODO Auto-generated method stub
         String tag = "";
-        if((itemId & Constant.BTN_FLAG_HOME) != 0){
+        if ((itemId & Constant.BTN_FLAG_HOME) != 0) {
             tag = Constant.FRAGMENT_FLAG_HOME;
-        }else if((itemId & Constant.BTN_FLAG_INFO) != 0){
+        } else if ((itemId & Constant.BTN_FLAG_INFO) != 0) {
             tag = Constant.FRAGMENT_FLAG_INFO;
-        }else if((itemId & Constant.BTN_FLAG_REPAIR) != 0){
+        } else if ((itemId & Constant.BTN_FLAG_REPAIR) != 0) {
             tag = Constant.FRAGMENT_FLAG_REPAIR;
-        }else if((itemId & Constant.BTN_FLAG_FIND) != 0){
+        } else if ((itemId & Constant.BTN_FLAG_FIND) != 0) {
             tag = Constant.FRAGMENT_FLAG_FIND;
-        }else if((itemId & Constant.BTN_FLAG_MARKET) != 0){
+        } else if ((itemId & Constant.BTN_FLAG_MARKET) != 0) {
             tag = Constant.FRAGMENT_FLAG_MARKET;
         }
 
@@ -76,14 +79,14 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         headPanel.setMiddleTitle(tag);//切换标题
     }
 
-    private void setDefaultFirstFragment(String tag){
+    private void setDefaultFirstFragment(String tag) {
         Log.i("yan", "setDefaultFirstFragment enter... currFragTag = " + currFragTag);
         setTabSelection(tag);
         bottomPanel.defaultBtnChecked();
         Log.i("yan", "setDefaultFirstFragment exit...");
     }
 
-    private void commitTransactions(String tag){
+    private void commitTransactions(String tag) {
         if (fragmentTransaction != null && !fragmentTransaction.isEmpty()) {
             fragmentTransaction.commit();
             currFragTag = tag;
@@ -91,8 +94,8 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         }
     }
 
-    private FragmentTransaction ensureTransaction(){
-        if(fragmentTransaction == null){
+    private FragmentTransaction ensureTransaction() {
+        if (fragmentTransaction == null) {
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -102,61 +105,66 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
 
     }
 
-    private void attachFragment(int layout, Fragment f, String tag){
-        if(f != null){
-            if(f.isDetached()){
+    private void attachFragment(int layout, Fragment f, String tag) {
+        if (f != null) {
+            if (f.isDetached()) {
                 ensureTransaction();
                 fragmentTransaction.attach(f);
 
-            }else if(!f.isAdded()){
+            } else if (!f.isAdded()) {
                 ensureTransaction();
                 fragmentTransaction.add(layout, f, tag);
             }
         }
     }
 
-    private Fragment getFragment(String tag){
+    private Fragment getFragment(String tag) {
 
         Fragment f = fragmentManager.findFragmentByTag(tag);
 
-        if(f == null){
-            if(tag.equals(Constant.FRAGMENT_FLAG_HOME)){
+        if (f == null) {
+            if (tag.equals(Constant.FRAGMENT_FLAG_HOME)) {
                 f = new HomeFragment();
-            }else if(tag.equals(Constant.FRAGMENT_FLAG_INFO)){
+            } else if (tag.equals(Constant.FRAGMENT_FLAG_INFO)) {
+                f = new NewsFragment();
+            } else if (tag.equals(Constant.FRAGMENT_FLAG_REPAIR)) {
                 f = new HomeFragment();
-            }else if(tag.equals(Constant.FRAGMENT_FLAG_REPAIR)){
+            } else if (tag.equals(Constant.FRAGMENT_FLAG_FIND)) {
                 f = new HomeFragment();
-            }else if(tag.equals(Constant.FRAGMENT_FLAG_FIND)){
-                f = new HomeFragment();
-            }else if(tag.equals(Constant.FRAGMENT_FLAG_MARKET)){
+            } else if (tag.equals(Constant.FRAGMENT_FLAG_MARKET)) {
                 f = new HomeFragment();
             }
         }
         return f;
 
     }
-    private void detachFragment(Fragment f){
 
-        if(f != null && !f.isDetached()){
+    private void detachFragment(Fragment f) {
+
+        if (f != null && !f.isDetached()) {
             ensureTransaction();
             fragmentTransaction.detach(f);
         }
     }
-    /**切换fragment
+
+    /**
+     * 切换fragment
+     *
      * @param tag
      */
-    private  void switchFragment(String tag){
-        if(TextUtils.equals(tag, currFragTag)){
+    private void switchFragment(String tag) {
+        if (TextUtils.equals(tag, currFragTag)) {
             return;
         }
-        if(tag.equals(Constant.FRAGMENT_FLAG_HOME)){
+        if (tag.equals(Constant.FRAGMENT_FLAG_HOME) || tag.equals(Constant.FRAGMENT_FLAG_INFO)) {
             headPanel.setVisibility(View.GONE);
-        }else {
+        } else {
             headPanel.setVisibility(View.VISIBLE);
         }
 
+
         //把上一个fragment detach掉
-        if(currFragTag != null && !currFragTag.equals("")){
+        if (currFragTag != null && !currFragTag.equals("")) {
             detachFragment(getFragment(currFragTag));
         }
         attachFragment(R.id.fragment_content, getFragment(tag), tag);
@@ -171,13 +179,15 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         }*/
 
         //  mContent = to;
-        commitTransactions( tag);
+        commitTransactions(tag);
     }
 
-    /**设置选中的Tag
+    /**
+     * 设置选中的Tag
+     *
      * @param tag
      */
-    public  void setTabSelection(String tag) {
+    public void setTabSelection(String tag) {
         // 开启一个Fragment事务
         fragmentTransaction = fragmentManager.beginTransaction();
         switchFragment(tag);

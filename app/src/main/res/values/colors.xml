@@ -23,4 +23,9 @@
     <color name="pay_btn_bg">#0193FD</color>
     <color name="pay_btn_on_bg">#1A48FF</color>
     <color name="red">#F20F0B</color>
+    <color name="title_orange">#E57D1E</color>
+    <color name="news_gry">#F2F2F2</color>
+    <color name="news_info">#AAAAAA</color>
+    <color name="news_time">#DADADA</color>
+
 </resources>
