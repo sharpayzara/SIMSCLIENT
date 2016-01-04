@@ -31,6 +31,8 @@ public class Constant {
 	public static final String FRAGMENT_FLAG_FIND = "找车";
 	public static final String FRAGMENT_FLAG_MARKET = "积分商城";
 
+	public static String AUTHENTICATION_TOKEN = "";
+
 	public static class REQUESTCODE {
 
 	}
