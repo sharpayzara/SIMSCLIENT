@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.View;
 
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.fragment.FindFragment;
 import com.mxst.car.simsclient.fragment.HomeFragment;
 import com.mxst.car.simsclient.fragment.NewsFragment;
 import com.mxst.car.simsclient.layout.BottomControlPanel;
@@ -130,7 +131,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
             } else if (tag.equals(Constant.FRAGMENT_FLAG_REPAIR)) {
                 f = new HomeFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_FIND)) {
-                f = new HomeFragment();
+                f = new FindFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_MARKET)) {
                 f = new HomeFragment();
             }
