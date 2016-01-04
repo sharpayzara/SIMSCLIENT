@@ -2,11 +2,8 @@ package com.mxst.car.simsclient.utils;
 
 public class Constant {
 	public static final String APPID = "7ff3b5ddaf309007e16c13b8fafc1fd1";
-
-	/*public static final String Preferences_user= "user";
-	public static final String Preferences_username = "username";
-	public static final String Preferences_password = "password";*/
-
+	public static final String HOST = "http://222.177.210.200";   //测试
+	public static final String CTX_PATH = HOST + "/supplier/";
 	public static String userId;
 	public static final String IP = "192.168.1.100";
 	//public static final String IP = "192.168.1.101";
@@ -35,6 +32,9 @@ public class Constant {
 
 	public static class REQUESTCODE {
 
+	}
+	public static class URL {
+		public static final String LOGIN = CTX_PATH + "person/doLogin";
 	}
 
 }
