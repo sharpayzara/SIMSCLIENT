@@ -31,4 +31,6 @@
     <color name="theme_color">#D26F48</color>
     <color name="net_dialog_bg">#E51700</color>
     <color name="dialog_bg">#2F2F31</color>
+    <color name="user_action">#F6CD64</color>
+
 </resources>

@@ -7,9 +7,10 @@
     android:background="@color/resource_bg"
     >
     <RelativeLayout
+        android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:background="@color/theme_color"
-        android:layout_height="200dp"
+        android:layout_height="205dp"
         android:gravity="center">
         <LinearLayout
             android:layout_width="300dp"
@@ -43,7 +44,7 @@
                         android:hint="用户名"
                         android:textColorHint="@color/tab_1"
                         android:singleLine="true"
-                        android:text="gys2"
+                        android:text="13648380572"
                         android:textColor="@color/white"/>
                 </LinearLayout>
 
@@ -78,7 +79,7 @@
                         android:textColorHint="@color/tab_1"
                         android:inputType="numberPassword"
                         android:password="true"
-                        android:text="111111"
+                        android:text="000000"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <View
@@ -105,187 +106,453 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/user_layout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
         <RelativeLayout
+            android:id="@+id/user_info_layout"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-            <ImageView
-                android:id="@+id/rmcx_icon"
+            android:background="@color/theme_color"
+            android:layout_height="165dp">
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/motorcycle"/>
-            <TextView
-                android:layout_toRightOf="@id/rmcx_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="热卖车型"/>
+                android:layout_height="140dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/person"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/white"
+                        android:text="刘遥遥"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="20dp"
+                        android:text="13648380572"/>
+                </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/integral"
+                        android:layout_margin="3dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="积分"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="1000"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/recommend"
+                        android:layout_margin="3dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="马上推荐"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/sign"
+                        android:layout_margin="3dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="本日签到"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_below="@id/user_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/user_action">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/day"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="更多"/>
+                    android:textColor="@color/white"
+                    android:text="连续签到"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="30"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="天"/>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/go_icon"/>
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/deal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="推荐客户"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="3dp"
+                    android:text="8"/>
             </LinearLayout>
-        </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/customer"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="推荐成交"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="3dp"
+                    android:text="6"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/bsj"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/bsj"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/bsj"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/bsj"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/bsj"/>
-        </LinearLayout>
-    </LinearLayout> 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:background="@color/white">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-            <ImageView
-                android:id="@+id/book_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/book_icon"/>
-            <TextView
-                android:layout_toRightOf="@id/book_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="资讯"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="更多"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/go_icon"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="6dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/picture1"/>
+                android:layout_height="95dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <ImageView
+                        android:id="@+id/rmcx_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/motorcycle"/>
+                    <TextView
+                        android:layout_toRightOf="@id/rmcx_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="热卖车型"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="更多"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/go_icon"/>
+                    </LinearLayout>
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:maxLines="1"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:layout_marginTop="10dp"
-                        android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
-                    <TextView
-                        android:layout_width="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/rmcx_iv_1"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:textSize="12sp"
-                        android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
+                        android:layout_weight="1"
+                        android:src="@drawable/bsj"/>
+                    <ImageView
+                        android:id="@+id/rmcx_iv_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/bsj"/>
+                    <ImageView
+                        android:id="@+id/rmcx_iv_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/bsj"/>
+                    <ImageView
+                        android:id="@+id/rmcx_iv_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/bsj"/>
+                    <ImageView
+                        android:id="@+id/rmcx_iv_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/bsj"/>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/picture1"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <ImageView
+                        android:id="@+id/book_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/book_icon"/>
+                    <TextView
+                        android:layout_toRightOf="@id/book_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="资讯"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="更多"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/go_icon"/>
+                    </LinearLayout>
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:maxLines="1"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:layout_marginTop="10dp"
-                        android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
-                    <TextView
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="6dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/zx_iv_1"
+                            android:layout_width="85dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/picture1"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+                            <TextView
+                                android:id="@+id/zx_title_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:maxLines="1"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                android:layout_marginTop="8dp"
+                                android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
+                            <TextView
+                                android:id="@+id/zx_content_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="12sp"
+                                android:maxLines="2"
+                                android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="12sp"
-                        android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/zx_iv_2"
+                            android:layout_width="85dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/picture1"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+                            <TextView
+                                android:id="@+id/zx_title_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:maxLines="1"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                android:layout_marginTop="8dp"
+                                android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
+                            <TextView
+                                android:id="@+id/zx_content_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:maxLines="2"
+                                android:textSize="12sp"
+                                android:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+                <ImageView
+                    android:id="@+id/market_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/mall_icon"/>
+                <TextView
+                    android:layout_toRightOf="@id/market_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="积分商城"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="更多"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/go_icon"/>
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -9,8 +9,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.fragment.HomeFragment;
@@ -24,7 +26,7 @@ import static com.mxst.car.simsclient.layout.BottomControlPanel.BottomPanelCallb
 public class MainActivity extends FragmentActivity implements BottomPanelCallback {
     BottomControlPanel bottomPanel = null;
     HeadControlPanel headPanel = null;
-
+    public long exitTime;
     private FragmentManager fragmentManager = null;
     private FragmentTransaction fragmentTransaction = null;
 
@@ -35,6 +37,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUI();
+        exitTime = System.currentTimeMillis();
         fragmentManager = getSupportFragmentManager();
         setDefaultFirstFragment(Constant.FRAGMENT_FLAG_HOME);
     }
@@ -213,5 +216,19 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         f.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
 
