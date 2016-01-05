@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
-import com.mxst.car.simsclient.fragment.Person;
+import com.mxst.car.simsclient.entity.Person;
 
 import java.util.ArrayList;
 
@@ -49,13 +50,13 @@ public class PersonAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-
         if (convertView == null) {
             BitmapUtils bitmapUtils = new BitmapUtils(mContext);
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.item_find, null);
             holder.tv_py = (TextView) convertView.findViewById(R.id.item_find_pingyin);
             holder.tv_name = (TextView) convertView.findViewById(R.id.item_find_brand);
+            holder.lin = (LinearLayout) convertView.findViewById(R.id.item_find_lin);
             holder.img = (ImageView) convertView.findViewById(R.id.item_find_img);
             bitmapUtils.configDefaultLoadFailedImage(R.drawable.plugin_img);
             bitmapUtils.display(holder.img, persons.get(position).getPath());
@@ -66,29 +67,36 @@ public class PersonAdapter extends BaseAdapter {
 
         String string = null;
 
+//        if ("★".equals(persons.get(position).getPinyin())) {
+//            holder.tv_py.setVisibility(View.GONE);
+//        }
+
         if (position == 0) {
-            string = persons.get(position).getPinyin().substring(0, 1);
+            string = "常用品牌";
         } else {
-            String py = persons.get(position).getPinyin().substring(0, 1);
-            String spy = persons.get(position - 1).getPinyin().substring(0, 1);
+            String py = persons.get(position).getPinyin();
+            String spy = persons.get(position - 1).getPinyin();
             if (!py.equals(spy)) {
-                string = persons.get(position).getPinyin().substring(0, 1);
+                string = persons.get(position).getPinyin();
             }
         }
         if (string == null) {
-            holder.tv_py.setVisibility(View.GONE);
+            holder.lin.setVisibility(View.GONE);
         } else {
-            holder.tv_py.setVisibility(View.VISIBLE);
+            holder.lin.setVisibility(View.VISIBLE);
             holder.tv_py.setText(string);
         }
         holder.tv_name.setText(persons.get(position).getBrand());
         return convertView;
     }
+
+    public final class ViewHolder {
+        LinearLayout lin;
+        TextView tv_py, tv_name;
+        ImageView img;
+
+    }
 }
 
-class ViewHolder {
-    TextView tv_py, tv_name;
-    ImageView img;
 
-}
 

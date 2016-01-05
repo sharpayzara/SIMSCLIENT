@@ -19,7 +19,7 @@ public class QuickindexBar extends View {
 	private float cellHeigth;
 	private float cellwidth;
 
-	private static String[] strs = new String[] { "A", "B", "C", "D", "E", "F",
+	private static String[] strs = new String[] { "★","A", "B", "C", "D", "E", "F",
 			"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
 			"T", "U", "V", "W", "X", "Y", "Z" };
 
@@ -40,7 +40,7 @@ public class QuickindexBar extends View {
 
 	private void init() {
 		paint = new Paint();
-		paint.setColor(Color.WHITE);
+		paint.setColor(Color.RED);
 		paint.setTypeface(Typeface.DEFAULT_BOLD);
 	}
 
@@ -61,7 +61,7 @@ public class QuickindexBar extends View {
 
 			int y = (int) (cellHeigth / 2 + textHeigth / 2 + j * cellHeigth);
 
-			paint.setColor(touchIndex == j ? Color.GRAY : Color.WHITE);
+			paint.setColor(touchIndex == j ? Color.BLACK : Color.RED);
 			
 			canvas.drawText(strs[j], x, y, paint);
 		}

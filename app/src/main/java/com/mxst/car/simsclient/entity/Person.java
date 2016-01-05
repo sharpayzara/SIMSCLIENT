@@ -1,6 +1,4 @@
-package com.mxst.car.simsclient.fragment;
-
-import com.mxst.car.simsclient.utils.PinYinUtils;
+package com.mxst.car.simsclient.entity;
 
 /**
  * author   Joy
@@ -14,11 +12,12 @@ public class Person implements Comparable<Person> {
     private String brand;
     private String pinyin;
 
-    public Person(String path, String brand ) {
-        this.path = path;
-        this.brand = brand;
-        this.pinyin = PinYinUtils.getPinyin(brand);
-    }
+//    public Person(String path, String brand, String pinyin) {
+//        this.path = path;
+//        this.brand = brand;
+//        //   this.pinyin = PinYinUtils.getPinyin(brand);
+//        this.pinyin = pinyin;
+//    }
 
     public String getPinyin() {
         return pinyin;
