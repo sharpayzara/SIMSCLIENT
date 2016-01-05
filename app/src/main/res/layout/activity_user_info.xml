@@ -121,7 +121,7 @@
                     android:id="@+id/sex_man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/radio_selector"
+                    android:button="@drawable/sex_radio_selector"
                     android:textColor="@color/tab_1"
                     android:layout_marginLeft="15dp"
                     android:text="  男"/>
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:button="@drawable/radio_selector"
+                    android:button="@drawable/sex_radio_selector"
                     android:textColor="@color/tab_1"
                     android:text="  女"/>
             </RadioGroup>
