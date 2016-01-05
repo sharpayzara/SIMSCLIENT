@@ -41,6 +41,7 @@ public class Constant {
         public static final String BRANDLIST = CTX_PATH + "brand/brandList";
 		public static final String QIANDAO = CTX_PATH + "indexPage/qianDao";
 		public static final String UPDATEPERSON = CTX_PATH + "person/updatePerson";
+		public static final String BRANDXINGHAOLIST = CTX_PATH + "brand/brandXinghaoList";
 	}
 
 }

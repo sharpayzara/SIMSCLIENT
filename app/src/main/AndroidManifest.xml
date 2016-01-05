@@ -35,7 +35,7 @@
         <activity android:name=".activity.BrandFindActivity" />
         <activity android:name=".activity.UserActivity" />
         <activity android:name=".activity.UserInfoActivity" />
-        <activity android:name=".activity.UserInfoActivity" />
+
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@ public class SpecEAdapter extends BaseExpandableListAdapter {
 
     public SpecEAdapter(Context context, List<SpecList> bean) {
         this.context = context;
-        this.bean =bean;
+        this.bean = bean;
     }
 
     @Override
@@ -79,19 +79,22 @@ public class SpecEAdapter extends BaseExpandableListAdapter {
 
     }
 
+
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         ChildHolder childHolder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_brandfind_group, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_brandfind, null);
             childHolder = new ChildHolder();
             childHolder.xinghaoTv = (TextView) convertView.findViewById(R.id.item_brand_xinghao_tv);
             convertView.setTag(childHolder);
         } else {
             childHolder = (ChildHolder) convertView.getTag();
         }
+        if (bean.get(groupPosition).getXhs().size() > 0) {
+            childHolder.xinghaoTv.setText(bean.get(groupPosition).getXhs().get(childPosition).getXingHao());
+        }
 
-        childHolder.xinghaoTv.setText(bean.get(groupPosition).getXhs().get(childPosition).getXingHao());
         return convertView;
     }
 
@@ -99,13 +102,13 @@ public class SpecEAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
-    class GroupHolder
-    {
+
+    class GroupHolder {
         public TextView specTv;
 
     }
-    class ChildHolder
-    {
+
+    class ChildHolder {
         public TextView xinghaoTv;
 
     }
