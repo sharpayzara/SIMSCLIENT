@@ -6,7 +6,9 @@
     android:orientation="vertical"
     android:background="@color/resource_bg"
     >
+    <!--android:visibility="gone"-->
     <RelativeLayout
+
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:background="@color/theme_color"
@@ -65,8 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
-                        android:background="@drawable/password"/>
-
+                        android:background="@drawable/password" />
                     <com.mxst.car.simsclient.layout.ClearEditText
                         android:id="@+id/pwd_et"
                         android:layout_width="match_parent"
@@ -105,46 +106,50 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-
+    <!--android:visibility="gone"-->
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/user_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" >
+        >
         <RelativeLayout
             android:id="@+id/user_info_layout"
             android:layout_width="match_parent"
             android:background="@color/theme_color"
             android:layout_height="165dp">
             <LinearLayout
+                android:id="@+id/user_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="140dp"
                 android:orientation="horizontal">
-                <ImageView
+                <com.mxst.car.simsclient.layout.RoundImageView
+                    android:id="@+id/headImg"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/person"/>
+                    android:src="@drawable/plugin_img"
+                    android:layout_marginLeft="30dp"/>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/nickName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:layout_marginTop="32dp"
                         android:layout_marginLeft="20dp"
-                        android:textColor="@color/white"
-                        android:text="刘遥遥"/>
+                        android:textColor="@color/white"/>
                     <TextView
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:textColor="@color/white"
-                        android:layout_marginLeft="20dp"
-                        android:text="13648380572"/>
+                        android:layout_marginLeft="20dp" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -173,11 +178,11 @@
                         android:textSize="15sp"
                         android:text="积分"/>
                     <TextView
+                        android:id="@+id/jifen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:text="1000"/>
+                        android:textSize="15sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="100dp"
@@ -210,6 +215,7 @@
                         android:layout_margin="3dp"
                         />
                     <TextView
+                        android:id="@+id/qdFlg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -241,11 +247,11 @@
                     android:textColor="@color/white"
                     android:text="连续签到"/>
                 <TextView
+                    android:id="@+id/continueQd"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@color/white"
-                    android:text="30"/>
+                    android:textColor="@color/white"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -274,13 +280,13 @@
                     android:textColor="@color/white"
                     android:text="推荐客户"/>
                 <TextView
+                    android:id="@+id/recNum"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="3dp"
-                    android:text="8"/>
+                    android:layout_marginLeft="3dp"/>
             </LinearLayout>
 
             <View
@@ -304,13 +310,13 @@
                     android:textColor="@color/white"
                     android:text="推荐成交"/>
                 <TextView
+                    android:id="@+id/cjNum"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="3dp"
-                    android:text="6"/>
+                    android:layout_marginLeft="3dp"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

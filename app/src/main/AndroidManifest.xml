@@ -32,7 +32,9 @@
         </activity>
         <activity android:name=".activity.NewsInfoActivity" />
 
-
+        <activity android:name=".activity.UserActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
     </application>
 
 </manifest>

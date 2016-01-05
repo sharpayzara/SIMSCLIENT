@@ -2,6 +2,7 @@ package com.mxst.car.simsclient.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.activity.UserActivity;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.HomeInfoEntity;
@@ -29,13 +32,15 @@ import org.json.JSONObject;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 	RelativeLayout login_layout,user_layout;
+	LinearLayout user_btn;
 	ClearEditText user_et,pwd_et;
 	LayoutInflater inflater;
 	Context mContext;
 	TextView zx_title_1,zx_title_2,zx_content_1,zx_content_2;
-	ImageView rmcx_iv_1,rmcx_iv_2,rmcx_iv_3,rmcx_iv_4,rmcx_iv_5,zx_iv_1,zx_iv_2;
+	ImageView rmcx_iv_1,rmcx_iv_2,rmcx_iv_3,rmcx_iv_4,rmcx_iv_5,zx_iv_1,zx_iv_2,headImg;
 	BitmapUtils utils;
 	Button login_btn;
+	TextView phone,jifen,continueQd,nickName,cjNum,recNum,qdFlg;
 	private View root;
 
 	@Override
@@ -64,12 +69,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		zx_content_2 = (TextView) root.findViewById(R.id.zx_content_2);
 		user_et = (ClearEditText) root.findViewById(R.id.user_et);
 		pwd_et = (ClearEditText) root.findViewById(R.id.pwd_et);
+		user_btn = (LinearLayout) root.findViewById(R.id.user_btn);
 		login_btn = (Button) root.findViewById(R.id.login_btn);
-		login_btn.setOnClickListener(this);
 
+		headImg = (ImageView) root.findViewById(R.id.headImg);
+		phone = (TextView) root.findViewById(R.id.phone);
+		jifen = (TextView) root.findViewById(R.id.jifen);
+		continueQd = (TextView) root.findViewById(R.id.continueQd);
+		nickName = (TextView) root.findViewById(R.id.nickName);
+		cjNum = (TextView) root.findViewById(R.id.cjNum);
+		recNum = (TextView) root.findViewById(R.id.recNum);
+		qdFlg = (TextView) root.findViewById(R.id.qdFlg);
+		login_btn.setOnClickListener(this);
+		user_btn.setOnClickListener(this);
+		qdFlg.setOnClickListener(this);
 	}
 	private void initData(){
 		utils = new BitmapUtils(mContext);
+		utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
 		loadData();
 	}
 
@@ -100,9 +117,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 						zx_title_2.setText(result.getRecord().getZxs().get(1).getTitle());
 						zx_content_1.setText(result.getRecord().getZxs().get(0).getSubtitle());
 						zx_content_2.setText(result.getRecord().getZxs().get(1).getSubtitle());
-
 					}
-
+					if(result.getRecord().getVipInfo() != null){
+						phone.setText(result.getRecord().getVipInfo().getPhone());
+						jifen.setText(result.getRecord().getVipInfo().getJifen());
+						continueQd.setText(result.getRecord().getVipInfo().getContinueQd());
+						nickName.setText(result.getRecord().getVipInfo().getNickName());
+						utils.display(headImg,result.getRecord().getVipInfo().getHeadImg());
+					}
+					cjNum.setText(result.getRecord().getCjNum() + "");
+					recNum.setText(result.getRecord().getRecNum() + "");
+					if(result.getRecord().getQdFlg() == 1){
+						qdFlg.setText("已签到");
+					}
 				}
 			}
 		}.requestByPost(Constant.URL.INDEXINFO,new RequestParams());
@@ -135,6 +162,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 							CommonUtil.showToastToShort(mContext,"登录成功");
 							login_layout.setVisibility(View.GONE);
 							user_layout.setVisibility(View.VISIBLE);
+							loadData();
 						}else{
 							CommonUtil.showToastToShort(mContext,result.getMsg());
 						}
@@ -142,6 +170,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 				}.requestByPost(Constant.URL.LOGIN,params);
 			}else{
 				CommonUtil.showToastToShort(mContext,"用户名或密码不能为空！");
+			}
+		}
+		else if(user_btn == v){
+			Intent intent = new Intent(mContext, UserActivity.class);
+			mContext.startActivity(intent);
+		}
+		else if(v == qdFlg){
+			if(qdFlg.getText().toString().equals("本日签到")){
+				new BaseTask<JsonResult<String>,String>(mContext){
+
+					@Override
+					public TypeToken setTypeToken() {
+						return new TypeToken<String>(){};
+					}
+
+					@Override
+					public void onSuccess() {
+						if(result.isSuccess()){
+							qdFlg.setText("已签到");
+						}
+					}
+				}.requestByPost(Constant.URL.QIANDAO,new RequestParams());
+			}else{
+				CommonUtil.showToastToShort(mContext,"今日已签到");
 			}
 		}
 	}
