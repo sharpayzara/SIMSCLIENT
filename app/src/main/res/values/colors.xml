@@ -27,7 +27,7 @@
     <color name="news_gry">#F2F2F2</color>
     <color name="news_info">#AAAAAA</color>
     <color name="news_time">#DADADA</color>
-
+    <color name="news_more_bg">#F0F0F0</color>
     <color name="theme_color">#D26F48</color>
     <color name="net_dialog_bg">#E51700</color>
     <color name="dialog_bg">#2F2F31</color>

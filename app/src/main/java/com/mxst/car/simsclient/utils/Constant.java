@@ -39,6 +39,8 @@ public class Constant {
         public static final String GET_NEWS_LIST = CTX_PATH + "news/getNewsList";
         public static final String INDEXINFO = CTX_PATH + "indexPage/getIndexInfo";
         public static final String BRANDLIST = CTX_PATH + "brand/brandList";
-    }
+		public static final String QIANDAO = CTX_PATH + "indexPage/qianDao";
+		public static final String UPDATEPERSON = CTX_PATH + "person/updatePerson";
+	}
 
 }

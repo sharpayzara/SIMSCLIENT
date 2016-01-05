@@ -27,7 +27,7 @@ public class ClearEditText extends EditText implements OnFocusChangeListener,Tex
 	  }
 	  public ClearEditText(Context context, AttributeSet attrs) {
 	    // 这里构造方法也很重要，不加这个很多属性不能再XML里面定义
-	    this(context, attrs, android.R.attr.editTextStyle);
+	    this(context, attrs, android.R.attr.editTextStyle) ;
 	  }
 
 	  public ClearEditText(Context context, AttributeSet attrs, int defStyle) {

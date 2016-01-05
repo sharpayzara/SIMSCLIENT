@@ -2,6 +2,7 @@
     <string name="app_name">铭兴汽车</string>
     <string name="action_settings">Settings</string>
     <string name="login_notice">正在登录,请稍候..</string>
-
+    <string name="upload_notice">正在提交,请稍候..</string>
+    <string name="download_notice">正在获取数据,请稍候..</string>
     <string name="net_not_connect">当前网络不可用，请检查网络设置</string>
 </resources>

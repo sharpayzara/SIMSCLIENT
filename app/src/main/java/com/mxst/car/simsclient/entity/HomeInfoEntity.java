@@ -7,9 +7,46 @@ import java.util.List;
  */
 public class HomeInfoEntity {
 
+    private int cjNum;
+    private int recNum;
+    private int qdFlg;
+    private VipInfo vipInfo;
+
     private List<HotBrandEntity> hotBrand;
 
     private List<ZxsEntity> zxs;
+
+    public int getCjNum() {
+        return cjNum;
+    }
+
+    public void setCjNum(int cjNum) {
+        this.cjNum = cjNum;
+    }
+
+    public int getRecNum() {
+        return recNum;
+    }
+
+    public void setRecNum(int recNum) {
+        this.recNum = recNum;
+    }
+
+    public int getQdFlg() {
+        return qdFlg;
+    }
+
+    public void setQdFlg(int qdFlg) {
+        this.qdFlg = qdFlg;
+    }
+
+    public VipInfo getVipInfo() {
+        return vipInfo;
+    }
+
+    public void setVipInfo(VipInfo vipInfo) {
+        this.vipInfo = vipInfo;
+    }
 
     public void setHotBrand(List<HotBrandEntity> hotBrand) {
         this.hotBrand = hotBrand;
@@ -75,6 +112,53 @@ public class HomeInfoEntity {
 
         public String getImg() {
             return img;
+        }
+    }
+    public static class VipInfo{
+        private String nickName;
+        private String phone;
+        private String jifen;
+        private String continueQd;
+        private String headImg;
+
+        public String getNickName() {
+            return nickName;
+        }
+
+        public void setNickName(String nickName) {
+            this.nickName = nickName;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getJifen() {
+            return jifen;
+        }
+
+        public void setJifen(String jifen) {
+            this.jifen = jifen;
+        }
+
+        public String getContinueQd() {
+            return continueQd;
+        }
+
+        public void setContinueQd(String continueQd) {
+            this.continueQd = continueQd;
+        }
+
+        public String getHeadImg() {
+            return headImg;
+        }
+
+        public void setHeadImg(String headImg) {
+            this.headImg = headImg;
         }
     }
 }
