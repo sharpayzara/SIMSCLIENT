@@ -24,17 +24,11 @@
             android:text="筛选条件:" />
 
         <TextView
-            android:id="@+id/res_mj_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            tools:text="15款" />
-
-        <TextView
             android:id="@+id/res_kx_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
+            android:singleLine="true"
             tools:text="15款X6" />
 
         <TextView
@@ -44,7 +38,7 @@
 
         <TextView
             android:id="@+id/res_clear_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="X 清空条件"

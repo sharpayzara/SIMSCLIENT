@@ -2,7 +2,9 @@ package com.mxst.car.simsclient.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +30,7 @@ import java.util.List;
  * author   Joy
  * Date:  2016/1/6.
  * version:  V1.0
- * Description:
+ * Description:车型筛选
  */
 public class ResourceChooseActivity extends CommonHeadPanelActivity {
     private TextView OkTv, choostTv;
@@ -53,6 +55,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
         vehicleXinghao = getIntent().getStringExtra("xingHao");
         showBackBtn();
         setHeadTitle(brand + vehicleXinghao);
+        Button choose = (Button) findViewById(R.id.right_title);
         OkTv = (TextView) findViewById(R.id.choose_sure_tv);
         choostTv = (TextView) findViewById(R.id.choose_tv);
         listView = (ExpandableListView) findViewById(R.id.choose_res_lv);
@@ -70,16 +73,25 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
                 return true;
             }
         });
+        choose.setVisibility(View.VISIBLE);
+        choose.setBackground(null);
+        choose.setText("关闭筛选");
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         OkTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mj.isEmpty() && !mjkx.isEmpty()) {
+                if (!TextUtils.isEmpty(mj) && !TextUtils.isEmpty(mjkx)) {
                     Intent i = new Intent();
                     i.putExtra("mj", mj);
                     i.putExtra("mjkx", mjkx);
                     setResult(Constant.REQUESTCODE.CHOOSERES, i);
-                    finish();
                 }
+                finish();
             }
         });
     }
