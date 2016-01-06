@@ -350,6 +350,7 @@
                         android:gravity="center"
                         android:text="热卖车型"/>
                     <LinearLayout
+                        android:id="@+id/cx_more_lly"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
@@ -427,6 +428,7 @@
                         android:gravity="center"
                         android:text="资讯"/>
                     <LinearLayout
+                        android:id="@+id/zx_more_lly"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
@@ -543,6 +545,7 @@
                     android:gravity="center"
                     android:text="积分商城"/>
                 <LinearLayout
+                    android:id="@+id/market_more_lly"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"

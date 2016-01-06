@@ -19,7 +19,9 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.activity.NewsMoreActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
+import com.mxst.car.simsclient.activity.ViewImageActivity;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.HomeInfoEntity;
@@ -32,7 +34,7 @@ import org.json.JSONObject;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 	RelativeLayout login_layout,user_layout;
-	LinearLayout user_btn;
+	LinearLayout user_btn,cx_more_lly,zx_more_lly,market_more_lly;
 	ClearEditText user_et,pwd_et;
 	LayoutInflater inflater;
 	Context mContext;
@@ -80,6 +82,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		cjNum = (TextView) root.findViewById(R.id.cjNum);
 		recNum = (TextView) root.findViewById(R.id.recNum);
 		qdFlg = (TextView) root.findViewById(R.id.qdFlg);
+		cx_more_lly = (LinearLayout) root.findViewById(R.id.cx_more_lly);
+		zx_more_lly = (LinearLayout) root.findViewById(R.id.zx_more_lly);
+		market_more_lly = (LinearLayout)  root.findViewById(R.id.market_more_lly);
+		cx_more_lly.setOnClickListener(this);
+		zx_more_lly.setOnClickListener(this);
+		market_more_lly.setOnClickListener(this);
 		login_btn.setOnClickListener(this);
 		user_btn.setOnClickListener(this);
 		qdFlg.setOnClickListener(this);
@@ -196,6 +204,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 				CommonUtil.showToastToShort(mContext,"今日已签到");
 			}
 		}
+		else if(cx_more_lly == v){
+
+		}else if(zx_more_lly == v){
+			Intent intent = new Intent(mContext, NewsMoreActivity.class);
+			mContext.startActivity(intent);
+		}else if(market_more_lly == v){
+			Intent intent = new Intent(mContext, ViewImageActivity.class);
+			mContext.startActivity(intent);
+		}
+
 	}
 
 

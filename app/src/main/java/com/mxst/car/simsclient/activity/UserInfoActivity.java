@@ -61,7 +61,6 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
             }else{
                 params.addQueryStringParameter("sex","男");
             }
-
             params.addQueryStringParameter("email",email.getText().toString());
             params.addQueryStringParameter("birthday",birthday.getText().toString());
             params.addQueryStringParameter("address",address.getText().toString());
