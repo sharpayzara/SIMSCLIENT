@@ -11,18 +11,21 @@ import java.io.Serializable;
 public class IndexList implements Serializable {
 
     private int id;
+    private String category;
     private String title;
     private String subtitle;
-    private int dianjishu;
     private String img;
-    private long release_time;
     private String releaseTime;
-    private String cname;
-    private String userName;
+    private long release_time;
+    private int dianjishu;
     private String interval_str;
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public void setTitle(String title) {
@@ -33,28 +36,20 @@ public class IndexList implements Serializable {
         this.subtitle = subtitle;
     }
 
-    public void setDianjishu(int dianjishu) {
-        this.dianjishu = dianjishu;
-    }
-
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public void setRelease_time(long release_time) {
-        this.release_time = release_time;
     }
 
     public void setReleaseTime(String releaseTime) {
         this.releaseTime = releaseTime;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setRelease_time(long release_time) {
+        this.release_time = release_time;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setDianjishu(int dianjishu) {
+        this.dianjishu = dianjishu;
     }
 
     public void setInterval_str(String interval_str) {
@@ -65,6 +60,10 @@ public class IndexList implements Serializable {
         return id;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -73,33 +72,23 @@ public class IndexList implements Serializable {
         return subtitle;
     }
 
-    public int getDianjishu() {
-        return dianjishu;
-    }
-
     public String getImg() {
         return img;
-    }
-
-    public long getRelease_time() {
-        return release_time;
     }
 
     public String getReleaseTime() {
         return releaseTime;
     }
 
-    public String getCname() {
-        return cname;
+    public long getRelease_time() {
+        return release_time;
     }
 
-    public String getUserName() {
-        return userName;
+    public int getDianjishu() {
+        return dianjishu;
     }
 
     public String getInterval_str() {
         return interval_str;
     }
-
-
 }

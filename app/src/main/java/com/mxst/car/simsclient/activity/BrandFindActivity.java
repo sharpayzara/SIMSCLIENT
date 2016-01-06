@@ -1,6 +1,8 @@
 package com.mxst.car.simsclient.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -51,6 +53,18 @@ public class BrandFindActivity extends CommonHeadPanelActivity {
         adapter = new SpecEAdapter(this, bean);
 
         listView.setAdapter(adapter);
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                Intent intent = new Intent(BrandFindActivity.this, ResourceFindActivity.class);
+                intent.putExtra("brand", brand);
+                intent.putExtra("spec", bean.get(groupPosition).getSpec());
+                intent.putExtra("xingHao", bean.get(groupPosition).getXhs().get(childPosition).getXingHao());
+                startActivity(intent);
+                return true;
+            }
+        });
 
     }
 

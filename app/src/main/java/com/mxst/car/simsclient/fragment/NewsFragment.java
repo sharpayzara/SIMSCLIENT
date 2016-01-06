@@ -51,7 +51,6 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_news, container, false);
-        //adcolumnLayout = (LinearLayout) root.findViewById(R.id.ad_column);
         mContext = getActivity();
         this.inflater = inflater;
         initUI();
@@ -98,9 +97,6 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             case R.id.news_news_tv:
                 val = "PR";
                 getNewsList(val);
-                Intent intent = new Intent(getActivity(), NewsInfoActivity.class);
-                intent.putExtra("id", "10");
-                startActivity(intent);
                 break;
             case R.id.news_guide_tv:
                 val = "CC";

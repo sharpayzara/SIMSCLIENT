@@ -13,13 +13,10 @@
 
         <TextView
             android:id="@+id/item_brand_xinghao_tv"
+            style="@style/basetext"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:drawableRight="@drawable/go_icon"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
-            style="@style/basetext"
-            android:text="中规"
-        />
+            android:text="中规" />
     </LinearLayout>
 </LinearLayout>

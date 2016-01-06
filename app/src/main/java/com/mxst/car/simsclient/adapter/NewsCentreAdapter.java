@@ -55,7 +55,7 @@ public class NewsCentreAdapter extends RecyclerView.Adapter<NewsCentreAdapter.Vi
         holder.subtitle.setText(bean.get(position).getSubtitle());
         holder.timeTv.setText(bean.get(position).getInterval_str());
         holder.dianjiTv.setText(bean.get(position).getDianjishu() + "人点击");
-        holder.typeTv.setText(bean.get(position).getCname());
+        holder.typeTv.setText(bean.get(position).getCategory());
         bitmapUtils.configDefaultLoadFailedImage(R.drawable.plugin_img);
         bitmapUtils.display(holder.img, bean.get(position).getImg());
         holder.itemView.setOnClickListener(new View.OnClickListener() {

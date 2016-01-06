@@ -13,13 +13,11 @@
 
         <TextView
             android:id="@+id/item_find_pingyin"
+            style="@style/titletext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:text="123"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="123" />
 
     </LinearLayout>
 
@@ -38,11 +36,9 @@
 
         <TextView
             android:id="@+id/item_find_brand"
+            style="@style/basetext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="12312312"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="12312312" />
     </LinearLayout>
 </LinearLayout>
