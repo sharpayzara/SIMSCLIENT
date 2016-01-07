@@ -1,6 +1,8 @@
 package com.mxst.car.simsclient.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +10,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
-import com.mxst.car.simsclient.entity.NewsMoreList;
+import com.mxst.car.simsclient.activity.ViewImageActivity;
+import com.mxst.car.simsclient.entity.CollectZXList;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NewsMoreAdapter extends RecyclerView.Adapter<NewsMoreAdapter.ViewHolder> {
-    private List<NewsMoreList.NewsMore> bean;
+public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.ViewHolder> {
+    private List<CollectZXList.ZXEntity> bean;
     private LayoutInflater layoutInflater;
+    private BitmapUtils utils;
+    private Context mContext;
 
-    public NewsMoreAdapter(Context context, List<NewsMoreList.NewsMore> bean) {
+    public CollectZXAdapter(Context context, List<CollectZXList.ZXEntity> bean) {
         this.bean = bean;
+        mContext = context;
         this.layoutInflater = LayoutInflater.from(context);
+        utils = new BitmapUtils(context);
+        utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
     }
 
     public interface OnItemClickListener {
@@ -32,23 +42,29 @@ public class NewsMoreAdapter extends RecyclerView.Adapter<NewsMoreAdapter.ViewHo
         this.onItemClickListener = onItemClickListener;
     }
 
-    public NewsMoreAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CollectZXAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_zx, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final NewsMoreAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CollectZXAdapter.ViewHolder holder, int position) {
         holder.title.setText(bean.get(position).getTitle());
-        holder.subtitle.setText(bean.get(position).getSubtitle());
-        holder.releaseTime.setText(bean.get(position).getReleaseTime().substring(0,10));
+        holder.subtitle.setText(bean.get(position).getTitle());
+        holder.releaseTime.setText(bean.get(position).getRelease_time());
         holder.dianjishu.setText(bean.get(position).getDianjishu()+"");
-        /*if (bean.get(position).getGuidePrice() == 0) {
-            holder.itemResGuideprice.setText("指导价:" + "暂无");
-        } else {
-            holder.itemResGuideprice.setText("指导价:" + bean.get(position).getGuidePrice());
-        }*/
+        utils.display(holder.img,bean.get(position).getImg());
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ViewImageActivity.class);
+                ArrayList<Bitmap> tempList = new ArrayList();
+                tempList.add(holder.img.getDrawingCache());
+                intent.putParcelableArrayListExtra("imgList", tempList);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     public int getItemCount() {
@@ -66,7 +82,7 @@ public class NewsMoreAdapter extends RecyclerView.Adapter<NewsMoreAdapter.ViewHo
             releaseTime = (TextView) itemView.findViewById(R.id.releaseTime);
             dianjishu = (TextView) itemView.findViewById(R.id.dianjishu);
             img = (ImageView) itemView.findViewById(R.id.img);
-
+            img.setDrawingCacheEnabled(true);
         }
     }
 }

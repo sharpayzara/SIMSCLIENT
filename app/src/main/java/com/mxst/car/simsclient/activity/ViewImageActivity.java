@@ -21,18 +21,20 @@ public class ViewImageActivity extends Activity {
     HackyViewPager viewPager;
     Context mContext;
     ArrayList<Bitmap> imageList;
+    int currentPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_image);
         mContext  = this;
         imageList = getIntent().getParcelableArrayListExtra("imgList");
+        currentPosition = getIntent().getIntExtra("position",0);
         initUI();
     }
     private void initUI() {
         viewPager = (HackyViewPager) findViewById(R.id.expanded_image);
         viewPager.setAdapter(new SamplePagerAdapter());
-        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(currentPosition );
     }
     class SamplePagerAdapter extends PagerAdapter {
 
