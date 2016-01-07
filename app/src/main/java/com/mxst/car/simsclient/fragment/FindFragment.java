@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.BrandFindActivity;
 import com.mxst.car.simsclient.adapter.PersonAdapter;
@@ -99,7 +100,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }
-        }.requestByPost(Constant.URL.BRANDLIST, null);
+        }.requestByPost(Constant.URL.BRANDLIST, new RequestParams());
     }
 
     private void initUI() {

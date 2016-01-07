@@ -46,32 +46,29 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-   
-    <LinearLayout
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="55dp">
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/news_zx_radio_selector"
-            android:checked="true"
-            android:button="@null"
-            android:layout_weight="1"/>
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/news_zy_radio_selector"
-            android:button="@null"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/tab_1"/>
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/zx_radio"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/news_zx_radio_selector"
+                android:button="@null"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/zy_radio"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/news_zy_radio_selector"
+                android:button="@null"
+                android:layout_weight="1"/>
+    </RadioGroup>
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_view"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

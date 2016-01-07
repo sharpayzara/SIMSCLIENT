@@ -33,5 +33,8 @@
     <color name="dialog_bg">#2F2F31</color>
     <color name="user_action">#F6CD64</color>
     <color name="res_bg">#ECECEC</color>
+    <color name="blood_red">#CC0001</color>
+    <color name="duck_black">#727272</color>
+    <color name="duck_line">#D7D7D7</color>
 
 </resources>

@@ -3,6 +3,7 @@ package com.mxst.car.simsclient.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -31,6 +32,8 @@ import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.CryptTool;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 	RelativeLayout login_layout,user_layout;
@@ -64,7 +67,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		rmcx_iv_4 = (ImageView) root.findViewById(R.id.rmcx_iv_4);
 		rmcx_iv_5 = (ImageView) root.findViewById(R.id.rmcx_iv_5);
 		zx_iv_1 = (ImageView) root.findViewById(R.id.zx_iv_1);
+		zx_iv_1.setDrawingCacheEnabled(true);
 		zx_iv_2 = (ImageView) root.findViewById(R.id.zx_iv_2);
+		zx_iv_2.setDrawingCacheEnabled(true);
 		zx_title_1 = (TextView) root.findViewById(R.id.zx_title_1);
 		zx_title_2 = (TextView) root.findViewById(R.id.zx_title_2);
 		zx_content_1 = (TextView) root.findViewById(R.id.zx_content_1);
@@ -91,6 +96,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		login_btn.setOnClickListener(this);
 		user_btn.setOnClickListener(this);
 		qdFlg.setOnClickListener(this);
+		zx_iv_1.setOnClickListener(this);
+		zx_iv_2.setOnClickListener(this);
 	}
 	private void initData(){
 		utils = new BitmapUtils(mContext);
@@ -209,8 +216,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		}else if(zx_more_lly == v){
 			Intent intent = new Intent(mContext, NewsMoreActivity.class);
 			mContext.startActivity(intent);
-		}else if(market_more_lly == v){
+		}else if(zx_iv_1 == v){
 			Intent intent = new Intent(mContext, ViewImageActivity.class);
+			ArrayList<Bitmap> tempList = new ArrayList();
+			tempList.add(zx_iv_1.getDrawingCache());
+			intent.putParcelableArrayListExtra("imgList", tempList);
+			mContext.startActivity(intent);
+		}
+		else if(zx_iv_2 == v){
+			Intent intent = new Intent(mContext, ViewImageActivity.class);
+			ArrayList<Bitmap> tempList = new ArrayList();
+			tempList.add(zx_iv_2.getDrawingCache());
+			intent.putParcelableArrayListExtra("imgList", tempList);
 			mContext.startActivity(intent);
 		}
 
