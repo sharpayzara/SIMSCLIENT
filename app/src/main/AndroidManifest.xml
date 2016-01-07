@@ -46,6 +46,10 @@
             android:theme="@style/ThemeActivity"/>
         <activity android:name=".activity.CarDetailsActivity" />
         <activity android:name=".activity.CarDetailsMoreActivity" />
+        <activity
+            android:name=".activity.ViewImageURLActivity"
+            android:theme="@style/ThemeActivity"/>
+
     </application>
 
 </manifest>

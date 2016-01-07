@@ -227,7 +227,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		else if(zx_iv_2 == v){
 			Intent intent = new Intent(mContext, ViewImageActivity.class);
 			ArrayList<Bitmap> tempList = new ArrayList();
-			tempList.add(zx_iv_1.getDrawingCache());
+			tempList.add(zx_iv_2.getDrawingCache());
 			intent.putParcelableArrayListExtra("imgList", tempList);
 			mContext.startActivity(intent);
 		}

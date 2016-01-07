@@ -3,6 +3,7 @@ package com.mxst.car.simsclient.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by Joy on 2016/1/6 0006.
  */
-public class CarDetailsActivity extends CommonHeadPanelActivity {
+public class CarDetailsActivity extends CommonHeadPanelActivity implements OnClickListener{
     private LinearLayout left_btn, car_detail_collect_lin, car_detail_share_lin, car_detail_more_lin;
     private TextView car_detail_color_tv, car_detail_engine_tv, car_detail_speed_tv, car_detail_site_tv,
             car_detail_price_tv, car_detail_time_tv, car_detail_name_tv, car_detail_guideprice_tv, car_detail_reserveprice_tv;
@@ -122,8 +123,13 @@ public class CarDetailsActivity extends CommonHeadPanelActivity {
         car_detail_img3 = (ImageView) findViewById(R.id.car_detail_img3);
         car_detail_img4 = (ImageView) findViewById(R.id.car_detail_img4);
         car_detail_img5 = (ImageView) findViewById(R.id.car_detail_img5);
+        car_detail_img1.setOnClickListener(this);
+        car_detail_img2.setOnClickListener(this);
+        car_detail_img3.setOnClickListener(this);
+        car_detail_img4.setOnClickListener(this);
+        car_detail_img5.setOnClickListener(this);
         car_detail_more_lin = (LinearLayout) findViewById(R.id.car_detail_more_lin);
-        car_detail_more_lin.setOnClickListener(new View.OnClickListener() {
+        car_detail_more_lin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(CarDetailsActivity.this, CarDetailsMoreActivity.class);
@@ -133,5 +139,31 @@ public class CarDetailsActivity extends CommonHeadPanelActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == car_detail_img1 || v == car_detail_img2 || v == car_detail_img3
+            || v == car_detail_img4 || v == car_detail_img5){
+            Intent intent = new Intent(this, ViewImageURLActivity.class);
+            ArrayList<String> list = new ArrayList<String>();
+            for(ParaResult.ResourceDetail.ImgPathsEntity entity : bean.getImgPaths()){
+                list.add(entity.getImgPath());
+            }
+            if(v == car_detail_img1){
+                intent.putExtra("position",0);
+            }else if(v == car_detail_img2){
+                intent.putExtra("position",1);
+            }else if(v == car_detail_img3){
+                intent.putExtra("position",2);
+            }else if(v == car_detail_img4){
+                intent.putExtra("position",3);
+            }else if(v == car_detail_img5){
+                intent.putExtra("position",4);
+            }
+            intent.putStringArrayListExtra("imgUrlList",list);
+            startActivity(intent);
+        }
+
     }
 }
