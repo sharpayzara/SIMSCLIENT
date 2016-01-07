@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
         xingHao = xingHao.substring(brand.length(), xingHao.length());
         spec = getIntent().getStringExtra("spec");
         Button choose = (Button) findViewById(R.id.right_title);
-        res_mj_tv = (TextView) findViewById(R.id.res_mj_tv);
+        //res_mj_tv = (TextView) findViewById(R.id.res_mj_tv);
         res_kx_tv = (TextView) findViewById(R.id.res_kx_tv);
         res_clear_tv = (TextView) findViewById(R.id.res_clear_tv);
         res_rcl = (RecyclerView) findViewById(R.id.res_rcl);
@@ -65,6 +66,14 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
         res_rcl.setAdapter(adapter);
         res_rcl.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         res_rcl.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        adapter.setOnItemClickListener(new ResourceAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(ResourceFindActivity.this, CarDetailsActivity.class);
+                intent.putExtra("id", bean.get(position).getColorId() + "");
+                startActivity(intent);
+            }
+        });
         choose.setVisibility(View.VISIBLE);
         choose.setBackground(null);
         choose.setText("筛选");
@@ -78,6 +87,15 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
                 startActivityForResult(intent, 1);
             }
         });
+        res_clear_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                res_kx_tv.setText("");
+                mj = "";
+                kx = "";
+                brandResourceList();
+            }
+        });
     }
 
     @Override
@@ -86,8 +104,9 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
         if (resultCode == Constant.REQUESTCODE.CHOOSERES) {
             mj = data.getStringExtra("mj");
             kx = data.getStringExtra("mjkx");
-            res_mj_tv.setText(mj);
+            //  res_mj_tv.setText(mj);
             res_kx_tv.setText(kx);
+            brandResourceList();
         }
     }
 
@@ -96,7 +115,10 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
         params.addQueryStringParameter("brand", brand);
         params.addQueryStringParameter("xingHao", xingHao);
         params.addQueryStringParameter("spec", spec);
-
+        if (!TextUtils.isEmpty(mj) || !TextUtils.isEmpty(kx)) {
+            params.addQueryStringParameter("mj", mj);
+            params.addQueryStringParameter("kx", kx);
+        }
         new BaseTask<JsonResult<JSONObject>, String>(this, "加载中") {
 
             @Override
