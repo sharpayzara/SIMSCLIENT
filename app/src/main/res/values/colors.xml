@@ -36,5 +36,6 @@
     <color name="blood_red">#CC0001</color>
     <color name="duck_black">#727272</color>
     <color name="duck_line">#D7D7D7</color>
+    <color name="black_font">#333333</color>
 
 </resources>

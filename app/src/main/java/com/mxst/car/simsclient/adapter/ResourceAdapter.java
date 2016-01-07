@@ -44,19 +44,27 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(final ResourceAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ResourceAdapter.ViewHolder holder, final int position) {
         holder.itemResBrand.setText(bean.get(position).getBrand() + bean.get(position).getXinghao());
         holder.itemResCartype.setText(bean.get(position).getCarType());
         holder.itemResTotalprice.setText(bean.get(position).getTotalPrice() + "");
         holder.itemResKuaxing.setText(bean.get(position).getNianKuan() + bean.get(position).getKuanXing());
         holder.itemResGuige.setText(bean.get(position).getGuiGe());
+        holder.itemResOutcolor.setText(bean.get(position).getOutColor());
         if (bean.get(position).getGuidePrice() == 0) {
             holder.itemResGuideprice.setText("指导价:" + "暂无");
         } else {
             holder.itemResGuideprice.setText("指导价:" + bean.get(position).getGuidePrice());
         }
 
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(holder.itemView, position);
+                }
+            }
+        });
     }
 
     public int getItemCount() {
@@ -64,7 +72,7 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView itemResBrand, itemResCartype, itemResTotalprice, itemResKuaxing, itemResGuige, itemResGuideprice;
+        private TextView itemResBrand, itemResCartype, itemResTotalprice, itemResKuaxing, itemResGuige, itemResOutcolor, itemResGuideprice;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -73,6 +81,7 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
             itemResCartype = (TextView) itemView.findViewById(R.id.item_res_cartype);
             itemResTotalprice = (TextView) itemView.findViewById(R.id.item_res_totalprice);
             itemResKuaxing = (TextView) itemView.findViewById(R.id.item_res_kuaxing);
+            itemResOutcolor = (TextView) itemView.findViewById(R.id.item_res_outcolor);
             itemResGuideprice = (TextView) itemView.findViewById(R.id.item_res_guideprice);
             itemResGuige = (TextView) itemView.findViewById(R.id.item_res_guige);
 

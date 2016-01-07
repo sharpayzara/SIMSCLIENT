@@ -104,8 +104,10 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
         if (resultCode == Constant.REQUESTCODE.CHOOSERES) {
             mj = data.getStringExtra("mj");
             kx = data.getStringExtra("mjkx");
-            //  res_mj_tv.setText(mj);
             res_kx_tv.setText(kx);
+            String[] mykx = kx.split(" ");
+            kx = mykx[mykx.length - 1];
+            //  res_mj_tv.setText(mj);
             brandResourceList();
         }
     }

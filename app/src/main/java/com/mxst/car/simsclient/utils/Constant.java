@@ -45,6 +45,7 @@ public class Constant {
         public static final String BRANDRESOURCELIST = CTX_PATH + "brand/brandResourceList";
         public static final String FILTRATE = CTX_PATH + "brand/filtrate";
         public static final String NEWSLIST = CTX_PATH + "news/getNewsList";
+        public static final String PARALIST = CTX_PATH + "brand/paraList";
     }
 
 }

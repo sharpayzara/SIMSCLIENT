@@ -41,6 +41,8 @@
         <activity
             android:name=".activity.ViewImageActivity"
             android:theme="@style/ThemeActivity"/>
+        <activity android:name=".activity.CarDetailsActivity" />
+        <activity android:name=".activity.CarDetailsMoreActivity" />
     </application>
 
 </manifest>
