@@ -34,9 +34,37 @@ public class ParaResult implements Serializable {
         private String kuanXing;
         private int colorId;
         private String outColor;
+        private String commit_date;
+        private String dingjin;
+
+        public String getCommit_date() {
+            return commit_date;
+        }
+
+        public void setCommit_date(String commit_date) {
+            this.commit_date = commit_date;
+        }
+
+        public String getDingjin() {
+            return dingjin;
+        }
+
+        public void setDingjin(String dingjin) {
+            this.dingjin = dingjin;
+        }
+
+        public int getVePrice() {
+            return vePrice;
+        }
+
+        public void setVePrice(int vePrice) {
+            this.vePrice = vePrice;
+        }
+
         private String inColor;
         private String inColor2;
         private int totalPrice;
+        private int vePrice;
         private int guidePrice;
 
         private List<ImgPathsEntity> imgPaths;

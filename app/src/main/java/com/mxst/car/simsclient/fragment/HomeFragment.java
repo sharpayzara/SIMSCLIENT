@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -175,6 +176,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 						if(result.isSuccess()){
 							Constant.AUTHENTICATION_TOKEN = result.getRecord().optString("authenticationToken");
 							CommonUtil.showToastToShort(mContext,"登录成功");
+							Log.e("Joy",Constant.AUTHENTICATION_TOKEN);
 							login_layout.setVisibility(View.GONE);
 							user_layout.setVisibility(View.VISIBLE);
 							loadData();

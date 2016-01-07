@@ -87,6 +87,7 @@
                 style="@style/titletext"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:singleLine="true"
                 android:textColor="@color/title_orange"
                 tools:text="asdasdas" />
 

@@ -58,6 +58,9 @@ public class CarDetailsActivity extends CommonHeadPanelActivity {
                     car_detail_site_tv.setText(bean.getLocation());
                     car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing());
                     car_detail_price_tv.setText(bean.getTotalPrice() + "");
+                    car_detail_time_tv.setText(bean.getCommit_date());
+                    car_detail_reserveprice_tv.setText(bean.getDingjin());
+
                     ArrayList<ImageView> imglist = new ArrayList<ImageView>();
                     imglist.add(car_detail_img1);
                     imglist.add(car_detail_img2);
