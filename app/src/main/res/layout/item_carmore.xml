@@ -8,17 +8,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
         android:background="@color/white"
         android:gravity="center_vertical">
 
         <TextView
-
             android:id="@+id/item_more_name"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textStyle="bold"
             tools:text="123123" />
 
         <TextView
@@ -27,6 +28,14 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
+            android:textSize="16sp"
             tools:text="123123" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="2dp"
+        android:background="@color/bg_line" />
 </LinearLayout>

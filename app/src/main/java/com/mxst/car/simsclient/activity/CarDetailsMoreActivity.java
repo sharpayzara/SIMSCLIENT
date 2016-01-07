@@ -36,6 +36,8 @@ public class CarDetailsMoreActivity extends CommonHeadPanelActivity {
         listView = (ListView) findViewById(R.id.car_more_list);
         ParaResult.ResourceDetail bean = (ParaResult.ResourceDetail) getIntent().getSerializableExtra("ResourceDetail");
         paraList = bean.getParaList();
+        adapter = new CarDetailAdapter(this, paraList);
+        listView.setAdapter(adapter);
 
     }
 }

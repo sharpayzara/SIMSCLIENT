@@ -187,7 +187,7 @@ public class ParaResult implements Serializable {
             return paraList;
         }
 
-        public static class ImgPathsEntity {
+        public static class ImgPathsEntity implements Serializable {
             private String imgPath;
 
             public void setImgPath(String imgPath) {
@@ -199,7 +199,7 @@ public class ParaResult implements Serializable {
             }
         }
 
-        public static class ParaListEntity {
+        public static class ParaListEntity implements Serializable {
             private String paraName;
             private String paraVal;
 

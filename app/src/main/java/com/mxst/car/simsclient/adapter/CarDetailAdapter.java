@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.entity.ParaResult;
 
 import java.util.List;
@@ -46,8 +47,16 @@ public class CarDetailAdapter extends BaseAdapter {
         ViewHoloder viewHoloder = null;
         if (convertView == null) {
             viewHoloder = new ViewHoloder();
-            //   convertView =layoutInflater.inflate()
+            convertView = layoutInflater.inflate(R.layout.item_carmore, null);
+            viewHoloder.nameTv = (TextView) convertView.findViewById(R.id.item_more_name);
+            viewHoloder.valueTv = (TextView) convertView.findViewById(R.id.item_more_value);
+            convertView.setTag(viewHoloder);
+        } else {
+
+            viewHoloder = (ViewHoloder) convertView.getTag();
         }
+        viewHoloder.nameTv.setText(bean.get(position).getParaName());
+        viewHoloder.valueTv.setText(bean.get(position).getParaVal());
         return convertView;
     }
 
