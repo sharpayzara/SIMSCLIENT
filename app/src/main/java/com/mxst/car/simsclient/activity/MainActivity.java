@@ -83,11 +83,17 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         headPanel.setMiddleTitle(tag);//切换标题
     }
 
+
     private void setDefaultFirstFragment(String tag) {
         Log.i("yan", "setDefaultFirstFragment enter... currFragTag = " + currFragTag);
         setTabSelection(tag);
         bottomPanel.defaultBtnChecked();
         Log.i("yan", "setDefaultFirstFragment exit...");
+    }
+
+    public void setDynamicFragment(String tag) {
+        setTabSelection(tag);
+        bottomPanel.dynamicBtnCheck(tag);
     }
 
     private void commitTransactions(String tag) {
@@ -129,6 +135,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         if (f == null) {
             if (tag.equals(Constant.FRAGMENT_FLAG_HOME)) {
                 f = new HomeFragment();
+                ((HomeFragment)f).setMainActivity(this);
             } else if (tag.equals(Constant.FRAGMENT_FLAG_INFO)) {
                 f = new NewsFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_REPAIR)) {
@@ -195,7 +202,6 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         // 开启一个Fragment事务
         fragmentTransaction = fragmentManager.beginTransaction();
         switchFragment(tag);
-
     }
 
     @Override

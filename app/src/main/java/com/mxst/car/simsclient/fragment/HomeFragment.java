@@ -20,7 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
-import com.mxst.car.simsclient.activity.NewsMoreActivity;
+import com.mxst.car.simsclient.activity.MainActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
 import com.mxst.car.simsclient.activity.ViewImageActivity;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -46,8 +46,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 	BitmapUtils utils;
 	Button login_btn;
 	TextView phone,jifen,continueQd,nickName,cjNum,recNum,qdFlg;
+	MainActivity mainActivity;
 	private View root;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		root =  inflater.inflate(R.layout.fragment_home, container, false);
@@ -214,8 +214,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		else if(cx_more_lly == v){
 
 		}else if(zx_more_lly == v){
-			Intent intent = new Intent(mContext, NewsMoreActivity.class);
-			mContext.startActivity(intent);
+			mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_INFO);
 		}else if(zx_iv_1 == v){
 			Intent intent = new Intent(mContext, ViewImageActivity.class);
 			ArrayList<Bitmap> tempList = new ArrayList();
@@ -226,12 +225,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 		else if(zx_iv_2 == v){
 			Intent intent = new Intent(mContext, ViewImageActivity.class);
 			ArrayList<Bitmap> tempList = new ArrayList();
-			tempList.add(zx_iv_2.getDrawingCache());
+			tempList.add(zx_iv_1.getDrawingCache());
 			intent.putParcelableArrayListExtra("imgList", tempList);
 			mContext.startActivity(intent);
 		}
-
 	}
-
-
+ 	public void setMainActivity(MainActivity mainActivity){
+		this.mainActivity = mainActivity;
+	}
 }

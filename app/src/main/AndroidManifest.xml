@@ -38,6 +38,9 @@
         <activity android:name=".activity.ResourceFindActivity" />
         <activity android:name=".activity.ResourceChooseActivity" />
         <activity android:name=".activity.NewsMoreActivity" />
+        <activity android:name=".activity.CollectActivity" />
+        <activity android:name=".activity.UserSetUpActivity" />
+        <activity android:name=".activity.UserScoreActivity" />
         <activity
             android:name=".activity.ViewImageActivity"
             android:theme="@style/ThemeActivity"/>

@@ -36,5 +36,11 @@
     <color name="blood_red">#CC0001</color>
     <color name="duck_black">#727272</color>
     <color name="duck_line">#D7D7D7</color>
+    <color name="collect_zy_bg">#EEEEEE</color>
+    <color name="collect_zy_line_bg">#E2E2E2</color>
+    <color name="collect_zy_spec_bg">#787878</color>
+    <color name="score_text_bg"> #FE7200</color>
+    <color name="score_line">#D0D0D0</color>
+    <color name="jifen_line">#E4E4E4</color>
 
 </resources>

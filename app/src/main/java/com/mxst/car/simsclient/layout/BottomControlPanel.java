@@ -123,6 +123,14 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 			mHomedBtn.setChecked(Constant.BTN_FLAG_HOME);
 		}
 	}
+	public void dynamicBtnCheck(String tag){
+		initBottomPanel();
+		if(tag.equals(Constant.FRAGMENT_FLAG_INFO)){
+			mInfoBtn.setChecked(Constant.BTN_FLAG_INFO);
+		}else if(tag.equals(Constant.FRAGMENT_FLAG_MARKET)){
+			mMarketBtn.setChecked(Constant.BTN_FLAG_MARKET);
+		}
+	}
 
 	@Override
 	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {

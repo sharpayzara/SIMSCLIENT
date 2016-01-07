@@ -11,7 +11,8 @@ import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
 
 public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener{
     Context mContext;
-    LinearLayout headImg_layout;
+
+    LinearLayout headImg_layout,collect_lly,setup_lly,score_llt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_user);
@@ -25,6 +26,12 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         setHeadTitle("个人中心");
         headImg_layout = (LinearLayout) findViewById(R.id.headImg_layout);
         headImg_layout.setOnClickListener(this);
+        collect_lly = (LinearLayout) findViewById(R.id.collect_lly);
+        collect_lly.setOnClickListener(this);
+        setup_lly = (LinearLayout) findViewById(R.id.setup_lly);
+        setup_lly.setOnClickListener(this);
+        score_llt = (LinearLayout) findViewById(R.id.score_llt);
+        score_llt.setOnClickListener(this);
     }
 
 
@@ -33,7 +40,15 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         if(v == headImg_layout){
             Intent intent = new Intent(mContext,UserInfoActivity.class);
             mContext.startActivity(intent);
+        }else if(v == collect_lly){
+            Intent intent = new Intent(mContext, CollectActivity.class);
+            mContext.startActivity(intent);
+        }else if(v == setup_lly){
+            Intent intent = new Intent(mContext, UserSetUpActivity.class);
+            mContext.startActivity(intent);
+        }else if(v == score_llt){
+            Intent intent = new Intent(mContext, UserScoreActivity.class);
+            mContext.startActivity(intent);
         }
-
     }
 }

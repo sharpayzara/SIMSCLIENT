@@ -44,7 +44,9 @@ public class Constant {
         public static final String BRANDXINGHAOLIST = CTX_PATH + "brand/brandXinghaoList";
         public static final String BRANDRESOURCELIST = CTX_PATH + "brand/brandResourceList";
         public static final String FILTRATE = CTX_PATH + "brand/filtrate";
-        public static final String NEWSLIST = CTX_PATH + "news/getNewsList";
+        public static final String NEWZXLIST = CTX_PATH + "collect/toNews";
+        public static final String NEWZYLIST = CTX_PATH + "collect/toResources";
+        public static final String SCORELIST = CTX_PATH + "indexPage/getJfRecord";
     }
 
 }

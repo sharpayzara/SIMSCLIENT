@@ -47,8 +47,9 @@
         </LinearLayout>
     </LinearLayout>
     <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="52dp"
         android:orientation="horizontal">
             <RadioButton
                 android:id="@+id/zx_radio"
@@ -66,9 +67,14 @@
                 android:layout_weight="1"/>
     </RadioGroup>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recy_view"
-        android:layout_marginTop="10dp"
+        android:id="@+id/recy_view_zx"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_view_zy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
