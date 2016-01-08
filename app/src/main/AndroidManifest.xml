@@ -48,6 +48,10 @@
         <activity android:name=".activity.CarDetailsMoreActivity" />
         <activity android:name=".activity.BrandChooseActivity" />
         <activity android:name=".activity.RecommendActivity" />
+        <activity
+            android:name=".activity.ViewImageURLActivity"
+            android:theme="@style/ThemeActivity"/>
+
     </application>
 
 </manifest>
