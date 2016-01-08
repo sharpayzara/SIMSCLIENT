@@ -37,6 +37,7 @@ public class Constant {
     public static class URL {
         public static final String LOGIN = CTX_PATH + "person/doLogin";
         public static final String GET_NEWS_LIST = CTX_PATH + "news/getNewsList";
+        public static final String SEARCH_NEWS_LIST = CTX_PATH + "news/getNewsSearchList";
         public static final String INDEXINFO = CTX_PATH + "indexPage/getIndexInfo";
         public static final String BRANDLIST = CTX_PATH + "brand/brandList";
         public static final String QIANDAO = CTX_PATH + "indexPage/qianDao";

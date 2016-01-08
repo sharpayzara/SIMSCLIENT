@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.fragment.FindFragment;
 import com.mxst.car.simsclient.fragment.HomeFragment;
+import com.mxst.car.simsclient.fragment.MarketFragment;
 import com.mxst.car.simsclient.fragment.NewsFragment;
 import com.mxst.car.simsclient.layout.BottomControlPanel;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
@@ -129,7 +130,6 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
     }
 
     private Fragment getFragment(String tag) {
-
         Fragment f = fragmentManager.findFragmentByTag(tag);
 
         if (f == null) {
@@ -143,7 +143,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
             } else if (tag.equals(Constant.FRAGMENT_FLAG_FIND)) {
                 f = new FindFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_MARKET)) {
-                f = new HomeFragment();
+                f = new MarketFragment();
             }
         }
         return f;

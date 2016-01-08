@@ -84,7 +84,7 @@ public class ClearEditText extends EditText implements OnFocusChangeListener,Tex
 
 	  /**
 	   * 设置清除图标的显示与隐藏，调用setCompoundDrawables为EditText绘制上去
-	   * 
+	   *
 	   * @param visible
 	   */
 	  protected void setClearIconVisible(boolean visible) {
@@ -121,7 +121,7 @@ public class ClearEditText extends EditText implements OnFocusChangeListener,Tex
 
 	  /**
 	   * 晃动动画
-	   * 
+	   *
 	   * @param counts
 	   *			1秒钟晃动多少下
 	   * @return
