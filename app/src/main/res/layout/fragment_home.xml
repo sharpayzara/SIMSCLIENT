@@ -184,6 +184,7 @@
                         android:textSize="15sp" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/recommend_lin"
                     android:layout_width="100dp"
                     android:layout_height="38dp"
                     android:gravity="center_vertical"

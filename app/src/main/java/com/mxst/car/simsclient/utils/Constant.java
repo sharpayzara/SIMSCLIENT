@@ -49,6 +49,7 @@ public class Constant {
         public static final String SCORELIST = CTX_PATH + "indexPage/getJfRecord";
         public static final String NEWSLIST = CTX_PATH + "news/getNewsList";
         public static final String PARALIST = CTX_PATH + "brand/paraList";
+        public static final String BRAND = CTX_PATH + "yy/brand";
     }
 
 }

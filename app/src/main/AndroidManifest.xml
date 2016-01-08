@@ -46,6 +46,8 @@
             android:theme="@style/ThemeActivity"/>
         <activity android:name=".activity.CarDetailsActivity" />
         <activity android:name=".activity.CarDetailsMoreActivity" />
+        <activity android:name=".activity.BrandChooseActivity" />
+        <activity android:name=".activity.RecommendActivity" />
     </application>
 
 </manifest>

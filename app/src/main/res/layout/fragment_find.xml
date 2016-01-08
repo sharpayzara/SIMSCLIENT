@@ -11,7 +11,7 @@
 
     <com.mxst.car.simsclient.layout.QuickindexBar
         android:id="@+id/find_slideBar"
-        android:layout_width="30dp"
+        android:layout_width="25dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" />
