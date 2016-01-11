@@ -135,7 +135,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         if (f == null) {
             if (tag.equals(Constant.FRAGMENT_FLAG_HOME)) {
                 f = new HomeFragment();
-                ((HomeFragment)f).setMainActivity(this);
+               // ((HomeFragment)f).setMainActivity(this);
             } else if (tag.equals(Constant.FRAGMENT_FLAG_INFO)) {
                 f = new NewsFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_REPAIR)) {

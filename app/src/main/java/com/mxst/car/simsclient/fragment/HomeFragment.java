@@ -39,7 +39,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 	RelativeLayout login_layout,user_layout;
-	LinearLayout user_btn,cx_more_lly,zx_more_lly,market_more_lly;
+	LinearLayout user_btn,cx_more_lly,zx_more_lly,market_more_lly,recommend_lin;
 	ClearEditText user_et,pwd_et;
 	LayoutInflater inflater;
 	Context mContext;
@@ -230,7 +230,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         } else if (zx_iv_2 == v) {
             Intent intent = new Intent(mContext, ViewImageActivity.class);
             ArrayList<Bitmap> tempList = new ArrayList();
-            tempList.add(zx_iv_1.getDrawingCache());
+            tempList.add(zx_iv_2.getDrawingCache());
             intent.putParcelableArrayListExtra("imgList", tempList);
             mContext.startActivity(intent);
         } else if (recommend_lin == v) {
@@ -239,27 +239,4 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void setMainActivity(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
-    }
-		}else if(zx_more_lly == v){
-			mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_INFO);
-		}else if(zx_iv_1 == v){
-			Intent intent = new Intent(mContext, ViewImageActivity.class);
-			ArrayList<Bitmap> tempList = new ArrayList();
-			tempList.add(zx_iv_1.getDrawingCache());
-			intent.putParcelableArrayListExtra("imgList", tempList);
-			mContext.startActivity(intent);
-		}
-		else if(zx_iv_2 == v){
-			Intent intent = new Intent(mContext, ViewImageActivity.class);
-			ArrayList<Bitmap> tempList = new ArrayList();
-			tempList.add(zx_iv_2.getDrawingCache());
-			intent.putParcelableArrayListExtra("imgList", tempList);
-			mContext.startActivity(intent);
-		}
-	}
- 	public void setMainActivity(MainActivity mainActivity){
-		this.mainActivity = mainActivity;
-	}
 }
