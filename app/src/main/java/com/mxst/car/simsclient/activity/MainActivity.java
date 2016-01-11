@@ -19,6 +19,7 @@ import com.mxst.car.simsclient.fragment.FindFragment;
 import com.mxst.car.simsclient.fragment.HomeFragment;
 import com.mxst.car.simsclient.fragment.MarketFragment;
 import com.mxst.car.simsclient.fragment.NewsFragment;
+import com.mxst.car.simsclient.fragment.RepairFragment;
 import com.mxst.car.simsclient.layout.BottomControlPanel;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
 import com.mxst.car.simsclient.utils.Constant;
@@ -139,7 +140,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
             } else if (tag.equals(Constant.FRAGMENT_FLAG_INFO)) {
                 f = new NewsFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_REPAIR)) {
-                f = new HomeFragment();
+                f = new RepairFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_FIND)) {
                 f = new FindFragment();
             } else if (tag.equals(Constant.FRAGMENT_FLAG_MARKET)) {
