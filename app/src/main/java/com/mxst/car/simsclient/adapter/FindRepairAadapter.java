@@ -37,7 +37,7 @@ public class FindRepairAadapter extends RecyclerView.Adapter<FindRepairAadapter.
     }
 
     public FindRepairAadapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.item_man_choose, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_find_repair , parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -69,7 +69,6 @@ public class FindRepairAadapter extends RecyclerView.Adapter<FindRepairAadapter.
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             nameTv = (TextView) itemView.findViewById(R.id.item_fix_name);
             typeTv = (TextView) itemView.findViewById(R.id.item_fix_type);
             storeTv = (TextView) itemView.findViewById(R.id.item_fix_store);
