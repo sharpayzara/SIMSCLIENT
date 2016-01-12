@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginBottom="10dp"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:orientation="horizontal">
 
         <TextView
@@ -19,27 +20,28 @@
             android:background="@drawable/bg_green"
             android:gravity="center"
             android:textColor="@color/white"
-            tools:text="渝A23467" />
+            tools:text="渝A23467"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#F2F2F2"
-            android:orientation="horizontal">
+            android:paddingLeft="10dp"
+            >
 
             <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:columnCount="2">
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
-                    android:textSize="16sp"
-                    tools:text="维修类型：" />
+                    android:text="维修类型："
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/item_fix_type"
@@ -47,53 +49,57 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
-                    android:textSize="16sp"
-                    tools:text="11：" />
+                    android:textSize="14sp"
+                    tools:text="11："/>
+
 
                 <TextView
                     android:id="@+id/item_store_adress"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:gravity="center_vertical"
-                    tools:text="门店：" />
+                    android:text="门店："/>
 
                 <TextView
                     android:id="@+id/item_fix_store"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:gravity="center_vertical"
-                    tools:text="asdasd" />
+                    tools:text="asdasd"/>
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:gravity="center_vertical"
-                    tools:text="制单时间" />
+                    android:text="制单时间:"/>
+
 
                 <TextView
                     android:id="@+id/item_fix_startime"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:gravity="center_vertical"
-                    tools:text="阿斯达斯的111" />
+                    tools:text="阿斯达斯的111"/>
+
 
                 <TextView
                     android:id="@+id/item_store_tim"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:gravity="center_vertical"
-                    tools:text="预计完工时间:" />
+                    android:text="预计完工时间: "/>
 
                 <TextView
                     android:id="@+id/item_fix_endtime"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
                     android:gravity="center_vertical"
-                    tools:text="sdadasdas" />
-
+                    tools:text="sdadasdas"/>
             </GridLayout>
-
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

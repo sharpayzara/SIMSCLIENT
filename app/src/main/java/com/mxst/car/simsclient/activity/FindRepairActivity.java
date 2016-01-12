@@ -1,8 +1,11 @@
 package com.mxst.car.simsclient.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
@@ -52,6 +55,8 @@ public class FindRepairActivity extends CommonHeadPanelActivity {
                 if (result.isSuccess()) {
                     bean.clear();
                     bean.addAll(result.getRecord().getWxjcList());
+                } else {
+                    Toast.makeText(FindRepairActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -61,11 +66,19 @@ public class FindRepairActivity extends CommonHeadPanelActivity {
     }
 
     private void init() {
+        showBackBtn();
+        setHeadTitle("查询维修进程");
         list = (RecyclerView) findViewById(R.id.fix_recl);
         bean = new ArrayList<>();
         adapter = new FindRepairAadapter(this, bean);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        adapter.setOnItemClickListener(new FindRepairAadapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(new Intent(FindRepairActivity.this, FindRepairDetailActivity.class).putExtra("id", bean.get(position).getId()));
+            }
+        });
     }
 }

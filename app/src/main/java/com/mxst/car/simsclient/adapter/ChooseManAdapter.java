@@ -50,7 +50,7 @@ public class ChooseManAdapter extends RecyclerView.Adapter<ChooseManAdapter.View
         holder.nameTv.setText(bean.get(position).getName());
         holder.phoneTv.setText(bean.get(position).getPhone());
         BitmapUtils bitmapUtils = new BitmapUtils(mContext);
-        //   bitmapUtils.display(holder.img, bean.get(position).getImg());
+          bitmapUtils.display(holder.img, bean.get(position).getImg());
         holder.rb.setRating(bean.get(position).getStar_level());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
