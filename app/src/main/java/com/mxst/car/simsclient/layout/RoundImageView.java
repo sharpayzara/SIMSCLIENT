@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -19,6 +20,7 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import com.lidroid.xutils.bitmap.core.AsyncDrawable;
 import com.mxst.car.simsclient.R;
 
 public class RoundImageView extends ImageView {
@@ -68,7 +70,25 @@ public class RoundImageView extends ImageView {
         this.measure(0, 0);
         if (drawable.getClass() == NinePatchDrawable.class)
             return;
-        Bitmap b = ((BitmapDrawable) drawable).getBitmap();
+
+        Bitmap b = null;
+        if(drawable instanceof AsyncDrawable){
+            b = Bitmap
+                    .createBitmap(
+                            getWidth(),
+                            getHeight(),
+                            drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                                    : Bitmap.Config.RGB_565);
+            Canvas canvas1 = new Canvas(b);
+            // canvas.setBitmap(bitmap);
+            drawable.setBounds(0, 0, getWidth(),
+                    getHeight());
+            drawable.draw(canvas1);
+        }else{
+            b = ((BitmapDrawable) drawable).getBitmap();
+        }
+
+
         Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
         if (defaultWidth == 0) {
             defaultWidth = getWidth();
