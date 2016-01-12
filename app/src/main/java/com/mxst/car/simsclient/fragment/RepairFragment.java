@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.EvaluateActivity;
+import com.mxst.car.simsclient.activity.InsureListActivity;
 import com.mxst.car.simsclient.activity.FindRepairActivity;
 import com.mxst.car.simsclient.activity.OrderRepairActivity;
 import com.mxst.car.simsclient.adapter.ImageAdapter;
@@ -90,8 +91,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         new BaseTask<JsonResult<AdvertisementList>, String>(mContext, R.string.download_notice) {
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<AdvertisementList>() {
-                };
+                return new TypeToken<AdvertisementList>(){};
             }
 
             @Override
@@ -179,7 +179,8 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.query_problem:
-
+                Intent it_qp = new Intent(mContext, InsureListActivity.class);
+                mContext.startActivity(it_qp);
                 break;
         }
     }
