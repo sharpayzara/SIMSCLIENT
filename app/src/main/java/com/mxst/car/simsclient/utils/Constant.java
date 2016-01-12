@@ -64,6 +64,7 @@ public class Constant {
         public static final String INSURANCE_CAR_LIST = CTX_PATH + "insurance/getCarList";
         public static final String GETLIST = CTX_PATH + "repair/schedule/getList";
         public static final String OBTAIN_PASSWORD = CTX_PATH + "message/send";
+        public static final String GETDETAIL = CTX_PATH + "repair/schedule/getDetail";
     }
 
 }

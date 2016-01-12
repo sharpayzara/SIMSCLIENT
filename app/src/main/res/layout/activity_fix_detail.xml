@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
 
         <include
             android:id="@+id/head_layout"
-            layout="@layout/head_panel_layout"/>
+            layout="@layout/head_panel_layout" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +31,7 @@
                     android:gravity="center"
                     android:textColor="@color/title_orange"
                     android:textSize="18sp"
-                    tools:text="渝A"/>
+                    tools:text="渝A" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -46,22 +45,22 @@
                         android:gravity="center_vertical"
                         android:text="维修类型"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/fix_detail_type"
-                        android:layout_width="80dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        tools:text="门店："/>
+                        tools:text="门店：" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/top_line"/>
+                    android:background="@color/top_line" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -75,22 +74,22 @@
                         android:gravity="center_vertical"
                         android:text="门店"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/fix_detail_store"
-                        android:layout_width="80dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        tools:text="门店："/>
+                        tools:text="门店：" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/top_line"/>
+                    android:background="@color/top_line" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -104,22 +103,22 @@
                         android:gravity="center_vertical"
                         android:text="制单时间"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/fix_detail_starttime"
-                        android:layout_width="80dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        tools:text="门店："/>
+                        tools:text="门店：" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/top_line"/>
+                    android:background="@color/top_line" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -133,22 +132,22 @@
                         android:gravity="center_vertical"
                         android:text="预计完工时间"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/fix_detail_endtime"
-                        android:layout_width="80dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        tools:text="门店："/>
+                        tools:text="门店：" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/top_line"/>
+                    android:background="@color/top_line" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -164,24 +163,24 @@
                         android:gravity="center_vertical"
                         android:text="维修接待"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/fix_detail_jiedai"
-                        android:layout_width="80dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        tools:text="门店："/>
+                        tools:text="门店：" />
 
                     <TextView
+                        android:id="@+id/fix_detail_call"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="35dp"
                         android:background="@drawable/btn_tell"
-                        android:gravity="center_vertical"
-                        />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -212,8 +211,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/bg_dot"
-                        />
+                        android:background="@drawable/bg_dot" />
 
                     <TextView
                         android:layout_width="10dp"
@@ -221,14 +219,14 @@
                         android:layout_below="@+id/hot"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-10dp"
-                        android:background="@drawable/bg_line"/>
+                        android:background="@drawable/bg_line" />
                 </RelativeLayout>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="制单"/>
+                    android:text="制单" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -242,7 +240,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:text="sadas"/>
+                        tools:text="sadas" />
 
                     <TextView
                         android:id="@+id/fix_detail_showorder"
@@ -252,7 +250,7 @@
                         android:background="@color/title_orange"
                         android:gravity="center"
                         android:text="查看维修单"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -273,8 +271,7 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-3dp"
-                        android:background="@drawable/bg_dot"
-                        />
+                        android:background="@drawable/bg_dot" />
 
                     <TextView
                         android:layout_width="10dp"
@@ -282,14 +279,14 @@
                         android:layout_below="@+id/hot1"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-10dp"
-                        android:background="@drawable/bg_line"/>
+                        android:background="@drawable/bg_line" />
                 </RelativeLayout>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text=" 开工"/>
+                    android:text=" 开工" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -303,15 +300,15 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:text="sadas"/>
+                        tools:text="sadas" />
 
                     <TextView
                         android:id="@+id/fix_detail_gongzhong"
-                        android:layout_width="80dp"
-                        android:layout_height="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
                         android:gravity="center"
-                        android:text="查看维修单"
-                        />
+                        android:textSize="14sp"
+                        android:text="查看维修单" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -332,8 +329,7 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-3dp"
-                        android:background="@drawable/bg_dot"
-                        />
+                        android:background="@drawable/bg_dot" />
 
                     <TextView
                         android:layout_width="10dp"
@@ -341,14 +337,14 @@
                         android:layout_below="@+id/hot2"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-10dp"
-                        android:background="@drawable/bg_line"/>
+                        android:background="@drawable/bg_line" />
                 </RelativeLayout>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="竣工"/>
+                    android:text="竣工" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -362,7 +358,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:text="sadas"/>
+                        tools:text="sadas" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -384,8 +380,7 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-3dp"
-                        android:background="@drawable/bg_dot"
-                        />
+                        android:background="@drawable/bg_dot" />
 
                     <TextView
                         android:layout_width="10dp"
@@ -393,18 +388,20 @@
                         android:layout_below="@+id/hot3"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-10dp"
-                        android:background="@drawable/bg_line"/>
+                        android:background="@drawable/bg_line" />
                 </RelativeLayout>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="结算准备"/>
+                    android:layout_marginBottom="15dp"
+                    android:text="结算准备" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
                     android:layout_marginLeft="20dp"
                     android:orientation="vertical">
 
@@ -414,7 +411,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:text="sadas"/>
+                        tools:text="sadas" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -422,6 +419,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="-10dp"
                 android:orientation="horizontal">
 
@@ -436,8 +434,7 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-3dp"
-                        android:background="@drawable/bg_dot"
-                        />
+                        android:background="@drawable/bg_dot" />
 
                 </RelativeLayout>
 
@@ -445,23 +442,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="收款"/>
+                    android:text="收款" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/fix_detail_shoukuan_time"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center"
-                        android:text="sadas"/>
+                        android:layout_marginLeft="20dp"
+                        tools:text="sadas" />
 
                 </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

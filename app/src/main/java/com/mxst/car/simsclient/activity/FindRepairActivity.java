@@ -77,7 +77,7 @@ public class FindRepairActivity extends CommonHeadPanelActivity {
         adapter.setOnItemClickListener(new FindRepairAadapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(new Intent(FindRepairActivity.this, FindRepairDetailActivity.class).putExtra("id", bean.get(position).getId()));
+                startActivity(new Intent(FindRepairActivity.this, FindRepairDetailActivity.class).putExtra("id", bean.get(position).getId()+""));
             }
         });
     }
