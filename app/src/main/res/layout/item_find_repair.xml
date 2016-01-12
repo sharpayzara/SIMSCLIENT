@@ -3,53 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="100dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/item_store_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+        <TextView
+            android:id="@+id/item_fix_name"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:layout_margin="10dp"
-            android:src="@drawable/plugin_img" />
+            android:background="@drawable/bg_green"
+            android:gravity="center"
+            android:textColor="@color/white"
+            tools:text="渝A23467" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F2F2F2"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/item_store_name"
+            <GridLayout
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginTop="15dp"
-                android:gravity="center_vertical"
-                android:textSize="16sp"
-                tools:text="asdasdas" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:columnCount="2">
 
-            <TextView
-                android:id="@+id/item_store_adress"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:gravity="center_vertical"
-                tools:text="asdasdas" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    tools:text="维修类型：" />
 
-            <TextView
-                android:id="@+id/item_store_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:gravity="center_vertical"
-                tools:text="asdasdas" />
+                <TextView
+                    android:id="@+id/item_fix_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    tools:text="11：" />
 
+                <TextView
+                    android:id="@+id/item_store_adress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    tools:text="门店：" />
+
+                <TextView
+                    android:id="@+id/item_fix_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    tools:text="asdasd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    tools:text="制单时间" />
+
+                <TextView
+                    android:id="@+id/item_fix_startime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    tools:text="阿斯达斯的111" />
+
+                <TextView
+                    android:id="@+id/item_store_tim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    tools:text="预计完工时间:" />
+
+                <TextView
+                    android:id="@+id/item_fix_endtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    tools:text="sdadasdas" />
+
+            </GridLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
 </LinearLayout>

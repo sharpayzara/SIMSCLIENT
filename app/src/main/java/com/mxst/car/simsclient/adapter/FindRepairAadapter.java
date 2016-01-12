@@ -5,13 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
-import com.mxst.car.simsclient.entity.Sales;
+import com.mxst.car.simsclient.entity.WxjcList;
 
 import java.util.List;
 
@@ -19,11 +16,11 @@ import java.util.List;
  * Created by Joy on 2016/1/9 0009.
  */
 public class FindRepairAadapter extends RecyclerView.Adapter<FindRepairAadapter.ViewHolder> {
-    private List<Sales.SalesEntity> bean;
+    private List<WxjcList.WxjcListEntity> bean;
     private LayoutInflater layoutInflater;
     private Context mContext;
 
-    public FindRepairAadapter(Context context, List<Sales.SalesEntity> bean) {
+    public FindRepairAadapter(Context context, List<WxjcList.WxjcListEntity> bean) {
         this.bean = bean;
         this.layoutInflater = LayoutInflater.from(context);
         this.mContext = context;
@@ -47,11 +44,11 @@ public class FindRepairAadapter extends RecyclerView.Adapter<FindRepairAadapter.
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.nameTv.setText(bean.get(position).getName());
-        holder.phoneTv.setText(bean.get(position).getPhone());
-        BitmapUtils bitmapUtils = new BitmapUtils(mContext);
-        //   bitmapUtils.display(holder.img, bean.get(position).getImg());
-        holder.rb.setRating(bean.get(position).getStar_level());
+        holder.nameTv.setText(bean.get(position).getLicense());
+        holder.typeTv.setText(bean.get(position).getWxlx());
+        holder.storeTv.setText(bean.get(position).getFixName());
+        holder.startTv.setText(bean.get(position).getNoteDate());
+        holder.endTv.setText(bean.get(position).getOverDate());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,17 +64,17 @@ public class FindRepairAadapter extends RecyclerView.Adapter<FindRepairAadapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView nameTv, phoneTv;
-        private ImageView img;
-        private RatingBar rb;
+        private TextView nameTv, typeTv, storeTv, startTv, endTv;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            nameTv = (TextView) itemView.findViewById(R.id.item_man_name);
-            phoneTv = (TextView) itemView.findViewById(R.id.item_man_phone);
-            img = (ImageView) itemView.findViewById(R.id.item_man_img);
-            rb = (RatingBar) itemView.findViewById(R.id.item_man_rating_rb);
+            nameTv = (TextView) itemView.findViewById(R.id.item_fix_name);
+            typeTv = (TextView) itemView.findViewById(R.id.item_fix_type);
+            storeTv = (TextView) itemView.findViewById(R.id.item_fix_store);
+            startTv = (TextView) itemView.findViewById(R.id.item_fix_startime);
+            endTv = (TextView) itemView.findViewById(R.id.item_fix_endtime);
         }
     }
 }

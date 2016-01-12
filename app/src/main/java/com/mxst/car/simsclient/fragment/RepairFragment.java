@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.EvaluateActivity;
+import com.mxst.car.simsclient.activity.FindRepairActivity;
 import com.mxst.car.simsclient.activity.OrderRepairActivity;
 import com.mxst.car.simsclient.adapter.ImageAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -36,7 +37,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     private View root;
     LayoutInflater inflater;
     Context mContext;
-    RelativeLayout order_repair_rlt,query_process_rlt,query_history_rlt,contact_builder_rlt,query_problem;
+    RelativeLayout order_repair_rlt, query_process_rlt, query_history_rlt, contact_builder_rlt, query_problem;
     ViewPager advPager = null;
     private ImageView[] imageViews = null;
     private ImageView imageView = null;
@@ -63,49 +64,51 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadEvaluateData() {
-        Log.e("eee",Constant.AUTHENTICATION_TOKEN+"");
-        new BaseTask<JsonResult<EvaluateList>,String>(mContext){
+        Log.e("eee", Constant.AUTHENTICATION_TOKEN + "");
+        new BaseTask<JsonResult<EvaluateList>, String>(mContext) {
 
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<EvaluateList>(){};
+                return new TypeToken<EvaluateList>() {
+                };
             }
 
             @Override
             public void onSuccess() {
-                if(result.isSuccess()){
-                    if(result.getRecord().getEvaluateList().size() > 0){
+                if (result.isSuccess()) {
+                    if (result.getRecord().getEvaluateList().size() > 0) {
                         Intent intent = new Intent(mContext, EvaluateActivity.class);
 
                         startActivity(intent);
                     }
                 }
             }
-        }.requestByPost(Constant.URL.ARTISANCOMMONT,new RequestParams());
+        }.requestByPost(Constant.URL.ARTISANCOMMONT, new RequestParams());
     }
 
     private void loadData() {
         new BaseTask<JsonResult<AdvertisementList>, String>(mContext, R.string.download_notice) {
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<AdvertisementList>(){};
+                return new TypeToken<AdvertisementList>() {
+                };
             }
 
             @Override
             public void onSuccess() {
-                if(result.isSuccess()){
+                if (result.isSuccess()) {
                     listUrls.clear();
                     listViews.clear();
                     List<AdvertisementList.Advertisement> tempList = result.getRecord().getIndex();
                     imgFlag = tempList.size();
-                    for(AdvertisementList.Advertisement adv : tempList){
+                    for (AdvertisementList.Advertisement adv : tempList) {
                         listUrls.add(adv.getAdImg());
                         listViews.add(new ImageView(mContext));
                     }
                 }
                 adapter.notifyDataSetChanged();
             }
-        }.requestByPost(Constant.URL.LOAD_SERVICE,new RequestParams());
+        }.requestByPost(Constant.URL.LOAD_SERVICE, new RequestParams());
     }
 
     private void initUI() {
@@ -121,7 +124,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         query_history_rlt.setOnClickListener(this);
         contact_builder_rlt.setOnClickListener(this);
         query_problem.setOnClickListener(this);
-        adapter = new ImageAdapter(mContext,listViews,listUrls);
+        adapter = new ImageAdapter(mContext, listViews, listUrls);
         advPager.setAdapter(adapter);
         advPager.setOnPageChangeListener(new GuidePageChangeListener());
         advPager.setOnTouchListener(new View.OnTouchListener() {
@@ -160,13 +163,14 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.order_repair_rlt:
                 Intent intent = new Intent(mContext, OrderRepairActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.query_process_rlt:
-
+                Intent i = new Intent(mContext, FindRepairActivity.class);
+                mContext.startActivity(i);
                 break;
             case R.id.query_history_rlt:
 
