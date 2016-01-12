@@ -1,5 +1,6 @@
 package com.mxst.car.simsclient.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,18 +47,22 @@ public class BrandChooseActivity extends CommonHeadPanelActivity implements View
 
             @Override
             public void onSuccess() {
-                bean = result.getRecord().getBrands();
-                utils.display(brandImg1, bean.get(0).getLogoPath());
-                brandImg1.setTag(bean.get(0).getBrand());
-                brandImg2.setTag(bean.get(1).getBrand());
-                brandImg3.setTag(bean.get(2).getBrand());
-                brandImg4.setTag(bean.get(3).getBrand());
-                brandImg5.setTag(bean.get(4).getBrand());
-                utils.display(brandImg2, bean.get(1).getLogoPath());
-                utils.display(brandImg3, bean.get(2).getLogoPath());
-                utils.display(brandImg4, bean.get(3).getLogoPath());
-                utils.display(brandImg5, bean.get(4).getLogoPath());
+                if (result.isSuccess()) {
+                    bean = result.getRecord().getBrands();
+                    brandImg1.setTag(bean.get(0).getBrand());
+                    brandImg2.setTag(bean.get(1).getBrand());
+                    brandImg3.setTag(bean.get(2).getBrand());
+                    brandImg4.setTag(bean.get(3).getBrand());
+                    brandImg5.setTag(bean.get(4).getBrand());
+                    brandImg5.setTag(bean.get(5).getBrand());
+                    utils.display(brandImg1, bean.get(0).getLogoPath());
+                    utils.display(brandImg2, bean.get(1).getLogoPath());
+                    utils.display(brandImg3, bean.get(2).getLogoPath());
+                    utils.display(brandImg4, bean.get(3).getLogoPath());
+                    utils.display(brandImg5, bean.get(4).getLogoPath());
+                    utils.display(brandImg6, bean.get(5).getLogoPath());
 
+                }
             }
         }.requestByPost(Constant.URL.BRAND, null);
 
@@ -85,6 +90,10 @@ public class BrandChooseActivity extends CommonHeadPanelActivity implements View
 
     @Override
     public void onClick(View v) {
-
+        Intent intent = new Intent();
+        String s = (String) v.getTag();
+        intent.putExtra("brand", s);
+        setResult(Constant.REQUESTCODE.CHOOSEBRAND, intent);
+        finish();
     }
 }
