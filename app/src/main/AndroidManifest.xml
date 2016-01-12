@@ -50,6 +50,7 @@
         <activity android:name=".activity.RecommendActivity" />
         <activity android:name=".activity.EvaluateActivity" />
         <activity android:name=".activity.OrderRepairActivity" />
+        <activity android:name=".activity.InsureListActivity" />
         <activity
             android:name=".activity.ViewImageURLActivity"
             android:theme="@style/ThemeActivity"/>

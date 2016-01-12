@@ -60,6 +60,7 @@ public class Constant {
         public static final String GETSALES = CTX_PATH + "cust/getSales";
         public static final String STORE = CTX_PATH + "yy/store";
         public static final String RECCUST = CTX_PATH + "cust/recCust";
+        public static final String INSURANCE_CAR_LIST = CTX_PATH + "insurance/getCarList";
     }
 
 }

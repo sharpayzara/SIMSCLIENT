@@ -14,7 +14,7 @@
         <ImageButton
             android:id="@+id/add_new_btn"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/add_order_btn"

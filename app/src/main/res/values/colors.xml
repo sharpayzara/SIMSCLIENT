@@ -47,4 +47,6 @@
     <color name="evaluate_content_bg">#FFC000</color>
     <color name="order_repire_green">#92D051</color>
     <color name="order_repire_duck">#A6A6A6</color>
+    <color name="insure_text_color">#6F6F6F</color>
+
 </resources>

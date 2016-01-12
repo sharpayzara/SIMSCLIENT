@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.EvaluateActivity;
+import com.mxst.car.simsclient.activity.InsureListActivity;
 import com.mxst.car.simsclient.activity.OrderRepairActivity;
 import com.mxst.car.simsclient.adapter.ImageAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -175,7 +176,8 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.query_problem:
-
+                Intent it_qp = new Intent(mContext, InsureListActivity.class);
+                mContext.startActivity(it_qp);
                 break;
         }
     }
