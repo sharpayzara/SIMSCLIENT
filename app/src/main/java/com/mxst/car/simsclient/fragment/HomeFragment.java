@@ -37,28 +37,29 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
-	RelativeLayout login_layout,user_layout;
-	LinearLayout user_btn,cx_more_lly,zx_more_lly,market_more_lly;
-	ClearEditText user_et,pwd_et;
-	LayoutInflater inflater;
-	Context mContext;
-	TextView zx_title_1,zx_title_2,zx_content_1,zx_content_2;
-	ImageView rmcx_iv_1,rmcx_iv_2,rmcx_iv_3,rmcx_iv_4,rmcx_iv_5,zx_iv_1,zx_iv_2,headImg;
-	BitmapUtils utils;
-	Button login_btn;
-	TextView phone,jifen,continueQd,nickName,cjNum,recNum,qdFlg;
-	MainActivity mainActivity;
-	private View root;
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		root =  inflater.inflate(R.layout.fragment_home, container, false);
-		mContext = getActivity();
-		this.inflater = inflater;
-		initUI();
-		initData();
-		return root;
-	}
+public class HomeFragment extends Fragment implements View.OnClickListener {
+    RelativeLayout login_layout, user_layout;
+    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin;
+    ClearEditText user_et, pwd_et;
+    LayoutInflater inflater;
+    Context mContext;
+    TextView zx_title_1, zx_title_2, zx_content_1, zx_content_2;
+    ImageView rmcx_iv_1, rmcx_iv_2, rmcx_iv_3, rmcx_iv_4, rmcx_iv_5, zx_iv_1, zx_iv_2, headImg;
+    BitmapUtils utils;
+    Button login_btn;
+    TextView phone, jifen, continueQd, nickName, cjNum, recNum, qdFlg;
+    MainActivity mainActivity;
+    private View root;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        root = inflater.inflate(R.layout.fragment_home, container, false);
+        mContext = getActivity();
+        this.inflater = inflater;
+        initUI();
+        initData();
+        return root;
+    }
 
     private void initUI() {
         login_layout = (RelativeLayout) root.findViewById(R.id.login_layout);
@@ -242,24 +243,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void setMainActivity(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
-		}else if(zx_more_lly == v){
-			mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_INFO);
-		}else if(zx_iv_1 == v){
-			Intent intent = new Intent(mContext, ViewImageActivity.class);
-			ArrayList<Bitmap> tempList = new ArrayList();
-			tempList.add(zx_iv_1.getDrawingCache());
-			intent.putParcelableArrayListExtra("imgList", tempList);
-			mContext.startActivity(intent);
-		}
-		else if(zx_iv_2 == v){
-			Intent intent = new Intent(mContext, ViewImageActivity.class);
-			ArrayList<Bitmap> tempList = new ArrayList();
-			tempList.add(zx_iv_2.getDrawingCache());
-			intent.putParcelableArrayListExtra("imgList", tempList);
-			mContext.startActivity(intent);
-		}
-	}
- 	public void setMainActivity(MainActivity mainActivity){
-		this.mainActivity = mainActivity;
-	}
+
 }
