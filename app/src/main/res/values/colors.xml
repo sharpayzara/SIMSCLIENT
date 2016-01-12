@@ -48,5 +48,6 @@
     <color name="order_repire_green">#92D051</color>
     <color name="order_repire_duck">#A6A6A6</color>
     <color name="insure_text_color">#6F6F6F</color>
-
+    <color name="login_color">#FF9523</color>
+    <color name="duck_bg">#464A4C</color>
 </resources>

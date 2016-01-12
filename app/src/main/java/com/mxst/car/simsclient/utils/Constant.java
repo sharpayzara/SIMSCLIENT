@@ -8,7 +8,7 @@ public class Constant {
     public static final String IP = "192.168.1.100";
     //public static final String IP = "192.168.1.101";
     public static final String PORT = "8080";
-
+    public static boolean isLoginState = false;
     public static final String SERVER = "http://" + IP + ":" + PORT + "/food_server";
     public static final String WEB_APP_URL = SERVER + "/";
     public static final String SERVER_LOGIN = "/Login?method=login";
@@ -29,12 +29,13 @@ public class Constant {
     public static final String FRAGMENT_FLAG_MARKET = "积分商城";
 
     public static String AUTHENTICATION_TOKEN = "";
-
+    public static final String SHAREDPREFERENCES_NAME = "simsUser";
     public static class REQUESTCODE {
         public static final int CHOOSERES = 1;
         public static final int CHOOSEBRAND = 2;
         public static final int CHOOSESTORE = 3;
         public static final int CHOOSEMAN = 4;
+        public static final int LOGINBACK = 10;
     }
 
     public static class URL {
@@ -62,6 +63,7 @@ public class Constant {
         public static final String RECCUST = CTX_PATH + "cust/recCust";
         public static final String INSURANCE_CAR_LIST = CTX_PATH + "insurance/getCarList";
         public static final String GETLIST = CTX_PATH + "repair/schedule/getList";
+        public static final String OBTAIN_PASSWORD = CTX_PATH + "message/send";
     }
 
 }

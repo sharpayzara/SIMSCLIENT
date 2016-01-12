@@ -234,4 +234,11 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         }
 
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == Constant.REQUESTCODE.LOGINBACK){
+            initData();
+        }
+    }
 }

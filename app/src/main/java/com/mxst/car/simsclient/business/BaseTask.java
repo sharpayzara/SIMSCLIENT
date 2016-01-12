@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
@@ -23,12 +25,12 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.activity.LoginActivity;
 import com.mxst.car.simsclient.layout.NetNotConnetDialog;
 import com.mxst.car.simsclient.task.LoadingDialog;
-import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.SizeUtils;
-import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -117,12 +119,16 @@ public abstract class BaseTask<E,T> extends RequestCallBack<T> {
 			JSONObject jsonObject = new JSONObject(responseInfo.result.toString());
 			result = (E) new JsonResult(jsonObject,setTypeToken().getType()){} ;
 			doCancel();
-			if(jsonObject.has("errorCode") && jsonObject.optString("errorCode").equals("000002")){
-				/*Intent intent = new Intent(context, LoginActivity.class);
+			if(jsonObject.has("errorCode") && jsonObject.optString("errorCode").equals("000002") &&
+					Constant.isLoginState == false){
+				Intent intent = new Intent(context, LoginActivity.class);
 				intent.putExtra("reLogin",true);
-				context.startActivity(intent);*/
-				CommonUtil.showToastToShort(context,"登录失效，请从新登录");
-			}else{
+				((Activity)context).startActivityForResult(intent,1);
+				Constant.isLoginState = true;
+			}else if(jsonObject.has("errorCode") && jsonObject.optString("errorCode").equals("000002")){
+				return;
+			}
+			else{
 				onSuccess();
 			}
 		} catch (JSONException e) {

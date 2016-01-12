@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/insure_llt"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="110dp"
     android:orientation="vertical"
     android:paddingLeft="50dp"
     android:paddingTop="20dp"
@@ -19,33 +19,34 @@
             android:id="@+id/pp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/insure_text_color"
             android:text="东风日产"/>
         <TextView
             android:id="@+id/brandNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/insure_text_color"
             android:layout_marginLeft="20dp"
             android:text="天籁"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="5dp">
         <TextView
+            android:id="@+id/license"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:text="渝A10333"/>
         <ImageButton
-            android:id="@+id/license"
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/insure_go"/>
+            android:background="@null"
+            android:src="@drawable/insure_go"/>
     </RelativeLayout>
 </LinearLayout>
