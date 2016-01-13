@@ -24,6 +24,7 @@
             android:id="@+id/my_recycle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_above="@id/add_new_btn">
 
         </android.support.v7.widget.RecyclerView>

@@ -2,9 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="@color/white"
-    android:layout_marginBottom="10dp"
+    android:layout_height="87dp"
+    android:background="@color/news_gry"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal">
     <RelativeLayout
         android:id="@+id/lx_rlt"
@@ -28,6 +28,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:orientation="vertical">
                 <TextView

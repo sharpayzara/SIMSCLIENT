@@ -35,7 +35,7 @@ public class OrderRepairListAdapter extends RecyclerView.Adapter<OrderRepairList
     }
 
     public OrderRepairListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.item_score, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_order_repair, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -48,6 +48,7 @@ public class OrderRepairListAdapter extends RecyclerView.Adapter<OrderRepairList
         holder.license.setText(beans.get(position).getLicense());
         holder.wxlxName.setText(beans.get(position).getWxlxName());
         holder.handmanName.setText(beans.get(position).getHandmanName());
+        holder.lx.setText(beans.get(position).getLx());
         if(beans.get(position).getLx().equals("已预约")){
             holder.lx_rlt.setBackgroundColor(mContext.getResources().getColor(R.color.order_repire_green));
         }else{
@@ -62,10 +63,11 @@ public class OrderRepairListAdapter extends RecyclerView.Adapter<OrderRepairList
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout lx_rlt;
-        private TextView yyDate,pp,fixName,license,wxlxName,handmanName;
+        private TextView lx,yyDate,pp,fixName,license,wxlxName,handmanName;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            lx = (TextView) itemView.findViewById(R.id.lx);
             lx_rlt = (RelativeLayout) itemView.findViewById(R.id.lx_rlt);
             yyDate = (TextView) itemView.findViewById(R.id.yyDate);
             pp = (TextView) itemView.findViewById(R.id.pp);
