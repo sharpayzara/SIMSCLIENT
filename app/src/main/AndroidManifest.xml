@@ -62,6 +62,7 @@
         <activity android:name=".activity.StoreChooseActivity" />
         <activity android:name=".activity.FindRepairActivity" />
         <activity android:name=".activity.FindRepairDetailActivity" />
+        <activity android:name=".activity.FindFixOrderActivity" />
     </application>
 
 </manifest>

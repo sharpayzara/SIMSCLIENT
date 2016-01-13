@@ -16,7 +16,6 @@ import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.WxjcList;
 import com.mxst.car.simsclient.utils.Constant;
-import com.mxst.car.simsclient.utils.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +72,7 @@ public class FindRepairActivity extends CommonHeadPanelActivity {
         adapter = new FindRepairAadapter(this, bean);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+//        list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         adapter.setOnItemClickListener(new FindRepairAadapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
