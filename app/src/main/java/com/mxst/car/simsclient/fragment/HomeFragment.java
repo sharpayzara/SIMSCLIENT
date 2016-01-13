@@ -64,6 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void initUI() {
         login_layout = (RelativeLayout) root.findViewById(R.id.login_layout);
         user_layout = (RelativeLayout) root.findViewById(R.id.user_layout);
+        judgeIsLogin();
         rmcx_iv_1 = (ImageView) root.findViewById(R.id.rmcx_iv_1);
         rmcx_iv_2 = (ImageView) root.findViewById(R.id.rmcx_iv_2);
         rmcx_iv_3 = (ImageView) root.findViewById(R.id.rmcx_iv_3);
@@ -103,6 +104,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recommend_lin.setOnClickListener(this);
         zx_iv_1.setOnClickListener(this);
         zx_iv_2.setOnClickListener(this);
+    }
+
+    private void judgeIsLogin() {
+        if(TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)){
+            login_layout.setVisibility(View.VISIBLE);
+            user_layout.setVisibility(View.GONE);
+        }else{
+            login_layout.setVisibility(View.VISIBLE);
+            user_layout.setVisibility(View.GONE);
+        }
     }
 
     private void initData() {

@@ -1,5 +1,7 @@
 package com.mxst.car.simsclient.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,10 +24,12 @@ public class InsureListActivity extends CommonHeadPanelActivity implements View.
     InsureListAdapter mAdapter;
     RecyclerView myRecycle;
     List<InsureList.Insure> list;
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_insure_list);
         super.onCreate(savedInstanceState);
+        mContext = this;
         initUI();
         initData();
     }
@@ -40,6 +44,14 @@ public class InsureListActivity extends CommonHeadPanelActivity implements View.
         mAdapter = new InsureListAdapter(this,list);
         myRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         myRecycle.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new InsureListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext,InsureDetailActivity.class);
+                intent.putExtra("vinNo",list.get(position).getVinNo());
+                mContext.startActivity(intent);
+            }
+        });
         loadData();
     }
 

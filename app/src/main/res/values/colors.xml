@@ -50,4 +50,5 @@
     <color name="insure_text_color">#6F6F6F</color>
     <color name="login_color">#FF9523</color>
     <color name="duck_bg">#464A4C</color>
+    <color name="insure_line">#CACACA</color>
 </resources>

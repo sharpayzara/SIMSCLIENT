@@ -9,66 +9,68 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
-import com.mxst.car.simsclient.adapter.OrderRepairListAdapter;
+import com.mxst.car.simsclient.adapter.InsureDetailAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
-import com.mxst.car.simsclient.entity.OrderRepireList;
+import com.mxst.car.simsclient.entity.InsureDetailList;
 import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRepairActivity extends CommonHeadPanelActivity{
-    OrderRepairListAdapter mAdapter;
+public class InsureDetailActivity extends CommonHeadPanelActivity{
     Context mContext;
-    RecyclerView myRecycle;
-    List<OrderRepireList.OrderRepire> list;
-    int currentPage = 1;
+    List<InsureDetailList.InsureDetail>list;
+    InsureDetailAdapter mAdapter;
+    String vinNo;
+    RecyclerView my_recycle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_order_repair);
+        setContentView(R.layout.activity_insure_detail);
         super.onCreate(savedInstanceState);
         mContext = this;
         initUI();
         initData();
     }
-
     private void initUI() {
         showBackBtn();
-        setHeadTitle("预约维修");
-        myRecycle = (RecyclerView) findViewById(R.id.my_recycle);
+        setHeadTitle("保险查询");
+        my_recycle = (RecyclerView) findViewById(R.id.my_recycle);
     }
 
     private void initData() {
-        list = new ArrayList<OrderRepireList.OrderRepire>();
-        mAdapter = new OrderRepairListAdapter(mContext,list);
-        myRecycle.setAdapter(mAdapter);
-        myRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        loadData(1);
+        vinNo = getIntent().getStringExtra("vinNo");
+        list = new ArrayList<>();
+        mAdapter = new InsureDetailAdapter(mContext,list);
+        my_recycle.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        my_recycle.setAdapter(mAdapter);
+        loadData();
     }
 
-    private void loadData(int currentPage) {
+    private void loadData() {
         RequestParams params = new RequestParams();
-        params.addQueryStringParameter("page",currentPage+"");
-        new BaseTask<JsonResult<OrderRepireList>,String>(mContext,R.string.download_notice){
+        params.addQueryStringParameter("vinNo",vinNo);
+        new BaseTask<JsonResult<InsureDetailList>,String>(mContext,R.string.download_notice){
 
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<OrderRepireList>(){};
+                return new TypeToken<InsureDetailList>(){};
             }
 
             @Override
             public void onSuccess() {
                 if(result.isSuccess()){
                     list.clear();
-                    list.addAll(result.getRecord().getYyList());
+                    list.addAll(result.getRecord().getBxList());
                 }else{
                     CommonUtil.showToastToShort(mContext,result.getMsg());
                 }
                 mAdapter.notifyDataSetChanged();
             }
-        }.requestByPost(Constant.URL.ORDER_REPAIRE_LIST,params);
+        }.requestByPost(Constant.URL.INSUREdETAIL,params);
     }
+
+
 }

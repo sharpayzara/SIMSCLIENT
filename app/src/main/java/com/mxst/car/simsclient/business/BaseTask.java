@@ -125,7 +125,9 @@ public abstract class BaseTask<E,T> extends RequestCallBack<T> {
 				intent.putExtra("reLogin",true);
 				((Activity)context).startActivityForResult(intent,1);
 				Constant.isLoginState = true;
+				Constant.AUTHENTICATION_TOKEN = "";
 			}else if(jsonObject.has("errorCode") && jsonObject.optString("errorCode").equals("000002")){
+				Constant.AUTHENTICATION_TOKEN = "";
 				return;
 			}
 			else{
