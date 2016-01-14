@@ -24,7 +24,7 @@ import java.util.List;
  * version:  V1.0
  * Description:选择品牌
  */
-public class BrandChooseActivity extends CommonHeadPanelActivity implements View.OnClickListener {
+public class JGBrandChooseActivity extends CommonHeadPanelActivity implements View.OnClickListener {
     private ImageView brandImg1, brandImg2, brandImg3, brandImg4, brandImg5, brandImg6;
     private BitmapUtils utils;
     private List<Brand.Brands> bean = new ArrayList<>();
@@ -51,12 +51,12 @@ public class BrandChooseActivity extends CommonHeadPanelActivity implements View
             public void onSuccess() {
                 if (result.isSuccess()) {
                     bean = result.getRecord().getBrands();
-                    brandImg1.setTag(bean.get(0).getBrand());
-                    brandImg2.setTag(bean.get(1).getBrand());
-                    brandImg3.setTag(bean.get(2).getBrand());
-                    brandImg4.setTag(bean.get(3).getBrand());
-                    brandImg5.setTag(bean.get(4).getBrand());
-                    brandImg6.setTag(bean.get(5).getBrand());
+                    brandImg1.setTag(bean.get(0));
+                    brandImg2.setTag(bean.get(1));
+                    brandImg3.setTag(bean.get(2));
+                    brandImg4.setTag(bean.get(3));
+                    brandImg5.setTag(bean.get(4));
+                    brandImg6.setTag(bean.get(5));
                     tv1.setText(bean.get(0).getBrand());
                     tv2.setText(bean.get(1).getBrand());
                     tv3.setText(bean.get(2).getBrand());
@@ -78,7 +78,7 @@ public class BrandChooseActivity extends CommonHeadPanelActivity implements View
 
     private void init() {
         showBackBtn();
-        setHeadTitle("选择品牌");
+        setHeadTitle("联系维修技工");
         utils = new BitmapUtils(this);
         brandImg1 = (ImageView) findViewById(R.id.brand_img1);
         brandImg2 = (ImageView) findViewById(R.id.brand_img2);
@@ -104,10 +104,12 @@ public class BrandChooseActivity extends CommonHeadPanelActivity implements View
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent();
-        String s = (String) v.getTag();
-        intent.putExtra("brand", s);
-        setResult(Constant.REQUESTCODE.CHOOSEBRAND, intent);
-        finish();
+        Intent intent = new Intent(this, JGStoreChooseActivity.class);
+        Brand.Brands s = (Brand.Brands) v.getTag();
+        Bundle b = new Bundle();
+        b.putSerializable("brand", s);
+        intent.putExtras(b);
+        startActivity(intent);
+        
     }
 }

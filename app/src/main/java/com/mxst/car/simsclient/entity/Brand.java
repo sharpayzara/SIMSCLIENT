@@ -1,5 +1,6 @@
 package com.mxst.car.simsclient.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Brand {
         this.brands = brands;
     }
 
-    public static class Brands {
+    public static class Brands implements Serializable{
         private int id;
         private String brand;
         private String logoPath;

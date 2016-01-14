@@ -1,5 +1,6 @@
 package com.mxst.car.simsclient.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class Stores {
         return stores;
     }
 
-    public static class StoresEntity {
+    public static class StoresEntity implements Serializable{
         private int id;
         private String storeImg;
         private String name;

@@ -20,8 +20,10 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.EvaluateActivity;
-import com.mxst.car.simsclient.activity.InsureListActivity;
+import com.mxst.car.simsclient.activity.FindHistoryActivity;
 import com.mxst.car.simsclient.activity.FindRepairActivity;
+import com.mxst.car.simsclient.activity.InsureListActivity;
+import com.mxst.car.simsclient.activity.JGBrandChooseActivity;
 import com.mxst.car.simsclient.activity.OrderRepairActivity;
 import com.mxst.car.simsclient.adapter.ImageAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -91,7 +93,8 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         new BaseTask<JsonResult<AdvertisementList>, String>(mContext, R.string.download_notice) {
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<AdvertisementList>(){};
+                return new TypeToken<AdvertisementList>() {
+                };
             }
 
             @Override
@@ -173,10 +176,12 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                 mContext.startActivity(i);
                 break;
             case R.id.query_history_rlt:
-
+                Intent in = new Intent(mContext, FindHistoryActivity.class);
+                mContext.startActivity(in);
                 break;
             case R.id.contact_builder_rlt:
-
+                Intent inn = new Intent(mContext, JGBrandChooseActivity.class);
+                mContext.startActivity(inn);
                 break;
             case R.id.query_problem:
                 Intent it_qp = new Intent(mContext, InsureListActivity.class);
@@ -237,7 +242,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode == Constant.REQUESTCODE.LOGINBACK){
+        if (resultCode == Constant.REQUESTCODE.LOGINBACK) {
             initData();
         }
     }

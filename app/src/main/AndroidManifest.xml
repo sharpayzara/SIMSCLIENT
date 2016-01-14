@@ -64,6 +64,12 @@
         <activity android:name=".activity.FindRepairActivity" />
         <activity android:name=".activity.FindRepairDetailActivity" />
         <activity android:name=".activity.FindFixOrderActivity" />
+        <activity android:name=".activity.FindHistoryActivity" />
+        <activity android:name=".activity.FindHistoryCategoryActivity" />
+        <activity android:name=".activity.FindHistoryDetailActivity" />
+        <activity android:name=".activity.JGBrandChooseActivity" />
+        <activity android:name=".activity.JGStoreChooseActivity" />
+        <activity android:name=".activity.JGManChooseActivity" />
     </application>
 
 </manifest>
