@@ -22,7 +22,6 @@ import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.MainActivity;
-import com.mxst.car.simsclient.activity.RecommendActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
 import com.mxst.car.simsclient.activity.ViewImageActivity;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -239,7 +238,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             tempList.add(zx_iv_1.getDrawingCache());
             intent.putParcelableArrayListExtra("imgList", tempList);
             mContext.startActivity(intent);
-        } else if (zx_iv_2 == v) {
+        } /*else if (zx_iv_2 == v) {
             Intent intent = new Intent(mContext, ViewImageActivity.class);
             ArrayList<Bitmap> tempList = new ArrayList();
             tempList.add(zx_iv_1.getDrawingCache());
@@ -248,7 +247,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         } else if (recommend_lin == v) {
             Intent intent = new Intent(mContext, RecommendActivity.class);
             mContext.startActivity(intent);
-        }
+        }*/
     }
 
     public void setMainActivity(MainActivity mainActivity) {
