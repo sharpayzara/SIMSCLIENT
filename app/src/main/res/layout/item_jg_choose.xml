@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:layout_marginBottom="7dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:gravity="center">
+        <com.mxst.car.simsclient.layout.RoundImageView
+            android:id="@+id/img_iv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/plugin_img"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="25dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="郭德纲"/>
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:text="13778789987"/>
+
+        <RatingBar
+            android:id="@+id/star_level"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:numStars="5"
+            style="@style/myRatingBar"/>
+    </LinearLayout>
+
+</LinearLayout>

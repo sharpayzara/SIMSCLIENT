@@ -36,6 +36,8 @@ public class Constant {
         public static final int CHOOSESTORE = 3;
         public static final int CHOOSEMAN = 4;
         public static final int LOGINBACK = 10;
+        public static final int CHOOSEJG = 11;
+        public static final int ORDEREPIREBACK = 12;
     }
 
     public static class URL {
@@ -59,6 +61,7 @@ public class Constant {
         public static final String ARTISANCOMMONT = CTX_PATH + "artisan/artisanComment";
         public static final String ORDER_REPAIRE_LIST = CTX_PATH + "/yy/yyList";
         public static final String GETSALES = CTX_PATH + "cust/getSales";
+        public static final String GETJG = CTX_PATH + "yy/jigong";
         public static final String STORE = CTX_PATH + "yy/store";
         public static final String RECCUST = CTX_PATH + "cust/recCust";
         public static final String INSURANCE_CAR_LIST = CTX_PATH + "insurance/getCarList";
@@ -70,6 +73,7 @@ public class Constant {
         public static final String GETCARLIST = CTX_PATH + "repaire/history/getCarList";
         public static final String GETWXLIST = CTX_PATH + "repaire/history/getWxList";
         public static final String JIGONG = CTX_PATH + "yy/jigong";
+        public static final String SAVEYY = CTX_PATH + "yy/saveyy";
     }
 
 }

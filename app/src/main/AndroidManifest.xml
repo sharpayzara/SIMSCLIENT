@@ -70,6 +70,8 @@
         <activity android:name=".activity.JGBrandChooseActivity" />
         <activity android:name=".activity.JGStoreChooseActivity" />
         <activity android:name=".activity.JGManChooseActivity" />
+        <activity android:name=".activity.AddOrderRepairActivity" />
+        <activity android:name=".activity.JGChooseActivity" />
     </application>
 
 </manifest>

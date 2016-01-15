@@ -18,4 +18,7 @@ public class CommonUtil {
         }
         return utils;
     }
+    public static void setRatingBar(Context mContext,long value){
+
+    }
 }
