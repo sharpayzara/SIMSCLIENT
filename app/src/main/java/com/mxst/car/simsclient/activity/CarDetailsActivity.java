@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
@@ -15,21 +16,24 @@ import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
-import com.mxst.car.simsclient.entity.ParaResult;
+import com.mxst.car.simsclient.entity.ParaList;
 import com.mxst.car.simsclient.utils.Constant;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Joy on 2016/1/6 0006.
  */
-public class CarDetailsActivity extends CommonHeadPanelActivity implements OnClickListener{
+public class CarDetailsActivity extends CommonHeadPanelActivity implements OnClickListener {
     private LinearLayout left_btn, car_detail_collect_lin, car_detail_share_lin, car_detail_more_lin;
     private TextView car_detail_color_tv, car_detail_engine_tv, car_detail_speed_tv, car_detail_site_tv,
             car_detail_price_tv, car_detail_time_tv, car_detail_name_tv, car_detail_guideprice_tv, car_detail_reserveprice_tv;
     private ImageView car_detail_img1, car_detail_img2, car_detail_img3, car_detail_img4, car_detail_img5;
     private String colorId;
-    private ParaResult.ResourceDetail bean;
+    private ParaList.ResourceDetailEntity bean;
+    private List<ParaList.ConfigInfoEntity> configinfoList = new ArrayList<>();
     private BitmapUtils utils;
 
     @Override
@@ -43,17 +47,18 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private void paraList() {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("colorId", colorId);
-        new BaseTask<JsonResult<ParaResult>, String>(this, "加载中") {
+        new BaseTask<JsonResult<ParaList>, String>(this, "加载中") {
 
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<ParaResult>() {
+                return new TypeToken<ParaList>() {
                 };
             }
 
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
+                    configinfoList = result.getRecord().getConfigInfo();
                     bean = result.getRecord().getResourceDetail();
                     car_detail_color_tv.setText(bean.getOutColor());
                     car_detail_site_tv.setText(bean.getLocation());
@@ -61,7 +66,8 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     car_detail_price_tv.setText(bean.getTotalPrice() + "");
                     car_detail_time_tv.setText(bean.getCommit_date());
                     car_detail_reserveprice_tv.setText(bean.getDingjin());
-
+                    car_detail_engine_tv.setText(bean.getFdj());
+                    car_detail_speed_tv.setText(bean.getBsx());
                     ArrayList<ImageView> imglist = new ArrayList<ImageView>();
                     imglist.add(car_detail_img1);
                     imglist.add(car_detail_img2);
@@ -85,15 +91,6 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                         car_detail_guideprice_tv.setText("指导价:" + "暂无");
                     } else {
                         car_detail_guideprice_tv.setText("指导价:" + bean.getGuidePrice() + "");
-                    }
-
-                    for (int i = 0; i < bean.getParaList().size(); i++) {
-                        if ("发动机".equals(bean.getParaList().get(i).getParaName())) {
-                            car_detail_engine_tv.setText(bean.getParaList().get(i).getParaVal());
-                        }
-                        if ("变速箱".equals(bean.getParaList().get(i).getParaName())) {
-                            car_detail_speed_tv.setText(bean.getParaList().get(i).getParaVal());
-                        }
                     }
 
                 }
@@ -132,9 +129,14 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         car_detail_more_lin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (configinfoList.size() == 0) {
+                    Toast.makeText(CarDetailsActivity.this, "暂无更多详情", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent i = new Intent(CarDetailsActivity.this, CarDetailsMoreActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("ResourceDetail", bean);
+                bundle.putSerializable("configinfoList", (Serializable) configinfoList);
                 i.putExtras(bundle);
                 startActivity(i);
             }
@@ -143,25 +145,25 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
 
     @Override
     public void onClick(View v) {
-        if(v == car_detail_img1 || v == car_detail_img2 || v == car_detail_img3
-            || v == car_detail_img4 || v == car_detail_img5){
+        if (v == car_detail_img1 || v == car_detail_img2 || v == car_detail_img3
+                || v == car_detail_img4 || v == car_detail_img5) {
             Intent intent = new Intent(this, ViewImageURLActivity.class);
             ArrayList<String> list = new ArrayList<String>();
-            for(ParaResult.ResourceDetail.ImgPathsEntity entity : bean.getImgPaths()){
+            for (ParaList.ResourceDetailEntity.ImgPathsEntity entity : bean.getImgPaths()) {
                 list.add(entity.getImgPath());
             }
-            if(v == car_detail_img1){
-                intent.putExtra("position",0);
-            }else if(v == car_detail_img2){
-                intent.putExtra("position",1);
-            }else if(v == car_detail_img3){
-                intent.putExtra("position",2);
-            }else if(v == car_detail_img4){
-                intent.putExtra("position",3);
-            }else if(v == car_detail_img5){
-                intent.putExtra("position",4);
+            if (v == car_detail_img1) {
+                intent.putExtra("position", 0);
+            } else if (v == car_detail_img2) {
+                intent.putExtra("position", 1);
+            } else if (v == car_detail_img3) {
+                intent.putExtra("position", 2);
+            } else if (v == car_detail_img4) {
+                intent.putExtra("position", 3);
+            } else if (v == car_detail_img5) {
+                intent.putExtra("position", 4);
             }
-            intent.putStringArrayListExtra("imgUrlList",list);
+            intent.putStringArrayListExtra("imgUrlList", list);
             startActivity(intent);
         }
 
