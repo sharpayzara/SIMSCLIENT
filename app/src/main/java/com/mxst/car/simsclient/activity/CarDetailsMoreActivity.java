@@ -1,14 +1,16 @@
 package com.mxst.car.simsclient.activity;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
-import com.mxst.car.simsclient.adapter.CarDetailAdapter;
-import com.mxst.car.simsclient.entity.ParaResult;
+import com.mxst.car.simsclient.entity.ParaList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,14 +20,15 @@ import java.util.List;
  * Description:
  */
 public class CarDetailsMoreActivity extends CommonHeadPanelActivity {
-    private ListView listView;
-    private List<ParaResult.ResourceDetail.ParaListEntity> paraList = new ArrayList<>();
-    private CarDetailAdapter adapter;
+    private List<ParaList.ConfigInfoEntity> configinfoList;
+    LinearLayout layut;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_car_more);
         super.onCreate(savedInstanceState);
+        mContext = this;
         init();
 
     }
@@ -33,11 +36,25 @@ public class CarDetailsMoreActivity extends CommonHeadPanelActivity {
     private void init() {
         showBackBtn();
         setHeadTitle("资源配置详情");
-        listView = (ListView) findViewById(R.id.car_more_list);
-        ParaResult.ResourceDetail bean = (ParaResult.ResourceDetail) getIntent().getSerializableExtra("ResourceDetail");
-        paraList = bean.getParaList();
-        adapter = new CarDetailAdapter(this, paraList);
-        listView.setAdapter(adapter);
+        configinfoList = (List<ParaList.ConfigInfoEntity>) getIntent().getSerializableExtra("configinfoList");
+        layut = (LinearLayout) findViewById(R.id.res_config);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        for (ParaList.ConfigInfoEntity entity : configinfoList) {
+            LinearLayout rowLayout = (LinearLayout) inflater.inflate(R.layout.item_carconfig, null);
+            TextView tv = (TextView) rowLayout.findViewById(R.id.titleName);
+            TableLayout configLayout = (TableLayout) rowLayout.findViewById(R.id.config_layout);
+            tv.setText(entity.getConfigName());
+            List<ParaList.ConfigInfoEntity.DataEntity> dataList = entity.getData();
+
+            for (int i = 0; i < dataList.size(); i++) {
+                ParaList.ConfigInfoEntity.DataEntity entity1 = dataList.get(i);
+                TableLayout row = (TableLayout) inflater.inflate(R.layout.table_row_peizhi_item, null);
+                ((TextView) row.findViewById(R.id.peizhi_name)).setText(entity1.getParaName() + ":");
+                ((TextView) row.findViewById(R.id.peizhi_value)).setText(entity1.getContent());
+                configLayout.addView(row);
+            }
+            layut.addView(rowLayout);
+        }
 
     }
 }

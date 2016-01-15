@@ -70,6 +70,7 @@ public class Constant {
         public static final String GETCARLIST = CTX_PATH + "repaire/history/getCarList";
         public static final String GETWXLIST = CTX_PATH + "repaire/history/getWxList";
         public static final String JIGONG = CTX_PATH + "yy/jigong";
+        public static final String ARTISANDETAIL = CTX_PATH + "artisan/artisanDetail";
     }
 
 }
