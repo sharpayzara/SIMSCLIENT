@@ -1,9 +1,12 @@
 package com.mxst.car.simsclient.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
@@ -23,6 +26,7 @@ public class InsureDetailActivity extends CommonHeadPanelActivity{
     Context mContext;
     List<InsureDetailList.InsureDetail>list;
     InsureDetailAdapter mAdapter;
+    TextView license,pp,brandNo;
     String vinNo;
     RecyclerView my_recycle;
 
@@ -38,6 +42,9 @@ public class InsureDetailActivity extends CommonHeadPanelActivity{
         showBackBtn();
         setHeadTitle("保险查询");
         my_recycle = (RecyclerView) findViewById(R.id.my_recycle);
+        license = (TextView) findViewById(R.id.license);
+        pp = (TextView) findViewById(R.id.pp);
+        brandNo = (TextView) findViewById(R.id.brandNo);
     }
 
     private void initData() {
@@ -46,6 +53,22 @@ public class InsureDetailActivity extends CommonHeadPanelActivity{
         mAdapter = new InsureDetailAdapter(mContext,list);
         my_recycle.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         my_recycle.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new InsureDetailAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext,InsureItemDetailActivity.class);
+                intent.putExtra("brandNo",brandNo.getText().toString());
+                intent.putExtra("pp",pp.getText().toString());
+                intent.putExtra("license",license.getText().toString());
+                intent.putExtra("sxbDate",list.get(position).getSxbDate());
+                intent.putExtra("noteNo",list.get(position).getNoteNo());
+                intent.putExtra("name",list.get(position).getName());
+                startActivity(intent);
+            }
+        });
+        license.setText(getIntent().getStringExtra("license"));
+        pp.setText(getIntent().getStringExtra("pp"));
+        brandNo.setText(getIntent().getStringExtra("brandNo"));
         loadData();
     }
 

@@ -26,7 +26,7 @@ public class Constant {
     public static final String FRAGMENT_FLAG_INFO = "资讯";
     public static final String FRAGMENT_FLAG_REPAIR = "维修";
     public static final String FRAGMENT_FLAG_FIND = "找车";
-    public static final String FRAGMENT_FLAG_MARKET = "积分商城";
+    public static final String FRAGMENT_FLAG_MARKET = "购物车";
 
     public static String AUTHENTICATION_TOKEN = "";
     public static final String SHAREDPREFERENCES_NAME = "simsUser";
@@ -75,6 +75,7 @@ public class Constant {
         public static final String JIGONG = CTX_PATH + "yy/jigong";
         public static final String SAVEYY = CTX_PATH + "yy/saveyy";
         public static final String ARTISANDETAIL = CTX_PATH + "artisan/artisanDetail";
+        public static final String INSUREITEMDETAIL = CTX_PATH + "insurance/getBxDetail";
     }
 
 }
