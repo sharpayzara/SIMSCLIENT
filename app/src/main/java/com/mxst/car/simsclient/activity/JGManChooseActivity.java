@@ -75,6 +75,13 @@ public class JGManChooseActivity extends CommonHeadPanelActivity {
 
             }
         });
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(JGManChooseActivity.this, JGDetailActivity.class).putExtra("id","1"));
+
+            }
+        });
     }
 
     private void jigong() {

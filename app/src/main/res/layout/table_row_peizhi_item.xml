@@ -1,0 +1,32 @@
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/line_color">
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/tableLine" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                tools:text="宝马"
+                android:id="@+id/peizhi_name"
+                android:layout_marginRight="10dp"
+                style="@style/table_text"/>
+
+            <TextView
+                tools:text="宝马"
+                android:id="@+id/peizhi_value"
+                style="@style/table_text"
+                android:layout_marginRight="20dp"
+                />
+        </LinearLayout>
+
+    </TableRow>
+</TableLayout>

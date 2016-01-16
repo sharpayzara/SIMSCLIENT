@@ -98,7 +98,7 @@ public class RecommendActivity extends CommonHeadPanelActivity implements View.O
                     Toast.makeText(this, "请先选择门店", Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case 3: //选择销售
+            case 3: //选择门店
                 if (!TextUtils.isEmpty(brand)) {
                     Intent intent = new Intent(this, StoreChooseActivity.class);
                     intent.putExtra("brand", brand);
