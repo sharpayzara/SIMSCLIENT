@@ -69,16 +69,9 @@ public class JGManChooseActivity extends CommonHeadPanelActivity {
         adapter.setOnItemClickListener(new ChooseJiGongAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent i = new Intent();
+                Intent i = new Intent(JGManChooseActivity.this, JGDetailActivity.class);
                 i.putExtra("saleId", bean.get(position).getId() + "");
-                i.putExtra("saleName", bean.get(position).getName());
-
-            }
-        });
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(JGManChooseActivity.this, JGDetailActivity.class).putExtra("id","1"));
+                startActivity(i);
 
             }
         });
