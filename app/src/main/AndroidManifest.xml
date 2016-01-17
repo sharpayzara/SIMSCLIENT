@@ -73,6 +73,7 @@
         <activity android:name=".activity.AddOrderRepairActivity" />
         <activity android:name=".activity.JGChooseActivity" />
         <activity android:name=".activity.JGDetailActivity" />
+        <activity android:name=".activity.InsureItemDetailActivity" />
     </application>
 
 </manifest>

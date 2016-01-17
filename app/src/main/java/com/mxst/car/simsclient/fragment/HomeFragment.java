@@ -110,8 +110,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             login_layout.setVisibility(View.VISIBLE);
             user_layout.setVisibility(View.GONE);
         }else{
-            login_layout.setVisibility(View.VISIBLE);
-            user_layout.setVisibility(View.GONE);
+            login_layout.setVisibility(View.GONE);
+            user_layout.setVisibility(View.VISIBLE);
         }
     }
 

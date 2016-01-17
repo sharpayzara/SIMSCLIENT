@@ -67,7 +67,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 		}
 		if(mMarketBtn != null){
 			mMarketBtn.setImage(R.drawable.btn_market);
-			mMarketBtn.setText("积分商城");
+			mMarketBtn.setText("购物车");
 		}
 		setBtnListener();
 	}
