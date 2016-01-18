@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/resource_bg"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/resource_bg"
+              android:orientation="vertical">
 
     <include
         android:id="@+id/head_layout"
-        layout="@layout/head_panel_layout" />
+        layout="@layout/head_panel_layout"/>
 
     <LinearLayout
+        android:id="@+id/res_lin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/res_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="筛选条件:" />
+            android:text="筛选条件:"/>
 
         <TextView
             android:id="@+id/res_kx_tv"
@@ -29,12 +31,12 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:singleLine="true"
-            tools:text="15款X6" />
+            tools:text="15款X6"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/res_clear_tv"
@@ -42,11 +44,11 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="X 清空条件"
-            android:textColor="@color/title_orange" />
+            android:textColor="@color/title_orange"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/res_rcl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 </LinearLayout>

@@ -102,6 +102,7 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Constant.REQUESTCODE.CHOOSERES) {
+            findViewById(R.id.res_lin).setVisibility(View.VISIBLE);
             mj = data.getStringExtra("mj");
             kx = data.getStringExtra("mjkx");
             res_kx_tv.setText(kx);

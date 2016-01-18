@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:paddingRight="10dp"
+                android:textStyle="bold"
                 android:textSize="20sp"
                 tools:text="保养"/>
 
@@ -53,6 +54,7 @@
                 android:id="@+id/item_wx_sjcurr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:layout_marginLeft="30dp"
                 android:layout_toRightOf="@+id/item_wx_wxlx"
                 android:textSize="20sp"
@@ -77,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 tools:text="公里数"/>
         </RelativeLayout>
     </LinearLayout>

@@ -39,7 +39,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
     private ChooseAdapter adapter;
     private String brand, spec, vehicleXinghao;
     private String mj, mjkx;
-    private int total = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
         super.onCreate(savedInstanceState);
         init();
         filtrate();
+        brandResourceList();
     }
 
     private void init() {
@@ -66,15 +67,15 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                v.setBackgroundColor(getResources().getColor(R.color.title_orange));
                 mj = bean.get(groupPosition).getMj();
                 mjkx = bean.get(groupPosition).getMjkxs().get(childPosition).getMjkx();
+                adapter.notifyDataSetChanged();
                 choostTv.setText("(" + mjkx + ")");
                 return true;
             }
         });
         choose.setVisibility(View.VISIBLE);
-        choose.setBackground(null);
+        choose.setBackgroundColor(0);
         choose.setText("关闭筛选");
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +95,40 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
                 finish();
             }
         });
+    }
+
+    private void brandResourceList() {
+        RequestParams params = new RequestParams();
+        params.addQueryStringParameter("brand", brand);
+        params.addQueryStringParameter("xingHao", vehicleXinghao);
+        params.addQueryStringParameter("spec", spec);
+        String[] mykxlist = mjkx.split(" ");
+        String kx = mykxlist[mykxlist.length - 1];
+        if (!TextUtils.isEmpty(mj) || !TextUtils.isEmpty(kx)) {
+            params.addQueryStringParameter("mj", mj);
+            params.addQueryStringParameter("kx", kx);
+        }
+        new BaseTask<JsonResult<JSONObject>, String>(this, "加载中") {
+
+            @Override
+            public TypeToken setTypeToken() {
+                return new TypeToken<JSONObject>() {
+                };
+            }
+
+            @Override
+            public void onSuccess() {
+                if (result.isSuccess()) {
+                    String data = new Gson().fromJson(result.getRecord().optString("count"),
+                            new TypeToken<JSONObject>() {
+                            }.getType());
+                    choostTv.setText("(" + data + "条车源)");
+                } else {
+                    Toast.makeText(ResourceChooseActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.requestByPost(Constant.URL.BRANDRESOURCELIST, params);
+
     }
 
     private void filtrate() {
@@ -121,10 +156,10 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
                         bean.add(it.next());
                     }
                     for (int i = 0; i < adapter.getGroupCount(); i++) {
-                        total = total + adapter.getChildrenCount(i);
+                        //total = total + adapter.getChildrenCount(i);
                         listView.expandGroup(i);
                     }
-                    choostTv.setText("(" + total + "条车源)");
+                    //   choostTv.setText("(" + total + "条车源)");
                     adapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(ResourceChooseActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();

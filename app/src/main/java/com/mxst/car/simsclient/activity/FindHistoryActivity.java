@@ -39,6 +39,12 @@ public class FindHistoryActivity extends CommonHeadPanelActivity {
         getCarList();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getCarList();
+    }
+
     private void init() {
         showBackBtn();
         setHeadTitle("维修历史");
