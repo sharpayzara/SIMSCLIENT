@@ -1,5 +1,7 @@
 package com.mxst.car.simsclient.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -82,7 +84,8 @@ public class JGDetailActivity extends CommonHeadPanelActivity {
                     jg_detail_call.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //call
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+result.getRecord().getArtisanDetail().getPhone()));
+                            startActivity(intent);
                         }
                     });
 
@@ -97,7 +100,7 @@ public class JGDetailActivity extends CommonHeadPanelActivity {
     private void initViews() {
         showBackBtn();
         setHeadTitle("联系维修技工");
-        id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("saleId");
         utils = new BitmapUtils(this);
         jg_detail_head_img = (ImageView) findViewById(R.id.jg_detail_head_img);
         jg_detail_name = (TextView) findViewById(R.id.jg_detail_name);

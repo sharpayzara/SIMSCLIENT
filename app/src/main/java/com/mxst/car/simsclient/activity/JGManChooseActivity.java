@@ -14,11 +14,11 @@ import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
-import com.mxst.car.simsclient.adapter.ChooseManAdapter;
+import com.mxst.car.simsclient.adapter.ChooseJiGongAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.Brand;
-import com.mxst.car.simsclient.entity.Sales;
+import com.mxst.car.simsclient.entity.JiGong;
 import com.mxst.car.simsclient.entity.Stores;
 import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.DividerItemDecoration;
@@ -30,8 +30,8 @@ import java.util.List;
  * Created by Joy on 2016/1/9 0009.
  */
 public class JGManChooseActivity extends CommonHeadPanelActivity {
-    private List<Sales.SalesEntity> sales;
-    private ChooseManAdapter adapter;
+    private List<JiGong.JigongsEntity> bean;
+    private ChooseJiGongAdapter adapter;
     private RecyclerView list;
     Stores.StoresEntity store;
     Brand.Brands brand;
@@ -41,7 +41,7 @@ public class JGManChooseActivity extends CommonHeadPanelActivity {
         setContentView(R.layout.activity_man_chooose_jg);
         super.onCreate(savedInstanceState);
         init();
-        getSales();
+        jigong();
     }
 
     private void init() {
@@ -61,45 +61,38 @@ public class JGManChooseActivity extends CommonHeadPanelActivity {
         brandTv.setText(brand.getBrand());
         storeTv.setText(store.getName());
         addressTv.setText(store.getAddress());
-        sales = new ArrayList<>();
-        adapter = new ChooseManAdapter(this, sales);
+        bean = new ArrayList<>();
+        adapter = new ChooseJiGongAdapter(this, bean);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
-        adapter.setOnItemClickListener(new ChooseManAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new ChooseJiGongAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent i = new Intent();
-                i.putExtra("saleId", sales.get(position).getId() + "");
-                i.putExtra("saleName", sales.get(position).getName());
-                setResult(Constant.REQUESTCODE.CHOOSEMAN, i);
-                finish();
-            }
-        });
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(JGManChooseActivity.this, JGDetailActivity.class).putExtra("id","1"));
+                Intent i = new Intent(JGManChooseActivity.this, JGDetailActivity.class);
+                i.putExtra("saleId", bean.get(position).getId() + "");
+                startActivity(i);
 
             }
         });
     }
 
-    private void getSales() {
+    private void jigong() {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("store", store.getName());
-        new BaseTask<JsonResult<Sales>, String>(this, "加载中") {
+        params.addQueryStringParameter("brand", brand.getBrand());
+        new BaseTask<JsonResult<JiGong>, String>(this, "加载中") {
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<Sales>() {
+                return new TypeToken<JiGong>() {
                 };
             }
 
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
-                    sales.clear();
-                    sales.addAll(result.getRecord().getSales());
+                    bean.clear();
+                    bean.addAll(result.getRecord().getJigongs());
                 }
                 adapter.notifyDataSetChanged();
             }

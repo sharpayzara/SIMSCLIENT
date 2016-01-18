@@ -49,6 +49,9 @@ public class InsureListActivity extends CommonHeadPanelActivity implements View.
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(mContext,InsureDetailActivity.class);
                 intent.putExtra("vinNo",list.get(position).getVinNo());
+                intent.putExtra("brandNo",list.get(position).getBrandNo());
+                intent.putExtra("pp",list.get(position).getPp());
+                intent.putExtra("license",list.get(position).getLicense());
                 mContext.startActivity(intent);
             }
         });
