@@ -40,7 +40,7 @@
 
             <RatingBar
                 android:id="@+id/item_man_rating_rb"
-                style="@style/roomRatingBar"
+                style="@style/myRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:numStars="5" />

@@ -24,7 +24,7 @@ import java.util.List;
  * author   Joy
  * Date:  2016/1/12.
  * version:  V1.0
- * Description:
+ * Description:查询维修进程
  */
 public class FindRepairActivity extends CommonHeadPanelActivity {
     private RecyclerView list;
