@@ -3,7 +3,6 @@ package com.mxst.car.simsclient.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -22,19 +21,20 @@ import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.MainActivity;
+import com.mxst.car.simsclient.activity.RecommendActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
-import com.mxst.car.simsclient.activity.ViewImageActivity;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.HomeInfoEntity;
 import com.mxst.car.simsclient.layout.ClearEditText;
+import com.mxst.car.simsclient.service.PreferenceService;
 import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.CryptTool;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout login_layout, user_layout;
@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Button login_btn;
     TextView phone, jifen, continueQd, nickName, cjNum, recNum, qdFlg;
     MainActivity mainActivity;
+    PreferenceService ps;
     private View root;
 
     @Override
@@ -55,6 +56,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         root = inflater.inflate(R.layout.fragment_home, container, false);
         mContext = getActivity();
         this.inflater = inflater;
+        ps = new PreferenceService(mContext);
         initUI();
         initData();
         return root;
@@ -63,7 +65,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void initUI() {
         login_layout = (RelativeLayout) root.findViewById(R.id.login_layout);
         user_layout = (RelativeLayout) root.findViewById(R.id.user_layout);
-        judgeIsLogin();
         rmcx_iv_1 = (ImageView) root.findViewById(R.id.rmcx_iv_1);
         rmcx_iv_2 = (ImageView) root.findViewById(R.id.rmcx_iv_2);
         rmcx_iv_3 = (ImageView) root.findViewById(R.id.rmcx_iv_3);
@@ -80,6 +81,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         user_et = (ClearEditText) root.findViewById(R.id.user_et);
         pwd_et = (ClearEditText) root.findViewById(R.id.pwd_et);
         user_btn = (LinearLayout) root.findViewById(R.id.user_btn);
+        pwd_et.setText(ps.getPassword());
+        user_et.setText(ps.getUserName());
+        ps.savePassword(pwd_et.getText().toString());
         login_btn = (Button) root.findViewById(R.id.login_btn);
 
         headImg = (ImageView) root.findViewById(R.id.headImg);
@@ -103,12 +107,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recommend_lin.setOnClickListener(this);
         zx_iv_1.setOnClickListener(this);
         zx_iv_2.setOnClickListener(this);
+        judgeIsLogin();
     }
 
     private void judgeIsLogin() {
-        if(TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)){
+        if(!CommonUtil.judgeTokenValid(mContext)){
             login_layout.setVisibility(View.VISIBLE);
             user_layout.setVisibility(View.GONE);
+        }else if(CommonUtil.judgeTokenValid(mContext) && TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)){
+            login_layout.setVisibility(View.VISIBLE);
+            user_layout.setVisibility(View.GONE);
+            doLogin();
         }else{
             login_layout.setVisibility(View.GONE);
             user_layout.setVisibility(View.VISIBLE);
@@ -170,41 +179,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == login_btn) {
-            if (!TextUtils.isEmpty(user_et.getText().toString())
-                    && !TextUtils.isEmpty(pwd_et.getText().toString())) {
-                RequestParams params = new RequestParams();
-                try {
-                    params.addQueryStringParameter("phone", CryptTool.md5Digest(user_et.getText().toString()));
-                    params.addQueryStringParameter("password", CryptTool.md5Digest(pwd_et.getText().toString()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                new BaseTask<JsonResult<JSONObject>, String>(mContext, R.string.login_notice) {
-
-                    @Override
-                    public TypeToken setTypeToken() {
-                        return new TypeToken<JSONObject>() {
-                        };
-                    }
-
-                    @Override
-                    public void onSuccess() {
-                        if (result.isSuccess()) {
-                            Constant.AUTHENTICATION_TOKEN = result.getRecord().optString("authenticationToken");
-                            CommonUtil.showToastToShort(mContext, "登录成功");
-                            Log.e("Joy", Constant.AUTHENTICATION_TOKEN);
-                            login_layout.setVisibility(View.GONE);
-                            user_layout.setVisibility(View.VISIBLE);
-                            loadData();
-                        } else {
-                            CommonUtil.showToastToShort(mContext, result.getMsg());
-                        }
-                    }
-                }.requestByPost(Constant.URL.LOGIN, params);
-            } else {
-                CommonUtil.showToastToShort(mContext, "用户名或密码不能为空！");
-            }
+            doLogin();
         } else if (user_btn == v) {
             Intent intent = new Intent(mContext, UserActivity.class);
             mContext.startActivity(intent);
@@ -232,22 +207,63 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         } else if (zx_more_lly == v) {
             mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_INFO);
-        } else if (zx_iv_1 == v) {
+        }/* else if (zx_iv_1 == v) {
             Intent intent = new Intent(mContext, ViewImageActivity.class);
             ArrayList<Bitmap> tempList = new ArrayList();
             tempList.add(zx_iv_1.getDrawingCache());
             intent.putParcelableArrayListExtra("imgList", tempList);
             mContext.startActivity(intent);
-        } /*else if (zx_iv_2 == v) {
+        } else if (zx_iv_2 == v) {
             Intent intent = new Intent(mContext, ViewImageActivity.class);
             ArrayList<Bitmap> tempList = new ArrayList();
             tempList.add(zx_iv_1.getDrawingCache());
             intent.putParcelableArrayListExtra("imgList", tempList);
             mContext.startActivity(intent);
-        } else if (recommend_lin == v) {
+        } */else if (recommend_lin == v) {
             Intent intent = new Intent(mContext, RecommendActivity.class);
             mContext.startActivity(intent);
-        }*/
+        }
+    }
+
+    public void doLogin(){
+        if (!TextUtils.isEmpty(user_et.getText().toString())
+                && !TextUtils.isEmpty(pwd_et.getText().toString())) {
+            RequestParams params = new RequestParams();
+            try {
+                params.addQueryStringParameter("phone", CryptTool.md5Digest(user_et.getText().toString()));
+                params.addQueryStringParameter("password", CryptTool.md5Digest(pwd_et.getText().toString()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            new BaseTask<JsonResult<JSONObject>, String>(mContext, R.string.login_notice) {
+
+                @Override
+                public TypeToken setTypeToken() {
+                    return new TypeToken<JSONObject>() {
+                    };
+                }
+
+                @Override
+                public void onSuccess() {
+                    if (result.isSuccess()) {
+                        Constant.AUTHENTICATION_TOKEN = result.getRecord().optString("authenticationToken");
+                        ps.saveLoginDate(new Date().getTime());
+                        ps.saveUserName(user_et.getText().toString());
+                        ps.savePassword(pwd_et.getText().toString());
+                        CommonUtil.showToastToShort(mContext, "登录成功");
+                        Log.e("Joy", Constant.AUTHENTICATION_TOKEN);
+                        login_layout.setVisibility(View.GONE);
+                        user_layout.setVisibility(View.VISIBLE);
+                        loadData();
+                    } else {
+                        CommonUtil.showToastToShort(mContext, result.getMsg());
+                    }
+                }
+            }.requestByPost(Constant.URL.LOGIN, params);
+        } else {
+            CommonUtil.showToastToShort(mContext, "用户名或密码不能为空！");
+        }
     }
 
     public void setMainActivity(MainActivity mainActivity) {

@@ -108,6 +108,7 @@ public abstract class BaseTask<E,T> extends RequestCallBack<T> {
 				params = new RequestParams();
 			}
 			params.addQueryStringParameter("authenticationToken", Constant.AUTHENTICATION_TOKEN);
+
 		}
 		httpUtils.send(HttpRequest.HttpMethod.POST, url, params, this);
 	}

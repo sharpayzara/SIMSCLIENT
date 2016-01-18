@@ -21,7 +21,6 @@ public class EvaluateActivity extends CommonHeadPanelActivity implements View.On
 
     private void initUI() {
         setHeadTitle("技工评价");
-
     }
 
 

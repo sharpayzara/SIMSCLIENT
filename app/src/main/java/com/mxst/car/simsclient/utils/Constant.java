@@ -13,7 +13,6 @@ public class Constant {
     public static final String WEB_APP_URL = SERVER + "/";
     public static final String SERVER_LOGIN = "/Login?method=login";
     public static final String SERVER_REGISTER = "/RegisterAccount?method=RegisterAccount";
-
     //Btn的标识
     public static final int BTN_FLAG_HOME = 0x01;
     public static final int BTN_FLAG_INFO = 0x01 << 1;
