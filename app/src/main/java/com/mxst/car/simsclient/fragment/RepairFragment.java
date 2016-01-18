@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -30,6 +31,7 @@ import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.AdvertisementList;
 import com.mxst.car.simsclient.entity.EvaluateList;
+import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 
 import java.util.ArrayList;
@@ -63,7 +65,9 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
     private void initData() {
         loadData();
-        loadEvaluateData();
+        if(!TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN) && CommonUtil.judgeTokenValid(mContext)){
+            loadEvaluateData();
+        }
     }
 
     private void loadEvaluateData() {
