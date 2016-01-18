@@ -34,7 +34,7 @@ public class TimeCountUtil extends CountDownTimer {
             btn.setText("剩余" + millisUntilFinished / 1000 + "秒");//设置倒计时时间
 
             //设置按钮为灰色，这时是不能点击的
-          //  btn.setBackground(mActivity.getResources().getDrawable(R.drawable.verify_bg2));
+            btn.setBackground(mActivity.getResources().getDrawable(R.drawable.verify_bg2));
             Spannable span = new SpannableString(btn.getText().toString());//获取按钮的文字
             span.setSpan(new ForegroundColorSpan(Color.RED), 2, 4,  Spannable.SPAN_INCLUSIVE_EXCLUSIVE);//讲倒计时时间显示为红色
             btn.setText(span);

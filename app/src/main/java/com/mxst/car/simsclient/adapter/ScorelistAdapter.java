@@ -60,7 +60,7 @@ public class ScorelistAdapter extends RecyclerView.Adapter<ScorelistAdapter.View
             holder.img_iv.setImageResource(R.drawable.goumai);
         }else if(bean.get(position).getJfxw().equals("推荐保险")){
             holder.img_iv.setImageResource(R.drawable.baoxian);
-        }else if(bean.get(position).getJfxw().equals("购车")){
+        }else if(bean.get(position).getJfxw().equals("会员购车")){
             holder.img_iv.setImageResource(R.drawable.gouche);
         }else if(bean.get(position).getJfxw().equals("推荐成交")){
             holder.img_iv.setImageResource(R.drawable.chengjiao);
