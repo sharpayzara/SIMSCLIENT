@@ -25,11 +25,14 @@ public class PersonAdapter extends BaseAdapter {
     private ArrayList<Person> persons;
     private LayoutInflater layoutInflater;
     private Context mContext;
+    BitmapUtils bitmapUtils;
 
     public PersonAdapter(ArrayList<Person> person, Context context) {
         this.persons = person;
         this.mContext = context;
         layoutInflater = LayoutInflater.from(context);
+        bitmapUtils = new BitmapUtils(mContext);
+        bitmapUtils.configDefaultLoadFailedImage(R.drawable.plugin_img);
     }
 
     @Override
@@ -58,8 +61,7 @@ public class PersonAdapter extends BaseAdapter {
             holder.tv_name = (TextView) convertView.findViewById(R.id.item_find_brand);
             holder.lin = (LinearLayout) convertView.findViewById(R.id.item_find_lin);
             holder.img = (ImageView) convertView.findViewById(R.id.item_find_img);
-            bitmapUtils.configDefaultLoadFailedImage(R.drawable.plugin_img);
-            bitmapUtils.display(holder.img, persons.get(position).getPath());
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -86,6 +88,7 @@ public class PersonAdapter extends BaseAdapter {
             holder.lin.setVisibility(View.VISIBLE);
             holder.tv_py.setText(string);
         }
+        bitmapUtils.display(holder.img, persons.get(position).getPath());
         holder.tv_name.setText(persons.get(position).getBrand());
         return convertView;
     }

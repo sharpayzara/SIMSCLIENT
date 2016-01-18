@@ -33,7 +33,7 @@ public class CommonUtil {
         if(intervalTime < 86400000){
             return true;
         }
-       /* if(intervalTime < 5000){
+        /*if(intervalTime < 5000){
             return true;
         }*/
         return false;
