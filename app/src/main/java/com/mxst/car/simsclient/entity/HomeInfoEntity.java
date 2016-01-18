@@ -88,6 +88,15 @@ public class HomeInfoEntity {
         private String title;
         private String subtitle;
         private String img;
+        private String id;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
 
         public void setTitle(String title) {
             this.title = title;
@@ -119,6 +128,15 @@ public class HomeInfoEntity {
         private String jifen;
         private String continueQd;
         private String headImg;
+        private String vipType;
+
+        public String getVipType() {
+            return vipType;
+        }
+
+        public void setVipType(String vipType) {
+            this.vipType = vipType;
+        }
 
         public String getNickName() {
             return nickName;

@@ -32,6 +32,8 @@
             android:id="@+id/item_find_img"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp" />
 
         <TextView

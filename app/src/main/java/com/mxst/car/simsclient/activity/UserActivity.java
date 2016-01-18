@@ -12,7 +12,7 @@ import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
 public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener{
     Context mContext;
 
-    LinearLayout headImg_layout,collect_lly,setup_lly,score_llt;
+    LinearLayout headImg_layout,collect_lly,setup_lly,score_llt,account_llt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_user);
@@ -32,12 +32,14 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         setup_lly.setOnClickListener(this);
         score_llt = (LinearLayout) findViewById(R.id.score_llt);
         score_llt.setOnClickListener(this);
+        account_llt = (LinearLayout) findViewById(R.id.account_llt);
+        account_llt.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        if(v == headImg_layout){
+        if(v == headImg_layout || v == account_llt){
             Intent intent = new Intent(mContext,UserInfoActivity.class);
             mContext.startActivity(intent);
         }else if(v == collect_lly){
@@ -47,8 +49,7 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
             Intent intent = new Intent(mContext, UserSetUpActivity.class);
             mContext.startActivity(intent);
         }else if(v == score_llt){
-            Intent intent = new Intent(mContext, UserScoreActivity.class);
-            mContext.startActivity(intent);
+
         }
     }
 }

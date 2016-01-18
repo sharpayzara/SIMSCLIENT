@@ -129,6 +129,8 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 			mInfoBtn.setChecked(Constant.BTN_FLAG_INFO);
 		}else if(tag.equals(Constant.FRAGMENT_FLAG_MARKET)){
 			mMarketBtn.setChecked(Constant.BTN_FLAG_MARKET);
+		}else if(tag.equals(Constant.FRAGMENT_FLAG_FIND)){
+			mFindBtn.setChecked(Constant.BTN_FLAG_FIND);
 		}
 	}
 
