@@ -47,7 +47,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
         super.onCreate(savedInstanceState);
         init();
         filtrate();
-        brandResourceList();
+
     }
 
     private void init() {
@@ -70,7 +70,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
                 mj = bean.get(groupPosition).getMj();
                 mjkx = bean.get(groupPosition).getMjkxs().get(childPosition).getMjkx();
                 adapter.notifyDataSetChanged();
-                choostTv.setText("(" + mjkx + ")");
+                brandResourceList();
                 return true;
             }
         });
@@ -108,7 +108,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
             params.addQueryStringParameter("mj", mj);
             params.addQueryStringParameter("kx", kx);
         }
-        new BaseTask<JsonResult<JSONObject>, String>(this, "加载中") {
+        new BaseTask<JsonResult<JSONObject>, String>(this) {
 
             @Override
             public TypeToken setTypeToken() {
@@ -120,7 +120,7 @@ public class ResourceChooseActivity extends CommonHeadPanelActivity {
             public void onSuccess() {
                 if (result.isSuccess()) {
                     String data = new Gson().fromJson(result.getRecord().optString("count"),
-                            new TypeToken<JSONObject>() {
+                            new TypeToken<String>() {
                             }.getType());
                     choostTv.setText("(" + data + "条车源)");
                 } else {
