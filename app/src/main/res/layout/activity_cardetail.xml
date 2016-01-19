@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/resource_bg"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/resource_bg"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/back_icon"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
         </LinearLayout>
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_centerInParent="true"
             android:text="资源详情"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <LinearLayout
             android:id="@+id/car_detail_collect_lin"
@@ -45,10 +45,12 @@
             android:layout_toLeftOf="@+id/car_detail_share_lin"
             android:gravity="center">
 
-            <TextView
+            <CheckBox
+                android:id="@+id/car_detail_collect_cb"
                 android:layout_width="45dp"
                 android:layout_height="20dp"
-                android:background="@drawable/btn_collect" />
+                android:background="@drawable/cb_collect_bg"
+                android:button="@null"/>
 
         </LinearLayout>
 
@@ -64,7 +66,7 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="20dp"
-                android:background="@drawable/btn_share" />
+                android:background="@drawable/btn_share"/>
 
         </LinearLayout>
     </RelativeLayout>
@@ -89,7 +91,7 @@
                 android:layout_height="30dp"
                 android:singleLine="true"
                 android:textColor="@color/title_orange"
-                tools:text="asdasdas" />
+                tools:text="asdasdas"/>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -103,7 +105,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textColor="#9A9A9A"
-                    tools:text="1231" />
+                    tools:text="1231"/>
 
                 <TextView
                     android:id="@+id/car_detail_guidePrice_tv"
@@ -114,7 +116,7 @@
                     android:gravity="right"
                     android:paddingRight="10dp"
                     android:textColor="@color/black_font"
-                    tools:text="1231" />
+                    tools:text="1231"/>
             </TableRow>
         </LinearLayout>
 
@@ -138,7 +140,7 @@
                     android:gravity="center"
                     android:text="价格"
                     android:textColor="@color/black_font"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/car_detail_price_tv"
@@ -147,7 +149,7 @@
                     android:gravity="center"
                     android:textColor="@color/title_orange"
                     android:textSize="16sp"
-                    tools:text="价格" />
+                    tools:text="价格"/>
             </LinearLayout>
 
             <View
@@ -155,7 +157,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:background="#CCCCCC" />
+                android:background="#CCCCCC"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -170,7 +172,7 @@
                     android:gravity="center"
                     android:text="需付定金"
                     android:textColor="@color/black_font"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/car_detail_reserveprice_tv"
@@ -179,7 +181,7 @@
                     android:gravity="center"
                     android:textColor="@color/title_orange"
                     android:textSize="16sp"
-                    tools:text="价格" />
+                    tools:text="价格"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -201,7 +203,7 @@
                     android:paddingTop="13dp"
                     android:text="颜色"
                     android:textColor="@color/black_font"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/car_detail_color_tv"
@@ -209,14 +211,14 @@
                     android:layout_height="match_parent"
                     android:paddingTop="13dp"
                     android:textSize="14sp"
-                    tools:text="颜色" />
+                    tools:text="颜色"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC" />
+                android:background="#CCCCCC"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -230,7 +232,7 @@
                     android:paddingTop="13dp"
                     android:text="发动机"
                     android:textColor="@color/black_font"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/car_detail_engine_tv"
@@ -238,14 +240,14 @@
                     android:layout_height="match_parent"
                     android:paddingTop="13dp"
                     android:textSize="14sp"
-                    tools:text="颜色" />
+                    tools:text="颜色"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC" />
+                android:background="#CCCCCC"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -259,7 +261,7 @@
                     android:paddingTop="13dp"
                     android:text="变速箱"
                     android:textColor="@color/black_font"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/car_detail_speed_tv"
@@ -267,14 +269,14 @@
                     android:layout_height="match_parent"
                     android:paddingTop="13dp"
                     android:textSize="14sp"
-                    tools:text="颜色" />
+                    tools:text="颜色"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC" />
+                android:background="#CCCCCC"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -288,7 +290,7 @@
                     android:paddingTop="13dp"
                     android:text="产地"
                     android:textColor="@color/black_font"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/car_detail_site_tv"
@@ -296,14 +298,14 @@
                     android:layout_height="match_parent"
                     android:paddingTop="13dp"
                     android:textSize="14sp"
-                    tools:text="颜色" />
+                    tools:text="颜色"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC" />
+                android:background="#CCCCCC"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -317,14 +319,14 @@
                     android:paddingLeft="20dp"
                     android:text="图片"
                     android:textColor="@color/black_font"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
                 <ImageView
                     android:id="@+id/car_detail_img1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"/>
 
                 <ImageView
                     android:id="@+id/car_detail_img2"
@@ -332,7 +334,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"/>
 
                 <ImageView
                     android:id="@+id/car_detail_img3"
@@ -340,7 +342,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"/>
 
                 <ImageView
                     android:id="@+id/car_detail_img4"
@@ -348,7 +350,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"/>
 
                 <ImageView
                     android:id="@+id/car_detail_img5"
@@ -356,7 +358,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -379,7 +381,7 @@
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/btn_more"
                     android:text="更多"
-                    android:textColor="@color/title_orange" />
+                    android:textColor="@color/title_orange"/>
 
             </LinearLayout>
         </RelativeLayout>

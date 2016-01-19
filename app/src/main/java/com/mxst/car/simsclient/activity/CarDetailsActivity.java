@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +21,8 @@ import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.ParaList;
 import com.mxst.car.simsclient.utils.Constant;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +35,9 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private TextView car_detail_color_tv, car_detail_engine_tv, car_detail_speed_tv, car_detail_site_tv,
             car_detail_price_tv, car_detail_time_tv, car_detail_name_tv, car_detail_guideprice_tv, car_detail_reserveprice_tv;
     private ImageView car_detail_img1, car_detail_img2, car_detail_img3, car_detail_img4, car_detail_img5;
-    private String colorId;
+    private String colorId, id;
     private ParaList.ResourceDetailEntity bean;
+    private CheckBox collectCb;
     private List<ParaList.ConfigInfoEntity> configinfoList = new ArrayList<>();
     private BitmapUtils utils;
 
@@ -60,6 +65,12 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                 if (result.isSuccess()) {
                     configinfoList = result.getRecord().getConfigInfo();
                     bean = result.getRecord().getResourceDetail();
+                    id = bean.getId() + "";
+                    if (result.getRecord().getFlag() == 1) {
+                        collectCb.setChecked(true);
+                    } else {
+                        collectCb.setChecked(false);
+                    }
                     car_detail_color_tv.setText(bean.getOutColor());
                     car_detail_site_tv.setText(bean.getLocation());
                     car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing());
@@ -102,6 +113,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private void initViews() {
         utils = new BitmapUtils(this);
         colorId = getIntent().getStringExtra("id");
+        collectCb = (CheckBox) findViewById(R.id.car_detail_collect_cb);
         left_btn = (LinearLayout) findViewById(R.id.left_btn);
         car_detail_collect_lin = (LinearLayout) findViewById(R.id.car_detail_collect_lin);
         car_detail_share_lin = (LinearLayout) findViewById(R.id.car_detail_share_lin);
@@ -141,6 +153,40 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                 startActivity(i);
             }
         });
+        collectCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    collect(true);
+                } else {
+                    collect(false);
+                }
+            }
+        });
+    }
+
+    private void collect(boolean b) {
+        RequestParams params = new RequestParams();
+        params.addQueryStringParameter("type", "0");
+        params.addQueryStringParameter("id", colorId);
+        new BaseTask<JsonResult<JSONObject>, String>(this, "加载中") {
+
+            @Override
+            public TypeToken setTypeToken() {
+                return new TypeToken<JSONObject>() {
+                };
+            }
+
+            @Override
+            public void onSuccess() {
+                if (result.isSuccess()) {
+                    Toast.makeText(CarDetailsActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }.requestByPost(Constant.URL.COLLECT, params);
+
+
     }
 
     @Override
