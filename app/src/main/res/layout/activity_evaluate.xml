@@ -3,7 +3,6 @@
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/resource_bg"
     android:orientation="vertical">
     <include
         android:id="@+id/head_layout"
@@ -11,11 +10,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/resource_bg"
+        android:background="@color/white"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
+
             android:orientation="horizontal"
             android:background="@color/white">
             <RelativeLayout
@@ -133,23 +133,35 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:background="@color/white">
 
             <RatingBar
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:id="@+id/ratingBar"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true" />
+                android:stepSize="0.5"
+                android:numStars="5"
+                android:rating="4"
+                android:layout_centerVertical="true"
+                android:progressDrawable="@drawable/my_rating_bar"  />
         </RelativeLayout>
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="100dp"
+            android:layout_marginRight="40dp"
+            android:maxLines="4"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/evaluate_area_bg">
 
-        </LinearLayout>
+        </TextView>
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/evaluation_btn"/>
     </LinearLayout>
 </LinearLayout>

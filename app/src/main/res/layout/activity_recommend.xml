@@ -29,6 +29,7 @@
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
                 android:text="姓名："
+                android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"></TextView>
 
@@ -39,6 +40,8 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
+                android:textSize="15sp"
+                android:paddingLeft="15sp"
                 android:background="@drawable/box"
                 android:hint="请输入姓名" />
         </LinearLayout>
@@ -61,9 +64,11 @@
                 android:id="@+id/rec_phone_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingLeft="15dp"
                 android:layout_marginBottom="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
+                android:textSize="15sp"
                 android:background="@drawable/box"
                 android:hint="请输入电话" />
         </LinearLayout>
@@ -87,10 +92,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:text="asdasd"
+                android:paddingLeft="15dp"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
+                android:textSize="15sp"
                 android:background="@drawable/box"
                 android:hint="" />
         </LinearLayout>
@@ -112,6 +119,8 @@
                 android:id="@+id/rec_shop_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:textSize="15sp"
                 android:layout_marginBottom="2dp"
                 android:gravity="center_vertical"
                 android:layout_marginRight="10dp"
@@ -137,7 +146,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="2dp"
+                android:textSize="15sp"
                 android:layout_marginRight="10dp"
+                android:paddingLeft="15dp"
                 android:gravity="center_vertical"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/box" />
@@ -165,7 +176,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="2dp"
                 android:layout_marginRight="10dp"
+                android:paddingLeft="15dp"
                 android:layout_marginTop="2dp"
+                android:textSize="15sp"
                 android:background="@drawable/box"
                 android:hint="请输入车型" />
         </LinearLayout>
