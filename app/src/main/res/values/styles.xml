@@ -68,4 +68,12 @@
         <item name="android:isIndicator">true</item>
     </style>
 
+    <style name="smallRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/star3</item>
+        <item name="android:minHeight">15dp</item>
+        <item name="android:maxHeight">15dp</item>
+        <item name="android:stepSize">0.5</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
 </resources>

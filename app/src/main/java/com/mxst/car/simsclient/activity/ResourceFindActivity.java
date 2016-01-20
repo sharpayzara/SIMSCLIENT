@@ -58,7 +58,6 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
         xingHao = xingHao.substring(brand.length(), xingHao.length());
         spec = getIntent().getStringExtra("spec");
         Button choose = (Button) findViewById(R.id.right_title);
-        //res_mj_tv = (TextView) findViewById(R.id.res_mj_tv);
         res_kx_tv = (TextView) findViewById(R.id.res_kx_tv);
         res_clear_tv = (TextView) findViewById(R.id.res_clear_tv);
         res_rcl = (RecyclerView) findViewById(R.id.res_rcl);
