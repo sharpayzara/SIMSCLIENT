@@ -221,6 +221,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             doLogin();
         } else if (user_btn == v) {
             Intent intent = new Intent(mContext, UserActivity.class);
+            intent.putExtra("phone",phone.getText().toString());
+            intent.putExtra("nickName",nickName.getText().toString());
             mContext.startActivity(intent);
         } else if (v == qdFlg) {
             if (qdFlg.getText().toString().equals("本日签到")) {
