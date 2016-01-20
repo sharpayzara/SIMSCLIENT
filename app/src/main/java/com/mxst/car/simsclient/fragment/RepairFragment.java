@@ -34,6 +34,7 @@ import com.mxst.car.simsclient.entity.EvaluateList;
 import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -85,7 +86,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                 if (result.isSuccess()) {
                     if (result.getRecord().getEvaluateList().size() > 0) {
                         Intent intent = new Intent(mContext, EvaluateActivity.class);
-
+                        intent.putExtra("list",(Serializable) result.getRecord().getEvaluateList());
                         startActivity(intent);
                     }
                 }
@@ -97,8 +98,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         new BaseTask<JsonResult<AdvertisementList>, String>(mContext, R.string.download_notice) {
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<AdvertisementList>() {
-                };
+                return new TypeToken<AdvertisementList>() {};
             }
 
             @Override

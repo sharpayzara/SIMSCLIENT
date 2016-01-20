@@ -1,5 +1,6 @@
 package com.mxst.car.simsclient.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class EvaluateList {
         this.evaluateList = evaluateList;
     }
 
-    public class Evaluate{
+    public class Evaluate implements Serializable{
         private String wxlx;
         private String noteDate;
         private String gls;
@@ -99,7 +100,7 @@ public class EvaluateList {
             return pp;
         }
 
-        public class ArtisanEntity {
+        public class ArtisanEntity implements Serializable{
             private String id;
             private String headPortrait;
             private String name;

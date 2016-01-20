@@ -77,6 +77,7 @@ public class Constant {
         public static final String INSUREITEMDETAIL = CTX_PATH + "insurance/getBxDetail";
         public static final String COLLECT = CTX_PATH + "brand/collect";
         public static final String GETCOLLECTSTATUS = CTX_PATH + "news/getCollectStatus";
+        public static final String SAVEEVALUATE = CTX_PATH + "artisan/saveComment";
     }
 
 }

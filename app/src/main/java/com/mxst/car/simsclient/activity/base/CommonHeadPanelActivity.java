@@ -19,10 +19,12 @@ import com.mxst.car.simsclient.layout.HeadControlPanel;
 public class CommonHeadPanelActivity extends Activity {
     LinearLayout backBtn;
     HeadControlPanel headControlPanel;
+    private boolean isCanBack ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isCanBack = true;
         headControlPanel = (HeadControlPanel) findViewById(R.id.head_layout);
         backBtn = (LinearLayout) findViewById(R.id.left_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +88,7 @@ public class CommonHeadPanelActivity extends Activity {
                 //1.x轴滑动的距离>XDISTANCE_MIN
                 //2.y轴滑动的距离在YDISTANCE_MIN范围内
                 //3.y轴上（即上下滑动的速度）<XSPEED_MIN，如果大于，则认为用户意图是在上下滑动而非左滑结束Activity
-                if(distanceX > XDISTANCE_MIN &&(distanceY<YDISTANCE_MIN&&distanceY>-YDISTANCE_MIN)&& ySpeed < YSPEED_MIN) {
+                if(distanceX > XDISTANCE_MIN &&(distanceY<YDISTANCE_MIN&&distanceY>-YDISTANCE_MIN)&& ySpeed < YSPEED_MIN && isCanBack) {
                     finish();
                 }
                 break;
@@ -130,4 +132,11 @@ public class CommonHeadPanelActivity extends Activity {
         return Math.abs(velocity);
     }
 
+    public boolean isCanBack() {
+        return isCanBack;
+    }
+
+    public void setCanBack(boolean canBack) {
+        isCanBack = canBack;
+    }
 }

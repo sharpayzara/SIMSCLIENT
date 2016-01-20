@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
 
 public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener{
     Context mContext;
-
+    TextView nickName,phone;
     LinearLayout headImg_layout,collect_lly,setup_lly,score_llt,account_llt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
