@@ -21,6 +21,11 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         mContext = this;
         initUI();
+        initData();
+    }
+
+    private void initData() {
+
     }
 
     private void initUI() {
@@ -36,6 +41,10 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         score_llt.setOnClickListener(this);
         account_llt = (LinearLayout) findViewById(R.id.account_llt);
         account_llt.setOnClickListener(this);
+        nickName = (TextView) findViewById(R.id.nickName);
+        phone = (TextView) findViewById(R.id.phone);
+        nickName.setText(getIntent().getStringExtra("nickName"));
+        phone.setText(getIntent().getStringExtra("phone"));
     }
 
 

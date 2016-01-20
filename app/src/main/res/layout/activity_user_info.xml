@@ -72,6 +72,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/box"
+                android:textSize="14sp"
+                android:textColor="@color/duck_black"
                 android:layout_marginBottom="2dp" />
         </LinearLayout>
 
@@ -94,6 +96,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:paddingLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/duck_black"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/box"
                 android:layout_marginBottom="2dp" />
@@ -158,6 +162,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
+                android:textSize="14sp"
+                android:textColor="@color/duck_black"
                 android:paddingLeft="15dp"
                 android:background="@drawable/box"
                 android:layout_marginBottom="2dp" />
@@ -176,14 +182,17 @@
                 android:gravity="center_vertical"
                 android:text="出生日期：">
             </TextView>
-            <EditText
+            <TextView
                 android:id="@+id/birthday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/box"
+                android:gravity="center_vertical"
                 android:paddingLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/duck_black"
                 android:layout_marginBottom="2dp" />
         </LinearLayout>
 
@@ -207,6 +216,8 @@
                 android:layout_marginRight="10dp"
                 android:paddingLeft="15dp"
                 android:layout_marginTop="2dp"
+                android:textSize="14sp"
+                android:textColor="@color/duck_black"
                 android:background="@drawable/box"
                 android:layout_marginBottom="2dp" />
         </LinearLayout>
