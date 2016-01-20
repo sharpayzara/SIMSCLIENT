@@ -45,11 +45,11 @@
             android:layout_toLeftOf="@+id/car_detail_share_lin"
             android:gravity="center">
 
-            <CheckBox
+            <Button
                 android:id="@+id/car_detail_collect_cb"
                 android:layout_width="45dp"
                 android:layout_height="20dp"
-                android:background="@drawable/cb_collect_bg"
+                android:background="@drawable/btn_collect"
                 android:button="@null"/>
 
         </LinearLayout>

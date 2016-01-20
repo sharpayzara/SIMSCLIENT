@@ -2,10 +2,10 @@ package com.mxst.car.simsclient.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,7 +37,8 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private ImageView car_detail_img1, car_detail_img2, car_detail_img3, car_detail_img4, car_detail_img5;
     private String colorId, id;
     private ParaList.ResourceDetailEntity bean;
-    private CheckBox collectCb;
+    private Boolean isCollect = false;
+    private Button collectBtn;
     private List<ParaList.ConfigInfoEntity> configinfoList = new ArrayList<>();
     private BitmapUtils utils;
 
@@ -49,9 +50,18 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         paraList();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        paraList();
+    }
+
     private void paraList() {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("colorId", colorId);
+        if (!TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)) {
+            params.addQueryStringParameter("flg", "1");
+        }
         new BaseTask<JsonResult<ParaList>, String>(this, "加载中") {
 
             @Override
@@ -67,9 +77,10 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     bean = result.getRecord().getResourceDetail();
                     id = bean.getId() + "";
                     if (result.getRecord().getFlag() == 1) {
-                        collectCb.setChecked(true);
+                        isCollect = true;
+                        collectBtn.setBackgroundResource(R.drawable.btn_collect_true);
                     } else {
-                        collectCb.setChecked(false);
+                        collectBtn.setBackgroundResource(R.drawable.btn_collect);
                     }
                     car_detail_color_tv.setText(bean.getOutColor());
                     car_detail_site_tv.setText(bean.getLocation());
@@ -87,6 +98,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     imglist.add(car_detail_img5);
 
                     if (bean.getImgPaths().size() != 0 && imglist.size() >= bean.getImgPaths().size()) {
+
                         for (int i = 0; i < bean.getImgPaths().size(); i++) {
                             utils.display(imglist.get(i), bean.getImgPaths().get(i).getImgPath());
                         }
@@ -113,7 +125,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private void initViews() {
         utils = new BitmapUtils(this);
         colorId = getIntent().getStringExtra("id");
-        collectCb = (CheckBox) findViewById(R.id.car_detail_collect_cb);
+        collectBtn = (Button) findViewById(R.id.car_detail_collect_cb);
         left_btn = (LinearLayout) findViewById(R.id.left_btn);
         car_detail_collect_lin = (LinearLayout) findViewById(R.id.car_detail_collect_lin);
         car_detail_share_lin = (LinearLayout) findViewById(R.id.car_detail_share_lin);
@@ -153,19 +165,27 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                 startActivity(i);
             }
         });
-        collectCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        collectBtn.setOnClickListener(new OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    collect(true);
-                } else {
-                    collect(false);
+            public void onClick(View v) {
+                if (Constant.AUTHENTICATION_TOKEN.isEmpty()) {
+                    Intent intent = new Intent(CarDetailsActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    return;
                 }
+                if (isCollect) {
+                    collectBtn.setBackgroundResource(R.drawable.btn_collect);
+                } else {
+                    collectBtn.setBackgroundResource(R.drawable.btn_collect_true);
+                }
+                collect();
+
             }
         });
+
     }
 
-    private void collect(boolean b) {
+    private void collect() {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("type", "0");
         params.addQueryStringParameter("id", colorId);

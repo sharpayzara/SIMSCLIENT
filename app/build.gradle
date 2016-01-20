@@ -32,4 +32,6 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'me.drakeet.materialdialog:library:1.2.8'
     compile files('libs/pinyin4j-2.5.0.jar')
+    compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
 }

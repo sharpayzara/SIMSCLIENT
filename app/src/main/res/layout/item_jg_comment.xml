@@ -34,7 +34,7 @@
 
             <RatingBar
                 android:id="@+id/item_jg_rb"
-                style="@style/myRatingBar"
+                style="@style/smallRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

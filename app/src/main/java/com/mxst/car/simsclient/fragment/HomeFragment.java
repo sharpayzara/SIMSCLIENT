@@ -191,6 +191,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         continueQd.setText(result.getRecord().getVipInfo().getContinueQd());
                         nickName.setText(result.getRecord().getVipInfo().getNickName());
                         utils.display(headImg, result.getRecord().getVipInfo().getHeadImg());
+                        if(TextUtils.isEmpty(result.getRecord().getVipInfo().getVipType())){
+                            return;
+                        }
                         if(result.getRecord().getVipInfo().getVipType().equals("A")){
                             diamond1.setVisibility(View.VISIBLE);
                             diamond2.setVisibility(View.VISIBLE);
