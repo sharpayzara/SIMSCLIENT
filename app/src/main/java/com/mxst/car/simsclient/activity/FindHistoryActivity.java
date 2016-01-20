@@ -42,7 +42,7 @@ public class FindHistoryActivity extends CommonHeadPanelActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        getCarList();
+      //  getCarList();
     }
 
     private void init() {
@@ -90,7 +90,5 @@ public class FindHistoryActivity extends CommonHeadPanelActivity {
                 adapter.notifyDataSetChanged();
             }
         }.requestByPost(Constant.URL.GETCARLIST, params);
-
-
     }
 }

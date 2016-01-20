@@ -20,19 +20,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <com.mxst.car.simsclient.layout.RoundImageView
                 android:id="@+id/jg_detail_head_img"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerInParent="true"
                 android:layout_margin="10dp"
                 android:src="@drawable/plugin_img"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
@@ -68,6 +69,7 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:padding="5dp"
+            android:layout_marginLeft="5dp"
             tools:text="啊撒旦撒大苏打扫打扫打撒扫打扫大的"/>
 
         <LinearLayout

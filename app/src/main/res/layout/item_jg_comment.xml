@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
@@ -28,7 +28,7 @@
                 android:id="@+id/item_jg_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="25dp"
                 tools:text="型号"/>
 
@@ -36,7 +36,7 @@
                 android:id="@+id/item_jg_rb"
                 style="@style/smallRatingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="25dp"
                 android:isIndicator="true"
@@ -45,10 +45,11 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_marginTop="-5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp">
+            >
 
             <TextView
                 android:id="@+id/item_jg_comment"

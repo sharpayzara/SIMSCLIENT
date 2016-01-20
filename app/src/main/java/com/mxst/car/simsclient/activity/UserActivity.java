@@ -10,10 +10,11 @@ import android.widget.TextView;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
 
-public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener{
+public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener {
     Context mContext;
-    TextView nickName,phone;
-    LinearLayout headImg_layout,collect_lly,setup_lly,score_llt,account_llt;
+    TextView nickName, phone;
+    LinearLayout headImg_layout, collect_lly, setup_lly, score_llt, account_llt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_user);
@@ -40,16 +41,16 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        if(v == headImg_layout || v == account_llt){
-            Intent intent = new Intent(mContext,UserInfoActivity.class);
-            mContext.startActivity(intent);
-        }else if(v == collect_lly){
+        if (v == headImg_layout || v == account_llt) {
+            Intent intent = new Intent(mContext, UserInfoActivity.class);
+            startActivityForResult(intent, 1);
+        } else if (v == collect_lly) {
             Intent intent = new Intent(mContext, CollectActivity.class);
             mContext.startActivity(intent);
-        }else if(v == setup_lly){
+        } else if (v == setup_lly) {
             Intent intent = new Intent(mContext, UserSetUpActivity.class);
             mContext.startActivity(intent);
-        }else if(v == score_llt){
+        } else if (v == score_llt) {
 
         }
     }
