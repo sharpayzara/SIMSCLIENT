@@ -45,21 +45,23 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout login_layout, user_layout;
-    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin,jifenllt,car_group_llt,zx1_llt,zx2_llt;
+    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt;
     ClearEditText user_et;
     EditText pwd_et;
     LayoutInflater inflater;
     Context mContext;
     TextView zx_title_1, zx_title_2, zx_content_1, zx_content_2;
-    ImageView zx_iv_1, zx_iv_2, headImg,diamond1,diamond2,diamond3;
+    ImageView zx_iv_1, zx_iv_2, headImg, diamond1, diamond2, diamond3;
     BitmapUtils utils;
-    Button login_btn,obtain_password;
+    Button login_btn, obtain_password;
     TextView phone, jifen, continueQd, nickName, cjNum, recNum, qdFlg;
     MainActivity mainActivity;
     PreferenceService ps;
     private View root;
-    private String zx1Id,zx2Id;
+    private String zx1Id, zx2Id;
     CountDownTimer timeCountUtil;
+    private String img;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -127,14 +129,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void judgeIsLogin() {
-        if(!CommonUtil.judgeTokenValid(mContext)){
+        if (!CommonUtil.judgeTokenValid(mContext)) {
             login_layout.setVisibility(View.VISIBLE);
             user_layout.setVisibility(View.GONE);
-        }else if(CommonUtil.judgeTokenValid(mContext) && TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)){
+        } else if (CommonUtil.judgeTokenValid(mContext) && TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)) {
             login_layout.setVisibility(View.VISIBLE);
             user_layout.setVisibility(View.GONE);
             doLogin();
-        }else{
+        } else {
             login_layout.setVisibility(View.GONE);
             user_layout.setVisibility(View.VISIBLE);
         }
@@ -165,13 +167,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         utils.display(rmcx_iv_3, result.getRecord().getHotBrand().get(2).getImg());
                         utils.display(rmcx_iv_4, result.getRecord().getHotBrand().get(3).getImg());
                         utils.display(rmcx_iv_5, result.getRecord().getHotBrand().get(4).getImg());
-*/                     LayoutInflater inflater =  LayoutInflater.from(mContext);
+*/
+                        LayoutInflater inflater = LayoutInflater.from(mContext);
                         car_group_llt.removeAllViews();
-                        for(HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()){
-                            View view = inflater.inflate(R.layout.item_car_view,null);
-                            utils.display(view.findViewById(R.id.rmcx_iv),entity.getImg());
+                        for (HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
+                            View view = inflater.inflate(R.layout.item_car_view, null);
+                            utils.display(view.findViewById(R.id.rmcx_iv), entity.getImg());
                             // car_group_llt.addView(view);
-                            car_group_llt.addView(view,new ViewGroup.LayoutParams(SizeUtils.dip2px(mContext,60), ViewGroup.LayoutParams.MATCH_PARENT));
+                            car_group_llt.addView(view, new ViewGroup.LayoutParams(SizeUtils.dip2px(mContext, 60), ViewGroup.LayoutParams.MATCH_PARENT));
                         }
 
                     }
@@ -190,18 +193,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         jifen.setText(result.getRecord().getVipInfo().getJifen());
                         continueQd.setText(result.getRecord().getVipInfo().getContinueQd());
                         nickName.setText(result.getRecord().getVipInfo().getNickName());
+                        img = result.getRecord().getVipInfo().getHeadImg();
                         utils.display(headImg, result.getRecord().getVipInfo().getHeadImg());
-                        if(TextUtils.isEmpty(result.getRecord().getVipInfo().getVipType())){
+                        if (TextUtils.isEmpty(result.getRecord().getVipInfo().getVipType())) {
                             return;
                         }
-                        if(result.getRecord().getVipInfo().getVipType().equals("A")){
+                        if (result.getRecord().getVipInfo().getVipType().equals("A")) {
                             diamond1.setVisibility(View.VISIBLE);
                             diamond2.setVisibility(View.VISIBLE);
                             diamond3.setVisibility(View.VISIBLE);
-                        }else if(result.getRecord().getVipInfo().getVipType().equals("B")){
+                        } else if (result.getRecord().getVipInfo().getVipType().equals("B")) {
                             diamond1.setVisibility(View.VISIBLE);
                             diamond2.setVisibility(View.VISIBLE);
-                        }else if(result.getRecord().getVipInfo().getVipType().equals("C")){
+                        } else if (result.getRecord().getVipInfo().getVipType().equals("C")) {
                             diamond1.setVisibility(View.VISIBLE);
                         }
                     }
@@ -221,8 +225,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             doLogin();
         } else if (user_btn == v) {
             Intent intent = new Intent(mContext, UserActivity.class);
-            intent.putExtra("phone",phone.getText().toString());
-            intent.putExtra("nickName",nickName.getText().toString());
+            intent.putExtra("phone", phone.getText().toString());
+            intent.putExtra("nickName", nickName.getText().toString());
+            intent.putExtra("img", img);
             mContext.startActivity(intent);
         } else if (v == qdFlg) {
             if (qdFlg.getText().toString().equals("本日签到")) {
@@ -248,7 +253,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_FIND);
         } else if (zx_more_lly == v) {
             mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_INFO);
-        }else if (market_more_lly == v) {
+        } else if (market_more_lly == v) {
             mainActivity.setDynamicFragment(Constant.FRAGMENT_FLAG_MARKET);
         } /* else if (zx_iv_1 == v) {
             Intent intent = new Intent(mContext, ViewImageActivity.class);
@@ -262,49 +267,50 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             tempList.add(zx_iv_1.getDrawingCache());
             intent.putParcelableArrayListExtra("imgList", tempList);
             mContext.startActivity(intent);
-        } */else if (recommend_lin == v) {
+        } */ else if (recommend_lin == v) {
             Intent intent = new Intent(mContext, RecommendActivity.class);
             mContext.startActivity(intent);
-        }else if(jifenllt == v){
+        } else if (jifenllt == v) {
             Intent intent = new Intent(mContext, UserScoreActivity.class);
             mContext.startActivity(intent);
-        }else if(zx1_llt == v){
+        } else if (zx1_llt == v) {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx1Id);
             startActivity(intent);
-        }else if(zx2_llt == v){
+        } else if (zx2_llt == v) {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx2Id);
             startActivity(intent);
-        }else if(obtain_password == v){
-            if(user_et.getText().toString().length() != 0){
-                timeCountUtil = new TimeCountUtil((Activity)mContext, 60000, 1000, obtain_password);
+        } else if (obtain_password == v) {
+            if (user_et.getText().toString().length() != 0) {
+                timeCountUtil = new TimeCountUtil((Activity) mContext, 60000, 1000, obtain_password);
                 timeCountUtil.start();
                 RequestParams params = new RequestParams();
-                params.addQueryStringParameter("user_et",user_et.getText().toString());
-                new BaseTask<JsonResult<String>,String>(mContext,R.string.download_notice){
+                params.addQueryStringParameter("user_et", user_et.getText().toString());
+                new BaseTask<JsonResult<String>, String>(mContext, R.string.download_notice) {
 
                     @Override
                     public TypeToken setTypeToken() {
-                        return new TypeToken<String>(){};
+                        return new TypeToken<String>() {
+                        };
                     }
 
                     @Override
                     public void onSuccess() {
-                        if(result.isSuccess()){
-                            CommonUtil.showToastToShort(mContext,"密码已通过短信发送至你的手机");
-                        }else{
-                            CommonUtil.showToastToShort(mContext,result.getMsg());
+                        if (result.isSuccess()) {
+                            CommonUtil.showToastToShort(mContext, "密码已通过短信发送至你的手机");
+                        } else {
+                            CommonUtil.showToastToShort(mContext, result.getMsg());
                         }
                     }
-                }.requestByPost(Constant.URL.OBTAIN_PASSWORD,params);
-            }else{
-                CommonUtil.showToastToShort(mContext,"请输入手机号");
+                }.requestByPost(Constant.URL.OBTAIN_PASSWORD, params);
+            } else {
+                CommonUtil.showToastToShort(mContext, "请输入手机号");
             }
         }
     }
 
-    public void doLogin(){
+    public void doLogin() {
         if (!TextUtils.isEmpty(user_et.getText().toString())
                 && !TextUtils.isEmpty(pwd_et.getText().toString())) {
             RequestParams params = new RequestParams();

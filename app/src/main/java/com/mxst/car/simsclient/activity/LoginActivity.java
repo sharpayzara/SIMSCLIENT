@@ -22,6 +22,8 @@ import com.mxst.car.simsclient.utils.TimeCountUtil;
 
 import org.json.JSONObject;
 
+import java.util.Date;
+
 public class LoginActivity extends Activity implements View.OnClickListener{
     Context mContext;
     ClearEditText phone_num;
@@ -93,6 +95,8 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                             Constant.AUTHENTICATION_TOKEN = result.getRecord().optString("authenticationToken");
                             new PreferenceService(mContext).saveUserName(phone_num.getText().toString());
                             Constant.isLoginState = false;
+                            PreferenceService ps = new PreferenceService(mContext);
+                            ps.saveLoginDate(new Date().getTime());
                             CommonUtil.showToastToShort(mContext,"登录成功");
                             setResult(Constant.REQUESTCODE.LOGINBACK);
                             finish();

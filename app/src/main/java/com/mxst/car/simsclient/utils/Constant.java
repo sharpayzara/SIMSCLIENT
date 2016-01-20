@@ -27,9 +27,21 @@ public class Constant {
     public static final String FRAGMENT_FLAG_FIND = "找车";
     public static final String FRAGMENT_FLAG_MARKET = "购物车";
 
+    //保存到本地的目录 (头像)
+    public static final String SAVE_DIRECTORY = "/SIMS";
+    //保存到本地图片的名字
+    public static final String SAVE_PIC_NAME="head.jpg";
+
     public static String AUTHENTICATION_TOKEN = "";
     public static final String SHAREDPREFERENCES_NAME = "simsUser";
     public static class REQUESTCODE {
+
+        public static final int PHOTO_REQUEST_TAKEPHOTO = 1;// 拍照
+        public static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
+        public static final int PHOTO_REQUEST_CUT = 3;// 结果
+
+
+
         public static final int CHOOSERES = 1;
         public static final int CHOOSEBRAND = 2;
         public static final int CHOOSESTORE = 3;
@@ -37,6 +49,9 @@ public class Constant {
         public static final int LOGINBACK = 10;
         public static final int CHOOSEJG = 11;
         public static final int ORDEREPIREBACK = 12;
+        public static final int NICKNAME = 13;
+
+
     }
 
     public static class URL {
@@ -78,6 +93,7 @@ public class Constant {
         public static final String COLLECT = CTX_PATH + "brand/collect";
         public static final String GETCOLLECTSTATUS = CTX_PATH + "news/getCollectStatus";
         public static final String SAVEEVALUATE = CTX_PATH + "artisan/saveComment";
+        public static final String PERSONINFO = CTX_PATH + "person/getPersonInfo";
     }
 
 }

@@ -4,16 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
+import com.mxst.car.simsclient.utils.CommonUtil;
+import com.mxst.car.simsclient.utils.Constant;
 
 public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener {
     Context mContext;
     TextView nickName, phone;
     LinearLayout headImg_layout, collect_lly, setup_lly, score_llt, account_llt;
+    BitmapUtils bitmapUtils;
+    ImageView headimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,9 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         phone = (TextView) findViewById(R.id.phone);
         nickName.setText(getIntent().getStringExtra("nickName"));
         phone.setText(getIntent().getStringExtra("phone"));
+        headimg = (ImageView) findViewById(R.id.headImg);
+        bitmapUtils = new BitmapUtils(this);
+        bitmapUtils.display(headimg, getIntent().getStringExtra("img"));
     }
 
 
@@ -61,6 +70,15 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
             mContext.startActivity(intent);
         } else if (v == score_llt) {
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Constant.REQUESTCODE.NICKNAME) {
+            CommonUtil.getBitMapUtils(this).display(headimg, data.getStringExtra("img"));
+            nickName.setText(data.getStringExtra("name"));
         }
     }
 }

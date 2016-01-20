@@ -61,6 +61,7 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
                         isCollect = true;
                         collect.setBackgroundResource(R.drawable.btn_collect_true);
                     } else {
+                        isCollect = false;
                         collect.setBackgroundResource(R.drawable.btn_collect);
                     }
                 }
