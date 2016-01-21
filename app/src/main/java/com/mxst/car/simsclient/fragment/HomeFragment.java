@@ -148,6 +148,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         loadData();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            loadData();
+        }
+    }
 
     private void loadData() {
         new BaseTask<JsonResult<HomeInfoEntity>, String>(mContext) {
@@ -228,7 +235,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             intent.putExtra("phone", phone.getText().toString());
             intent.putExtra("nickName", nickName.getText().toString());
             intent.putExtra("img", img);
-            mContext.startActivity(intent);
+            ((Activity) mContext).startActivityForResult(intent, 1);
         } else if (v == qdFlg) {
             if (qdFlg.getText().toString().equals("本日签到")) {
                 new BaseTask<JsonResult<String>, String>(mContext) {
