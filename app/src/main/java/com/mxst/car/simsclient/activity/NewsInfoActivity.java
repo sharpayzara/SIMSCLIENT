@@ -83,11 +83,6 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
                     startActivity(intent);
                     return;
                 }
-                if (isCollect) {
-                    collect.setBackgroundResource(R.drawable.btn_collect);
-                } else {
-                    collect.setBackgroundResource(R.drawable.btn_collect_true);
-                }
                 collect();
 
             }
@@ -109,6 +104,14 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
+
+                    if (isCollect) {
+                        collect.setBackgroundResource(R.drawable.btn_collect);
+                        isCollect = false;
+                    } else {
+                        collect.setBackgroundResource(R.drawable.btn_collect_true);
+                        isCollect = true;
+                    }
                     Toast.makeText(NewsInfoActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }
