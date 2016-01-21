@@ -1,6 +1,5 @@
 package com.mxst.car.simsclient.activity.base;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -10,13 +9,15 @@ import android.widget.LinearLayout;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
 
+import cn.jpush.android.api.InstrumentedActivity;
+
 /**
  * author   Joy
  * Date:  2016/1/4.
  * version:  V1.0
  * Description:
  */
-public class CommonHeadPanelActivity extends Activity {
+public class CommonHeadPanelActivity extends InstrumentedActivity{
     LinearLayout backBtn;
     HeadControlPanel headControlPanel;
     private boolean isCanBack ;

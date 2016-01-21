@@ -1,6 +1,5 @@
 package com.mxst.car.simsclient.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,7 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-public class SplashActivity extends Activity {
+import cn.jpush.android.api.InstrumentedActivity;
+
+public class SplashActivity extends InstrumentedActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,5 @@
 package com.mxst.car.simsclient.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,9 +14,10 @@ import com.mxst.car.simsclient.layout.HackyViewPager;
 
 import java.util.ArrayList;
 
+import cn.jpush.android.api.InstrumentedActivity;
 import uk.co.senab.photoview.PhotoView;
 
-public class ViewImageActivity extends Activity {
+public class ViewImageActivity extends InstrumentedActivity {
     HackyViewPager viewPager;
     Context mContext;
     ArrayList<Bitmap> imageList;

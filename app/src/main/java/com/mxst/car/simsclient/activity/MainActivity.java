@@ -24,6 +24,8 @@ import com.mxst.car.simsclient.layout.BottomControlPanel;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
 import com.mxst.car.simsclient.utils.Constant;
 
+import cn.jpush.android.api.JPushInterface;
+
 import static com.mxst.car.simsclient.layout.BottomControlPanel.BottomPanelCallback;
 
 public class MainActivity extends FragmentActivity implements BottomPanelCallback {
@@ -238,5 +240,19 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         /*然后在碎片中调用重写的onActivityResult方法*/
         f.onActivityResult(requestCode, resultCode, data);
     }
+    public void onStart() {
+        super.onStart();
+    }
+
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
 }
 

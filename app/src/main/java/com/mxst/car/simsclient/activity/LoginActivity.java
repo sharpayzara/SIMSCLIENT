@@ -1,6 +1,5 @@
 package com.mxst.car.simsclient.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -24,7 +23,9 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class LoginActivity extends Activity implements View.OnClickListener{
+import cn.jpush.android.api.InstrumentedActivity;
+
+public class LoginActivity extends InstrumentedActivity implements View.OnClickListener{
     Context mContext;
     ClearEditText phone_num;
     EditText password_num;

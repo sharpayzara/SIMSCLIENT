@@ -3,6 +3,7 @@ package com.mxst.car.simsclient.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -74,7 +75,13 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
         id = getIntent().getStringExtra("id");
         mWebView = (WebView) findViewById(R.id.news_web);
         collect = (Button) findViewById(R.id.info_collect);
-        mWebView.loadUrl("http://222.177.210.200/supplier/news/getNewsInfo?id=" + id);
+        String tempUrl = getIntent().getStringExtra("url");
+        if(!TextUtils.isEmpty(tempUrl)){
+            mWebView.loadUrl(tempUrl);
+        }else{
+            mWebView.loadUrl("http://222.177.210.200/supplier/news/getNewsInfo?id=" + id);
+        }
+
         collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
