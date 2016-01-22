@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
@@ -16,6 +17,7 @@ import com.mxst.car.simsclient.activity.base.CommonHeadPanelActivity;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.utils.Constant;
+import com.mxst.car.simsclient.utils.ShareUtil;
 
 import org.json.JSONObject;
 
@@ -31,6 +33,7 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
     private WebView mWebView;
     private Button collect;
     private boolean isCollect = false;
+    private LinearLayout share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +78,23 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
         id = getIntent().getStringExtra("id");
         mWebView = (WebView) findViewById(R.id.news_web);
         collect = (Button) findViewById(R.id.info_collect);
+        share = (LinearLayout) findViewById(R.id.info_share);
         String tempUrl = getIntent().getStringExtra("url");
         if(!TextUtils.isEmpty(tempUrl)){
             mWebView.loadUrl(tempUrl);
         }else{
             mWebView.loadUrl("http://222.177.210.200/supplier/news/getNewsInfo?id=" + id);
         }
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareUtil.content = "111";
+                ShareUtil.title = "111";
+                ShareUtil.url = "www.baidu.com";
+                ShareUtil.showPopupWindow(NewsInfoActivity.this, getWindow().getDecorView());
+            }
+        });
 
         collect.setOnClickListener(new View.OnClickListener() {
             @Override
