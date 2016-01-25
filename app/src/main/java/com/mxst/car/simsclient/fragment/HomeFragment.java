@@ -76,6 +76,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initData();
         return root;
     }
+    public void onResume() {
+     super.onResume();
+        loadData();
+    }
 
     private void initUI() {
         jifenllt = (LinearLayout) root.findViewById(R.id.jifenllt);
@@ -115,6 +119,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         diamond1 = (ImageView) root.findViewById(R.id.diamond1);
         diamond2 = (ImageView) root.findViewById(R.id.diamond2);
         diamond3 = (ImageView) root.findViewById(R.id.diamond3);
+        trade_llt = (LinearLayout) root.findViewById(R.id.trade_llt);
+        tjkf = (TextView) root.findViewById(R.id.tjkf);
+        trade_llt.setOnClickListener(this);
+        tjkf.setOnClickListener(this);
         cx_more_lly.setOnClickListener(this);
         zx_more_lly.setOnClickListener(this);
         market_more_lly.setOnClickListener(this);
@@ -148,7 +156,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void initData() {
         utils = new BitmapUtils(mContext);
         utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
-        loadData();
     }
 
     @Override
@@ -180,10 +187,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 */
                         LayoutInflater inflater = LayoutInflater.from(mContext);
                         car_group_llt.removeAllViews();
-                        for (HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
+                        for (final HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
                             View view = inflater.inflate(R.layout.item_car_view, null);
                             utils.display(view.findViewById(R.id.rmcx_iv), entity.getImg());
                             // car_group_llt.addView(view);
+                            view.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(getActivity(), BrandFindActivity.class);
+                                    intent.putExtra("brand", entity.getBrand());
+                                    startActivity(intent);
+                                }
+                            });
                             car_group_llt.addView(view, new ViewGroup.LayoutParams(SizeUtils.dip2px(mContext, 60), ViewGroup.LayoutParams.MATCH_PARENT));
                         }
 
@@ -291,7 +306,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx2Id);
             startActivity(intent);
-        } else if (obtain_password == v) {
+        }else if(trade_llt == v){
+            Intent intent = new Intent(mContext, TradeListActivity.class);
+            startActivity(intent);
+        } else if (tjkf == v) {
+            Intent intent = new Intent(mContext, RecommendKFActivity.class);
+            startActivity(intent);
+        }
+
+
+        else if (obtain_password == v) {
             if (user_et.getText().toString().length() != 0) {
                 timeCountUtil = new TimeCountUtil((Activity) mContext, 60000, 1000, obtain_password);
                 timeCountUtil.start();

@@ -30,7 +30,7 @@ public class CommonUtil {
     public static boolean judgeTokenValid(Context context){
         PreferenceService ps = new PreferenceService(context);
         Long intervalTime = CommonUtil.getCurrentDate() - ps.getLoginDate();
-        if(intervalTime < 20000){
+        if(intervalTime < 86400000){
             return true;
         }
         /*if(intervalTime < 5000){

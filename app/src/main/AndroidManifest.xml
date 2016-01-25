@@ -175,6 +175,10 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.TradeDetailActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RecommendKFActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RecommendKFDeatilActivity"
+                  android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ViewImageActivity"
             android:theme="@style/ThemeActivity"/>
