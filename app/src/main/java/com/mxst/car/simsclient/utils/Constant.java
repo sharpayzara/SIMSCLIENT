@@ -42,7 +42,6 @@ public class Constant {
         public static final int PHOTO_REQUEST_CUT = 3;// 结果
 
 
-
         public static final int CHOOSERES = 1;
         public static final int CHOOSEBRAND = 2;
         public static final int CHOOSESTORE = 3;
@@ -96,6 +95,11 @@ public class Constant {
         public static final String SAVEEVALUATE = CTX_PATH + "artisan/saveComment";
         public static final String PERSONINFO = CTX_PATH + "person/getPersonInfo";
         public static final String WXLIST = CTX_PATH + "wx/wxList";
+        public static final String WXDETAIL = CTX_PATH + "wx/wxDetail";
+        public static final String DIKOU = CTX_PATH + "wx/dikou";
+
+        public static final String FINDCUSTS = CTX_PATH + "indexPage/findCusts";
+
     }
 
 }
