@@ -7,14 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.adapter.MarketPagerAdapter;
 import com.mxst.car.simsclient.utils.Constant;
+import com.mxst.car.simsclient.utils.SizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,14 +53,18 @@ public class  MarketFragment extends Fragment implements View.OnClickListener,Vi
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(fragments.size() - 1);
         viewPager.setOnPageChangeListener(this);
-        mCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        mCheckbox.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getX() < SizeUtils.getSysWidthPx(mContext)/2 && mCheckbox.isChecked() == false){
+                    mCheckbox.setChecked(true);
                     viewPager.setCurrentItem(0);
-                }else{
+                }else if(event.getX() > SizeUtils.getSysWidthPx(mContext)/2 && mCheckbox.isChecked() == true){
+                    mCheckbox.setChecked(false);
                     viewPager.setCurrentItem(1);
                 }
+                return true;
             }
         });
     }

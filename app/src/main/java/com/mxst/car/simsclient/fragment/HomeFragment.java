@@ -23,9 +23,11 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.activity.BrandFindActivity;
 import com.mxst.car.simsclient.activity.MainActivity;
 import com.mxst.car.simsclient.activity.NewsInfoActivity;
 import com.mxst.car.simsclient.activity.RecommendActivity;
+import com.mxst.car.simsclient.activity.TradeListActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
 import com.mxst.car.simsclient.activity.UserScoreActivity;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -45,7 +47,7 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout login_layout, user_layout;
-    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt;
+    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt,trade_llt;
     ClearEditText user_et;
     EditText pwd_et;
     LayoutInflater inflater;
@@ -70,8 +72,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         this.inflater = inflater;
         ps = new PreferenceService(mContext);
         initUI();
-        initData();
+       initData();
         return root;
+    }
+    public void onResume() {
+     super.onResume();
+        loadData();
     }
 
     private void initUI() {
@@ -112,7 +118,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         diamond1 = (ImageView) root.findViewById(R.id.diamond1);
         diamond2 = (ImageView) root.findViewById(R.id.diamond2);
         diamond3 = (ImageView) root.findViewById(R.id.diamond3);
+        trade_llt = (LinearLayout) root.findViewById(R.id.trade_llt);
         cx_more_lly.setOnClickListener(this);
+        trade_llt.setOnClickListener(this);
         zx_more_lly.setOnClickListener(this);
         market_more_lly.setOnClickListener(this);
         login_btn.setOnClickListener(this);
@@ -145,7 +153,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void initData() {
         utils = new BitmapUtils(mContext);
         utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
-        loadData();
     }
 
     @Override
@@ -177,10 +184,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 */
                         LayoutInflater inflater = LayoutInflater.from(mContext);
                         car_group_llt.removeAllViews();
-                        for (HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
+                        for (final HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
                             View view = inflater.inflate(R.layout.item_car_view, null);
                             utils.display(view.findViewById(R.id.rmcx_iv), entity.getImg());
                             // car_group_llt.addView(view);
+                            view.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(getActivity(), BrandFindActivity.class);
+                                    intent.putExtra("brand", entity.getBrand());
+                                    startActivity(intent);
+                                }
+                            });
                             car_group_llt.addView(view, new ViewGroup.LayoutParams(SizeUtils.dip2px(mContext, 60), ViewGroup.LayoutParams.MATCH_PARENT));
                         }
 
@@ -250,6 +265,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     public void onSuccess() {
                         if (result.isSuccess()) {
                             qdFlg.setText("已签到");
+                            loadData();
                         }
                     }
                 }.requestByPost(Constant.URL.QIANDAO, new RequestParams());
@@ -288,7 +304,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx2Id);
             startActivity(intent);
-        } else if (obtain_password == v) {
+        }else if(trade_llt == v){
+            Intent intent = new Intent(mContext, TradeListActivity.class);
+            startActivity(intent);
+        }
+        else if (obtain_password == v) {
             if (user_et.getText().toString().length() != 0) {
                 timeCountUtil = new TimeCountUtil((Activity) mContext, 60000, 1000, obtain_password);
                 timeCountUtil.start();

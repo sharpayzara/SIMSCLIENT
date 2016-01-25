@@ -23,7 +23,7 @@ public class Constant {
     //Fragment的标识
     public static final String FRAGMENT_FLAG_HOME = "首页";
     public static final String FRAGMENT_FLAG_INFO = "资讯";
-    public static final String FRAGMENT_FLAG_REPAIR = "维修";
+    public static final String FRAGMENT_FLAG_REPAIR = "会员服务中心";
     public static final String FRAGMENT_FLAG_FIND = "找车";
     public static final String FRAGMENT_FLAG_MARKET = "购物车";
 
@@ -95,6 +95,7 @@ public class Constant {
         public static final String SAVEEVALUATE = CTX_PATH + "artisan/saveComment";
         public static final String PERSONINFO = CTX_PATH + "person/getPersonInfo";
         public static final String WXLIST = CTX_PATH + "wx/wxList";
+        public static final String TRADELIST = CTX_PATH + "cust/getcjCusts";
     }
 
 }
