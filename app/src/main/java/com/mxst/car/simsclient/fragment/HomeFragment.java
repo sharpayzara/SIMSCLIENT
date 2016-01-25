@@ -23,10 +23,12 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.activity.BrandFindActivity;
 import com.mxst.car.simsclient.activity.MainActivity;
 import com.mxst.car.simsclient.activity.NewsInfoActivity;
 import com.mxst.car.simsclient.activity.RecommendActivity;
 import com.mxst.car.simsclient.activity.RecommendKFActivity;
+import com.mxst.car.simsclient.activity.TradeListActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
 import com.mxst.car.simsclient.activity.UserScoreActivity;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -46,7 +48,7 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout login_layout, user_layout;
-    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt;
+    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt,trade_llt;
     ClearEditText user_et;
     EditText pwd_et;
     LayoutInflater inflater;
@@ -95,7 +97,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         user_et.setText(ps.getUserName());
         ps.savePassword(pwd_et.getText().toString());
         login_btn = (Button) root.findViewById(R.id.login_btn);
-        tjkf = (TextView) root.findViewById(R.id.tjkf);
         car_group_llt = (LinearLayout) root.findViewById(R.id.car_group_llt);
         headImg = (ImageView) root.findViewById(R.id.headImg);
         phone = (TextView) root.findViewById(R.id.phone);
@@ -119,7 +120,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         market_more_lly.setOnClickListener(this);
         login_btn.setOnClickListener(this);
         user_btn.setOnClickListener(this);
-        tjkf.setOnClickListener(this);
         qdFlg.setOnClickListener(this);
         jifenllt.setOnClickListener(this);
         recommend_lin.setOnClickListener(this);
@@ -317,9 +317,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             } else {
                 CommonUtil.showToastToShort(mContext, "请输入手机号");
             }
-        } else if (tjkf == v) {
-            Intent intent = new Intent(mContext, RecommendKFActivity.class);
-            startActivity(intent);
         }
     }
 

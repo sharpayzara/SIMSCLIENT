@@ -72,7 +72,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
 
             @Override
             public void onSuccess() {
-                if (result.isSuccess()) {
+                if (result.isSuccess() && result.getRecord() != null) {
                     configinfoList = result.getRecord().getConfigInfo();
                     bean = result.getRecord().getResourceDetail();
                     id = bean.getId() + "";

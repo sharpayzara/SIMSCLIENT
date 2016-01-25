@@ -24,6 +24,7 @@ public class CollectZYList implements Serializable{
         private String brand;
         private String vehicleXinghao;
         private String mj;
+        private String colorId;
         private String spec;
         private String vehicleType;
         private String commit_date;
@@ -50,6 +51,14 @@ public class CollectZYList implements Serializable{
 
         public void setSourceType(String sourceType) {
             this.sourceType = sourceType;
+        }
+
+        public String getColorId() {
+            return colorId;
+        }
+
+        public void setColorId(String colorId) {
+            this.colorId = colorId;
         }
 
         public void setBrand(String brand) {

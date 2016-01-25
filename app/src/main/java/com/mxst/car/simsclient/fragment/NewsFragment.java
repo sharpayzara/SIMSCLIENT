@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
@@ -54,8 +57,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private NewsCentreAdapter adapter;
     private int llyHeight;
     private ImageView search_icon;
+    private MaterialRefreshLayout materialRefreshLayout;
+    private int currentPage = 1;
     ClearEditText search_et;
-
+    private  String tempStr;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_news, container, false);
@@ -63,8 +68,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         this.inflater = inflater;
         llyHeight = (int) (getResources().getDisplayMetrics().density * 45 + 0.5);
         initUI();
-        getNewsList("");
         return view;
+    }
+
+    public void onResume() {
+        super.onResume();
+        if(TextUtils.isEmpty(search_et.getText())){
+            getNewsList("");
+        }else{
+            searchNewsList(search_et.getText().toString());
+        }
+
     }
 
 
@@ -84,6 +98,32 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         newsRecl.setAdapter(adapter);
         newsRecl.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         newsRecl.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+
+        materialRefreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.materialRefreshLayout);
+        materialRefreshLayout.setLoadMore(true);
+        materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+                currentPage = 1;
+                bean.clear();
+                if(TextUtils.isEmpty(search_et.getText().toString())){
+                    getNewsList(val);
+                }else{
+                    searchNewsList(search_et.getText().toString());
+                }
+                materialRefreshLayout.setLoadMore(true);
+            }
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                currentPage++;
+                if(TextUtils.isEmpty(search_et.getText().toString())){
+                    getNewsList(val);
+                }else{
+                    searchNewsList(search_et.getText().toString());
+                }
+            }
+        });
+
         adapter.setOnItemClickListener(new NewsCentreAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -110,6 +150,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
+                bean.clear();
+                currentPage = 1;
                 searchNewsList(s.toString());
             }
         });
@@ -120,25 +162,34 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.news_news_tv:
+                currentPage = 1;
                 val = "PR";
+                bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_guide_tv:
                 val = "CC";
+                currentPage = 1;
+                bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_price_tv:
                 val = "AC";
+                currentPage = 1;
+                bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_culture_tv:
                 val = "AP";
+                currentPage = 1;
+                bean.clear();
                 getNewsList(val);
                 break;
             case R.id.search_icon:
                 doCloseLayout(search_lly);
                 break;
             case R.id.cancel_tv:
+                search_et.setText("");
                 doOpenLayout(search_lly);
                 break;
 
@@ -148,7 +199,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private void getNewsList(String val) {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("newsTypeVal", val);
-        // params.addQueryStringParameter("page",  "");
+         params.addQueryStringParameter("page",  currentPage+"");
 
         new BaseTask<JsonResult<JSONObject>, String>(getActivity(), "加载中") {
 
@@ -161,10 +212,15 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
-                    bean.clear();
                     List<IndexList> tempList = new Gson().fromJson(result.getRecord().optString("newsList"),
                             new TypeToken<List<IndexList>>() {
                             }.getType());
+                    if(tempList.size() == 0){
+                        materialRefreshLayout.setLoadMore(false);
+                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefreshLoadMore();
+                        return;
+                    }
                     Iterator<IndexList> it = tempList.iterator();
                     while (it.hasNext()) {
                         bean.add(it.next());
@@ -173,6 +229,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(getActivity(), result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
+                materialRefreshLayout.finishRefresh();
+                materialRefreshLayout.finishRefreshLoadMore();
             }
         }.requestByPost(Constant.URL.GET_NEWS_LIST, params);
     }
@@ -213,7 +271,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private void searchNewsList(String val) {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("titleVal", val);
-        // params.addQueryStringParameter("page",  "");
+        params.addQueryStringParameter("page",  currentPage+"");
 
         new BaseTask<JsonResult<JSONObject>, String>(getActivity()) {
 
@@ -226,10 +284,15 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
-                    bean.clear();
                     List<IndexList> tempList = new Gson().fromJson(result.getRecord().optString("newsList"),
                             new TypeToken<List<IndexList>>() {
                             }.getType());
+                    if(tempList.size() == 0){
+                        materialRefreshLayout.setLoadMore(false);
+                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefreshLoadMore();
+                        return;
+                    }
                     Iterator<IndexList> it = tempList.iterator();
                     while (it.hasNext()) {
                         bean.add(it.next());
@@ -238,8 +301,18 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(getActivity(), result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
+                materialRefreshLayout.finishRefresh();
+                materialRefreshLayout.finishRefreshLoadMore();
             }
         }.requestByPost(Constant.URL.SEARCH_NEWS_LIST, params);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(!TextUtils.isEmpty(search_et.getText())){
+            search_et.setText("");
+            doOpenLayout(search_lly);
+        }
+    }
 }

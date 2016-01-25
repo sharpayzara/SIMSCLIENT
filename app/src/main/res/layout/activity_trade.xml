@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/resource_bg"
+              android:orientation="vertical">
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_panel_layout" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/myCycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

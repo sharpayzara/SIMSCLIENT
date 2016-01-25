@@ -1,22 +1,19 @@
 package com.mxst.car.simsclient.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
-import com.mxst.car.simsclient.activity.ViewImageActivity;
 import com.mxst.car.simsclient.entity.CollectZXList;
 import com.mxst.car.simsclient.utils.TimeUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.ViewHolder> {
@@ -50,14 +47,20 @@ public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(final CollectZXAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CollectZXAdapter.ViewHolder holder, final int position) {
         holder.title.setText(bean.get(position).getTitle());
         holder.subtitle.setText(bean.get(position).getTitle());
         String date = TimeUtils.getTime(bean.get(position).getRelease_time());
         holder.releaseTime.setText(date);
         holder.dianjishu.setText(bean.get(position).getDianjishu() + "");
         utils.display(holder.img, bean.get(position).getImg());
-        holder.img.setOnClickListener(new View.OnClickListener() {
+        holder.zx_llt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(holder.zx_llt,position);
+            }
+        });
+      /*  holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ViewImageActivity.class);
@@ -66,7 +69,7 @@ public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.View
                 intent.putParcelableArrayListExtra("imgList", tempList);
                 mContext.startActivity(intent);
             }
-        });
+        });*/
     }
 
     public int getItemCount() {
@@ -75,6 +78,7 @@ public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView title, subtitle, releaseTime, dianjishu;
+        private LinearLayout zx_llt;
         private ImageView img;
 
         public ViewHolder(View itemView) {
@@ -84,6 +88,7 @@ public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.View
             releaseTime = (TextView) itemView.findViewById(R.id.releaseTime);
             dianjishu = (TextView) itemView.findViewById(R.id.dianjishu);
             img = (ImageView) itemView.findViewById(R.id.img);
+            zx_llt = (LinearLayout) itemView.findViewById(R.id.zx_llt);
             img.setDrawingCacheEnabled(true);
         }
     }

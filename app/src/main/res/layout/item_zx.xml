@@ -10,6 +10,7 @@
         android:layout_height="1dp"
         android:background="@color/duck_line"/>
     <LinearLayout
+        android:id="@+id/zx_llt"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:gravity="center"

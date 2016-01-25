@@ -1,6 +1,7 @@
 package com.mxst.car.simsclient.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -55,9 +56,25 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
         list = new ArrayList<CollectZXList.ZXEntity>();
         list2 = new ArrayList<CollectZYList.ZYEntity>();
         mAdapterZX = new CollectZXAdapter(mContext, list);
+        mAdapterZX.setOnItemClickListener(new CollectZXAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext, NewsInfoActivity.class);
+                intent.putExtra("id", list.get(position).getId() + "");
+                startActivity(intent);
+            }
+        });
         mRecyclerViewZX.setAdapter(mAdapterZX);
         mRecyclerViewZX.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mAdapterZY = new CollectZYAdapter(mContext, list2);
+        mAdapterZY.setOnItemClickListener(new CollectZYAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext, CarDetailsActivity.class);
+                intent.putExtra("id", list2.get(position).getColorId() + "");
+                startActivity(intent);
+            }
+        });
         mRecyclerViewZY.setAdapter(mAdapterZY);
         mRecyclerViewZY.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         loadData();
