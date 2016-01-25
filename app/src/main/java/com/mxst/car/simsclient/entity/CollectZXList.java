@@ -21,7 +21,7 @@ public class CollectZXList implements Serializable{
         private String id;
         private String title;
         private String img;
-        private String release_time;
+        private Long release_time;
         private String dianjishu;
 
         public String getId() {
@@ -48,11 +48,11 @@ public class CollectZXList implements Serializable{
             this.img = img;
         }
 
-        public String getRelease_time() {
+        public Long getRelease_time() {
             return release_time;
         }
 
-        public void setRelease_time(String release_time) {
+        public void setRelease_time(Long release_time) {
             this.release_time = release_time;
         }
 

@@ -64,6 +64,9 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
             startActivityForResult(intent, 1);
         } else if (v == collect_lly) {
             Intent intent = new Intent(mContext, CollectActivity.class);
+            intent.putExtra("img", getIntent().getStringExtra("img"));
+            intent.putExtra("nickName", getIntent().getStringExtra("nickName"));
+            intent.putExtra("phone", getIntent().getStringExtra("phone"));
             mContext.startActivity(intent);
         } else if (v == setup_lly) {
             Intent intent = new Intent(mContext, UserSetUpActivity.class);
