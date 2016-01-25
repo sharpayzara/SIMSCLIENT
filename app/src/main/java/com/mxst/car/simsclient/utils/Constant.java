@@ -97,7 +97,9 @@ public class Constant {
         public static final String WXLIST = CTX_PATH + "wx/wxList";
         public static final String WXDETAIL = CTX_PATH + "wx/wxDetail";
         public static final String DIKOU = CTX_PATH + "wx/dikou";
+
         public static final String FINDCUSTS = CTX_PATH + "indexPage/findCusts";
+
     }
 
 }
