@@ -329,6 +329,7 @@
                     android:layout_marginRight="5dp"
                     android:src="@drawable/deal"/>
                 <TextView
+                    android:id="@+id/tjkf"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"

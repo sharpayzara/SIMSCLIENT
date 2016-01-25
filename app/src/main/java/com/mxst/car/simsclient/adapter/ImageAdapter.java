@@ -30,6 +30,16 @@ public class ImageAdapter extends PagerAdapter {
     public void finishUpdate(View arg0) {
 
     }
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
 
     @Override
     public int getCount() {
@@ -37,8 +47,16 @@ public class ImageAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(View arg0, int arg1) {
+    public Object instantiateItem(View arg0, final int arg1) {
         ((ViewPager) arg0).addView(views.get(arg1), 0);
+        views.get(arg1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(views.get(arg1), arg1);
+                }
+            }
+        });
         CommonUtil.getBitMapUtils(mContext).display(views.get(arg1),urlList.get(arg1));
         return views.get(arg1);
     }

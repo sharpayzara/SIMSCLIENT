@@ -23,23 +23,23 @@ public class Constant {
     //Fragment的标识
     public static final String FRAGMENT_FLAG_HOME = "首页";
     public static final String FRAGMENT_FLAG_INFO = "资讯";
-    public static final String FRAGMENT_FLAG_REPAIR = "维修";
+    public static final String FRAGMENT_FLAG_REPAIR = "会员服务中心";
     public static final String FRAGMENT_FLAG_FIND = "找车";
     public static final String FRAGMENT_FLAG_MARKET = "购物车";
 
     //保存到本地的目录 (头像)
     public static final String SAVE_DIRECTORY = "/SIMS";
     //保存到本地图片的名字
-    public static final String SAVE_PIC_NAME="head.jpg";
+    public static final String SAVE_PIC_NAME = "head.jpg";
 
     public static String AUTHENTICATION_TOKEN = "";
     public static final String SHAREDPREFERENCES_NAME = "simsUser";
+
     public static class REQUESTCODE {
 
         public static final int PHOTO_REQUEST_TAKEPHOTO = 1;// 拍照
         public static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
         public static final int PHOTO_REQUEST_CUT = 3;// 结果
-
 
 
         public static final int CHOOSERES = 1;
@@ -95,6 +95,9 @@ public class Constant {
         public static final String SAVEEVALUATE = CTX_PATH + "artisan/saveComment";
         public static final String PERSONINFO = CTX_PATH + "person/getPersonInfo";
         public static final String WXLIST = CTX_PATH + "wx/wxList";
+        public static final String WXDETAIL = CTX_PATH + "wx/wxDetail";
+        public static final String DIKOU = CTX_PATH + "wx/dikou";
+        public static final String FINDCUSTS = CTX_PATH + "indexPage/findCusts";
     }
 
 }

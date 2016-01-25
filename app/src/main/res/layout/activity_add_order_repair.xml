@@ -224,7 +224,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/cancel_icon" />
+                android:src="@drawable/btn_reset" />
         </LinearLayout>
     </LinearLayout>
 
