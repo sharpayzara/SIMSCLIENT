@@ -190,6 +190,7 @@
         <activity android:name=".activity.JGChooseActivity" />
         <activity android:name=".activity.JGDetailActivity" />
         <activity android:name=".activity.InsureItemDetailActivity" />
+        <activity android:name=".activity.FixDetailActivity" />
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:theme="@style/Theme.UMDefault"
