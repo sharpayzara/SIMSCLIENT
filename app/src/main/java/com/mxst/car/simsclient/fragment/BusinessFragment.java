@@ -15,6 +15,7 @@ import com.cjj.MaterialRefreshListener;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.activity.FixDetailActivity;
 import com.mxst.car.simsclient.adapter.BusinessListAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;

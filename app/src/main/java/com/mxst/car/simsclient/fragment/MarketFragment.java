@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.adapter.MarketPagerAdapter;
@@ -51,6 +52,16 @@ public class  MarketFragment extends Fragment implements View.OnClickListener,Vi
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(fragments.size() - 1);
         viewPager.setOnPageChangeListener(this);
+        mCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    viewPager.setCurrentItem(0);
+                }else{
+                    viewPager.setCurrentItem(1);
+                }
+            }
+        });
     }
 
     private void initUI() {
