@@ -80,6 +80,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                         isCollect = true;
                         collectBtn.setBackgroundResource(R.drawable.btn_collect_true);
                     } else {
+                        isCollect = false;
                         collectBtn.setBackgroundResource(R.drawable.btn_collect);
                     }
                     car_detail_color_tv.setText(bean.getOutColor());
@@ -173,11 +174,6 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     startActivity(intent);
                     return;
                 }
-                if (isCollect) {
-                    collectBtn.setBackgroundResource(R.drawable.btn_collect);
-                } else {
-                    collectBtn.setBackgroundResource(R.drawable.btn_collect_true);
-                }
                 collect();
 
             }
@@ -200,6 +196,13 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
+                    if (isCollect) {
+                        collectBtn.setBackgroundResource(R.drawable.btn_collect);
+                        isCollect = false;
+                    } else {
+                        collectBtn.setBackgroundResource(R.drawable.btn_collect_true);
+                        isCollect = true;
+                    }
                     Toast.makeText(CarDetailsActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }

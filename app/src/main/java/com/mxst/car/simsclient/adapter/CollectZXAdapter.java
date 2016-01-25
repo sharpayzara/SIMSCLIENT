@@ -14,6 +14,7 @@ import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.activity.ViewImageActivity;
 import com.mxst.car.simsclient.entity.CollectZXList;
+import com.mxst.car.simsclient.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,9 +53,10 @@ public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.View
     public void onBindViewHolder(final CollectZXAdapter.ViewHolder holder, int position) {
         holder.title.setText(bean.get(position).getTitle());
         holder.subtitle.setText(bean.get(position).getTitle());
-        holder.releaseTime.setText(bean.get(position).getRelease_time());
-        holder.dianjishu.setText(bean.get(position).getDianjishu()+"");
-        utils.display(holder.img,bean.get(position).getImg());
+        String date = TimeUtils.getTime(bean.get(position).getRelease_time());
+        holder.releaseTime.setText(date);
+        holder.dianjishu.setText(bean.get(position).getDianjishu() + "");
+        utils.display(holder.img, bean.get(position).getImg());
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +74,7 @@ public class CollectZXAdapter extends RecyclerView.Adapter<CollectZXAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView title,subtitle,releaseTime,dianjishu;
+        private TextView title, subtitle, releaseTime, dianjishu;
         private ImageView img;
 
         public ViewHolder(View itemView) {

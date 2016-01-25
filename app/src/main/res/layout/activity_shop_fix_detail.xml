@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/resource_bg"
+              android:orientation="vertical">
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_panel_layout"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="#FFC000"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/shop_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="渝A888888888888"/>
+
+                <TextView
+                    android:id="@+id/shop_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="保养"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/shop_pz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:text="sdas"/>
+
+                <TextView
+                    android:id="@+id/shop_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:text="保养"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/shop_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="sdas"/>
+
+                <TextView
+                    android:id="@+id/shop_jg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="保养"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text="积分余额"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/shop_jfye"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text=":sadasd"/>
+
+            <TextView
+                android:id="@+id/shop_jfyeky"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text=":sadasd"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="待结算余额"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/shop_djsye"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text=":sadasd"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text="使用积分"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+
+            <EditText
+                android:id="@+id/shop_sjje_et"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shop_et_bg"
+                android:gravity="left"
+                android:paddingLeft="10dp"
+                android:textSize="16sp"
+                tools:text="600"/>
+
+            <TextView
+                android:id="@+id/shop_syjf_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text=":sadasd"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text="实际金额"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/shop_sjje"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text=":sadasd"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
