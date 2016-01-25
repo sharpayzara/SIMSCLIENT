@@ -94,6 +94,7 @@ public class Constant {
         public static final String GETCOLLECTSTATUS = CTX_PATH + "news/getCollectStatus";
         public static final String SAVEEVALUATE = CTX_PATH + "artisan/saveComment";
         public static final String PERSONINFO = CTX_PATH + "person/getPersonInfo";
+        public static final String WXLIST = CTX_PATH + "wx/wxList";
     }
 
 }
