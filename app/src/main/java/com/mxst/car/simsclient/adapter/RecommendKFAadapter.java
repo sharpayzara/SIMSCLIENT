@@ -50,9 +50,11 @@ public class RecommendKFAadapter extends RecyclerView.Adapter<RecommendKFAadapte
         holder.phoneTv.setText(bean.get(position).getPhone());
         if (!bean.get(position).getEffective().equals("有效")) {
             holder.bgTv.setBackgroundResource(R.drawable.return2);
+        }else {
+            holder.typeTv.setTextColor(mContext.getResources().getColor(R.color.title_orange));
+            holder.bgTv.setBackgroundResource(R.drawable.return1);
         }
-        holder.typeTv.setTextColor(mContext.getResources().getColor(R.color.title_orange));
-        holder.bgTv.setBackgroundResource(R.drawable.return1);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
