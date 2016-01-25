@@ -25,6 +25,7 @@ import com.mxst.car.simsclient.activity.FindHistoryActivity;
 import com.mxst.car.simsclient.activity.FindRepairActivity;
 import com.mxst.car.simsclient.activity.InsureListActivity;
 import com.mxst.car.simsclient.activity.JGBrandChooseActivity;
+import com.mxst.car.simsclient.activity.NewsInfoActivity;
 import com.mxst.car.simsclient.activity.OrderRepairActivity;
 import com.mxst.car.simsclient.adapter.ImageAdapter;
 import com.mxst.car.simsclient.business.BaseTask;
@@ -51,6 +52,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     ImageAdapter adapter;
     List<String> listUrls = new ArrayList<>();
     List<View> listViews = new ArrayList();
+    List<Integer> listid = new ArrayList();
     private AtomicInteger what = new AtomicInteger(0);
     private boolean isContinue = true;
 
@@ -66,7 +68,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
     private void initData() {
         loadData();
-        if(!TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN) && CommonUtil.judgeTokenValid(mContext)){
+        if (!TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN) && CommonUtil.judgeTokenValid(mContext)) {
             loadEvaluateData();
         }
     }
@@ -86,7 +88,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                 if (result.isSuccess()) {
                     if (result.getRecord().getEvaluateList().size() > 0) {
                         Intent intent = new Intent(mContext, EvaluateActivity.class);
-                        intent.putExtra("list",(Serializable) result.getRecord().getEvaluateList());
+                        intent.putExtra("list", (Serializable) result.getRecord().getEvaluateList());
                         startActivity(intent);
                     }
                 }
@@ -98,7 +100,8 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         new BaseTask<JsonResult<AdvertisementList>, String>(mContext, R.string.download_notice) {
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<AdvertisementList>() {};
+                return new TypeToken<AdvertisementList>() {
+                };
             }
 
             @Override
@@ -106,10 +109,12 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                 if (result.isSuccess()) {
                     listUrls.clear();
                     listViews.clear();
+                    listid.clear();
                     List<AdvertisementList.Advertisement> tempList = result.getRecord().getIndex();
                     imgFlag = tempList.size();
                     for (AdvertisementList.Advertisement adv : tempList) {
                         listUrls.add(adv.getAdImg());
+                        listid.add(adv.getId());
                         listViews.add(new ImageView(mContext));
                     }
                 }
@@ -132,6 +137,14 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
         contact_builder_rlt.setOnClickListener(this);
         query_problem.setOnClickListener(this);
         adapter = new ImageAdapter(mContext, listViews, listUrls);
+        adapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext, NewsInfoActivity.class);
+                intent.putExtra("id", listid.get(position)+"");
+                startActivity(intent);
+            }
+        });
         advPager.setAdapter(adapter);
         advPager.setOnPageChangeListener(new GuidePageChangeListener());
         advPager.setOnTouchListener(new View.OnTouchListener() {

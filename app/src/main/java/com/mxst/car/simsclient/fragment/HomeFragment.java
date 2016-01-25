@@ -27,6 +27,7 @@ import com.mxst.car.simsclient.activity.BrandFindActivity;
 import com.mxst.car.simsclient.activity.MainActivity;
 import com.mxst.car.simsclient.activity.NewsInfoActivity;
 import com.mxst.car.simsclient.activity.RecommendActivity;
+import com.mxst.car.simsclient.activity.RecommendKFActivity;
 import com.mxst.car.simsclient.activity.TradeListActivity;
 import com.mxst.car.simsclient.activity.UserActivity;
 import com.mxst.car.simsclient.activity.UserScoreActivity;
@@ -52,7 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     EditText pwd_et;
     LayoutInflater inflater;
     Context mContext;
-    TextView zx_title_1, zx_title_2, zx_content_1, zx_content_2;
+    TextView zx_title_1, zx_title_2, zx_content_1, zx_content_2, tjkf;
     ImageView zx_iv_1, zx_iv_2, headImg, diamond1, diamond2, diamond3;
     BitmapUtils utils;
     Button login_btn, obtain_password;
@@ -72,12 +73,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         this.inflater = inflater;
         ps = new PreferenceService(mContext);
         initUI();
-       initData();
+        initData();
         return root;
-    }
-    public void onResume() {
-     super.onResume();
-        loadData();
     }
 
     private void initUI() {
@@ -118,9 +115,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         diamond1 = (ImageView) root.findViewById(R.id.diamond1);
         diamond2 = (ImageView) root.findViewById(R.id.diamond2);
         diamond3 = (ImageView) root.findViewById(R.id.diamond3);
-        trade_llt = (LinearLayout) root.findViewById(R.id.trade_llt);
         cx_more_lly.setOnClickListener(this);
-        trade_llt.setOnClickListener(this);
         zx_more_lly.setOnClickListener(this);
         market_more_lly.setOnClickListener(this);
         login_btn.setOnClickListener(this);
@@ -153,6 +148,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void initData() {
         utils = new BitmapUtils(mContext);
         utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
+        loadData();
     }
 
     @Override
@@ -184,18 +180,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 */
                         LayoutInflater inflater = LayoutInflater.from(mContext);
                         car_group_llt.removeAllViews();
-                        for (final HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
+                        for (HomeInfoEntity.HotBrandEntity entity : result.getRecord().getHotBrand()) {
                             View view = inflater.inflate(R.layout.item_car_view, null);
                             utils.display(view.findViewById(R.id.rmcx_iv), entity.getImg());
                             // car_group_llt.addView(view);
-                            view.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(getActivity(), BrandFindActivity.class);
-                                    intent.putExtra("brand", entity.getBrand());
-                                    startActivity(intent);
-                                }
-                            });
                             car_group_llt.addView(view, new ViewGroup.LayoutParams(SizeUtils.dip2px(mContext, 60), ViewGroup.LayoutParams.MATCH_PARENT));
                         }
 
@@ -265,7 +253,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     public void onSuccess() {
                         if (result.isSuccess()) {
                             qdFlg.setText("已签到");
-                            loadData();
                         }
                     }
                 }.requestByPost(Constant.URL.QIANDAO, new RequestParams());
@@ -304,11 +291,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx2Id);
             startActivity(intent);
-        }else if(trade_llt == v){
-            Intent intent = new Intent(mContext, TradeListActivity.class);
-            startActivity(intent);
-        }
-        else if (obtain_password == v) {
+        } else if (obtain_password == v) {
             if (user_et.getText().toString().length() != 0) {
                 timeCountUtil = new TimeCountUtil((Activity) mContext, 60000, 1000, obtain_password);
                 timeCountUtil.start();
