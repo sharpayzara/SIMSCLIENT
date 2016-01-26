@@ -154,10 +154,12 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
             case R.id.zx_radio:
                 mRecyclerViewZX.setVisibility(View.VISIBLE);
                 mRecyclerViewZY.setVisibility(View.GONE);
+                setHeadTitle("资讯列表");
                 break;
             case R.id.zy_radio:
                 mRecyclerViewZX.setVisibility(View.GONE);
                 mRecyclerViewZY.setVisibility(View.VISIBLE);
+                setHeadTitle("资源列表");
                 break;
             default:
                 break;

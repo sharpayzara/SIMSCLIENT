@@ -30,7 +30,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
             android:background="@null"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColorHint="@color/white"
             android:hint="请输入手机号"
             android:singleLine="true"

@@ -97,6 +97,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
 
     public void setDynamicFragment(String tag) {
         setTabSelection(tag);
+        headPanel.setMiddleTitle(tag);
         bottomPanel.dynamicBtnCheck(tag);
     }
 

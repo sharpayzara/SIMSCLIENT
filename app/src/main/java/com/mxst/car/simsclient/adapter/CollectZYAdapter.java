@@ -52,7 +52,7 @@ public class CollectZYAdapter extends RecyclerView.Adapter<CollectZYAdapter.View
         if(bean.get(position).getColors() != null && bean.get(position).getColors().size() > 0){
             holder.outColorName.setText(bean.get(position).getColors().get(0).getOutColorName() + "万");
         }else{
-            holder.outColorName.setText("未知");
+            holder.outColorName.setText("");
         }
         holder.zj_tv.setText(bean.get(position).getZj());
         holder.commit_date.setText(bean.get(position).getCommit_date());
