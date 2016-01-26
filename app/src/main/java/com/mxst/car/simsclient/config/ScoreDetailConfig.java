@@ -36,4 +36,9 @@ public class ScoreDetailConfig {
         map.put("id",nameList);
     }
 
+
+    public ClassCommonToDoBean(String fieldName , String fieldCName){
+        this.fieldName = fieldName;
+        this.fieldCName = fieldCName;
+    }
 }
