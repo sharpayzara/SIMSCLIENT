@@ -1,6 +1,7 @@
 package com.mxst.car.simsclient.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,14 @@ public class UserScoreActivity extends CommonHeadPanelActivity implements View.O
     private void initData() {
         list = new ArrayList<ScoreList.Score>();
         mAdapter = new ScorelistAdapter(mContext,list);
+        mAdapter.setOnItemClickListener(new ScorelistAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext,ScoreDetailActivity.class);
+                intent.putExtra("id",list.get(position).getId());
+                mContext.startActivity(intent);
+            }
+        });
         myRecycle.setAdapter(mAdapter);
         myRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         loadData();

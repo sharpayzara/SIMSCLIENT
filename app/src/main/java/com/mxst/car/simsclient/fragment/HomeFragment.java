@@ -268,6 +268,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     public void onSuccess() {
                         if (result.isSuccess()) {
                             qdFlg.setText("已签到");
+                            loadData();
                         }
                     }
                 }.requestByPost(Constant.URL.QIANDAO, new RequestParams());

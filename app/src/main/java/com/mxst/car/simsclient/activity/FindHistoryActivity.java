@@ -91,4 +91,12 @@ public class FindHistoryActivity extends CommonHeadPanelActivity {
             }
         }.requestByPost(Constant.URL.GETCARLIST, params);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Constant.REQUESTCODE.LOGINBACK){
+            getCarList();
+        }
+    }
 }

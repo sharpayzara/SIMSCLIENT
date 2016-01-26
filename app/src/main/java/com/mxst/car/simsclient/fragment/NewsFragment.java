@@ -60,6 +60,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private MaterialRefreshLayout materialRefreshLayout;
     private int currentPage = 1;
     ClearEditText search_et;
+    ImageView pr_line,cc_line,ac_line,ap_line;
     private  String tempStr;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,6 +94,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         search_icon = (ImageView) view.findViewById(R.id.search_icon);
         search_lly = (RelativeLayout) view.findViewById(R.id.search_lly);
         cancel_tv = (TextView) view.findViewById(R.id.cancel_tv);
+        pr_line = (ImageView) view.findViewById(R.id.pr_line);
+        cc_line = (ImageView) view.findViewById(R.id.cc_line);
+        ac_line = (ImageView) view.findViewById(R.id.ac_line);
+        ap_line = (ImageView) view.findViewById(R.id.ap_line);
         bean = new ArrayList<>();
         adapter = new NewsCentreAdapter(getActivity(), bean);
         newsRecl.setAdapter(adapter);
@@ -164,23 +169,27 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             case R.id.news_news_tv:
                 currentPage = 1;
                 val = "PR";
+                showCheckLine("pr");
                 bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_guide_tv:
                 val = "CC";
+                showCheckLine("cc");
                 currentPage = 1;
                 bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_price_tv:
                 val = "AC";
+                showCheckLine("ac");
                 currentPage = 1;
                 bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_culture_tv:
                 val = "AP";
+                showCheckLine("ap");
                 currentPage = 1;
                 bean.clear();
                 getNewsList(val);
@@ -269,6 +278,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     }
 
     private void searchNewsList(String val) {
+        showCheckLine("");
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("titleVal", val);
         params.addQueryStringParameter("page",  currentPage+"");
@@ -313,6 +323,26 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         if(!TextUtils.isEmpty(search_et.getText())){
             search_et.setText("");
             doOpenLayout(search_lly);
+        }
+    }
+    public void showCheckLine(String val){
+        pr_line.setVisibility(View.INVISIBLE);
+        cc_line.setVisibility(View.INVISIBLE);
+        ac_line.setVisibility(View.INVISIBLE);
+        ap_line.setVisibility(View.INVISIBLE);
+        switch (val){
+            case "pr":
+                pr_line.setVisibility(View.VISIBLE);
+                break;
+            case "cc":
+                cc_line.setVisibility(View.VISIBLE);
+                break;
+            case "ac":
+                ac_line.setVisibility(View.VISIBLE);
+                break;
+            case "ap":
+                ap_line.setVisibility(View.VISIBLE);
+                break;
         }
     }
 }

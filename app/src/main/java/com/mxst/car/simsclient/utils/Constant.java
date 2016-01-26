@@ -99,6 +99,7 @@ public class Constant {
         public static final String DIKOU = CTX_PATH + "wx/dikou";
         public static final String TRADELIST = CTX_PATH + "cust/getcjCusts";
         public static final String FINDCUSTS = CTX_PATH + "indexPage/findCusts";
+        public static final String JFDETAIL =  CTX_PATH + "indexPage/getJfDetail";
 
     }
 

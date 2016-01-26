@@ -46,7 +46,7 @@ public class ScorelistAdapter extends RecyclerView.Adapter<ScorelistAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(final ScorelistAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ScorelistAdapter.ViewHolder holder, final int position) {
         holder.jfChange.setText(bean.get(position).getJfChange());
         // holder.img_iv.setText(bean.get(position).);
         // holder.jfxw_tv.setText(bean.get(position).getJfxw());
@@ -70,6 +70,12 @@ public class ScorelistAdapter extends RecyclerView.Adapter<ScorelistAdapter.View
             holder.img_iv.setImageResource(R.drawable.shangchen);
         }
         holder.produceDate.setText(bean.get(position).getProduceDate());
+        holder.item_rlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(holder.item_rlt,position);
+            }
+        });
     }
 
     public int getItemCount() {
