@@ -200,7 +200,7 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.LoginActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Sc"
+        <activity android:name=".activity.ScoreDetailActivity"
                   android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ViewImageURLActivity"
