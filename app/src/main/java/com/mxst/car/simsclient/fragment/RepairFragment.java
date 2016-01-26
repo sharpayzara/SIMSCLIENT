@@ -46,6 +46,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     Context mContext;
     RelativeLayout order_repair_rlt, query_process_rlt, query_history_rlt, contact_builder_rlt, query_problem;
     ViewPager advPager = null;
+    Thread thread;
     private ImageView[] imageViews = null;
     private ImageView imageView = null;
     int imgFlag = 0;
@@ -55,6 +56,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     List<Integer> listid = new ArrayList();
     private AtomicInteger what = new AtomicInteger(0);
     private boolean isContinue = true;
+    boolean isStopFlag  = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -166,19 +168,23 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                 return false;
             }
         });
-        new Thread(new Runnable() {
+        if(thread == null){
+          thread =  new Thread(new Runnable() {
 
-            @Override
-            public void run() {
-                while (true) {
-                    if (isContinue) {
-                        viewHandler.sendEmptyMessage(what.get());
-                        whatOption();
+                @Override
+                public void run() {
+                    while (true) {
+                        if (isContinue) {
+                            viewHandler.sendEmptyMessage(what.get());
+                            whatOption();
+                        }
                     }
                 }
-            }
 
-        }).start();
+            });
+            thread.start();
+        }
+
     }
 
     @Override
@@ -246,6 +252,7 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
         }
     }
+
 
     private final Handler viewHandler = new Handler() {
 

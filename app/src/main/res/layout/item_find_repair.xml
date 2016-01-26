@@ -48,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginLeft="5dp"
                     android:gravity="center_vertical"
                     android:textSize="14sp"
                     tools:text="11："/>
@@ -64,6 +65,7 @@
                     android:id="@+id/item_fix_store"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
                     android:gravity="center_vertical"
                     tools:text="asdasd"/>
 
@@ -79,6 +81,7 @@
                     android:id="@+id/item_fix_startime"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
                     android:gravity="center_vertical"
                     tools:text="阿斯达斯的111"/>
 

@@ -53,7 +53,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private RecyclerView newsRecl;
     private View view;
     private String val;
-    private List<IndexList> bean;
+    private List<IndexList>  bean = new ArrayList<>();;
     private NewsCentreAdapter adapter;
     private int llyHeight;
     private ImageView search_icon;
@@ -69,17 +69,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         this.inflater = inflater;
         llyHeight = (int) (getResources().getDisplayMetrics().density * 45 + 0.5);
         initUI();
+        if(TextUtils.isEmpty(search_et.getText())){
+            bean.clear();
+            getNewsList("");
+        }else{
+            searchNewsList(search_et.getText().toString());
+        }
         return view;
     }
 
     public void onResume() {
         super.onResume();
-        if(TextUtils.isEmpty(search_et.getText())){
-            getNewsList("");
-        }else{
-            searchNewsList(search_et.getText().toString());
-        }
-
     }
 
 
@@ -98,7 +98,6 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         cc_line = (ImageView) view.findViewById(R.id.cc_line);
         ac_line = (ImageView) view.findViewById(R.id.ac_line);
         ap_line = (ImageView) view.findViewById(R.id.ap_line);
-        bean = new ArrayList<>();
         adapter = new NewsCentreAdapter(getActivity(), bean);
         newsRecl.setAdapter(adapter);
         newsRecl.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));

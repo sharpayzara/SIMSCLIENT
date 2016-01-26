@@ -62,6 +62,7 @@ public class NewsCentreAdapter extends RecyclerView.Adapter<NewsCentreAdapter.Vi
             @Override
             public void onClick(View v) {
                 if (onItemClickListener != null) {
+                    holder.dianjiTv.setText((bean.get(position).getDianjishu() + 1) + "人点击");
                     onItemClickListener.onItemClick(holder.itemView, position);
                 }
             }
