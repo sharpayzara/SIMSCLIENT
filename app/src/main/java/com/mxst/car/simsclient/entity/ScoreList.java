@@ -15,12 +15,12 @@ public class ScoreList implements Serializable{
     }
 
     public static class Score  implements Serializable{
-        private int id;
+        private String id;
         private String produceDate;
         private String jfChange;
         private String jfxw;
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -36,7 +36,7 @@ public class ScoreList implements Serializable{
             this.jfxw = jfxw;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
