@@ -193,8 +193,8 @@
                 android:gravity="center_vertical"
                 android:text="预约进场时间：">
             </TextView>
-            <EditText
-                android:id="@+id/yydate_et"
+            <TextView
+                android:id="@+id/yydate_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"

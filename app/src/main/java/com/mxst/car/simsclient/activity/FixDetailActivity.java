@@ -61,10 +61,11 @@ public class FixDetailActivity extends CommonHeadPanelActivity {
                     shop_jfye.setText(bean.getCurJf() + "");
                     shop_jfyeky.setText("(可用:" + bean.getKyjf() + ")");
                     shop_djsye.setText("￥" + bean.getYjcurr());
-                    shop_sjje_et.setText(bean.getKyjf() + "");
-                    Double total = bean.getCurJf() * bean.getJfPrice();
-                    String result = String.format("%.2f", total);
-                    shop_syjf_tv.setText("￥" + result);
+                    shop_sjje_et.setText("0");
+                    //    Double total = bean.getCurJf() * bean.getJfPrice();
+                    //  String result = String.format("%.2f", total);
+                    shop_syjf_tv.setText("￥0");
+                    shop_sjje.setText("￥" + bean.getYjcurr());
                 }
             }
         }.requestByPost(Constant.URL.WXDETAIL, params);
