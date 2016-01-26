@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/umeng_socialize_qq_on"
                 android:gravity="center_horizontal"
-                android:text="QQ"
+                android:text="好友分享"
                 android:textColor="@color/white" />
 
             <TextView
