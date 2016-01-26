@@ -74,7 +74,6 @@ public class ScoreDetailActivity extends CommonHeadPanelActivity{
                         e.printStackTrace();
                         return ;
                    }
-                 //   JSONObject entryObj = jsonObj.optJSONObject("tjkh");
                     Map<String, List<CommonBean>> map = ScoreDetailConfig.configMap;
                     Iterator<Map.Entry<String, List<CommonBean>>> entries = map.entrySet().iterator();
                     while (entries.hasNext()) {
