@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class CarDetailsActivity extends CommonHeadPanelActivity implements OnClickListener {
     private LinearLayout left_btn, car_detail_collect_lin, car_detail_share_lin, car_detail_more_lin;
-    private TextView car_detail_color_tv, car_detail_engine_tv, car_detail_speed_tv, car_detail_site_tv,
+    private TextView car_detail_color_tv, car_detail_engine_tv, car_detail_speed_tv, car_detail_site_tv, car_detail_tjjf, car_detail_gcjf,
             car_detail_price_tv, car_detail_time_tv, car_detail_name_tv, car_detail_guideprice_tv, car_detail_reserveprice_tv;
     private ImageView car_detail_img1, car_detail_img2, car_detail_img3, car_detail_img4, car_detail_img5;
     private String colorId, id;
@@ -41,6 +41,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private Button collectBtn;
     private List<ParaList.ConfigInfoEntity> configinfoList = new ArrayList<>();
     private BitmapUtils utils;
+    private LinearLayout imgLin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,8 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                         isCollect = false;
                         collectBtn.setBackgroundResource(R.drawable.btn_collect);
                     }
+                    car_detail_tjjf.setText(bean.getCjjf() + "");
+                    car_detail_gcjf.setText(bean.getGcjf() + "");
                     car_detail_color_tv.setText(bean.getOutColor());
                     car_detail_site_tv.setText(bean.getLocation());
                     car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing());
@@ -108,6 +111,8 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                         for (int i = 0; i < imglist.size(); i++) {
                             utils.display(imglist.get(i), bean.getImgPaths().get(i).getImgPath());
                         }
+                    } else if (bean.getImgPaths().size()==0){
+                        imgLin.setVisibility(View.GONE);
                     }
 
 
@@ -145,6 +150,9 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         car_detail_img3 = (ImageView) findViewById(R.id.car_detail_img3);
         car_detail_img4 = (ImageView) findViewById(R.id.car_detail_img4);
         car_detail_img5 = (ImageView) findViewById(R.id.car_detail_img5);
+        car_detail_tjjf = (TextView) findViewById(R.id.car_detail_tjjf_tv);
+        car_detail_gcjf = (TextView) findViewById(R.id.car_detail_gcjf_tv);
+        imgLin = (LinearLayout) findViewById(R.id.car_detail_img_lin);
         car_detail_img1.setOnClickListener(this);
         car_detail_img2.setOnClickListener(this);
         car_detail_img3.setOnClickListener(this);

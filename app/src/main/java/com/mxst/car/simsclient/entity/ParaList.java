@@ -88,10 +88,29 @@ public class ParaList implements Serializable {
         private int guidePrice;
         private int vePrice;
         private String dingjin;
+
         private String fdj;
         private String bsx;
+        private int cjjf;
+        private int gcjf;
 
         private List<ImgPathsEntity> imgPaths;
+
+        public int getCjjf() {
+            return cjjf;
+        }
+
+        public void setCjjf(int cjjf) {
+            this.cjjf = cjjf;
+        }
+
+        public int getGcjf() {
+            return gcjf;
+        }
+
+        public void setGcjf(int gcjf) {
+            this.gcjf = gcjf;
+        }
 
         public void setId(int id) {
             this.id = id;
