@@ -47,20 +47,20 @@ public class CollectZYAdapter extends RecyclerView.Adapter<CollectZYAdapter.View
 
     @Override
     public void onBindViewHolder(final CollectZYAdapter.ViewHolder holder, final int position) {
-        holder.content_tv.setText(bean.get(position).getBrand()+"  "+bean.get(position).getMj()
-        +"  "+bean.get(position).getVehicleXinghao()  +"  "+bean.get(position).getKx());
-        if(bean.get(position).getColors() != null && bean.get(position).getColors().size() > 0){
+        holder.content_tv.setText(bean.get(position).getBrand() + "  " + bean.get(position).getMj()
+                + "  " + bean.get(position).getVehicleXinghao() + "  " + bean.get(position).getKx());
+        if (bean.get(position).getColors() != null && bean.get(position).getColors().size() > 0) {
             holder.outColorName.setText(bean.get(position).getColors().get(0).getOutColorName() + "万");
-        }else{
+        } else {
             holder.outColorName.setText("未知");
         }
         holder.zj_tv.setText(bean.get(position).getZj());
         holder.commit_date.setText(bean.get(position).getCommit_date());
-       // utils.display(holder.img,bean.get(position).getImg());
+        utils.display(holder.img, bean.get(position).getImgPath());
         holder.zy_llt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onItemClick(holder.zy_llt,position);
+                onItemClickListener.onItemClick(holder.zy_llt, position);
             }
         });
        /* holder.img.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class CollectZYAdapter extends RecyclerView.Adapter<CollectZYAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView content_tv,outColorName,zj_tv,commit_date;
+        private TextView content_tv, outColorName, zj_tv, commit_date;
         private LinearLayout zy_llt;
         private ImageView img;
 

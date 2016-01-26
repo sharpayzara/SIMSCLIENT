@@ -1,9 +1,7 @@
 package com.mxst.car.simsclient.activity;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -70,14 +68,12 @@ public class FindRepairDetailActivity extends CommonHeadPanelActivity {
                     fix_detail_jiesuan_time.setText(bean.getJsDate());
                     fix_detail_shoukuan_time.setText(bean.getSkdate());
                     int tag = Integer.parseInt(bean.getTag());
-                    if (tag < 3) {
+                    if (tag <= 2) {
                         hotlist.get(tag).setBackgroundResource(R.drawable.bg_dot_true);
                     } else if (tag == 6) {
-                        hot3.setBackgroundResource(R.drawable.bg_dot_true);
-                    } else if (tag == 7) {
                         hot4.setBackgroundResource(R.drawable.bg_dot_true);
                     } else {
-                        hot2.setBackgroundResource(R.drawable.bg_dot_true);
+                        hot3.setBackgroundResource(R.drawable.bg_dot_true);
                     }
                     call.setOnClickListener(new View.OnClickListener() {
                         @Override

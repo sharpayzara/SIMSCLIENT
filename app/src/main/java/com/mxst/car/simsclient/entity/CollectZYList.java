@@ -30,8 +30,17 @@ public class CollectZYList implements Serializable{
         private String commit_date;
         private String zj;
         private String kx;
+        private String imgPath;
 
         private List<ColorsEntity> colors;
+
+        public String getImgPath() {
+            return imgPath;
+        }
+
+        public void setImgPath(String imgPath) {
+            this.imgPath = imgPath;
+        }
 
         public void setId(int id) {
             this.id = id;

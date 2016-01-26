@@ -47,16 +47,18 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
     public void onBindViewHolder(final ResourceAdapter.ViewHolder holder, final int position) {
         holder.itemResBrand.setText(bean.get(position).getBrand() + bean.get(position).getXinghao());
         holder.itemResCartype.setText(bean.get(position).getCarType());
-        float d= Float.valueOf(bean.get(position).getTotalPrice()) / 10000;
-        String money = String.format("%.2f",d );
-        holder.itemResTotalprice.setText(money+"万元");
+        float d = Float.valueOf(bean.get(position).getTotalPrice()) / 10000;
+        String money = String.format("%.2f", d);
+        holder.itemResTotalprice.setText(money + "万元");
         holder.itemResKuaxing.setText(bean.get(position).getNianKuan() + bean.get(position).getKuanXing());
         holder.itemResGuige.setText(bean.get(position).getGuiGe());
         holder.itemResOutcolor.setText(bean.get(position).getOutColor());
         if (bean.get(position).getGuidePrice() == 0) {
             holder.itemResGuideprice.setText("指导价:" + "暂无");
         } else {
-            holder.itemResGuideprice.setText("指导价:" + bean.get(position).getGuidePrice());
+            float s = Float.valueOf(bean.get(position).getGuidePrice()) / 10000;
+            String m = String.format("%.2f", s);
+            holder.itemResGuideprice.setText("指导价:" + m + "万元");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
