@@ -111,7 +111,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                         for (int i = 0; i < imglist.size(); i++) {
                             utils.display(imglist.get(i), bean.getImgPaths().get(i).getImgPath());
                         }
-                    } else if (bean.getImgPaths().size()==0){
+                    } else if (bean.getImgPaths().size() == 0) {
                         imgLin.setVisibility(View.GONE);
                     }
 
@@ -158,6 +158,12 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         car_detail_img3.setOnClickListener(this);
         car_detail_img4.setOnClickListener(this);
         car_detail_img5.setOnClickListener(this);
+        car_detail_share_lin.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         car_detail_more_lin = (LinearLayout) findViewById(R.id.car_detail_more_lin);
         car_detail_more_lin.setOnClickListener(new OnClickListener() {
             @Override

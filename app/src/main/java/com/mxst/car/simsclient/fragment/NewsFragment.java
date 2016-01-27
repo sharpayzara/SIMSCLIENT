@@ -139,6 +139,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), NewsInfoActivity.class);
                 intent.putExtra("id", bean.get(position).getId() + "");
+                intent.putExtra("content", bean.get(position).getSubtitle());
+                intent.putExtra("title", bean.get(position).getTitle());
                 startActivity(intent);
             }
         });
