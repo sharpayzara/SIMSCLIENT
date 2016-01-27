@@ -19,6 +19,7 @@ public class CommonUtil {
             utils = new BitmapUtils(mContext.getApplicationContext());
             utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
         }
+
         return utils;
     }
     public static void setRatingBar(Context mContext,long value){

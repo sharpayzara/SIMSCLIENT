@@ -51,7 +51,7 @@
          <EditText
              android:id="@+id/password_num"
              android:textColor="@color/white"
-             android:inputType="textPassword|numberDecimal"
+             android:inputType="numberPassword"
              android:layout_toRightOf="@id/lock_iv"
              android:layout_width="200dp"
              android:layout_height="match_parent"

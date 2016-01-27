@@ -18,56 +18,54 @@ public class CollectZYList implements Serializable{
     }
 
     public static class ZYEntity{
+
         private int id;
         private String resourceNum;
+        private int colorId;
+        private String outColorName;
+        private String inColorName;
+        private Object inColor2Name;
+        private String price;
         private String sourceType;
         private String brand;
         private String vehicleXinghao;
         private String mj;
-        private String colorId;
         private String spec;
+        private String kx;
         private String vehicleType;
         private String commit_date;
-        private String zj;
-        private String kx;
         private String imgPath;
-
-        private List<ColorsEntity> colors;
-
-        public String getImgPath() {
-            return imgPath;
-        }
-
-        public void setImgPath(String imgPath) {
-            this.imgPath = imgPath;
-        }
 
         public void setId(int id) {
             this.id = id;
-        }
-
-        public String getKx() {
-            return kx;
-        }
-
-        public void setKx(String kx) {
-            this.kx = kx;
         }
 
         public void setResourceNum(String resourceNum) {
             this.resourceNum = resourceNum;
         }
 
+        public void setColorId(int colorId) {
+            this.colorId = colorId;
+        }
+
+        public void setOutColorName(String outColorName) {
+            this.outColorName = outColorName;
+        }
+
+        public void setInColorName(String inColorName) {
+            this.inColorName = inColorName;
+        }
+
+        public void setInColor2Name(Object inColor2Name) {
+            this.inColor2Name = inColor2Name;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
+        }
+
         public void setSourceType(String sourceType) {
             this.sourceType = sourceType;
-        }
-
-        public String getColorId() {
-            return colorId;
-        }
-
-        public void setColorId(String colorId) {
-            this.colorId = colorId;
         }
 
         public void setBrand(String brand) {
@@ -86,6 +84,10 @@ public class CollectZYList implements Serializable{
             this.spec = spec;
         }
 
+        public void setKx(String kx) {
+            this.kx = kx;
+        }
+
         public void setVehicleType(String vehicleType) {
             this.vehicleType = vehicleType;
         }
@@ -94,12 +96,8 @@ public class CollectZYList implements Serializable{
             this.commit_date = commit_date;
         }
 
-        public void setZj(String zj) {
-            this.zj = zj;
-        }
-
-        public void setColors(List<ColorsEntity> colors) {
-            this.colors = colors;
+        public void setImgPath(String imgPath) {
+            this.imgPath = imgPath;
         }
 
         public int getId() {
@@ -108,6 +106,26 @@ public class CollectZYList implements Serializable{
 
         public String getResourceNum() {
             return resourceNum;
+        }
+
+        public int getColorId() {
+            return colorId;
+        }
+
+        public String getOutColorName() {
+            return outColorName;
+        }
+
+        public String getInColorName() {
+            return inColorName;
+        }
+
+        public Object getInColor2Name() {
+            return inColor2Name;
+        }
+
+        public String getPrice() {
+            return price;
         }
 
         public String getSourceType() {
@@ -130,6 +148,10 @@ public class CollectZYList implements Serializable{
             return spec;
         }
 
+        public String getKx() {
+            return kx;
+        }
+
         public String getVehicleType() {
             return vehicleType;
         }
@@ -138,51 +160,8 @@ public class CollectZYList implements Serializable{
             return commit_date;
         }
 
-        public String getZj() {
-            return zj;
-        }
-
-        public List<ColorsEntity> getColors() {
-            return colors;
-        }
-
-        public static class ColorsEntity {
-            private int colorId;
-            private String outColorName;
-            private String inColorName;
-            private String inColor2Name;
-
-            public void setColorId(int colorId) {
-                this.colorId = colorId;
-            }
-
-            public void setOutColorName(String outColorName) {
-                this.outColorName = outColorName;
-            }
-
-            public void setInColorName(String inColorName) {
-                this.inColorName = inColorName;
-            }
-
-            public void setInColor2Name(String inColor2Name) {
-                this.inColor2Name = inColor2Name;
-            }
-
-            public int getColorId() {
-                return colorId;
-            }
-
-            public String getOutColorName() {
-                return outColorName;
-            }
-
-            public String getInColorName() {
-                return inColorName;
-            }
-
-            public String getInColor2Name() {
-                return inColor2Name;
-            }
+        public String getImgPath() {
+            return imgPath;
         }
     }
 }
