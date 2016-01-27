@@ -82,7 +82,7 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
-            item_res_incolor = (TextView) itemView.findViewById(R.id.item_res_brand);
+            item_res_incolor = (TextView) itemView.findViewById(R.id.item_res_incolor);
             itemResBrand = (TextView) itemView.findViewById(R.id.item_res_brand);
             itemResCartype = (TextView) itemView.findViewById(R.id.item_res_cartype);
             itemResTotalprice = (TextView) itemView.findViewById(R.id.item_res_totalprice);
