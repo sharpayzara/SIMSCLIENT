@@ -14,6 +14,7 @@
         android:layout_alignParentLeft="true"
           />
 
+
     <com.mxst.car.simsclient.layout.ImageText
         android:id="@+id/btn_info"
         android:layout_width="wrap_content"

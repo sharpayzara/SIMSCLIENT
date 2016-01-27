@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile files('libs/library.jar')
@@ -46,4 +46,5 @@ dependencies {
     compile files('libs/SocialSDK_WeiXin_1.jar')
     compile files('libs/SocialSDK_WeiXin_2.jar')
     compile project(':slideDateTimePicker')
+    compile files('libs/badgeview.jar')
 }

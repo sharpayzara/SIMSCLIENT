@@ -99,6 +99,7 @@ public class LoginActivity extends InstrumentedActivity implements View.OnClickL
                             PreferenceService ps = new PreferenceService(mContext);
                             ps.saveLoginDate(new Date().getTime());
                             CommonUtil.showToastToShort(mContext,"登录成功");
+                            updateRedPoint();
                             setResult(Constant.REQUESTCODE.LOGINBACK);
                             finish();
                         }else{
@@ -116,5 +117,22 @@ public class LoginActivity extends InstrumentedActivity implements View.OnClickL
     public void onBackPressed() {
         super.onBackPressed();
         Constant.isLoginState = false;
+    }
+
+    public void updateRedPoint() {
+        new BaseTask<JsonResult<JSONObject>,String>(this){
+
+            @Override
+            public TypeToken setTypeToken() {
+                return new TypeToken<JSONObject>(){};
+            }
+
+            @Override
+            public void onSuccess() {
+                if(result.isSuccess()){
+                    Constant.POINTNUM = result.getRecord().optJSONObject("count").optInt("count");
+                }
+            }
+        }.requestByPost(Constant.URL.NOTPAIDCOUNT,new RequestParams());
     }
 }

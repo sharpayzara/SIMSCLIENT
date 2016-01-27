@@ -14,7 +14,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
+import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
+import com.mxst.car.simsclient.business.BaseTask;
+import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.fragment.FindFragment;
 import com.mxst.car.simsclient.fragment.HomeFragment;
 import com.mxst.car.simsclient.fragment.MarketFragment;
@@ -24,13 +28,15 @@ import com.mxst.car.simsclient.layout.BottomControlPanel;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
 import com.mxst.car.simsclient.utils.Constant;
 
+import org.json.JSONObject;
+
 import cn.jpush.android.api.JPushInterface;
 
 import static com.mxst.car.simsclient.layout.BottomControlPanel.BottomPanelCallback;
 
-public class MainActivity extends FragmentActivity implements BottomPanelCallback {
-    BottomControlPanel bottomPanel = null;
-    HeadControlPanel headPanel = null;
+public class MainActivity extends FragmentActivity implements BottomPanelCallback{
+    public   BottomControlPanel bottomPanel = null;
+    public   HeadControlPanel headPanel = null;
     public long exitTime;
     private FragmentManager fragmentManager = null;
     private FragmentTransaction fragmentTransaction = null;
@@ -239,6 +245,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         super.onActivityResult(requestCode, resultCode, data);
         Fragment f = fragmentManager.findFragmentByTag(currFragTag);
         /*然后在碎片中调用重写的onActivityResult方法*/
+        updateRedPoint();
         f.onActivityResult(requestCode, resultCode, data);
     }
     public void onStart() {
@@ -248,6 +255,7 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
     protected void onResume() {
         super.onResume();
         JPushInterface.onResume(this);
+        bottomPanel.updatePointNum();
     }
 
     protected void onPause() {
@@ -255,5 +263,22 @@ public class MainActivity extends FragmentActivity implements BottomPanelCallbac
         JPushInterface.onPause(this);
     }
 
+    public void updateRedPoint() {
+        new BaseTask<JsonResult<JSONObject>,String>(this){
+
+            @Override
+            public TypeToken setTypeToken() {
+                return new TypeToken<JSONObject>(){};
+            }
+
+            @Override
+            public void onSuccess() {
+                if(result.isSuccess()){
+                    Constant.POINTNUM = result.getRecord().optJSONObject("count").optInt("count");
+                     bottomPanel.updatePointNum();
+                }
+            }
+        }.requestByPost(Constant.URL.NOTPAIDCOUNT,new RequestParams());
+    }
 }
 

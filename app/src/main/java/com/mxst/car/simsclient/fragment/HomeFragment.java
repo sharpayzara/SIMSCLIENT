@@ -46,7 +46,7 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener{
     RelativeLayout login_layout, user_layout;
     LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt, trade_llt;
     ClearEditText user_et;
@@ -378,6 +378,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         ps.saveUserName(user_et.getText().toString());
                         ps.savePassword(pwd_et.getText().toString());
                         CommonUtil.showToastToShort(mContext, "登录成功");
+                        updateRedPoint();
                         Log.e("Joy", Constant.AUTHENTICATION_TOKEN);
                         login_layout.setVisibility(View.GONE);
                         user_layout.setVisibility(View.VISIBLE);
@@ -396,4 +397,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         this.mainActivity = mainActivity;
     }
 
+    public void updateRedPoint() {
+        new BaseTask<JsonResult<JSONObject>,String>(mContext){
+
+            @Override
+            public TypeToken setTypeToken() {
+                return new TypeToken<JSONObject>(){};
+            }
+
+            @Override
+            public void onSuccess() {
+                if(result.isSuccess()){
+                    Constant.POINTNUM = result.getRecord().optJSONObject("count").optInt("count");
+                    mainActivity.bottomPanel.updatePointNum();
+                }
+            }
+        }.requestByPost(Constant.URL.NOTPAIDCOUNT,new RequestParams());
+    }
 }

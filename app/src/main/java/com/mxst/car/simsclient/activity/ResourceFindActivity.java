@@ -93,6 +93,7 @@ public class ResourceFindActivity extends CommonHeadPanelActivity {
                 mj = "";
                 kx = "";
                 brandResourceList();
+                findViewById(R.id.res_lin).setVisibility(View.GONE);
             }
         });
     }

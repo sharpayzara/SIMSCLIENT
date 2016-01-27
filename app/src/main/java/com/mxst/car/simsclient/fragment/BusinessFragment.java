@@ -38,13 +38,15 @@ public class BusinessFragment extends Fragment {
         mContext = this.getActivity();
         root  = inflater.inflate(R.layout.fragment_market_business, null);
         initUI();
-        initDate();
         return root;
     }
 
-    private void initDate() {
+    @Override
+    public void onResume() {
+        super.onResume();
         loadData();
     }
+
 
     private void initUI() {
         list = new ArrayList<>();
@@ -64,7 +66,8 @@ public class BusinessFragment extends Fragment {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(mContext,FixDetailActivity.class);
                 intent.putExtra("loginNo",list.get(position).getLoginNo());
-                startActivity(intent);
+               // startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
         mRecyclerView.setAdapter(mAdapter);
@@ -89,4 +92,5 @@ public class BusinessFragment extends Fragment {
            }
        }.requestByPost(Constant.URL.WXLIST,new RequestParams());
     }
+
 }

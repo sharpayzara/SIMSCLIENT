@@ -3,10 +3,14 @@ package com.mxst.car.simsclient.layout;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Size;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.jauker.widget.BadgeView;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.SizeUtils;
@@ -15,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BottomControlPanel extends RelativeLayout implements View.OnClickListener{
-	//private Context mContext;
+	private Context mContext;
 	private ImageText mHomedBtn = null;
 	private ImageText mInfoBtn = null;
 	private ImageText mFindBtn = null;
@@ -24,6 +28,17 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 	private int DEFALUT_BACKGROUND_COLOR = Color.rgb(243, 243, 243);
 	private BottomPanelCallback mBottomCallback = null;
 	private List<View> viewList = new ArrayList<View>();
+	BadgeView badgeView;
+
+	public void updatePointNum() {
+		if(Constant.POINTNUM != 0){
+			badgeView.setBadgeCount(Constant.POINTNUM);
+			badgeView.setVisibility(View.VISIBLE);
+		}else{
+			badgeView.setVisibility(View.INVISIBLE);
+		}
+	}
+
 
 	public interface BottomPanelCallback{
 		public void onBottomPanelClick(int itemId);
@@ -31,11 +46,13 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 
 	public BottomControlPanel(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		mContext = context;
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	protected void onFinishInflate() {
 		super.onFinishInflate();
+		badgeView = new BadgeView(mContext);
 		mHomedBtn = (ImageText)findViewById(R.id.btn_home);
 		mInfoBtn = (ImageText)findViewById(R.id.btn_info);
 		mLogoBtn = (ImageView)findViewById(R.id.btn_logo);
@@ -46,6 +63,12 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 		viewList.add(mInfoBtn);
 		viewList.add(mLogoBtn);
 		viewList.add(mFindBtn);
+		badgeView.setTargetView(mMarketBtn);
+		/*badgeView.setBadgeGravity(Gravity.TOP | Gravity.RIGHT);
+		badgeView.setBadgeGravity(Gravity.);*/
+		badgeView.setBadgeGravity(Gravity.CENTER);
+		badgeView.setBadgeMargin(SizeUtils.dip2px(mContext,5),0,0,SizeUtils.dip2px(mContext,5));
+		badgeView.setVisibility(View.INVISIBLE);
 		viewList.add(mMarketBtn);
 	}
 	public void initBottomPanel(){
@@ -68,6 +91,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 		if(mMarketBtn != null){
 			mMarketBtn.setImage(R.drawable.btn_market);
 			mMarketBtn.setText("购物车");
+
 		}
 		setBtnListener();
 	}
@@ -90,7 +114,23 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 		// TODO Auto-generated method stub
 		initBottomPanel();
 		int index = -1;
-		switch(v.getId()){
+		if(v == mHomedBtn){
+			index = Constant.BTN_FLAG_HOME;
+			mHomedBtn.setChecked(Constant.BTN_FLAG_HOME);
+		}else if(v == mInfoBtn){
+			index = Constant.BTN_FLAG_INFO;
+			mInfoBtn.setChecked(Constant.BTN_FLAG_INFO);
+		}else if(v == mLogoBtn){
+			index = Constant.BTN_FLAG_REPAIR;
+			//mLogoBtn.setChecked(Constant.BTN_FLAG_REPAIR);
+		}else if(v == mFindBtn){
+			index = Constant.BTN_FLAG_FIND;
+			mFindBtn.setChecked(Constant.BTN_FLAG_FIND);
+		}else{
+			index = Constant.BTN_FLAG_MARKET;
+			mMarketBtn.setChecked(Constant.BTN_FLAG_MARKET);
+		}
+	/*	switch(v.getId()){
 			case R.id.btn_home:
 				index = Constant.BTN_FLAG_HOME;
 				mHomedBtn.setChecked(Constant.BTN_FLAG_HOME);
@@ -112,7 +152,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 				mMarketBtn.setChecked(Constant.BTN_FLAG_MARKET);
 				break;
 			default:break;
-		}
+		}*/
 		if(mBottomCallback != null){
 			mBottomCallback.onBottomPanelClick(index);
 		}
@@ -151,10 +191,17 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 		int widthPx = SizeUtils.getSysWidthPx(this.getContext());
 		int eachWidth = widthPx / n;
 		for (int i = 0; i < n; i++) {
-			LayoutParams tempParams = (LayoutParams) viewList.get(i)
-					.getLayoutParams();
-			tempParams.width = eachWidth;
-			viewList.get(i).setLayoutParams(tempParams);
+			if(i == n-1){
+				FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)viewList.get(i).getLayoutParams();
+				params.width = eachWidth;
+				viewList.get(i).setLayoutParams(params);
+			}else{
+				LayoutParams tempParams = (LayoutParams) viewList.get(i)
+						.getLayoutParams();
+				tempParams.width = eachWidth;
+				viewList.get(i).setLayoutParams(tempParams);
+			}
+
 		}
 	}
 }

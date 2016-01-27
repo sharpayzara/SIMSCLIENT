@@ -27,6 +27,8 @@ public class Constant {
     public static final String FRAGMENT_FLAG_FIND = "找车";
     public static final String FRAGMENT_FLAG_MARKET = "购物车";
 
+    public static int POINTNUM = 0;
+
     //保存到本地的目录 (头像)
     public static final String SAVE_DIRECTORY = "/SIMS";
     //保存到本地图片的名字
@@ -50,7 +52,6 @@ public class Constant {
         public static final int CHOOSEJG = 11;
         public static final int ORDEREPIREBACK = 12;
         public static final int NICKNAME = 13;
-
 
     }
 
@@ -100,7 +101,7 @@ public class Constant {
         public static final String TRADELIST = CTX_PATH + "cust/getcjCusts";
         public static final String FINDCUSTS = CTX_PATH + "indexPage/findCusts";
         public static final String JFDETAIL =  CTX_PATH + "indexPage/getJfDetail";
-
+        public static final String NOTPAIDCOUNT =  CTX_PATH + "wx/notPaidCount";
     }
 
 }
