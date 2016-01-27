@@ -52,7 +52,8 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
         holder.itemResTotalprice.setText(money + "万元");
         holder.itemResKuaxing.setText(bean.get(position).getNianKuan() + bean.get(position).getKuanXing());
         holder.itemResGuige.setText(bean.get(position).getGuiGe());
-        holder.itemResOutcolor.setText(bean.get(position).getOutColor());
+        holder.item_res_incolor.setText(bean.get(position).getInColor());
+        holder.itemResOutcolor.setText(bean.get(position).getOutColor() );
         if (bean.get(position).getGuidePrice() == 0) {
             holder.itemResGuideprice.setText("指导价:" + "暂无");
         } else {
@@ -76,11 +77,12 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView itemResBrand, itemResCartype, itemResTotalprice, itemResKuaxing, itemResGuige, itemResOutcolor, itemResGuideprice;
+        private TextView itemResBrand, itemResCartype, itemResTotalprice,
+                item_res_incolor,itemResKuaxing, itemResGuige, itemResOutcolor, itemResGuideprice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+            item_res_incolor = (TextView) itemView.findViewById(R.id.item_res_brand);
             itemResBrand = (TextView) itemView.findViewById(R.id.item_res_brand);
             itemResCartype = (TextView) itemView.findViewById(R.id.item_res_cartype);
             itemResTotalprice = (TextView) itemView.findViewById(R.id.item_res_totalprice);

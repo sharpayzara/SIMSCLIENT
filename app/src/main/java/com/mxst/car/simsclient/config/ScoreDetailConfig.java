@@ -78,7 +78,7 @@ public class ScoreDetailConfig {
         configMap.put("会员购车",buyCarInfoList);
         configMap.put("签到",qdInfoList);
         configMap.put("注册",zcInfoList);
-        configMap.put("维修结算",wxjsInfoList);
+        configMap.put("维修",wxjsInfoList);
         configMap.put("购买保险",gmbxInfoList);
         configMap.put("推荐保险",tjbxInfoList);
         configMap.put("推荐成交",tjcjInfoList);

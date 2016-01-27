@@ -12,7 +12,7 @@ public class MyApplication extends Application {
 		super.onCreate();
 		JPushInterface.setDebugMode(true);
 		JPushInterface.init(this);
-		PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+		PlatformConfig.setWeixin("wx97265ee4dec22093", "c4cf7cd23f2b9b4d348314a0df55f4ea");
 		PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
 	}
 }

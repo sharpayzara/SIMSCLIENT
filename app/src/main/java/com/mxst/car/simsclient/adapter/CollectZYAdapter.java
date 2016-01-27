@@ -49,12 +49,8 @@ public class CollectZYAdapter extends RecyclerView.Adapter<CollectZYAdapter.View
     public void onBindViewHolder(final CollectZYAdapter.ViewHolder holder, final int position) {
         holder.content_tv.setText(bean.get(position).getBrand() + "  " + bean.get(position).getMj()
                 + "  " + bean.get(position).getVehicleXinghao() + "  " + bean.get(position).getKx());
-        if (bean.get(position).getColors() != null && bean.get(position).getColors().size() > 0) {
-            holder.outColorName.setText(bean.get(position).getColors().get(0).getOutColorName() + "万");
-        }else{
-            holder.outColorName.setText("");
-        }
-        holder.zj_tv.setText(bean.get(position).getZj());
+        holder.outColorName.setText(bean.get(position).getOutColorName() + "-" + bean.get(position).getInColorName());
+        holder.zj_tv.setText(bean.get(position).getPrice() + "万");
         holder.commit_date.setText(bean.get(position).getCommit_date());
         utils.display(holder.img, bean.get(position).getImgPath());
         holder.zy_llt.setOnClickListener(new View.OnClickListener() {
