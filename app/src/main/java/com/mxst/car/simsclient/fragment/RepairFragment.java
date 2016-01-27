@@ -52,11 +52,13 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     int imgFlag = 0;
     ImageAdapter adapter;
     List<String> listUrls = new ArrayList<>();
+    List<String> titlelis = new ArrayList<>();
+    List<String> sublist = new ArrayList<>();
     List<View> listViews = new ArrayList();
     List<Integer> listid = new ArrayList();
     private AtomicInteger what = new AtomicInteger(0);
     private boolean isContinue = true;
-    boolean isStopFlag  = false;
+    boolean isStopFlag = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,10 +114,14 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                     listUrls.clear();
                     listViews.clear();
                     listid.clear();
+                    titlelis.clear();
+                    sublist.clear();
                     List<AdvertisementList.Advertisement> tempList = result.getRecord().getIndex();
                     imgFlag = tempList.size();
                     for (AdvertisementList.Advertisement adv : tempList) {
                         listUrls.add(adv.getAdImg());
+                        titlelis.add(adv.getTitle());
+                        sublist.add(adv.getSubtitle());
                         listid.add(adv.getId());
                         listViews.add(new ImageView(mContext));
                     }
@@ -143,7 +149,9 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(mContext, NewsInfoActivity.class);
-                intent.putExtra("id", listid.get(position)+"");
+                intent.putExtra("id", listid.get(position) + "");
+                intent.putExtra("content", sublist.get(position));
+                intent.putExtra("title", titlelis.get(position));
                 startActivity(intent);
             }
         });
@@ -168,8 +176,8 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
                 return false;
             }
         });
-        if(thread == null){
-          thread =  new Thread(new Runnable() {
+        if (thread == null) {
+            thread = new Thread(new Runnable() {
 
                 @Override
                 public void run() {

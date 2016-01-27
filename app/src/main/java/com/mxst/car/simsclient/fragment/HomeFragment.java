@@ -48,7 +48,7 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout login_layout, user_layout;
-    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt,trade_llt;
+    LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt, trade_llt;
     ClearEditText user_et;
     EditText pwd_et;
     LayoutInflater inflater;
@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private View root;
     private String zx1Id, zx2Id;
     CountDownTimer timeCountUtil;
-    private String img;
+    private String img, content1, content2, title1, title2;
 
 
     @Override
@@ -76,8 +76,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initData();
         return root;
     }
+
     public void onResume() {
-     super.onResume();
+        super.onResume();
         loadData();
     }
 
@@ -207,8 +208,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         utils.display(zx_iv_1, result.getRecord().getZxs().get(0).getImg());
                         utils.display(zx_iv_2, result.getRecord().getZxs().get(1).getImg());
                         zx_title_1.setText(result.getRecord().getZxs().get(0).getTitle());
+                        title1 = result.getRecord().getZxs().get(0).getTitle();
+                        title2 = result.getRecord().getZxs().get(1).getTitle();
                         zx_title_2.setText(result.getRecord().getZxs().get(1).getTitle());
                         zx_content_1.setText(result.getRecord().getZxs().get(0).getSubtitle());
+                        content1 = result.getRecord().getZxs().get(0).getSubtitle();
+                        content2 = result.getRecord().getZxs().get(1).getSubtitle();
                         zx_content_2.setText(result.getRecord().getZxs().get(1).getSubtitle());
                         zx1Id = result.getRecord().getZxs().get(0).getId();
                         zx2Id = result.getRecord().getZxs().get(1).getId();
@@ -302,21 +307,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         } else if (zx1_llt == v) {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx1Id);
+            intent.putExtra("title", title1);
+            intent.putExtra("content", content1);
             startActivity(intent);
         } else if (zx2_llt == v) {
             Intent intent = new Intent(mContext, NewsInfoActivity.class);
             intent.putExtra("id", zx2Id);
+            intent.putExtra("title", title2);
+            intent.putExtra("content", content2);
             startActivity(intent);
-        }else if(trade_llt == v){
+        } else if (trade_llt == v) {
             Intent intent = new Intent(mContext, TradeListActivity.class);
             startActivity(intent);
         } else if (tjkf == v) {
             Intent intent = new Intent(mContext, RecommendKFActivity.class);
             startActivity(intent);
-        }
-
-
-        else if (obtain_password == v) {
+        } else if (obtain_password == v) {
             if (user_et.getText().toString().length() != 0) {
                 timeCountUtil = new TimeCountUtil((Activity) mContext, 60000, 1000, obtain_password);
                 timeCountUtil.start();

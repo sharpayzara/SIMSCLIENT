@@ -49,7 +49,7 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
         holder.itemResCartype.setText(bean.get(position).getCarType());
         float d = Float.valueOf(bean.get(position).getTotalPrice()) / 10000;
         String money = String.format("%.2f", d);
-        holder.itemResTotalprice.setText(money + "万元");
+        holder.itemResTotalprice.setText(money + "万");
         holder.itemResKuaxing.setText(bean.get(position).getNianKuan() + bean.get(position).getKuanXing());
         holder.itemResGuige.setText(bean.get(position).getGuiGe());
         holder.itemResOutcolor.setText(bean.get(position).getOutColor());
@@ -58,7 +58,7 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
         } else {
             float s = Float.valueOf(bean.get(position).getGuidePrice()) / 10000;
             String m = String.format("%.2f", s);
-            holder.itemResGuideprice.setText("指导价:" + m + "万元");
+            holder.itemResGuideprice.setText("指导价:" + m + "万");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

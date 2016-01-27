@@ -80,18 +80,22 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
         collect = (Button) findViewById(R.id.info_collect);
         share = (LinearLayout) findViewById(R.id.info_share);
         String tempUrl = getIntent().getStringExtra("url");
-        if(!TextUtils.isEmpty(tempUrl)){
+        if (!TextUtils.isEmpty(tempUrl)) {
             mWebView.loadUrl(tempUrl);
-        }else{
+        } else {
             mWebView.loadUrl("http://222.177.210.200/supplier/news/getNewsInfo?id=" + id);
         }
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShareUtil.content = "111";
-                ShareUtil.title = "111";
-                ShareUtil.url = "www.baidu.com";
+                if (getIntent().hasExtra("content")) {
+                    ShareUtil.content = getIntent().getStringExtra("content");
+                }
+                if (getIntent().hasExtra("title")) {
+                    ShareUtil.title = getIntent().getStringExtra("title");
+                }
+                ShareUtil.url = "http://222.177.210.200/supplier/news/getNewsInfo?id=" + id;
                 ShareUtil.showPopupWindow(NewsInfoActivity.this, getWindow().getDecorView());
             }
         });

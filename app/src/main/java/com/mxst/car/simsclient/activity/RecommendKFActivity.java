@@ -66,7 +66,7 @@ public class RecommendKFActivity extends CommonHeadPanelActivity {
 
     private void init() {
         showBackBtn();
-        setHeadTitle("推荐客服列表");
+        setHeadTitle("推荐客户列表");
         list = (RecyclerView) findViewById(R.id.fix_recl);
         bean = new ArrayList<>();
         adapter = new RecommendKFAadapter(this, bean);

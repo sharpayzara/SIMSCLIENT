@@ -61,6 +61,7 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(mContext, NewsInfoActivity.class);
                 intent.putExtra("id", list.get(position).getId() + "");
+                intent.putExtra("title", list.get(position).getTitle() + "");
                 startActivity(intent);
             }
         });

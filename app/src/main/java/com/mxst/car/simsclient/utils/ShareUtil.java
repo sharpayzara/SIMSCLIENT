@@ -1,6 +1,7 @@
 package com.mxst.car.simsclient.utils;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,6 +14,7 @@ import com.mxst.car.simsclient.R;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.shareboard.SnsPlatform;
 import com.umeng.socialize.utils.Log;
 import com.umeng.socialize.utils.ShareBoardlistener;
@@ -51,7 +53,6 @@ public class ShareUtil {
         });
 
     }
-
 
 
     private static UMShareListener umShareListener = new UMShareListener() {
@@ -101,22 +102,28 @@ public class ShareUtil {
                     popupWindow.dismiss();
                     return;
                 case R.id.share_qq_tv:
-                    Toast.makeText(mCtx, content + "---" + url, Toast.LENGTH_SHORT).show();
                     new ShareAction(mCtx).setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener)
                             .withText(content)
                             .withTitle(title)
+                            .withMedia(new UMImage(mCtx, BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher)))
+                            .withTargetUrl(url)
                             .share();
                     return;
                 case R.id.share_circle_tv:
+                    Toast.makeText(mCtx, content + "---" + url, Toast.LENGTH_SHORT).show();
                     new ShareAction(mCtx).setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener)
                             .withText(content)
                             .withTitle(title)
+                            .withTargetUrl(url)
+                            .withMedia(new UMImage(mCtx, BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher)))
                             .share();
                     return;
                 case R.id.share_wechat_tv:
                     new ShareAction(mCtx).setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener)
                             .withText(content)
                             .withTitle(title)
+                            .withMedia(new UMImage(mCtx, BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher)))
+                            .withTargetUrl(url)
                             .share();
                     return;
             }

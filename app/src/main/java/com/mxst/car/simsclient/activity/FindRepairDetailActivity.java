@@ -62,7 +62,7 @@ public class FindRepairDetailActivity extends CommonHeadPanelActivity {
                     fix_detail_jiedai.setText(bean.getHandmanName());
                     fix_detail_zhidan_time.setText(bean.getNoteDate());
                     //call tag
-                    fix_detail_kaigong_time.setText(bean.getNoteDate());
+                    fix_detail_kaigong_time.setText(bean.getKgDate());
                     fix_detail_gongzhong.setText(bean.getGz());
                     fix_detail_jungong_time.setText(bean.getJgDate());
                     fix_detail_jiesuan_time.setText(bean.getJsDate());
