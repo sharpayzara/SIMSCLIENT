@@ -39,8 +39,8 @@ import com.mxst.car.simsclient.utils.DividerItemDecoration;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NewsFragment extends Fragment implements View.OnClickListener {
@@ -69,16 +69,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         this.inflater = inflater;
         llyHeight = (int) (getResources().getDisplayMetrics().density * 45 + 0.5);
         initUI();
+        if(TextUtils.isEmpty(search_et.getText())){
+            getNewsList("");
+        }else{
+            searchNewsList(search_et.getText().toString());
+        }
         return view;
     }
 
     public void onResume() {
         super.onResume();
-        if(TextUtils.isEmpty(search_et.getText())){
-           getNewsList("");
-        }else{
-            searchNewsList(search_et.getText().toString());
-        }
+
     }
 
 
@@ -97,8 +98,13 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         cc_line = (ImageView) view.findViewById(R.id.cc_line);
         ac_line = (ImageView) view.findViewById(R.id.ac_line);
         ap_line = (ImageView) view.findViewById(R.id.ap_line);
-        bean = new ArrayList<>();
-        adapter = new NewsCentreAdapter(getActivity(), bean);
+        if(bean == null){
+            bean = new LinkedList<>();
+        }
+        if(adapter == null){
+            adapter = new NewsCentreAdapter(getActivity(), bean);
+        }
+
         newsRecl.setAdapter(adapter);
         newsRecl.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         newsRecl.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
@@ -229,10 +235,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                         materialRefreshLayout.finishRefreshLoadMore();
                         return;
                     }
+                    bean.clear();
                     Iterator<IndexList> it = tempList.iterator();
-                    if(currentPage == 1){
-                        bean.clear();
-                    }
                     while (it.hasNext()) {
                         bean.add(it.next());
                     }
@@ -304,6 +308,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();
                         return;
+                    }
+                    if(currentPage == 1){
+                        bean.clear();
                     }
                     Iterator<IndexList> it = tempList.iterator();
                     while (it.hasNext()) {

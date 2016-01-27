@@ -24,7 +24,7 @@
         <TextView
             android:id="@+id/item_res_kuaxing"
             style="@style/titletext"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
             tools:text="sadasd" />
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@color/title_orange"
-            tools:text="sadasd" />
+            tools:text="78.8万" />
     </TableRow>
 
     <TableRow
