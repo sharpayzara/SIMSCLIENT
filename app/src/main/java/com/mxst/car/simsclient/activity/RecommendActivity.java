@@ -68,11 +68,20 @@ public class RecommendActivity extends CommonHeadPanelActivity implements View.O
             case Constant.REQUESTCODE.CHOOSEBRAND:
                 brand = data.getStringExtra("brand");
                 rec_brand_tv.setText(brand);
+                if (!rec_shop_tv.getText().toString().isEmpty()) {
+                    rec_shop_tv.setText(null);
+                }
+                if (!rec_xiaoshou_tv.getText().toString().isEmpty()) {
+                    rec_xiaoshou_tv.setText(null);
+                }
                 break;
             case Constant.REQUESTCODE.CHOOSESTORE:
                 store = data.getStringExtra("store");
                 num = data.getStringExtra("num");
                 rec_shop_tv.setText(store);
+                if (!rec_xiaoshou_tv.getText().toString().isEmpty()) {
+                    rec_xiaoshou_tv.setText(null);
+                }
                 break;
             case Constant.REQUESTCODE.CHOOSEMAN:
                 saleId = data.getStringExtra("saleId");

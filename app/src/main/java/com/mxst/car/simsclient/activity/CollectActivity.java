@@ -47,6 +47,12 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
         super.onCreate(savedInstanceState);
         mContext = this;
         initUI();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData();
     }
 
