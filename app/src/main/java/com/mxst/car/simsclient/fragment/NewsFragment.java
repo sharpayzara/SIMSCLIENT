@@ -45,24 +45,23 @@ import java.util.List;
 
 public class NewsFragment extends Fragment implements View.OnClickListener {
     LayoutInflater inflater;
-    RelativeLayout adLayout, search_lly;
+    RelativeLayout adLayout,search_lly;
     Context mContext;
-    LinearLayout adcolumnLayout;
+    LinearLayout adcolumnLayout,choose_llt;
     RelativeLayout dmf_layout;
-    private TextView newsTitleTv, newsNewsTv, newsGuideTv, newsPriceTv, newsCultureTv, cancel_tv;
+    private TextView newsTitleTv, newsNewsTv, newsGuideTv, newsPriceTv, newsCultureTv,cancel_tv;
     private RecyclerView newsRecl;
     private View view;
     private String val;
-    private List<IndexList> bean;
+    private List<IndexList>  bean;
     private NewsCentreAdapter adapter;
     private int llyHeight;
     private ImageView search_icon;
     private MaterialRefreshLayout materialRefreshLayout;
     private int currentPage = 1;
     ClearEditText search_et;
-    ImageView pr_line, cc_line, ac_line, ap_line;
-    private String tempStr;
-
+    ImageView pr_line,cc_line,ac_line,ap_line;
+    private  String tempStr;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_news, container, false);
@@ -70,9 +69,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         this.inflater = inflater;
         llyHeight = (int) (getResources().getDisplayMetrics().density * 45 + 0.5);
         initUI();
-        if (TextUtils.isEmpty(search_et.getText())) {
+        if(TextUtils.isEmpty(search_et.getText())){
             getNewsList("");
-        } else {
+        }else{
             searchNewsList(search_et.getText().toString());
         }
         return view;
@@ -80,7 +79,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
 
     public void onResume() {
         super.onResume();
-
+        val = "";
     }
 
 
@@ -99,10 +98,11 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         cc_line = (ImageView) view.findViewById(R.id.cc_line);
         ac_line = (ImageView) view.findViewById(R.id.ac_line);
         ap_line = (ImageView) view.findViewById(R.id.ap_line);
-        if (bean == null) {
+        choose_llt = (LinearLayout) view.findViewById(R.id.choose_llt);
+        if(bean == null){
             bean = new LinkedList<>();
         }
-        if (adapter == null) {
+        if(adapter == null){
             adapter = new NewsCentreAdapter(getActivity(), bean);
         }
 
@@ -117,20 +117,19 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 currentPage = 1;
                 bean.clear();
-                if (TextUtils.isEmpty(search_et.getText().toString())) {
+                if(TextUtils.isEmpty(search_et.getText().toString())){
                     getNewsList(val);
-                } else {
+                }else{
                     searchNewsList(search_et.getText().toString());
                 }
                 materialRefreshLayout.setLoadMore(true);
             }
-
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 currentPage++;
-                if (TextUtils.isEmpty(search_et.getText().toString())) {
+                if(TextUtils.isEmpty(search_et.getText().toString())){
                     getNewsList(val);
-                } else {
+                }else{
                     searchNewsList(search_et.getText().toString());
                 }
             }
@@ -205,10 +204,12 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.search_icon:
                 doCloseLayout(search_lly);
+                choose_llt.setVisibility(View.GONE);
                 break;
             case R.id.cancel_tv:
                 search_et.setText("");
                 doOpenLayout(search_lly);
+                choose_llt.setVisibility(View.VISIBLE);
                 break;
 
         }
@@ -217,7 +218,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     private void getNewsList(String val) {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("newsTypeVal", val);
-        params.addQueryStringParameter("page", currentPage + "");
+         params.addQueryStringParameter("page",  currentPage+"");
 
         new BaseTask<JsonResult<JSONObject>, String>(getActivity(), "加载中") {
 
@@ -233,13 +234,15 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                     List<IndexList> tempList = new Gson().fromJson(result.getRecord().optString("newsList"),
                             new TypeToken<List<IndexList>>() {
                             }.getType());
-                    if (tempList.size() == 0) {
+                    if(tempList.size() == 0){
                         materialRefreshLayout.setLoadMore(false);
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();
                         return;
                     }
-                    bean.clear();
+                    if(currentPage == 1){
+                        bean.clear();
+                    }
                     Iterator<IndexList> it = tempList.iterator();
                     while (it.hasNext()) {
                         bean.add(it.next());
@@ -261,9 +264,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         animator.start();
     }
 
-    private void doCloseLayout(final View view) {
+    private void doCloseLayout(final View view){
         ValueAnimator animator = createAnimator(view, view.getHeight(), 0);
-        animator.addListener(new AnimatorListenerAdapter() {
+        animator.addListener(new AnimatorListenerAdapter(){
             @Override
             public void onAnimationEnd(Animator animation) {
                 view.setVisibility(View.GONE);
@@ -272,8 +275,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         animator.start();
     }
 
-    private ValueAnimator createAnimator(final View view, int start, int end) {
-        ValueAnimator animator = ValueAnimator.ofInt(start, end);
+    private ValueAnimator createAnimator(final View view,int start,int end){
+        ValueAnimator animator = ValueAnimator.ofInt(start,end);
         animator.setDuration(800).start();
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -291,7 +294,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         showCheckLine("");
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("titleVal", val);
-        params.addQueryStringParameter("page", currentPage + "");
+        params.addQueryStringParameter("page",  currentPage+"");
 
         new BaseTask<JsonResult<JSONObject>, String>(getActivity()) {
 
@@ -307,13 +310,13 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                     List<IndexList> tempList = new Gson().fromJson(result.getRecord().optString("newsList"),
                             new TypeToken<List<IndexList>>() {
                             }.getType());
-                    if (tempList.size() == 0) {
+                    if(tempList.size() == 0){
                         materialRefreshLayout.setLoadMore(false);
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();
                         return;
                     }
-                    if (currentPage == 1) {
+                    if(currentPage == 1){
                         bean.clear();
                     }
                     Iterator<IndexList> it = tempList.iterator();
@@ -333,18 +336,17 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onPause() {
         super.onPause();
-        if (!TextUtils.isEmpty(search_et.getText())) {
+        if(!TextUtils.isEmpty(search_et.getText())){
             search_et.setText("");
             doOpenLayout(search_lly);
         }
     }
-
-    public void showCheckLine(String val) {
+    public void showCheckLine(String val){
         pr_line.setVisibility(View.INVISIBLE);
         cc_line.setVisibility(View.INVISIBLE);
         ac_line.setVisibility(View.INVISIBLE);
         ap_line.setVisibility(View.INVISIBLE);
-        switch (val) {
+        switch (val){
             case "pr":
                 pr_line.setVisibility(View.VISIBLE);
                 break;

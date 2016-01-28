@@ -55,7 +55,9 @@ public class EvaluateActivity extends CommonHeadPanelActivity implements View.On
         noteDate.setText(entity.getNoteDate());
         license.setText(entity.getLicense());
         wxlx.setText(entity.getWxlx());
-        gls.setText(entity.getGls());
+        String glsStr = entity.getGls().replace(".00","");
+
+       gls.setText(glsStr);
         CommonUtil.getBitMapUtils(this).display(headImg,entity.getArtisan().getHeadPortrait());
     }
 

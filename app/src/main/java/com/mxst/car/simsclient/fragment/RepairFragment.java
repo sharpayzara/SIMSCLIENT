@@ -78,7 +78,6 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadEvaluateData() {
-        Log.e("eee", Constant.AUTHENTICATION_TOKEN + "");
         new BaseTask<JsonResult<EvaluateList>, String>(mContext) {
 
             @Override

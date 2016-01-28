@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
 import com.mxst.car.simsclient.R;
@@ -25,6 +28,8 @@ public class UserScoreActivity extends CommonHeadPanelActivity implements View.O
     RecyclerView myRecycle;
     Context mContext;
     List<ScoreList.Score> list;
+    int currentPage = 1;
+    MaterialRefreshLayout materialRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_score_list);
@@ -52,6 +57,8 @@ public class UserScoreActivity extends CommonHeadPanelActivity implements View.O
     }
 
     private void loadData() {
+        RequestParams params = new RequestParams();
+        params.addQueryStringParameter("page",currentPage+"");
         new BaseTask<JsonResult<ScoreList>,String>(mContext,R.string.download_notice){
 
             @Override
@@ -62,18 +69,41 @@ public class UserScoreActivity extends CommonHeadPanelActivity implements View.O
             @Override
             public void onSuccess() {
                 if(result.isSuccess()){
-                    list.clear();
+                    if(result.getRecord().getJfList().size() == 0){
+                        materialRefreshLayout.setLoadMore(false);
+                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefreshLoadMore();
+                        return;
+                    }
                     list.addAll(result.getRecord().getJfList());
                 }
                 mAdapter.notifyDataSetChanged();
+                materialRefreshLayout.finishRefresh();
+                materialRefreshLayout.finishRefreshLoadMore();
             }
-        }.requestByPost(Constant.URL.SCORELIST,new RequestParams());
+        }.requestByPost(Constant.URL.SCORELIST,params);
     }
 
     private void initUI() {
         showBackBtn();
         setHeadTitle("个人中心");
         myRecycle = (RecyclerView) findViewById(R.id.my_recycle);
+        materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.material_rlt);
+        materialRefreshLayout.setLoadMore(true);
+        materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+                currentPage = 1;
+                list.clear();
+                loadData();
+                materialRefreshLayout.setLoadMore(true);
+            }
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                currentPage++;
+                loadData();
+            }
+        });
     }
 
     @Override

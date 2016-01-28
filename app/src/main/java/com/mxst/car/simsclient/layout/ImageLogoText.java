@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.utils.Constant;
 
-public class ImageText extends LinearLayout {
+public class ImageLogoText extends LinearLayout {
 	private Context mContext = null;
 	private ImageView mImageView = null;
 	private TextView mTextView = null;
@@ -23,13 +23,13 @@ public class ImageText extends LinearLayout {
 	private final int CHECKED_COLOR = Color.rgb(255,127,0); //选中橘红色
 	private final int UNCHECKED_COLOR = Color.GRAY;   //自然灰色
 
-	public ImageText(Context context) {
+	public ImageLogoText(Context context) {
 		super(context);
 		mContext = context;
 	}
 
 
-	public ImageText(Context context, AttributeSet attrs) {
+	public ImageLogoText(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		mContext = context;
@@ -37,18 +37,6 @@ public class ImageText extends LinearLayout {
 		View parentView = inflater.inflate(R.layout.image_text_layout, this, true);
 		mImageView = (ImageView) parentView.findViewById(R.id.image_iamge_text);
 		mTextView = (TextView) parentView.findViewById(R.id.text_iamge_text);
-	}
-
-	public void setImageView(){
-		//ViewGroup.LayoutParams params = mImageView.getLayoutParams();
-		LinearLayout.LayoutParams params = (LayoutParams) mImageView.getLayoutParams();
-		params.setMargins(0,0,0,0);
-		//mImageView.setLayoutParams(params);
-		params.width = dip2px(mContext, 40);
-		params.height = dip2px(mContext, 36);
-		mImageView.setLayoutParams(params);
-		//mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.red));
-		//mTextView.setBackgroundColor(mContext.getResources().getColor(R.color.back_check_bg));
 	}
 
 	public void setImage(int id) {
