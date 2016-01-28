@@ -47,7 +47,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     LayoutInflater inflater;
     RelativeLayout adLayout,search_lly;
     Context mContext;
-    LinearLayout adcolumnLayout;
+    LinearLayout adcolumnLayout,choose_llt;
     RelativeLayout dmf_layout;
     private TextView newsTitleTv, newsNewsTv, newsGuideTv, newsPriceTv, newsCultureTv,cancel_tv;
     private RecyclerView newsRecl;
@@ -79,7 +79,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
 
     public void onResume() {
         super.onResume();
-
+        val = "";
     }
 
 
@@ -98,6 +98,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         cc_line = (ImageView) view.findViewById(R.id.cc_line);
         ac_line = (ImageView) view.findViewById(R.id.ac_line);
         ap_line = (ImageView) view.findViewById(R.id.ap_line);
+        choose_llt = (LinearLayout) view.findViewById(R.id.choose_llt);
         if(bean == null){
             bean = new LinkedList<>();
         }
@@ -203,10 +204,12 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.search_icon:
                 doCloseLayout(search_lly);
+                choose_llt.setVisibility(View.GONE);
                 break;
             case R.id.cancel_tv:
                 search_et.setText("");
                 doOpenLayout(search_lly);
+                choose_llt.setVisibility(View.VISIBLE);
                 break;
 
         }
@@ -237,7 +240,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                         materialRefreshLayout.finishRefreshLoadMore();
                         return;
                     }
-                    bean.clear();
+                    if(currentPage == 1){
+                        bean.clear();
+                    }
                     Iterator<IndexList> it = tempList.iterator();
                     while (it.hasNext()) {
                         bean.add(it.next());
