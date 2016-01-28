@@ -13,11 +13,10 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="18sp"
-        android:textStyle="bold"
         tools:text="daadq"/>
 
     <View
-        android:layout_width="1dp"
+        android:layout_width="1.5dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"

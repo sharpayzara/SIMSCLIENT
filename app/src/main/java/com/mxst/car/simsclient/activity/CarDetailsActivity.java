@@ -20,6 +20,7 @@ import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.ParaList;
 import com.mxst.car.simsclient.utils.Constant;
+import com.mxst.car.simsclient.utils.ShareUtil;
 
 import org.json.JSONObject;
 
@@ -161,7 +162,14 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         car_detail_share_lin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ShareUtil.title = car_detail_name_tv.getText().toString();
+                ShareUtil.content = "";
+                if (TextUtils.isEmpty(colorId)) {                  //// TODO: 2016/1/28 资源Url
+                    ShareUtil.url = "http://222.177.210.200/public/brand/rsDetail?cpId=" + colorId;
+                } else {
+                    ShareUtil.url = "http://222.177.210.200/public/brand/rsDetail";
+                }
+                ShareUtil.showPopupWindow(CarDetailsActivity.this, getWindow().getDecorView());
             }
         });
         car_detail_more_lin = (LinearLayout) findViewById(R.id.car_detail_more_lin);

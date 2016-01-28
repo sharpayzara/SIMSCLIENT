@@ -24,9 +24,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class ScoreDetailActivity extends CommonHeadPanelActivity{
+public class ScoreDetailActivity extends CommonHeadPanelActivity {
     Context mContext;
     LinearLayout score_llt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_score_detail);
@@ -47,41 +48,44 @@ public class ScoreDetailActivity extends CommonHeadPanelActivity{
         setHeadTitle("积分详细");
         score_llt = (LinearLayout) findViewById(R.id.score_llt);
     }
+
     private void initData() {
         loadData();
     }
 
     private void loadData() {
         RequestParams params = new RequestParams();
-        params.addQueryStringParameter("id",getIntent().getStringExtra("id"));
-        new BaseTask<JsonResult<JSONObject>,String>(mContext,R.string.download_notice){
+        params.addQueryStringParameter("id", getIntent().getStringExtra("id"));
+        new BaseTask<JsonResult<JSONObject>, String>(mContext, R.string.download_notice) {
 
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<JSONObject>(){};
+                return new TypeToken<JSONObject>() {
+                };
             }
 
             @Override
             public void onSuccess() {
-                if(result.isSuccess()){
+                if (result.isSuccess()) {
+                    score_llt.removeAllViews();
                     LayoutInflater inflater = LayoutInflater.from(mContext);
                     JSONObject jsonObj = result.getRecord();
-                    String resultStr = jsonObj.toString().substring(1, jsonObj.toString().length()-1);
-                   resultStr =  resultStr.substring(resultStr.indexOf('{')) ;
+                    String resultStr = jsonObj.toString().substring(1, jsonObj.toString().length() - 1);
+                    resultStr = resultStr.substring(resultStr.indexOf('{'));
                     try {
                         jsonObj = new JSONObject(resultStr);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        return ;
-                   }
+                        return;
+                    }
                     Map<String, List<CommonBean>> map = ScoreDetailConfig.configMap;
                     Iterator<Map.Entry<String, List<CommonBean>>> entries = map.entrySet().iterator();
                     while (entries.hasNext()) {
                         Map.Entry<String, List<CommonBean>> entry = entries.next();
                         System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-                        if(entry.getKey().equals(jsonObj.optString("jfxw"))){
-                            for(CommonBean bean : entry.getValue()){
-                                View view = inflater.inflate(R.layout.item_score_detail,null);
+                        if (entry.getKey().equals(jsonObj.optString("jfxw"))) {
+                            for (CommonBean bean : entry.getValue()) {
+                                View view = inflater.inflate(R.layout.item_score_detail, null);
                                 TextView name_tv = (TextView) view.findViewById(R.id.name_tv);
                                 TextView value_tv = (TextView) view.findViewById(R.id.value_tv);
                                 name_tv.setText(bean.getFieldValue());
@@ -93,7 +97,7 @@ public class ScoreDetailActivity extends CommonHeadPanelActivity{
                     }
                 }
             }
-        }.requestByPost(Constant.URL.JFDETAIL,params);
+        }.requestByPost(Constant.URL.JFDETAIL, params);
     }
 
 }
