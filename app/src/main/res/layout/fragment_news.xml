@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/resource_bg"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/resource_bg"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -92,124 +92,129 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/choose_llt"
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:background="@color/news_gry"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/choose_llt"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@color/news_gry"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/news_news_tv"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_news" />
-        </RelativeLayout>
+                android:layout_weight="1"
+                android:gravity="center">
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/news_news_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_news" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/news_guide_tv"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="10dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_guide" />
-        </RelativeLayout>
+                android:background="@drawable/line" />
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/line" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/news_price_tv"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_price" />
-        </RelativeLayout>
+                android:layout_weight="1"
+                android:gravity="center">
 
+                <TextView
+                    android:id="@+id/news_guide_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_guide" />
+            </RelativeLayout>
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/line" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/news_culture_tv"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="10dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_culture" />
-        </RelativeLayout>
+                android:background="@drawable/line" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/news_gry"
-        android:layout_marginTop="-5dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/pr_line"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:visibility="invisible"
-            android:background="@color/title_orange"/>
-        <ImageView
-            android:id="@+id/cc_line"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:visibility="invisible"
-            android:layout_marginRight="10dp"
-            android:background="@color/title_orange"/>
-        <ImageView
-            android:id="@+id/ac_line"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:visibility="invisible"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/title_orange"/>
-        <ImageView
-            android:id="@+id/ap_line"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:visibility="invisible"
-            android:layout_marginRight="10dp"
-            android:background="@color/title_orange"/>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/news_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_price" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/line" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/news_culture_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_culture" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/news_gry"
+            android:layout_marginTop="-5dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/pr_line"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"
+                android:background="@color/title_orange"/>
+            <ImageView
+                android:id="@+id/cc_line"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:background="@color/title_orange"/>
+            <ImageView
+                android:id="@+id/ac_line"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/title_orange"/>
+            <ImageView
+                android:id="@+id/ap_line"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:background="@color/title_orange"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

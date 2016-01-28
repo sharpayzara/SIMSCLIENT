@@ -203,6 +203,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                 getNewsList(val);
                 break;
             case R.id.search_icon:
+                val = "";
+                currentPage = 1;
+                getNewsList("");
                 doCloseLayout(search_lly);
                 choose_llt.setVisibility(View.GONE);
                 break;
