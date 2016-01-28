@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 import com.mxst.car.simsclient.R;
 import com.umeng.socialize.ShareAction;
@@ -110,7 +109,7 @@ public class ShareUtil {
                             .share();
                     return;
                 case R.id.share_circle_tv:
-                    Toast.makeText(mCtx, content + "---" + url, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(mCtx, content + "---" + url, Toast.LENGTH_SHORT).show();
                     new ShareAction(mCtx).setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener)
                             .withText(content)
                             .withTitle(title)

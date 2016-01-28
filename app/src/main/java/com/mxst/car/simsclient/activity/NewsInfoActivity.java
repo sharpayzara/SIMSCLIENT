@@ -83,7 +83,7 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
         if (!TextUtils.isEmpty(tempUrl)) {
             mWebView.loadUrl(tempUrl);
         } else {
-            mWebView.loadUrl("http://222.177.210.200/supplier/news/getNewsInfo?id=" + id);
+            mWebView.loadUrl("http://222.177.210.200/public/news/getNewsInfo" + id);
         }
 
         share.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +95,7 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
                 if (getIntent().hasExtra("title")) {
                     ShareUtil.title = getIntent().getStringExtra("title");
                 }
-                ShareUtil.url = "http://222.177.210.200/supplier/news/getNewsInfo?id=" + id;
+                ShareUtil.url = "http://222.177.210.200/public/news/getNewsInfo" + id;
                 ShareUtil.showPopupWindow(NewsInfoActivity.this, getWindow().getDecorView());
             }
         });
