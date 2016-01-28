@@ -24,7 +24,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 	private ImageText mInfoBtn = null;
 	private ImageText mFindBtn = null;
 	private ImageText mMarketBtn = null;
-	private ImageView mLogoBtn= null;
+	private ImageText mLogoBtn= null;
 	private int DEFALUT_BACKGROUND_COLOR = Color.rgb(243, 243, 243);
 	private BottomPanelCallback mBottomCallback = null;
 	private List<View> viewList = new ArrayList<View>();
@@ -55,7 +55,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 		badgeView = new BadgeView(mContext);
 		mHomedBtn = (ImageText)findViewById(R.id.btn_home);
 		mInfoBtn = (ImageText)findViewById(R.id.btn_info);
-		mLogoBtn = (ImageView)findViewById(R.id.btn_logo);
+		mLogoBtn = (ImageText)findViewById(R.id.btn_logo);
 		mFindBtn = (ImageText)findViewById(R.id.btn_find);
 		mMarketBtn = (ImageText)findViewById(R.id.btn_market);
 		//setBackgroundColor(DEFALUT_BACKGROUND_COLOR);
@@ -83,6 +83,8 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 
 		if(mLogoBtn != null){
 			//mLogoBtn.setImage(R.drawable.btn_logo,30,30);//,45,45
+			mLogoBtn.setImage(R.drawable.btn_logo);
+			mLogoBtn.setText("服务");
 		}
 		if(mFindBtn != null){
 			mFindBtn.setImage(R.drawable.btn_find);
@@ -122,7 +124,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 			mInfoBtn.setChecked(Constant.BTN_FLAG_INFO);
 		}else if(v == mLogoBtn){
 			index = Constant.BTN_FLAG_REPAIR;
-			//mLogoBtn.setChecked(Constant.BTN_FLAG_REPAIR);
+			mLogoBtn.setChecked(Constant.BTN_FLAG_REPAIR);
 		}else if(v == mFindBtn){
 			index = Constant.BTN_FLAG_FIND;
 			mFindBtn.setChecked(Constant.BTN_FLAG_FIND);
@@ -196,9 +198,13 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 				params.width = eachWidth;
 				viewList.get(i).setLayoutParams(params);
 			}else{
+				if(i  == 2){
+					((ImageText)viewList.get(i)).setImageView();
+				}
 				LayoutParams tempParams = (LayoutParams) viewList.get(i)
 						.getLayoutParams();
 				tempParams.width = eachWidth;
+
 				viewList.get(i).setLayoutParams(tempParams);
 			}
 

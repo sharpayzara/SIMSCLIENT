@@ -22,7 +22,7 @@
         android:layout_toRightOf="@id/btn_home"
         />
 
-    <ImageView
+    <com.mxst.car.simsclient.layout.ImageText
         android:id="@+id/btn_logo"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
