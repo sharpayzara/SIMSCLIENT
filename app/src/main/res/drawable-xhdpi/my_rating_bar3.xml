@@ -5,7 +5,9 @@
         android:drawable="@android:color/transparent"/>
     <item
         android:id="@android:id/secondaryProgress"
-        android:drawable="@drawable/starhui" />
+        android:drawable="@android:color/transparent"/>
+    <!--android:drawable="@drawable/starhui" />-->
+
     <item
         android:id="@android:id/progress"
         android:drawable="@drawable/star3" />
