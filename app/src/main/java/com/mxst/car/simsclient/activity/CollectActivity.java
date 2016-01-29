@@ -47,24 +47,16 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
         super.onCreate(savedInstanceState);
         mContext = this;
         initUI();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData();
     }
 
     private void initData() {
-        showBackBtn();
-        setHeadTitle("资讯列表");
-        list = new ArrayList<CollectZXList.ZXEntity>();
-        list2 = new ArrayList<CollectZYList.ZYEntity>();
-        mAdapterZX = new CollectZXAdapter(mContext, list);
-        mAdapterZX.setOnItemClickListener(new CollectZXAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(mContext, NewsInfoActivity.class);
-                intent.putExtra("id", list.get(position).getId() + "");
-                intent.putExtra("title", list.get(position).getTitle() + "");
-                startActivity(intent);
-            }
-        });
         mRecyclerViewZX.setAdapter(mAdapterZX);
         mRecyclerViewZX.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mAdapterZY = new CollectZYAdapter(mContext, list2);
@@ -120,7 +112,7 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
                         CommonUtil.showToastToShort(mContext, "数为据空");
                     }
                 }
-                mAdapterZX.notifyDataSetChanged();
+                mAdapterZY.notifyDataSetChanged();
             }
         }.requestByPost(Constant.URL.NEWZYLIST, new RequestParams());
     }
@@ -140,6 +132,20 @@ public class CollectActivity extends CommonHeadPanelActivity implements View.OnC
         nickName.setText(getIntent().getStringExtra("nickName"));
         phone.setText(getIntent().getStringExtra("phone"));
         headimg = (ImageView) findViewById(R.id.headImg);
+        showBackBtn();
+        setHeadTitle("资讯列表");
+        list = new ArrayList<CollectZXList.ZXEntity>();
+        list2 = new ArrayList<CollectZYList.ZYEntity>();
+        mAdapterZX = new CollectZXAdapter(mContext, list);
+        mAdapterZX.setOnItemClickListener(new CollectZXAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mContext, NewsInfoActivity.class);
+                intent.putExtra("id", list.get(position).getId() + "");
+                intent.putExtra("title", list.get(position).getTitle() + "");
+                startActivity(intent);
+            }
+        });
         bitmapUtils = new BitmapUtils(this);
         bitmapUtils.display(headimg, getIntent().getStringExtra("img"));
     }

@@ -176,11 +176,21 @@ public class AddOrderRepairActivity extends CommonHeadPanelFraActivity implement
             case Constant.REQUESTCODE.CHOOSEBRAND:
                 brand = data.getStringExtra("brand");
                 pp_tv.setText(brand);
+                if (!md_tv.getText().toString().isEmpty()) {
+                    md_tv.setText(null);
+                }
+                if (!jg_tv.getText().toString().isEmpty()) {
+                    jg_tv.setText(null);
+                }
                 break;
             case Constant.REQUESTCODE.CHOOSESTORE:
                 store = data.getStringExtra("store");
                 num = data.getStringExtra("num");
                 md_tv.setText(store);
+                if (!jg_tv.getText().toString().isEmpty()) {
+                    jg_tv.setText(null);
+                }
+
                 break;
             case Constant.REQUESTCODE.CHOOSEJG:
                 jgId = data.getStringExtra("jgNum");

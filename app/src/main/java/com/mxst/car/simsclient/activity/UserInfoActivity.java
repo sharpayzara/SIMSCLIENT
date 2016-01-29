@@ -182,7 +182,7 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                         CommonUtil.showToastToShort(mContext, "修改成功");
                         DeleteFile();
                         Intent intent = new Intent();
-                        if (result.getRecord().length()!=0){
+                        if (result.getRecord().length() != 0) {
                             intent.putExtra("img", result.getRecord().optString("newImg"));
                         }
                         intent.putExtra("name", nickName.getText().toString());
@@ -209,8 +209,7 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                 SelectHeadUtil.startPhotoZoom(this, data.getData(), 300);
                 break;
             case Constant.REQUESTCODE.PHOTO_REQUEST_CUT: //接收处理返回的图片结果
-                Bundle extras = data.getExtras();
-                if (extras != null) {
+                if (data != null) {
                     Bitmap bit = data.getExtras().getParcelable("data");
                     headImg.setImageBitmap(bit);
                     myfile = FileUtil.getFileByUri(this, photoUri);
