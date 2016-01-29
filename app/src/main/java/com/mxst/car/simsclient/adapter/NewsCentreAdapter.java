@@ -54,7 +54,7 @@ public class NewsCentreAdapter extends RecyclerView.Adapter<NewsCentreAdapter.Vi
         holder.titleTv.setText(bean.get(position).getTitle());
         holder.subtitle.setText(bean.get(position).getSubtitle());
         holder.timeTv.setText(bean.get(position).getInterval_str());
-        holder.dianjiTv.setText(bean.get(position).getDianjishu() + "人点击");
+        holder.dianjiTv.setText(bean.get(position).getDianjishu()+"");
         holder.typeTv.setText(bean.get(position).getCategory());
         bitmapUtils.configDefaultLoadFailedImage(R.drawable.plugin_img);
         bitmapUtils.display(holder.img, bean.get(position).getImg());
@@ -62,7 +62,7 @@ public class NewsCentreAdapter extends RecyclerView.Adapter<NewsCentreAdapter.Vi
             @Override
             public void onClick(View v) {
                 if (onItemClickListener != null) {
-                    holder.dianjiTv.setText((bean.get(position).getDianjishu() + 1) + "人点击");
+                    holder.dianjiTv.setText(Integer.parseInt(holder.dianjiTv.getText().toString())+1+"");
                     onItemClickListener.onItemClick(holder.itemView, position);
                 }
             }

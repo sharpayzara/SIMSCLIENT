@@ -41,6 +41,7 @@ public class LoadingDialog extends Dialog {
         if(TextUtils.isEmpty(loadText)){
             loadTextView.setVisibility(View.GONE);
         }else{
+            loadTextView.setVisibility(View.VISIBLE);
             loadTextView.setText(loadText);
         }
     }

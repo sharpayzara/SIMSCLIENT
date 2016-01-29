@@ -74,12 +74,13 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         }else{
             searchNewsList(search_et.getText().toString());
         }
+        val = "";
         return view;
     }
 
     public void onResume() {
         super.onResume();
-        val = "";
+       // val = "";
     }
 
 
