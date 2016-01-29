@@ -69,7 +69,7 @@
     </style>
 
     <style name="smallRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/star3</item>
+        <item name="android:progressDrawable">@drawable/my_rating_bar3</item>
         <item name="android:minHeight">15dp</item>
         <item name="android:maxHeight">35dp</item>
         <item name="android:stepSize">0.5</item>
