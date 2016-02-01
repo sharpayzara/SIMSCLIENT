@@ -99,7 +99,11 @@ public class RecommendActivity extends CommonHeadPanelActivity implements View.O
                 startActivityForResult(new Intent(this, BrandChooseActivity.class), 1);
                 break;
             case 2: //选择销售
-                if (!TextUtils.isEmpty(num)) {
+                if (TextUtils.isEmpty(rec_brand_tv.getText().toString())) {
+                    Toast.makeText(this, "请先选择品牌", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!TextUtils.isEmpty(rec_shop_tv.getText().toString())) {
                     Intent intent = new Intent(this, ManChooseActivity.class);
                     intent.putExtra("num", num);
                     startActivityForResult(intent, 1);
@@ -108,7 +112,7 @@ public class RecommendActivity extends CommonHeadPanelActivity implements View.O
                 }
                 break;
             case 3: //选择门店
-                if (!TextUtils.isEmpty(brand)) {
+                if (!TextUtils.isEmpty(rec_brand_tv.getText().toString())) {
                     Intent intent = new Intent(this, StoreChooseActivity.class);
                     intent.putExtra("brand", brand);
                     startActivityForResult(intent, 1);

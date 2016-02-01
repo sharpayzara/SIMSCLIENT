@@ -101,7 +101,7 @@ public class ShareUtil {
                     popupWindow.dismiss();
                     return;
                 case R.id.share_qq_tv:
-                    new ShareAction(mCtx).setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener)
+                    new ShareAction(mCtx).setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener)
                             .withText(content)
                             .withTitle(title)
                             .withMedia(new UMImage(mCtx, BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher)))

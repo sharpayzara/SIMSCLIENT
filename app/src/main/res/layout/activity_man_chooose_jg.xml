@@ -52,7 +52,7 @@
 
             <ImageView
                 android:id="@+id/jg_man_store_img"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="100dp"
                 android:src="@mipmap/ic_launcher"/>
 
@@ -69,12 +69,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:gravity="left|center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/jg_man_store_tv"
                 android:layout_width="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 tools:text="兰博基尼盖拉多"/>
@@ -83,6 +85,7 @@
                 android:id="@+id/jg_man_address_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 tools:text="兰博基尼盖拉多"/>
         </LinearLayout>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,34 +17,35 @@
             android:layout_height="60dp"
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
-            android:src="@drawable/plugin_img" />
+            android:src="@drawable/plugin_img"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/item_man_name"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:gravity="center_vertical"
-                tools:text="asdasdas" />
+                tools:text="asdasdas"/>
 
             <TextView
                 android:id="@+id/item_man_phone"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:gravity="center_vertical"
-                tools:text="asdasdas" />
+                tools:text="asdasdas"/>
 
             <RatingBar
                 android:id="@+id/item_man_rating_rb"
-                style="@style/myRatingBar"
+                style="@style/myJGRatingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:numStars="5" />
+                android:layout_height="33dp"
+                android:numStars="5"/>
         </LinearLayout>
 
     </LinearLayout>

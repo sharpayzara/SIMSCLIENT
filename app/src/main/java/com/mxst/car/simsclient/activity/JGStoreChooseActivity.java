@@ -51,7 +51,7 @@ public class JGStoreChooseActivity extends CommonHeadPanelActivity {
         brand = (Brand.Brands) getIntent().getSerializableExtra("brand");
         list = (RecyclerView) findViewById(R.id.man_recl);
         store_lin = (LinearLayout) findViewById(R.id.jg_store);
-        store_lin.setVisibility(View.VISIBLE);
+      //  store_lin.setVisibility(View.VISIBLE);
         img = (ImageView) findViewById(R.id.jg_store_img);
         BitmapUtils bitmapUtils = new BitmapUtils(this);
         bitmapUtils.display(img, brand.getLogoPath());

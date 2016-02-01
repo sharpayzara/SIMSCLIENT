@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/resource_bg"
     android:orientation="vertical">
 
@@ -13,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="195dp"
         android:background="@color/white"
         android:orientation="vertical"
         >
@@ -68,15 +69,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
+            android:ellipsize="end"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
             tools:text="啊撒旦撒大苏打扫打扫打撒扫打扫大的"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="2dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -101,13 +102,26 @@
                 tools:src="@mipmap/ic_launcher"/>
         </LinearLayout>
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/jg_detail_recl"
-        android:layout_width="match_parent"
+    <com.cjj.MaterialRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/materialRefreshLayout"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        app:overlay="true"
+        app:wave_show="true"
+        app:wave_color="#90ffffff"
+        app:progress_colors="@array/material_colors"
+        app:wave_height_type="higher"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/jg_detail_recl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.cjj.MaterialRefreshLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

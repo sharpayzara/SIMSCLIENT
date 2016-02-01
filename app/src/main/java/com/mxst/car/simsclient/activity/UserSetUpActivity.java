@@ -101,8 +101,10 @@ public class UserSetUpActivity extends CommonHeadPanelActivity implements View.O
     @Override
     public void onClick(View v) {
         if(v == clear_rlt){
-            deleteFile(cacheDir);
-            cacheSize_tv.setText(getCatchSize());
+            if(cacheDir != null){
+                deleteFile(cacheDir);
+                cacheSize_tv.setText(getCatchSize());
+            }
         }
     }
 }

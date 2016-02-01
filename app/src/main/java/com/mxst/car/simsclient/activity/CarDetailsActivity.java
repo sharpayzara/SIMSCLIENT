@@ -64,7 +64,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         if (!TextUtils.isEmpty(Constant.AUTHENTICATION_TOKEN)) {
             params.addQueryStringParameter("flg", "1");
         }
-        new BaseTask<JsonResult<ParaList>, String>(this, "加载中") {
+        new BaseTask<JsonResult<ParaList>, String>(this) {
 
             @Override
             public TypeToken setTypeToken() {

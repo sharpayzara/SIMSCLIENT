@@ -7,12 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.http.RequestParams;
@@ -45,8 +48,10 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
     private List<ImageView> imglist;
     private JGCommentAadapter adapter;
     private Context mContext;
+    private MaterialRefreshLayout materialRefreshLayout;
     int currentLicense = 0;
     ArrayList<Bitmap> tempList;
+    private int currentPage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +63,10 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
         artisanDetail();
     }
 
-    private void artisanDetail() {
+    private void artisanDetail() {     //// TODO: 2016/2/1 Page
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("id", id);
+        params.addQueryStringParameter("page", currentPage+"");
         new BaseTask<JsonResult<JGDetail>, String>(this, "加载中") {
             @Override
             public TypeToken setTypeToken() {
@@ -73,6 +79,12 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
                 if (result.isSuccess()) {
                     bean.clear();
                     bean.addAll(result.getRecord().getComments());
+                    if(result.getRecord().getComments().size() == 0){
+                        materialRefreshLayout.setLoadMore(false);
+                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefreshLoadMore();
+                        return;
+                    }
                     utils.display(jg_detail_head_img, result.getRecord().getArtisanDetail().getHeadPortrait());
                     jg_detail_name.setText(result.getRecord().getArtisanDetail().getName());
                     jg_detail_phone.setText(result.getRecord().getArtisanDetail().getPhone());
@@ -100,6 +112,8 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
                 } else {
                     Toast.makeText(JGDetailActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
+                materialRefreshLayout.finishRefresh();
+                materialRefreshLayout.finishRefreshLoadMore();
                 adapter.notifyDataSetChanged();
             }
         }.requestByPost(Constant.URL.ARTISANDETAIL, params);
@@ -134,6 +148,24 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
         imglist.add(jg_detail_zs_img);
         imglist.add(jg_detail_zs2_img);
         imglist.add(jg_detail_zs3_img);
+
+
+        materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.materialRefreshLayout);
+        materialRefreshLayout.setLoadMore(true);
+        materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+                currentPage = 1;
+                bean.clear();
+                artisanDetail();
+                materialRefreshLayout.setLoadMore(true);
+            }
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                currentPage++;
+                artisanDetail();
+            }
+        });
     }
 
     @Override
