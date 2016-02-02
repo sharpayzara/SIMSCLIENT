@@ -77,14 +77,13 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
-                    bean.clear();
-                    bean.addAll(result.getRecord().getComments());
                     if(result.getRecord().getComments().size() == 0){
                         materialRefreshLayout.setLoadMore(false);
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();
                         return;
                     }
+                    bean.addAll(result.getRecord().getComments());
                     utils.display(jg_detail_head_img, result.getRecord().getArtisanDetail().getHeadPortrait());
                     jg_detail_name.setText(result.getRecord().getArtisanDetail().getName());
                     jg_detail_phone.setText(result.getRecord().getArtisanDetail().getPhone());
