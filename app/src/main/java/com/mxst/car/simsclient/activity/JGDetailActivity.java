@@ -25,6 +25,7 @@ import com.mxst.car.simsclient.adapter.JGCommentAadapter;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.JGDetail;
+import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.DividerItemDecoration;
 
@@ -87,7 +88,7 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
                     utils.display(jg_detail_head_img, result.getRecord().getArtisanDetail().getHeadPortrait());
                     jg_detail_name.setText(result.getRecord().getArtisanDetail().getName());
                     jg_detail_phone.setText(result.getRecord().getArtisanDetail().getPhone());
-                    jg_detail_rating_rb.setRating(result.getRecord().getArtisanDetail().getStar_level());
+                    jg_detail_rating_rb.setRating(CommonUtil.switchRatingValue(result.getRecord().getArtisanDetail().getStar_level()));
                     jg_detail_js.setText(result.getRecord().getArtisanDetail().getIntro());
                     currentLicense = result.getRecord().getZhengShu().size();
                     if (result.getRecord().getZhengShu().size() < 3) {

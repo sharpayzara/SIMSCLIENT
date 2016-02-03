@@ -47,7 +47,8 @@ public class ChooseJGAdapter extends RecyclerView.Adapter<ChooseJGAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.nameTv.setText(bean.get(position).getName());
         holder.phoneTv.setText(bean.get(position).getPhone());
-        holder.starLevelTv.setRating(Float.parseFloat(bean.get(position).getStar_level()));
+
+        holder.starLevelTv.setRating(CommonUtil.switchRatingValue(Float.parseFloat(bean.get(position).getStar_level())));
         BitmapUtils bitmapUtils = CommonUtil.getBitMapUtils(mContext);
         bitmapUtils.display(holder.imgIv, bean.get(position).getHeadPortrait());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
