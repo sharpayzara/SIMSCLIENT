@@ -55,7 +55,7 @@
 
                 <RatingBar
                     android:id="@+id/jg_detail_rating_rb"
-                    style="@style/myRatingBar"
+                    style="@style/ourRatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:isIndicator="true"

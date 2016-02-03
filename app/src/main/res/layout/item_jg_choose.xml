@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:numStars="5"
-            style="@style/myRatingBar"/>
+            style="@style/ourRatingBar"/>
     </LinearLayout>
 
 </LinearLayout>
