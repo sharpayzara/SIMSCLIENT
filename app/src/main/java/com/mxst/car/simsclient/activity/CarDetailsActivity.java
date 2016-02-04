@@ -90,7 +90,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     car_detail_color_tv.setText(bean.getOutColor());
                     car_detail_site_tv.setText(bean.getLocation());
                     ShareTxt=bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing();
-                    car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing());
+                    car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan()+ " " + bean.getKuanXing());
                     car_detail_price_tv.setText(bean.getTotalPrice() + "");
                     car_detail_time_tv.setText(bean.getCommit_date());
                     car_detail_reserveprice_tv.setText(bean.getDingjin());
