@@ -239,6 +239,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                             new TypeToken<List<IndexList>>() {
                             }.getType());
                     if(tempList.size() == 0){
+                        bean.clear();
                         materialRefreshLayout.setLoadMore(false);
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();
@@ -251,10 +252,11 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                     while (it.hasNext()) {
                         bean.add(it.next());
                     }
-                    adapter.notifyDataSetChanged();
+
                 } else {
                     Toast.makeText(getActivity(), result.getMsg(), Toast.LENGTH_SHORT).show();
                 }
+                adapter.notifyDataSetChanged();
                 materialRefreshLayout.finishRefresh();
                 materialRefreshLayout.finishRefreshLoadMore();
             }
