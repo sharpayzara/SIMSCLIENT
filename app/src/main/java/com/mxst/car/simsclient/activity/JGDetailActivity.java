@@ -25,6 +25,7 @@ import com.mxst.car.simsclient.adapter.JGCommentAadapter;
 import com.mxst.car.simsclient.business.BaseTask;
 import com.mxst.car.simsclient.business.JsonResult;
 import com.mxst.car.simsclient.entity.JGDetail;
+import com.mxst.car.simsclient.entity.ParaList;
 import com.mxst.car.simsclient.utils.CommonUtil;
 import com.mxst.car.simsclient.utils.Constant;
 import com.mxst.car.simsclient.utils.DividerItemDecoration;
@@ -38,7 +39,7 @@ import java.util.List;
  * version:  V1.0
  * Description:技工详情
  */
-public class JGDetailActivity extends CommonHeadPanelActivity implements View.OnClickListener{
+public class JGDetailActivity extends CommonHeadPanelActivity implements View.OnClickListener {
     private TextView jg_detail_name, jg_detail_phone, jg_detail_js, jg_detail_call;
     private RatingBar jg_detail_rating_rb;
     private ImageView jg_detail_head_img, jg_detail_zs_img, jg_detail_zs2_img, jg_detail_zs3_img;
@@ -50,8 +51,8 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
     private JGCommentAadapter adapter;
     private Context mContext;
     private MaterialRefreshLayout materialRefreshLayout;
-    int currentLicense = 0;
-    ArrayList<Bitmap> tempList;
+
+    ArrayList<String> imgurlList;
     private int currentPage = 1;
 
     @Override
@@ -59,7 +60,7 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
         setContentView(R.layout.activity_jg_detail);
         super.onCreate(savedInstanceState);
         mContext = this;
-        tempList = new ArrayList();
+        imgurlList = new ArrayList();
         initViews();
         artisanDetail();
     }
@@ -67,7 +68,7 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
     private void artisanDetail() {     //// TODO: 2016/2/1 Page
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("id", id);
-        params.addQueryStringParameter("page", currentPage+"");
+        params.addQueryStringParameter("page", currentPage + "");
         new BaseTask<JsonResult<JGDetail>, String>(this, "加载中") {
             @Override
             public TypeToken setTypeToken() {
@@ -78,11 +79,10 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
-                    if(result.getRecord().getComments().size() == 0){
+                    if (result.getRecord().getComments().size() == 0) {
                         materialRefreshLayout.setLoadMore(false);
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();
-                        return;
                     }
                     bean.addAll(result.getRecord().getComments());
                     utils.display(jg_detail_head_img, result.getRecord().getArtisanDetail().getHeadPortrait());
@@ -90,12 +90,16 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
                     jg_detail_phone.setText(result.getRecord().getArtisanDetail().getPhone());
                     jg_detail_rating_rb.setRating(CommonUtil.switchRatingValue(result.getRecord().getArtisanDetail().getStar_level()));
                     jg_detail_js.setText(result.getRecord().getArtisanDetail().getIntro());
-                    currentLicense = result.getRecord().getZhengShu().size();
-                    if (result.getRecord().getZhengShu().size() < 3) {
+
+                    if (result.getRecord().getZhengShu().size() < 3){
                         for (int i = 0; i < result.getRecord().getZhengShu().size(); i++) {
+                            imgurlList.add(result.getRecord().getZhengShu().get(i).getImg());
                             utils.display(imglist.get(i), result.getRecord().getZhengShu().get(i).getImg());
                         }
-                    } else {
+                    }else {
+                        for (int i = 0; i < result.getRecord().getZhengShu().size(); i++) {
+                            imgurlList.add(result.getRecord().getZhengShu().get(i).getImg());
+                        }
                         utils.display(imglist.get(0), result.getRecord().getZhengShu().get(0).getImg());
                         utils.display(imglist.get(1), result.getRecord().getZhengShu().get(1).getImg());
                         utils.display(imglist.get(2), result.getRecord().getZhengShu().get(2).getImg());
@@ -104,7 +108,7 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
                     jg_detail_call.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+result.getRecord().getArtisanDetail().getPhone()));
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + result.getRecord().getArtisanDetail().getPhone()));
                             startActivity(intent);
                         }
                     });
@@ -160,6 +164,7 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
                 artisanDetail();
                 materialRefreshLayout.setLoadMore(true);
             }
+
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 currentPage++;
@@ -170,31 +175,18 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        tempList.clear();
-        if(v == jg_detail_zs_img && currentLicense >= 1){
-            for (int i = 0; i <currentLicense; i++) {
-                tempList.add(imglist.get(i).getDrawingCache());
-            }
-            Intent intent = new Intent(mContext, ViewImageActivity.class);
-            intent.putParcelableArrayListExtra("imgList", tempList);
-            intent.putExtra("position",0);
+        int size = imgurlList.size();
+        Intent intent = new Intent(mContext, ViewImageURLActivity.class);
+        if (v == jg_detail_zs_img && size >= 1) {
+            intent.putExtra("position", 0);
+        } else if (v == jg_detail_zs2_img && size >= 2) {
+            intent.putExtra("position", 1);
             mContext.startActivity(intent);
-        }else if(v == jg_detail_zs2_img && currentLicense >= 2){
-            for (int i = 0; i <currentLicense; i++) {
-                tempList.add(imglist.get(i).getDrawingCache());
-            }
-            Intent intent = new Intent(mContext, ViewImageActivity.class);
-            intent.putParcelableArrayListExtra("imgList", tempList);
-            intent.putExtra("position",1);
-            mContext.startActivity(intent);
-        }else if(v == jg_detail_zs3_img && currentLicense >= 3){
-            for (int i = 0; i <currentLicense; i++) {
-                tempList.add(imglist.get(i).getDrawingCache());
-            }
-            Intent intent = new Intent(mContext, ViewImageActivity.class);
-            intent.putParcelableArrayListExtra("imgList", tempList);
-            intent.putExtra("position",2);
+        } else if (v == jg_detail_zs3_img && size >= 3) {
+            intent.putExtra("position", 2);
             mContext.startActivity(intent);
         }
+        intent.putStringArrayListExtra("imgUrlList",imgurlList);
+        startActivity(intent);
     }
 }

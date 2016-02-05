@@ -39,7 +39,7 @@ public class ViewImageURLActivity extends InstrumentedActivity {
     private void initUI() {
         viewPager = (HackyViewPager) findViewById(R.id.expanded_image);
         viewPager.setAdapter(new SamplePagerAdapter());
-        viewPager.setCurrentItem(currentPosition );
+        viewPager.setCurrentItem(currentPosition);
     }
     class SamplePagerAdapter extends PagerAdapter {
 
