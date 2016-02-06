@@ -12,15 +12,51 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        myConfigs {
+            storeFile file("D:\\Android\\爱城市\\Sdb.keystore")
+            keyAlias "androidsdb"
+            keyPassword "1qaz2wsx"
+            storePassword "1qaz2wsx"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources true//移除未使用的资源文件
+            signingConfig  signingConfigs.myConfigs
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+        }
+    }
+    productFlavors {
+        yingyongbao {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+        }
+        baiduyun {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baiduyun"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
         }
     }
 }
