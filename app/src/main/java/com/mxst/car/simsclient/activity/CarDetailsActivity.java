@@ -36,7 +36,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
     private TextView car_detail_color_tv, car_detail_engine_tv, car_detail_speed_tv, car_detail_site_tv, car_detail_tjjf, car_detail_gcjf,
             car_detail_price_tv, car_detail_time_tv, car_detail_name_tv, car_detail_guideprice_tv, car_detail_reserveprice_tv;
     private ImageView car_detail_img1, car_detail_img2, car_detail_img3, car_detail_img4, car_detail_img5;
-    private String colorId, id,ShareTxt;
+    private String colorId, id, ShareTxt;
     private ParaList.ResourceDetailEntity bean;
     private Boolean isCollect = false;
     private Button collectBtn;
@@ -89,11 +89,15 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     car_detail_gcjf.setText(bean.getGcjf() + "");
                     car_detail_color_tv.setText(bean.getOutColor());
                     car_detail_site_tv.setText(bean.getLocation());
-                    ShareTxt=bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing();
-                    car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan()+ " " + bean.getKuanXing());
-                    car_detail_price_tv.setText(bean.getTotalPrice() + "");
+                    ShareTxt = bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getCarType() + " " + bean.getKuanXing();
+                    car_detail_name_tv.setText(bean.getBrand() + " " + bean.getXinghao() + " " + bean.getNianKuan() + " " + bean.getKuanXing());
+
+                    float d = Float.valueOf(bean.getTotalPrice()) / 10000;
+                    String money = String.format("%.2f", d);
+                    car_detail_price_tv.setText(money + "万");
+
                     car_detail_time_tv.setText(bean.getCommit_date());
-                    car_detail_reserveprice_tv.setText(bean.getDingjin());
+                    car_detail_reserveprice_tv.setText(bean.getDingjin() + "万");
                     car_detail_engine_tv.setText(bean.getFdj());
                     car_detail_speed_tv.setText(bean.getBsx());
                     ArrayList<ImageView> imglist = new ArrayList<ImageView>();
@@ -163,7 +167,7 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
         car_detail_share_lin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShareUtil.title =ShareTxt;
+                ShareUtil.title = ShareTxt;
                 ShareUtil.content = ShareTxt;
                 if (TextUtils.isEmpty(colorId)) {                  //// TODO: 2016/1/28 资源Url
                     ShareUtil.url = "http://222.177.210.200/public/brand/rsDetail?cpId=" + colorId;
