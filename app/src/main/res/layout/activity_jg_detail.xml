@@ -75,6 +75,7 @@
             tools:text="啊撒旦撒大苏打扫打扫打撒扫打扫大的"/>
 
         <LinearLayout
+            android:id="@+id/jg_detail_img_lin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginBottom="2dp"
@@ -96,6 +97,18 @@
 
             <ImageView
                 android:id="@+id/jg_detail_zs3_img"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                tools:src="@mipmap/ic_launcher"/>
+            <ImageView
+                android:id="@+id/jg_detail_zs4_img"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                tools:src="@mipmap/ic_launcher"/>
+            <ImageView
+                android:id="@+id/jg_detail_zs5_img"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"

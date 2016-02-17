@@ -45,7 +45,7 @@ public class ViewImageURLActivity extends InstrumentedActivity {
 
         @Override
         public int getCount() {
-            return imageUrlList.size();
+            return imageUrlList==null?0:imageUrlList.size();
         }
 
         @Override
