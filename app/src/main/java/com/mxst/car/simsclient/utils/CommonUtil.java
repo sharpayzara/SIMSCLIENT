@@ -40,4 +40,15 @@ public class CommonUtil {
         return false;
     }
 
+    public static float switchRatingValue(float ratingValue){
+        float pointValue = ratingValue  - (int)ratingValue;
+        if(pointValue > 0.5){
+            return (int)ratingValue + 1;
+        }else if(pointValue != 0){
+            return (float) ((int)ratingValue + 0.5);
+        }else {
+            return (int)ratingValue;
+        }
+    }
+
 }

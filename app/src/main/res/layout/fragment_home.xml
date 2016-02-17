@@ -626,6 +626,7 @@
                                 android:layout_height="match_parent"
                                 android:maxLines="2"
                                 android:textSize="12sp"
+                                android:ellipsize="end"
                                 tools:text="售：93.8-110.8万元 全新奔驰S320l正式上市"/>
                         </LinearLayout>
                     </LinearLayout>

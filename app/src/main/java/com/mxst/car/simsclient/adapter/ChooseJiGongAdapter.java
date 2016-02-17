@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.lidroid.xutils.BitmapUtils;
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.entity.JiGong;
+import com.mxst.car.simsclient.utils.CommonUtil;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class ChooseJiGongAdapter extends RecyclerView.Adapter<ChooseJiGongAdapte
         holder.phoneTv.setText(bean.get(position).getPhone());
         BitmapUtils bitmapUtils = new BitmapUtils(mContext);
           bitmapUtils.display(holder.img, bean.get(position).getHeadPortrait());
-        holder.rb.setRating(bean.get(position).getStar_level());
+        holder.rb.setRating(CommonUtil.switchRatingValue(bean.get(position).getStar_level()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

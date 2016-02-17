@@ -116,7 +116,7 @@ public class LoginActivity extends InstrumentedActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Constant.isLoginState = false;
+        Constant.isLoginState = true;
     }
 
     public void updateRedPoint() {

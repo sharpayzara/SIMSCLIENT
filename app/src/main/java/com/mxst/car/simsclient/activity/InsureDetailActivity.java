@@ -60,7 +60,7 @@ public class InsureDetailActivity extends CommonHeadPanelActivity{
                 intent.putExtra("brandNo",brandNo.getText().toString());
                 intent.putExtra("pp",pp.getText().toString());
                 intent.putExtra("license",license.getText().toString());
-                intent.putExtra("sxbDate",list.get(position).getSxbDate());
+                intent.putExtra("sxbDate",list.get(position).getSxeDate());
                 intent.putExtra("noteNo",list.get(position).getNoteNo());
                 intent.putExtra("name",list.get(position).getName());
                 startActivity(intent);

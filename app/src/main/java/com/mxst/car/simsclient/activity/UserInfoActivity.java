@@ -82,10 +82,10 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                     address.setText(bean.getAddress());
                     BitmapUtils bitmapUtils = new BitmapUtils(mContext);
                     bitmapUtils.display(headImg, bean.getHeadImg());
-                    if (bean.getGender().equals("男")) {
-                        sex_man.setChecked(true);
-                    } else {
+                    if (bean.getGender().isEmpty() && bean.getGender().equals("女")) {
                         sex_woman.setChecked(true);
+                    } else {
+                        sex_man.setChecked(true);
                     }
                 } else {
                     CommonUtil.showToastToShort(mContext, result.getMsg());

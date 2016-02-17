@@ -21,6 +21,7 @@
             <TextView
                 android:id="@+id/item_jg_name"
                 android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
                 tools:text="汽车品牌"/>
 
@@ -28,8 +29,9 @@
                 android:id="@+id/item_jg_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/item_jg_rb"
+                android:layout_marginRight="20dp"
                 tools:text="型号"/>
 
             <RatingBar
@@ -56,6 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:maxLines="3"
+                android:ellipsize="end"
                 tools:text="汽车牌照"/>
 
 

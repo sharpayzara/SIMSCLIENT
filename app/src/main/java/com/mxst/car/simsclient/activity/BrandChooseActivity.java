@@ -51,24 +51,24 @@ public class BrandChooseActivity extends CommonHeadPanelActivity implements View
             public void onSuccess() {
                 if (result.isSuccess()) {
                     bean = result.getRecord().getBrands();
-                    brandImg1.setTag(bean.get(0).getBrand());
-                    brandImg2.setTag(bean.get(1).getBrand());
+                    brandImg5.setTag(bean.get(0).getBrand());
+                    brandImg6.setTag(bean.get(1).getBrand());
                     brandImg3.setTag(bean.get(2).getBrand());
-                    brandImg4.setTag(bean.get(3).getBrand());
-                    brandImg5.setTag(bean.get(4).getBrand());
-                    brandImg6.setTag(bean.get(5).getBrand());
-                    tv1.setText(bean.get(0).getBrand());
-                    tv2.setText(bean.get(1).getBrand());
+                    brandImg2.setTag(bean.get(3).getBrand());
+                    brandImg4.setTag(bean.get(4).getBrand());
+                    brandImg1.setTag(bean.get(5).getBrand());
+                    tv5.setText(bean.get(0).getBrand());
+                    tv6.setText(bean.get(1).getBrand());
                     tv3.setText(bean.get(2).getBrand());
-                    tv4.setText(bean.get(3).getBrand());
-                    tv5.setText(bean.get(4).getBrand());
-                    tv6.setText(bean.get(5).getBrand());
-                    utils.display(brandImg1, bean.get(0).getLogoPath());
-                    utils.display(brandImg2, bean.get(1).getLogoPath());
+                    tv2.setText(bean.get(3).getBrand());
+                    tv4.setText(bean.get(4).getBrand());
+                    tv1.setText(bean.get(5).getBrand());
+                    utils.display(brandImg5, bean.get(0).getLogoPath());
+                    utils.display(brandImg6, bean.get(1).getLogoPath());
                     utils.display(brandImg3, bean.get(2).getLogoPath());
-                    utils.display(brandImg4, bean.get(3).getLogoPath());
-                    utils.display(brandImg5, bean.get(4).getLogoPath());
-                    utils.display(brandImg6, bean.get(5).getLogoPath());
+                    utils.display(brandImg2, bean.get(3).getLogoPath());
+                    utils.display(brandImg4, bean.get(4).getLogoPath());
+                    utils.display(brandImg1, bean.get(5).getLogoPath());
 
                 }
             }

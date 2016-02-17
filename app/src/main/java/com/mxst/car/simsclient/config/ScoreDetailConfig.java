@@ -25,9 +25,9 @@ public class ScoreDetailConfig {
 
     //public  List<String> nameList;
     static{
-        buyCarInfoList.add(new CommonBean("jfxw","积分类型"));
         buyCarInfoList.add(new CommonBean("produceDate","时间"));
         buyCarInfoList.add(new CommonBean("jfChange","积分数"));
+        buyCarInfoList.add(new CommonBean("jfxw","积分类型"));
         buyCarInfoList.add(new CommonBean("brand","品牌"));
         buyCarInfoList.add(new CommonBean("carType","车型"));
         buyCarInfoList.add(new CommonBean("niankuan","年款"));
@@ -56,24 +56,24 @@ public class ScoreDetailConfig {
         tjbxInfoList.add(new CommonBean("jfxw","积分类型"));
 
 
-        tjcjInfoList.add(new CommonBean("jfChange","积分数"));
         tjcjInfoList.add(new CommonBean("produceDate","时间"));
+        tjcjInfoList.add(new CommonBean("jfChange","积分数"));
+        tjcjInfoList.add(new CommonBean("jfxw","积分类型"));
         tjcjInfoList.add(new CommonBean("store","门店"));
         tjcjInfoList.add(new CommonBean("cj_kx","款型"));
         tjcjInfoList.add(new CommonBean("cj_mj","年款"));
         tjcjInfoList.add(new CommonBean("name","客户姓名"));
         tjcjInfoList.add(new CommonBean("cj_spec","规格"));
         tjcjInfoList.add(new CommonBean("cj_xinghao","车型"));
-        tjcjInfoList.add(new CommonBean("jfxw","积分类型"));
         tjcjInfoList.add(new CommonBean("cj_brand","品牌"));
 
-        tjkhInfoList.add(new CommonBean("jfChange","积分数"));
         tjkhInfoList.add(new CommonBean("produceDate","时间"));
+        tjkhInfoList.add(new CommonBean("jfChange","积分数"));
+        tjkhInfoList.add(new CommonBean("jfxw","积分类型"));
         tjkhInfoList.add(new CommonBean("store","门店"));
         tjkhInfoList.add(new CommonBean("rec_brand","品牌"));
         tjkhInfoList.add(new CommonBean("name","客户姓名"));
         tjkhInfoList.add(new CommonBean("rec_chexing","意向车型"));
-        tjkhInfoList.add(new CommonBean("jfxw","积分类型"));
 
         configMap.put("会员购车",buyCarInfoList);
         configMap.put("签到",qdInfoList);

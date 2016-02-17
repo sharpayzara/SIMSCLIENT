@@ -3,6 +3,8 @@ package com.mxst.car.simsclient;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
+import com.mxst.car.simsclient.utils.CommonUtil;
+
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */

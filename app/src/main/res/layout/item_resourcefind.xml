@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <TableRow
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
@@ -16,6 +16,7 @@
         <TextView
             android:id="@+id/item_res_brand"
             style="@style/titletext"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -24,10 +25,11 @@
         <TextView
             android:id="@+id/item_res_kuaxing"
             style="@style/titletext"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="60dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            tools:text="sadasd" />
+            tools:text="sadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdassd" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,9 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
+            android:layout_alignParentRight="true"
             android:textColor="@color/title_orange"
             tools:text="78.8万" />
-    </TableRow>
+    </RelativeLayout>
 
     <TableRow
         android:layout_width="match_parent"

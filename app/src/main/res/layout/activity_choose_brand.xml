@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:orientation="vertical">
@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="15sp"
             tools:text="兰博基尼盖拉多"
             />
 
@@ -35,7 +36,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:orientation="horizontal">
@@ -60,6 +61,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 tools:text="兰博基尼盖拉多"
+                android:textSize="15sp"
+
                 />
         </LinearLayout>
 
@@ -88,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textSize="15sp"
                 tools:text="兰博基尼盖拉多"
                 />
         </LinearLayout>
@@ -95,8 +99,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginBottom="5dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:orientation="horizontal">
 
@@ -120,6 +124,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 tools:text="兰博基尼盖拉多"
+                android:textSize="15sp"
+
                 />
         </LinearLayout>
 
@@ -148,13 +154,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 tools:text="兰博基尼盖拉多"
+                android:textSize="15sp"
+
                 />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="5dp"
         android:background="@color/white"
         android:orientation="vertical">
@@ -170,6 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="15sp"
             tools:text="兰博基尼盖拉多"
             />
     </LinearLayout>

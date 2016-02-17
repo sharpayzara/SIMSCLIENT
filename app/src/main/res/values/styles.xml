@@ -61,18 +61,35 @@
     </style>
 
     <style name="myRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/my_rating_bar</item>
+        <item name="android:progressDrawable">@drawable/my_rating_bar4</item>
         <item name="android:minHeight">15dp</item>
         <item name="android:maxHeight">15dp</item>
         <item name="android:stepSize">0.5</item>
         <item name="android:isIndicator">true</item>
     </style>
 
+    <style name="ourRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/our_rating_bar</item>
+        <item name="android:minHeight">15dp</item>
+        <item name="android:maxHeight">15dp</item>
+        <item name="android:stepSize">0.5</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
+    <style name="myJGRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/my_rating_bar4</item>
+        <item name="android:minHeight">15dp</item>
+        <item name="android:maxHeight">15dp</item>
+
+        <item name="android:stepSize">1</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
     <style name="smallRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/star3</item>
+        <item name="android:progressDrawable">@drawable/my_rating_bar</item>
         <item name="android:minHeight">15dp</item>
         <item name="android:maxHeight">35dp</item>
-        <item name="android:stepSize">0.5</item>
+        <item name="android:stepSize">1</item>
         <item name="android:isIndicator">true</item>
     </style>
 

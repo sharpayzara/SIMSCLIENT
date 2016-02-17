@@ -327,7 +327,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 timeCountUtil = new TimeCountUtil((Activity) mContext, 60000, 1000, obtain_password);
                 timeCountUtil.start();
                 RequestParams params = new RequestParams();
-                params.addQueryStringParameter("user_et", user_et.getText().toString());
+                params.addQueryStringParameter("phone", user_et.getText().toString());
                 new BaseTask<JsonResult<String>, String>(mContext, R.string.download_notice) {
 
                     @Override

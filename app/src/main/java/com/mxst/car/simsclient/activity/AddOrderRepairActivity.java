@@ -85,7 +85,7 @@ public class AddOrderRepairActivity extends CommonHeadPanelFraActivity implement
                 startActivityForResult(new Intent(this, BrandChooseActivity.class), 1);
                 break;
             case R.id.md_tv: //选择门店
-                if (!TextUtils.isEmpty(brand)) {
+                if (!TextUtils.isEmpty(pp_tv.getText().toString())) {
                     Intent intent = new Intent(this, StoreChooseActivity.class);
                     intent.putExtra("brand", brand);
                     startActivityForResult(intent, 1);
@@ -94,7 +94,12 @@ public class AddOrderRepairActivity extends CommonHeadPanelFraActivity implement
                 }
                 break;
             case R.id.jg_tv: //选择技工
-                if (!TextUtils.isEmpty(store)) {
+
+            if (pp_tv.getText().toString().isEmpty()) {
+                Toast.makeText(this, "请先选择品牌", Toast.LENGTH_SHORT).show();
+                return;
+            }
+                if (!TextUtils.isEmpty(md_tv.getText().toString())) {
                     Intent intent = new Intent(this, JGChooseActivity.class);
                     intent.putExtra("brand", brand);
                     intent.putExtra("store", store);
