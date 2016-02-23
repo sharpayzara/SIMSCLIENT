@@ -47,7 +47,7 @@
     <permission android:name="com.mxst.car.simsclient" android:protectionLevel="signature" />
     <application
         android:name="com.mxst.car.simsclient.utils.MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -121,6 +121,7 @@
         <!-- User defined. 用户自定义的广播接收器-->
         <receiver
             android:name=".receiver.MyReceiver"
+            android:exported="false"
             android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required 用户注册SDK的intent-->
@@ -251,7 +252,7 @@
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity

@@ -125,7 +125,9 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                     if (bean.getGuidePrice() == 0) {
                         car_detail_guideprice_tv.setText("指导价:" + "暂无");
                     } else {
-                        car_detail_guideprice_tv.setText("指导价:" + bean.getGuidePrice() + "");
+                        float de = Float.valueOf(bean.getGuidePrice()) / 10000;
+                        String guidemoney = String.format("%.2f", de);
+                        car_detail_guideprice_tv.setText("指导价:" +guidemoney + "万");
                     }
 
                 }

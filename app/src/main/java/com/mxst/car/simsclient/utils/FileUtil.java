@@ -56,7 +56,7 @@ public class FileUtil {
 
     public static boolean Ispath() {
         File file = new File(Environment.getExternalStorageDirectory() + Constant.SAVE_DIRECTORY);
-        if (file.list().length != 0) {
+        if (file.list() != null && file.list().length != 0) {
             return true;
         } else {
             return false;
@@ -68,12 +68,12 @@ public class FileUtil {
         // 如果文件路径所对应的文件存在，并且是一个文件，则直接删除
         if (file.exists() && file.isFile()) {
             if (file.delete()) {
-                Log.e("Joy", "删除单个文件"  + "成功！");
+                Log.e("Joy", "删除单个文件" + "成功！");
             } else {
-                Log.e("Joy", "删除单个文件"  + "失败！");
+                Log.e("Joy", "删除单个文件" + "失败！");
             }
         } else {
-            Log.e("Joy", "删除单个文件"  + "失败！");
+            Log.e("Joy", "删除单个文件" + "失败！");
         }
     }
 
@@ -108,7 +108,7 @@ public class FileUtil {
      */
     public static File getFileByUri(Activity context, Uri uri) {
         String path = null;
-        if ("file".equals(uri.getScheme())) {
+        if (uri != null && "file".equals(uri.getScheme())) {
             path = uri.getEncodedPath();
             if (path != null) {
                 path = Uri.decode(path);
@@ -134,7 +134,7 @@ public class FileUtil {
             if (path != null) {
                 return new File(path);
             }
-        } else if ("content".equals(uri.getScheme())) {
+        } else if (uri != null && "content".equals(uri.getScheme())) {
             // 4.2.2以后
             String[] proj = {MediaStore.Images.Media.DATA};
             Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);

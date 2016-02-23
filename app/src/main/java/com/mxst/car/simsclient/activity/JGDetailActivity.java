@@ -193,16 +193,12 @@ public class JGDetailActivity extends CommonHeadPanelActivity implements View.On
             intent.putExtra("position", 0);
         } else if (v == jg_detail_zs2_img && size >= 2) {
             intent.putExtra("position", 1);
-            mContext.startActivity(intent);
         } else if (v == jg_detail_zs3_img && size >= 3) {
             intent.putExtra("position", 2);
-            mContext.startActivity(intent);
-        }else if(v==jg_detail_zs4_img&&size>=3){
+        } else if (v == jg_detail_zs4_img && size >= 4) {
             intent.putExtra("position", 3);
-            mContext.startActivity(intent);
-        }else if(v==jg_detail_zs5_img&&size>=4){
+        } else if (v == jg_detail_zs5_img && size >= 5) {
             intent.putExtra("position", 4);
-            mContext.startActivity(intent);
         }
         intent.putStringArrayListExtra("imgUrlList", imgurlList);
         startActivity(intent);

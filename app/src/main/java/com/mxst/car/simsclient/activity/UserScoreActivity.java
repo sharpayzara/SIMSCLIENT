@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.cjj.MaterialRefreshLayout;
@@ -86,7 +85,7 @@ public class UserScoreActivity extends CommonHeadPanelActivity implements View.O
 
     private void initUI() {
         showBackBtn();
-        setHeadTitle("个人中心");
+        setHeadTitle("积分明细");
         myRecycle = (RecyclerView) findViewById(R.id.my_recycle);
         materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.material_rlt);
         materialRefreshLayout.setLoadMore(true);

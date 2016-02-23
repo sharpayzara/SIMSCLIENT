@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
+import com.mxst.car.simsclient.utils.Constant;
 
 import cn.jpush.android.api.InstrumentedActivity;
 
@@ -17,10 +18,10 @@ import cn.jpush.android.api.InstrumentedActivity;
  * version:  V1.0
  * Description:
  */
-public class CommonHeadPanelActivity extends InstrumentedActivity{
+public class CommonHeadPanelActivity extends InstrumentedActivity {
     LinearLayout backBtn;
     HeadControlPanel headControlPanel;
-    private boolean isCanBack ;
+    private boolean isCanBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,14 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
         backBtn.setVisibility(View.VISIBLE);
     }
 
+    public void setZX() {
+        headControlPanel.setMiddleTitleClick(new HeadControlPanel.midTitleOnClickListener() {
+            @Override
+            public void mTitleClick() {
+                Constant.AUTHENTICATION_TOKEN = "";
+            }
+        });
+    }
 
     //手指上下滑动时的最小速度
     private static final int YSPEED_MIN = 1000;
@@ -79,17 +88,17 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
                 break;
             case MotionEvent.ACTION_MOVE:
                 xMove = event.getRawX();
-                yMove= event.getRawY();
+                yMove = event.getRawY();
                 //滑动的距离
                 int distanceX = (int) (xMove - xDown);
-                int distanceY= (int) (yMove - yDown);
+                int distanceY = (int) (yMove - yDown);
                 //获取顺时速度
                 int ySpeed = getScrollVelocity();
                 //关闭Activity需满足以下条件：
                 //1.x轴滑动的距离>XDISTANCE_MIN
                 //2.y轴滑动的距离在YDISTANCE_MIN范围内
                 //3.y轴上（即上下滑动的速度）<XSPEED_MIN，如果大于，则认为用户意图是在上下滑动而非左滑结束Activity
-                if(distanceX > XDISTANCE_MIN &&(distanceY<YDISTANCE_MIN&&distanceY>-YDISTANCE_MIN)&& ySpeed < YSPEED_MIN && isCanBack) {
+                if (distanceX > XDISTANCE_MIN && (distanceY < YDISTANCE_MIN && distanceY > -YDISTANCE_MIN) && ySpeed < YSPEED_MIN && isCanBack) {
                     finish();
                 }
                 break;
@@ -106,7 +115,6 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
      * 创建VelocityTracker对象，并将触摸界面的滑动事件加入到VelocityTracker当中。
      *
      * @param event
-     *
      */
     private void createVelocityTracker(MotionEvent event) {
         if (mVelocityTracker == null) {
@@ -124,7 +132,6 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
     }
 
     /**
-     *
      * @return 滑动速度，以每秒钟移动了多少像素值为单位。
      */
     private int getScrollVelocity() {

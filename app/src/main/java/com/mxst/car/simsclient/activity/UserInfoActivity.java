@@ -82,7 +82,7 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                     address.setText(bean.getAddress());
                     BitmapUtils bitmapUtils = new BitmapUtils(mContext);
                     bitmapUtils.display(headImg, bean.getHeadImg());
-                    if (bean.getGender().isEmpty() && bean.getGender().equals("女")) {
+                    if (!bean.getGender().isEmpty() && bean.getGender().equals("女")) {
                         sex_woman.setChecked(true);
                     } else {
                         sex_man.setChecked(true);
@@ -209,7 +209,7 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                 SelectHeadUtil.startPhotoZoom(this, data.getData(), 300);
                 break;
             case Constant.REQUESTCODE.PHOTO_REQUEST_CUT: //接收处理返回的图片结果
-                if (data != null) {
+                if (data != null && data.hasExtra("data")) {
                     Bitmap bit = data.getExtras().getParcelable("data");
                     headImg.setImageBitmap(bit);
                     myfile = FileUtil.getFileByUri(this, photoUri);
