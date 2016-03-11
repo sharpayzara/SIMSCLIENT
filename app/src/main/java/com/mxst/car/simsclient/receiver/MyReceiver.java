@@ -31,9 +31,11 @@ public class MyReceiver extends BroadcastReceiver {
 		if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
 			try {
 				object = new JSONObject(extras);
-				if(!TextUtils.isEmpty(object.optString("url"))){
+				if(!TextUtils.isEmpty(object.optString("id"))){
 					Intent i = new Intent(context, NewsInfoActivity.class);
-					i.putExtra("url",object.optString("url"));
+					i.putExtra("content",object.optString("subTitle"));
+					i.putExtra("title",object.optString("title"));
+					i.putExtra("id",object.optString("id"));
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 							| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					context.startActivity(i);

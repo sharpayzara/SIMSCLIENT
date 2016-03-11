@@ -2,7 +2,8 @@ package com.mxst.car.simsclient.utils;
 
 public class Constant {
     public static final String APPID = "7ff3b5ddaf309007e16c13b8fafc1fd1";
-    public static final String HOST = "http://222.177.210.200";   //测试
+   // public static final String HOST = "http://222.177.210.200";   //测试
+      public static final String HOST = "http://www.mxservice.cn";   //正式
 
     public static final String CTX_PATH = HOST + "/public/";
     public static String userId;
@@ -101,8 +102,8 @@ public class Constant {
         public static final String DIKOU = CTX_PATH + "wx/dikou";
         public static final String TRADELIST = CTX_PATH + "cust/getcjCusts";
         public static final String FINDCUSTS = CTX_PATH + "indexPage/findCusts";
-        public static final String JFDETAIL =  CTX_PATH + "indexPage/getJfDetail";
-        public static final String NOTPAIDCOUNT =  CTX_PATH + "wx/notPaidCount";
+        public static final String JFDETAIL = CTX_PATH + "indexPage/getJfDetail";
+        public static final String NOTPAIDCOUNT = CTX_PATH + "wx/notPaidCount";
     }
 
 }

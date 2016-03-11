@@ -73,11 +73,11 @@ public class PersonAdapter extends BaseAdapter {
 //            holder.tv_py.setVisibility(View.GONE);
 //        }
 
-        if (position == 0) {
+        if (persons.get(0).getPinyin().equals("★")&& position == 0 ) {
             string = "常用品牌";
         } else {
             String py = persons.get(position).getPinyin();
-            String spy = persons.get(position - 1).getPinyin();
+            String spy = persons.get(Math.abs(position - 1)).getPinyin();
             if (!py.equals(spy)) {
                 string = persons.get(position).getPinyin();
             }

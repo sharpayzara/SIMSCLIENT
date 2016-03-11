@@ -46,7 +46,7 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout login_layout, user_layout;
     LinearLayout user_btn, cx_more_lly, zx_more_lly, market_more_lly, recommend_lin, jifenllt, car_group_llt, zx1_llt, zx2_llt, trade_llt;
     ClearEditText user_et;
@@ -64,6 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private String zx1Id, zx2Id;
     CountDownTimer timeCountUtil;
     private String img, content1, content2, title1, title2;
+    private LinearLayout zx_lin;
 
 
     @Override
@@ -83,6 +84,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
 
     private void initUI() {
+        zx_lin = (LinearLayout) root.findViewById(R.id.zx_lin);
         jifenllt = (LinearLayout) root.findViewById(R.id.jifenllt);
         login_layout = (RelativeLayout) root.findViewById(R.id.login_layout);
         user_layout = (RelativeLayout) root.findViewById(R.id.user_layout);
@@ -217,6 +219,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                         zx_content_2.setText(result.getRecord().getZxs().get(1).getSubtitle());
                         zx1Id = result.getRecord().getZxs().get(0).getId();
                         zx2Id = result.getRecord().getZxs().get(1).getId();
+                    }
+                    if (result.getRecord().getZxs().size() == 0) {
+                        zx_lin.setVisibility(View.INVISIBLE);
                     }
                     if (result.getRecord().getVipInfo() != null) {
                         phone.setText(result.getRecord().getVipInfo().getPhone());
@@ -398,20 +403,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
 
     public void updateRedPoint() {
-        new BaseTask<JsonResult<JSONObject>,String>(mContext){
+        new BaseTask<JsonResult<JSONObject>, String>(mContext) {
 
             @Override
             public TypeToken setTypeToken() {
-                return new TypeToken<JSONObject>(){};
+                return new TypeToken<JSONObject>() {
+                };
             }
 
             @Override
             public void onSuccess() {
-                if(result.isSuccess()){
+                if (result.isSuccess()) {
                     Constant.POINTNUM = result.getRecord().optJSONObject("count").optInt("count");
                     mainActivity.bottomPanel.updatePointNum();
                 }
             }
-        }.requestByPost(Constant.URL.NOTPAIDCOUNT,new RequestParams());
+        }.requestByPost(Constant.URL.NOTPAIDCOUNT, new RequestParams());
     }
 }
