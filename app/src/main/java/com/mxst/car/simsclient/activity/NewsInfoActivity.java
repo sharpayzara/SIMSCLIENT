@@ -3,7 +3,6 @@ package com.mxst.car.simsclient.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -46,45 +45,16 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
 
     }
 
-    private void getCollectStatus() {
-        RequestParams params = new RequestParams();
-        params.addQueryStringParameter("id", id);
-        new BaseTask<JsonResult<JSONObject>, String>(this, "加载中") {
-
-            @Override
-            public TypeToken setTypeToken() {
-                return new TypeToken<JSONObject>() {
-                };
-            }
-
-            @Override
-            public void onSuccess() {
-                if (result.isSuccess()) {
-                    int flag = result.getRecord().optInt("flag");
-                    if (flag == 1) {
-                        isCollect = true;
-                        collect.setBackgroundResource(R.drawable.btn_collect_true);
-                    } else {
-                        isCollect = false;
-                        collect.setBackgroundResource(R.drawable.btn_collect);
-                    }
-                }
-            }
-
-        }.requestByPost(Constant.URL.GETCOLLECTSTATUS, params);
-    }
-
     private void init() {
         id = getIntent().getStringExtra("id");
         mWebView = (WebView) findViewById(R.id.news_web);
         collect = (Button) findViewById(R.id.info_collect);
         share = (LinearLayout) findViewById(R.id.info_share);
-        String tempUrl = getIntent().getStringExtra("url");
-        if (!TextUtils.isEmpty(tempUrl)) {
-            mWebView.loadUrl(tempUrl);
-        } else {
+        //String tempUrl = getIntent().getStringExtra("url");
+        if (getIntent().hasExtra("id")){
             mWebView.loadUrl("http://222.177.210.200/public/news/getNewsInfo?id=" + id);
         }
+
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +82,34 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
 
             }
         });
+    }
+
+    private void getCollectStatus() {
+        RequestParams params = new RequestParams();
+        params.addQueryStringParameter("id", id);
+        new BaseTask<JsonResult<JSONObject>, String>(this, "加载中") {
+
+            @Override
+            public TypeToken setTypeToken() {
+                return new TypeToken<JSONObject>() {
+                };
+            }
+
+            @Override
+            public void onSuccess() {
+                if (result.isSuccess()) {
+                    int flag = result.getRecord().optInt("flag");
+                    if (flag == 1) {
+                        isCollect = true;
+                        collect.setBackgroundResource(R.drawable.btn_collect_true);
+                    } else {
+                        isCollect = false;
+                        collect.setBackgroundResource(R.drawable.btn_collect);
+                    }
+                }
+            }
+
+        }.requestByPost(Constant.URL.GETCOLLECTSTATUS, params);
     }
 
     private void collect() {

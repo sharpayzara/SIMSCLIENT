@@ -11,27 +11,32 @@ import java.util.Date;
 
 public class CommonUtil {
     private static BitmapUtils utils;
-    public static void showToastToShort(Context mContext,String msg){
-        Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
+
+    public static void showToastToShort(Context mContext, String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
-    public static BitmapUtils getBitMapUtils(Context mContext){
-        if(utils == null){
+
+    public static BitmapUtils getBitMapUtils(Context mContext) {
+        if (utils == null) {
             utils = new BitmapUtils(mContext.getApplicationContext());
             utils.configDefaultLoadFailedImage(R.drawable.plugin_img);
         }
 
         return utils;
     }
-    public static void setRatingBar(Context mContext,long value){
+
+    public static void setRatingBar(Context mContext, long value) {
 
     }
-    public static Long getCurrentDate(){
+
+    public static Long getCurrentDate() {
         return new Date().getTime();
     }
-    public static boolean judgeTokenValid(Context context){
+
+    public static boolean judgeTokenValid(Context context) {
         PreferenceService ps = new PreferenceService(context);
         Long intervalTime = CommonUtil.getCurrentDate() - ps.getLoginDate();
-        if(intervalTime < 86400000){
+        if (intervalTime < 86400000) {
             return true;
         }
       /*  if(intervalTime < 20000){
@@ -40,14 +45,14 @@ public class CommonUtil {
         return false;
     }
 
-    public static float switchRatingValue(float ratingValue){
-        float pointValue = ratingValue  - (int)ratingValue;
-        if(pointValue > 0.5){
-            return (int)ratingValue + 1;
-        }else if(pointValue != 0){
-            return (float) ((int)ratingValue + 0.5);
-        }else {
-            return (int)ratingValue;
+    public static float switchRatingValue(float ratingValue) {
+        float pointValue = ratingValue - (int) ratingValue;
+        if (pointValue > 0.5) {
+            return (int) ratingValue + 1;
+        } else if (pointValue != 0) {
+            return (float) ((int) ratingValue + 0.5);
+        } else {
+            return (int) ratingValue;
         }
     }
 
