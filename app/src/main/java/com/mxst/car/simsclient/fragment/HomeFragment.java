@@ -206,22 +206,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         }
 
                     }
-                    if (result.getRecord().getZxs().size() >= 2) {
-                        utils.display(zx_iv_1, result.getRecord().getZxs().get(0).getImg());
-                        utils.display(zx_iv_2, result.getRecord().getZxs().get(1).getImg());
-                        zx_title_1.setText(result.getRecord().getZxs().get(0).getTitle());
-                        title1 = result.getRecord().getZxs().get(0).getTitle();
-                        title2 = result.getRecord().getZxs().get(1).getTitle();
-                        zx_title_2.setText(result.getRecord().getZxs().get(1).getTitle());
-                        zx_content_1.setText(result.getRecord().getZxs().get(0).getSubtitle());
-                        content1 = result.getRecord().getZxs().get(0).getSubtitle();
-                        content2 = result.getRecord().getZxs().get(1).getSubtitle();
-                        zx_content_2.setText(result.getRecord().getZxs().get(1).getSubtitle());
-                        zx1Id = result.getRecord().getZxs().get(0).getId();
-                        zx2Id = result.getRecord().getZxs().get(1).getId();
-                    }
                     if (result.getRecord().getZxs().size() == 0) {
                         zx_lin.setVisibility(View.INVISIBLE);
+                    } else {
+                        zx_lin.setVisibility(View.VISIBLE);
+                        boolean ZXnum = result.getRecord().getZxs().size() >= 2 ? true : false;
+                        if (ZXnum) {
+                            utils.display(zx_iv_1, result.getRecord().getZxs().get(0).getImg());
+                            utils.display(zx_iv_2, result.getRecord().getZxs().get(1).getImg());
+                            zx_title_1.setText(result.getRecord().getZxs().get(0).getTitle());
+                            title1 = result.getRecord().getZxs().get(0).getTitle();
+                            title2 = result.getRecord().getZxs().get(1).getTitle();
+                            zx_title_2.setText(result.getRecord().getZxs().get(1).getTitle());
+                            zx_content_1.setText(result.getRecord().getZxs().get(0).getSubtitle());
+                            content1 = result.getRecord().getZxs().get(0).getSubtitle();
+                            content2 = result.getRecord().getZxs().get(1).getSubtitle();
+                            zx_content_2.setText(result.getRecord().getZxs().get(1).getSubtitle());
+                            zx1Id = result.getRecord().getZxs().get(0).getId();
+                            zx2Id = result.getRecord().getZxs().get(1).getId();
+                        } else {
+                            zx2_llt.setVisibility(View.GONE);
+                            utils.display(zx_iv_1, result.getRecord().getZxs().get(0).getImg());
+                            zx_title_1.setText(result.getRecord().getZxs().get(0).getTitle());
+                            title1 = result.getRecord().getZxs().get(0).getTitle();
+                            zx_content_1.setText(result.getRecord().getZxs().get(0).getSubtitle());
+                            content1 = result.getRecord().getZxs().get(0).getSubtitle();
+                            zx1Id = result.getRecord().getZxs().get(0).getId();
+                        }
                     }
                     if (result.getRecord().getVipInfo() != null) {
                         phone.setText(result.getRecord().getVipInfo().getPhone());
