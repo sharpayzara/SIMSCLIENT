@@ -52,7 +52,7 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
         share = (LinearLayout) findViewById(R.id.info_share);
         //String tempUrl = getIntent().getStringExtra("url");
         if (getIntent().hasExtra("id")){
-            mWebView.loadUrl("http://222.177.210.200/public/news/getNewsInfo?id=" + id);
+            mWebView.loadUrl("http://www.mxservice.cn/public/news/getNewsInfo?id=" + id);
         }
 
 
@@ -65,7 +65,7 @@ public class NewsInfoActivity extends CommonHeadPanelActivity {
                 if (getIntent().hasExtra("title")) {
                     ShareUtil.title = getIntent().getStringExtra("title");
                 }
-                ShareUtil.url = "http://222.177.210.200/public/news/getNewsInfo?id=" + id;
+                ShareUtil.url = "http://www.mxservice.cn/public/news/getNewsInfo?id=" + id;
                 ShareUtil.showPopupWindow(NewsInfoActivity.this, getWindow().getDecorView());
             }
         });

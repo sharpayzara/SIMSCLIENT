@@ -172,9 +172,9 @@ public class CarDetailsActivity extends CommonHeadPanelActivity implements OnCli
                 ShareUtil.title = ShareTxt;
                 ShareUtil.content = ShareTxt;
                 if (TextUtils.isEmpty(colorId)) {                  //// TODO: 2016/1/28 资源Url
-                    ShareUtil.url = "http://222.177.210.200/public/brand/rsDetail?cpId=" + colorId;
+                    ShareUtil.url = "http://www.mxservice.cn/public/brand/rsDetail?cpId=" + colorId;
                 } else {
-                    ShareUtil.url = "http://222.177.210.200/public/brand/rsDetail";
+                    ShareUtil.url = "http://www.mxservice.cn/public/brand/rsDetail";
                 }
                 ShareUtil.showPopupWindow(CarDetailsActivity.this, getWindow().getDecorView());
             }
