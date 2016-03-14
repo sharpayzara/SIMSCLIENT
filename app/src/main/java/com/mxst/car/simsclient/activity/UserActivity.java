@@ -37,7 +37,6 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
     private void initUI() {
         showBackBtn();
         setHeadTitle("个人中心");
-        setZX();
         headImg_layout = (LinearLayout) findViewById(R.id.headImg_layout);
         headImg_layout.setOnClickListener(this);
         collect_lly = (LinearLayout) findViewById(R.id.collect_lly);

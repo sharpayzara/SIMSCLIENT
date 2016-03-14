@@ -9,13 +9,13 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.http.RequestParams;
@@ -196,10 +196,6 @@ public class RepairFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (Constant.AUTHENTICATION_TOKEN.isEmpty()) {
-            Toast.makeText(mContext, "请先登录", Toast.LENGTH_SHORT).show();
-            return;
-        }
         switch (v.getId()) {
             case R.id.order_repair_rlt:
                 Intent intent = new Intent(mContext, OrderRepairActivity.class);

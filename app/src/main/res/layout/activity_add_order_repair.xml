@@ -192,7 +192,7 @@
                 android:textSize="12sp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
-                android:text="预约进厂时间：">
+                android:text="预约进场时间：">
             </TextView>
             <TextView
                 android:id="@+id/yydate_tv"
