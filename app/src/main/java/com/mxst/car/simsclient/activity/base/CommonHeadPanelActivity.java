@@ -1,13 +1,19 @@
 package com.mxst.car.simsclient.activity.base;
 
+import android.Manifest;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.mxst.car.simsclient.R;
 import com.mxst.car.simsclient.layout.HeadControlPanel;
+import com.mxst.car.simsclient.utils.PermissionsActivity;
+import com.mxst.car.simsclient.utils.PermissionsChecker;
 
 import cn.jpush.android.api.InstrumentedActivity;
 
@@ -17,10 +23,18 @@ import cn.jpush.android.api.InstrumentedActivity;
  * version:  V1.0
  * Description:
  */
-public class CommonHeadPanelActivity extends InstrumentedActivity{
+public class CommonHeadPanelActivity extends InstrumentedActivity {
     LinearLayout backBtn;
     HeadControlPanel headControlPanel;
-    private boolean isCanBack ;
+    private boolean isCanBack;
+    private static final int REQUEST_CODE = 0; // 请求码
+
+    static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    private PermissionsChecker mPermissionsChecker; // 权限检测器
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +48,18 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
                 onBackPressed();
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mPermissionsChecker = new PermissionsChecker(this);
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mPermissionsChecker != null && mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
+            startPermissionsActivity();
+        }
     }
 
     public void setHeadTitle(String msg) {
@@ -79,17 +105,17 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
                 break;
             case MotionEvent.ACTION_MOVE:
                 xMove = event.getRawX();
-                yMove= event.getRawY();
+                yMove = event.getRawY();
                 //滑动的距离
                 int distanceX = (int) (xMove - xDown);
-                int distanceY= (int) (yMove - yDown);
+                int distanceY = (int) (yMove - yDown);
                 //获取顺时速度
                 int ySpeed = getScrollVelocity();
                 //关闭Activity需满足以下条件：
                 //1.x轴滑动的距离>XDISTANCE_MIN
                 //2.y轴滑动的距离在YDISTANCE_MIN范围内
                 //3.y轴上（即上下滑动的速度）<XSPEED_MIN，如果大于，则认为用户意图是在上下滑动而非左滑结束Activity
-                if(distanceX > XDISTANCE_MIN &&(distanceY<YDISTANCE_MIN&&distanceY>-YDISTANCE_MIN)&& ySpeed < YSPEED_MIN && isCanBack) {
+                if (distanceX > XDISTANCE_MIN && (distanceY < YDISTANCE_MIN && distanceY > -YDISTANCE_MIN) && ySpeed < YSPEED_MIN && isCanBack) {
                     finish();
                 }
                 break;
@@ -106,7 +132,6 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
      * 创建VelocityTracker对象，并将触摸界面的滑动事件加入到VelocityTracker当中。
      *
      * @param event
-     *
      */
     private void createVelocityTracker(MotionEvent event) {
         if (mVelocityTracker == null) {
@@ -124,7 +149,6 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
     }
 
     /**
-     *
      * @return 滑动速度，以每秒钟移动了多少像素值为单位。
      */
     private int getScrollVelocity() {
@@ -139,5 +163,18 @@ public class CommonHeadPanelActivity extends InstrumentedActivity{
 
     public void setCanBack(boolean canBack) {
         isCanBack = canBack;
+    }
+
+    private void startPermissionsActivity() {
+        PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 拒绝时, 关闭页面, 缺少主要权限, 无法运行
+        if (requestCode == REQUEST_CODE && resultCode == PermissionsActivity.PERMISSIONS_DENIED) {
+            Toast.makeText(this, "您的程序缺少部分权限，可能某些功能无法正常运行.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -181,7 +181,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
-                    if (result.getRecord().getHotBrand().size() >= 5) {
+               //     if (result.getRecord().getHotBrand().size() >= 5) {
+                    if (result.getRecord().getHotBrand().size() > 0) {
                       /*  utils.display(rmcx_iv_1, result.getRecord().getHotBrand().get(0).getImg());
                         utils.display(rmcx_iv_2, result.getRecord().getHotBrand().get(1).getImg());
                         utils.display(rmcx_iv_3, result.getRecord().getHotBrand().get(2).getImg());

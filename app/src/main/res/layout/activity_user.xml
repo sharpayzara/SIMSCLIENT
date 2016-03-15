@@ -92,6 +92,7 @@
             android:text="收藏"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/about_llt"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="10dp"

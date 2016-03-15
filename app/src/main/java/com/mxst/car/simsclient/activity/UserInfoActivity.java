@@ -82,7 +82,7 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                     address.setText(bean.getAddress());
                     BitmapUtils bitmapUtils = new BitmapUtils(mContext);
                     bitmapUtils.display(headImg, bean.getHeadImg());
-                    if (bean.getGender().isEmpty() && bean.getGender().equals("女")) {
+                    if (bean.getGender() != null && bean.getGender().equals("女")) {
                         sex_woman.setChecked(true);
                     } else {
                         sex_man.setChecked(true);
@@ -123,7 +123,7 @@ public class UserInfoActivity extends CommonHeadPanelActivity implements View.On
                 try {
                     photoUri = FileUtil.getUriByFileDirAndFileName(Constant.SAVE_DIRECTORY, Constant.SAVE_PIC_NAME);
                 } catch (IOException e) {
-                    Toast.makeText(mContext, "创建文件失败。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "创建文件失败", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 SelectHeadUtil.openDialog(UserInfoActivity.this, photoUri);

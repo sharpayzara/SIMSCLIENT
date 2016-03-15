@@ -69,21 +69,15 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         mContext = getActivity();
         this.inflater = inflater;
         llyHeight = (int) (getResources().getDisplayMetrics().density * 45 + 0.5);
+        val = "";
         initUI();
         if (TextUtils.isEmpty(search_et.getText())) {
             getNewsList("");
         } else {
             searchNewsList(search_et.getText().toString());
         }
-        val = "";
         return view;
     }
-
-    public void onResume() {
-        super.onResume();
-        // val = "";
-    }
-
 
     private void initUI() {
         search_et = (ClearEditText) view.findViewById(R.id.search_et);
@@ -195,18 +189,19 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
                 val = "AC";
                 showCheckLine("ac");
                 currentPage = 1;
-                bean.clear();
+                //bean.clear();
                 getNewsList(val);
                 break;
             case R.id.news_culture_tv:
                 val = "AP";
                 showCheckLine("ap");
                 currentPage = 1;
-                bean.clear();
+                //bean.clear();
                 getNewsList(val);
                 break;
             case R.id.search_icon:
                 val = "";
+              //  bean.clear();
                 currentPage = 1;
                 getNewsList("");
                 doCloseLayout(search_lly);
@@ -237,10 +232,11 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess() {
                 if (result.isSuccess()) {
+                    if (currentPage == 1) bean.clear();
                     List<IndexList> tempList = new Gson().fromJson(result.getRecord().optString("newsList"),
                             new TypeToken<List<IndexList>>() {
                             }.getType());
-                    if (tempList.size() == 0 ) {
+                    if (tempList.size() == 0) {
                         materialRefreshLayout.setLoadMore(false);
                         materialRefreshLayout.finishRefresh();
                         materialRefreshLayout.finishRefreshLoadMore();

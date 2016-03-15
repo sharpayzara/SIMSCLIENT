@@ -17,7 +17,7 @@ import com.mxst.car.simsclient.utils.Constant;
 public class UserActivity extends CommonHeadPanelActivity implements View.OnClickListener {
     Context mContext;
     TextView nickName, phone;
-    LinearLayout headImg_layout, collect_lly, setup_lly, score_llt, account_llt;
+    LinearLayout headImg_layout, collect_lly, setup_lly, score_llt, account_llt, about_llt;
     BitmapUtils bitmapUtils;
     ImageView headimg;
 
@@ -39,6 +39,8 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
         setHeadTitle("个人中心");
         headImg_layout = (LinearLayout) findViewById(R.id.headImg_layout);
         headImg_layout.setOnClickListener(this);
+        about_llt = (LinearLayout) findViewById(R.id.about_llt);
+        about_llt.setOnClickListener(this);
         collect_lly = (LinearLayout) findViewById(R.id.collect_lly);
         collect_lly.setOnClickListener(this);
         setup_lly = (LinearLayout) findViewById(R.id.setup_lly);
@@ -73,6 +75,9 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
             mContext.startActivity(intent);
         } else if (v == score_llt) {
 
+        } else if (v == about_llt) {
+            Intent intent = new Intent(mContext, AboutActivity.class);
+            mContext.startActivity(intent);
         }
     }
 
@@ -80,7 +85,8 @@ public class UserActivity extends CommonHeadPanelActivity implements View.OnClic
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Constant.REQUESTCODE.NICKNAME) {
-            CommonUtil.getBitMapUtils(this).display(headimg, data.getStringExtra("img"));
+            if (data.hasExtra("img"))
+                CommonUtil.getBitMapUtils(this).display(headimg, data.getStringExtra("img"));
             nickName.setText(data.getStringExtra("name"));
         }
     }

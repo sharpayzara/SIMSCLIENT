@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mxst.car.simsclient">
+<manifest package="com.mxst.car.simsclient"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
 
 
-    <permission android:name="com.mxst.car.simsclient.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+    <permission
+        android:name="com.mxst.car.simsclient.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature"/>
     <!-- Required -->
-    <uses-permission android:name="com.mxst.car.simsclient.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.mxst.car.simsclient.permission.JPUSH_MESSAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
 
-    <permission android:name="com.mxst.car.simsclient" android:protectionLevel="signature" />
+    <permission
+        android:name="com.mxst.car.simsclient"
+        android:protectionLevel="signature"/>
     <application
         android:name="com.mxst.car.simsclient.utils.MyApplication"
         android:allowBackup="true"
@@ -57,28 +61,30 @@
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="${applicationId}" />
+                <action android:name="cn.jpush.android.ui.PushActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="${applicationId}"/>
             </intent-filter>
         </activity>
+
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
         </service>
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER" />
-                <action android:name="cn.jpush.android.intent.REPORT" />
-                <action android:name="cn.jpush.android.intent.PushService" />
-                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+                <action android:name="cn.jpush.android.intent.REGISTER"/>
+                <action android:name="cn.jpush.android.intent.REPORT"/>
+                <action android:name="cn.jpush.android.intent.PushService"/>
+                <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
 
             </intent-filter>
         </service>
@@ -88,8 +94,8 @@
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
             android:exported="true">
-            <intent-filter >
-                <action android:name="cn.jpush.android.intent.DaemonService" />
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService"/>
                 <category android:name="${applicationId}"/>
             </intent-filter>
         </service>
@@ -100,176 +106,232 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--Required 显示通知栏 -->
-                <category android:name="${applicationId}" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/> <!--Required 显示通知栏 -->
+                <category android:name="${applicationId}"/>
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
             <!-- Optional -->
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
             </intent-filter>
         </receiver>
 
         <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>
 
         <!-- User defined. 用户自定义的广播接收器-->
         <receiver
             android:name=".receiver.MyReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required 用户注册SDK的intent-->
-                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required 用户接收SDK消息的intent-->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required 用户接收SDK通知栏信息的intent-->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required 用户打开自定义通知栏的intent-->
-                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
-                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                <category android:name="${applicationId}" />
+                <action android:name="cn.jpush.android.intent.REGISTRATION"/> <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION"/>
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/> <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/> <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/> <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK"/> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION"/><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="${applicationId}"/>
             </intent-filter>
         </receiver>
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="09d0ce3d7c84d91b443964a8" />
+
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default"/>
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="09d0ce3d7c84d91b443964a8"/>
+
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <activity
             android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:label="@string/app_name">
+            android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".activity.NewsInfoActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.BrandFindActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.UserActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.UserInfoActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ResourceFindActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ResourceChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.NewsMoreActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.CollectActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.UserSetUpActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.UserScoreActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.TradeListActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.TradeDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.RecommendKFActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.RecommendKFDeatilActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.NewsInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BrandFindActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.UserActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.ResourceFindActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.ResourceChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.NewsMoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CollectActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.UserSetUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.UserScoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.TradeListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.TradeDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RecommendKFActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RecommendKFDeatilActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ViewImageActivity"
             android:theme="@style/ThemeActivity"/>
-        <activity android:name=".activity.CarDetailsActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.CarDetailsMoreActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.BrandChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.RecommendActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.EvaluateActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.OrderRepairActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.InsureListActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.InsureDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.LoginActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ScoreDetailActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CarDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CarDetailsMoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BrandChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RecommendActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.EvaluateActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.OrderRepairActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.InsureListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.InsureDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.ScoreDetailActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ViewImageURLActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeActivity"/>
-        <activity android:name=".activity.ManChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.StoreChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FindRepairActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FindRepairDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FindFixOrderActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FindHistoryActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FindHistoryCategoryActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FindHistoryDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.JGBrandChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.JGStoreChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.JGManChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.AddOrderRepairActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.JGChooseActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.JGDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.InsureItemDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FixDetailActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.ManChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.StoreChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FindRepairActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FindRepairDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FindFixOrderActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FindHistoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FindHistoryCategoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FindHistoryDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.JGBrandChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.JGStoreChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.JGManChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.AddOrderRepairActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.JGChooseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.JGDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.InsureItemDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.FixDetailActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
-            android:theme="@style/Theme.UMDefault"
-            android:excludeFromRecents="true"/>
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.UMDefault"/>
+
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="56a03eea67e58e50ac0011a1" />
+            android:value="56a03eea67e58e50ac0011a1"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}" />
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="tencent100424468" />
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tencent100424468"/>
             </intent-filter>
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name=".utils.PermissionsActivity"
+            android:theme="@style/AppTheme.NoActionBar.Permissions"/>
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
